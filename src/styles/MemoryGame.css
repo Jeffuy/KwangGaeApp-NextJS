@@ -1,6 +1,7 @@
 .memory {
     max-width: 860px;
     margin: 40px auto;
+	
 }
 
 button {
@@ -12,7 +13,9 @@ button {
     font-weight: bold;
     cursor: pointer;
     font-size: 1em;
+
 }
+
 button:hover {
     background: #97005c;
     color: #fff;
@@ -25,17 +28,24 @@ button:hover {
     grid-gap: 10px;
     margin-left: 10px;
     margin-right: 10px;
+
 }
 
 .card {
-    position: relative;
     background-color: rgba(0, 0, 0, 0);
+	position: relative;
+
 }
 
-.card img {
+/* .card img {
     width: 100%;
     height: 100%;
     display: block;
+    border: 2px solid #fff;
+    border-radius: 6px;
+} */
+
+.card-image {
     border: 2px solid #fff;
     border-radius: 6px;
 }
@@ -43,20 +53,27 @@ button:hover {
 .card .front {
     transform: rotateY(90deg);
     transition: all ease-in 0.2s;
-    position: absolute;
+	position: absolute;
 }
+
 
 .flipped .front {
     transform: rotateY(0deg);
     transition-delay: 0.2s;
+	
+
 }
 
 .card .back {
     transition: all ease-in 0.2s;
     transition-delay: 0.2s;
+	
+
 }
 
 .flipped .back {
     transform: rotateY(90deg);
-    transition-delay: 0s;
+    transition-delay: 0s;	
+	
+
 }

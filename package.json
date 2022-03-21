@@ -1,36 +1,32 @@
 {
-  "name": "formas-react",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --mode development --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-syntax-jsx": "^7.16.0",
-    "@babel/plugin-transform-runtime": "^7.16.4",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
-    "axios": "^0.24.0",
-    "babel-loader": "^8.2.3",
-    "css-loader": "^6.5.1",
-    "html-loader": "^3.0.1",
-    "html-webpack-plugin": "^5.5.0",
-    "mini-css-extract-plugin": "^2.4.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^6.0.2",
-    "style-loader": "^3.3.1"
-  },
-  "devDependencies": {
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0"
-  }
+    "name": "react-shop-admin",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "lint:fix": "eslint src/ --fix"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.5.0",
+        "@heroicons/react": "^1.0.6",
+        "autoprefixer": "^10.4.3",
+        "axios": "^0.26.1",
+        "js-cookie": "^3.0.1",
+        "next": "12.1.0",
+        "postcss": "^8.4.11",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "tailwindcss": "^3.0.23"
+    },
+    "devDependencies": {
+        "eslint": "8.11.0",
+        "eslint-config-next": "12.1.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-prettier": "^4.0.0",
+        "prettier": "^2.6.0"
+    }
 }
