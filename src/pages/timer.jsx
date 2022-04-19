@@ -1,5 +1,5 @@
 import useTimerHook from '@hooks/useTimerHook';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 function Timer() {
 	const { time, setTimerOn, setTime, timerOn } = useTimerHook();
