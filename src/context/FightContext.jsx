@@ -1,13 +1,12 @@
 import React, { createContext, useState } from 'react';
 import useScoreHook from '@hooks/useScoreHook';
-import timer from '@scripts/timer';
+import useTimerHook from '@hooks/useTimerHook';
 
 const FightContext = createContext();
 
 function FightProvider(props) {
-	const [time, setTime] = useState('Presiona Start');
 	const [showError, setShowError] = useState(false);
-	const [runTime, setRunTime] = useState('');
+	//const [runTime, setRunTime] = useState('');
 	const [status, setStatus] = useState(false);
 
 	const {
@@ -38,36 +37,36 @@ function FightProvider(props) {
 		discounts: 0,
 	});
 
-	const startFight = () => {
-		timer.start();
-		setStatus(true);
+	const { time, setTimerOn, setTime, timerOn } = useTimerHook();
 
+	const startFight = () => {
+		setStatus(true);
 		blueRestart();
 		redRestart();
+		setTimerOn(true);
+	};
 
-		const updateTime = () => {
-			const time = timer.write();
-			setTime(time);
-		};
-		setRunTime(setInterval(updateTime, 10));
+	const pauseFight = () => {
+		setTimerOn(false);
+	};
+
+	const resumeFight = () => {
+		setTimerOn(true);
 	};
 
 	const endFight = () => {
 		blueFinalScore();
 		redFinalScore();
-
 		setStatus(false);
-		setRunTime(clearInterval(runTime));
-		setTime(time);
-		timer.reset();
-
-		console.log(red, blue);
+		setTimerOn(false);
+		setTime(0);
 	};
 
 	return (
 		<FightContext.Provider
 			value={{
 				time,
+				timerOn,
 				showError,
 				startFight,
 				endFight,
@@ -81,6 +80,8 @@ function FightProvider(props) {
 				redWarning,
 				blueWarning,
 				setShowError,
+				pauseFight,
+				resumeFight,
 			}}
 		>
 			{props.children}

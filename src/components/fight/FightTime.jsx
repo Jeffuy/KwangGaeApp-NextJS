@@ -5,10 +5,10 @@ const FightTime = () => {
 	const { time } = useContext(FightContext);
 
 	return (
-		<div className="container text-center row mb-5 text-white">
-			<div className="col">
-				<span style={{ fontSize: 20 }}>{time}</span>
-			</div>
+		<div className="d-flex justify-content-center mb-2 h2">
+			<span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+			<span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
+			<span>{('0' + ((time / 10) % 100)).slice(-2)}</span>
 		</div>
 	);
 };

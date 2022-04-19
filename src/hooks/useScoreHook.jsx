@@ -26,7 +26,7 @@ function useScoreHook(initialValue) {
 		} else {
 			setItem({ ...item, score: item.score + points, last: points });
 		}
-		console.log(item);
+		//console.log(item);
 	};
 
 	const addWarning = () => {
