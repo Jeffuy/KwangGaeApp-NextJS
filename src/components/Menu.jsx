@@ -24,21 +24,21 @@ const Menu = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link href="/patternSelector" onClick={() => setShow(!show)}>
+							<Link href="/PatternSelector" onClick={() => setShow(!show)}>
 								<a className="nav-link" href="/">
 									<i className="fas fa-random" /> Selector de formas
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link passHref href="/fight" onClick={() => setShow(!show)}>
+							<Link passHref href="/Fight" onClick={() => setShow(!show)}>
 								<a className="nav-link" href="/">
 									<i className="fas fa-fist-raised" /> Arbitraje de Lucha
 								</a>
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link passHref href="/pattern" onClick={() => setShow(!show)}>
+							<Link passHref href="/Pattern" onClick={() => setShow(!show)}>
 								<a className="nav-link" href="/">
 									<i className="fas fa-calculator" />
 									Arbitraje de Forma
@@ -46,7 +46,7 @@ const Menu = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link passHref href="/challenge" onClick={() => setShow(!show)}>
+							<Link passHref href="/Challenge" onClick={() => setShow(!show)}>
 								<a className="nav-link" href="/">
 									<i className="fas fa-trophy" />
 									Challenges
@@ -54,7 +54,7 @@ const Menu = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link passHref href="/quiz" onClick={() => setShow(!show)}>
+							<Link passHref href="/Quiz" onClick={() => setShow(!show)}>
 								<a className="nav-link" href="/">
 									<i className="fas fa-list-ol" />
 									Cuestionario
@@ -62,7 +62,7 @@ const Menu = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link passHref href="/memoryGame" onClick={() => setShow(!show)}>
+							<Link passHref href="/MemoryGame" onClick={() => setShow(!show)}>
 								<a className="nav-link" href="/">
 									<i className="fas fa-brain" />
 									Memory
