@@ -11,6 +11,45 @@
     color: black;
 }
 
+.TodoItemCounter {
+    background-color: #5557ff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    box-shadow: 0px 5px 50px rgba(146, 146, 146, 0.925);
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+}
+
+.TodoItemAttack {
+    background-color: #ff677c;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    box-shadow: 0px 5px 50px rgba(146, 146, 146, 0.925);
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+}
+
+.TodoItemStrat {
+    background-color: #ffb444;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    box-shadow: 0px 5px 50px rgba(146, 146, 146, 0.925);
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+}
+
 .TodoItem-p {
     margin: 24px 0 24px 24px;
     width: calc(100% - 120px);
@@ -47,6 +86,27 @@
     position: absolute;
     top: -15px;
     right: 0;
+}
+
+.Icon-type {
+    position: absolute;
+    top: -20px;
+	left: 0;
+    margin: 10px;
+	background-color: rgb(0, 0, 0);
+	color: white;
+	border-radius: 15px;
+	padding-right: 5px;
+	padding-left: 5px;
+	border: white dotted 2px;
+}
+
+.Icon-type p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
 }
 .Icon-delete:hover {
     color: red;

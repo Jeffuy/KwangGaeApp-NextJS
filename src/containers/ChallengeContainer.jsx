@@ -19,6 +19,7 @@ const ChallengeContainer = () => {
 						completed={challenge.completed}
 						points={challenge.points}
 						text={challenge.text}
+						type={challenge.type}
 						onComplete={() => onCompleteChallenge(challenge.text)}
 						onDelete={() => onDeleteChallenge(challenge.text)}
 					/>
