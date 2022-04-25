@@ -1,11 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 import logo from '@logos/logo.png';
+import Link from 'next/link';
 
 const Home = () => {
 	return (
 		<div>
 			<div className="container">
+				<button className="btn-danger">
+					<Link href="login">Login</Link>
+				</button>
 				<header className="row">
 					<div className="col-lg-12 text-center mt-3 mb-3">
 						<Image alt="kwang-gae" className="animate__animated animate__bounceIn" height={275} src={logo} width={275} />
