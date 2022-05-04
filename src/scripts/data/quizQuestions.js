@@ -900,134 +900,134 @@ const questionsBlueStripe = [
 
 const questionsBlue = [
 	{
-		questionText: '¿En qué país se creó el Taekwon-Do?',
+		questionText: '¿Cuántas mociones Distintas aparecen en Joong Gun?',
 		answerOptions: [
-			{ answerText: 'Japon', isCorrect: false },
-			{ answerText: 'China', isCorrect: false },
-			{ answerText: 'Corea', isCorrect: true },
-			{ answerText: 'Uruguay', isCorrect: false },
+			{ answerText: '10', isCorrect: false },
+			{ answerText: '4', isCorrect: false },
+			{ answerText: '5,5', isCorrect: false },
+			{ answerText: '3', isCorrect: true },
 		],
 	},
 	{
-		questionText: '¿En que año se creó el Taekwon-Do?',
+		questionText: 'Si Tong-Il, forma de 6to dan que tiene 56 movimientos, ¿Que forma le debo restar a esta para obtener los movimientos de Joong Gun?',
 		answerOptions: [
-			{ answerText: '1325', isCorrect: false },
-			{ answerText: '1955', isCorrect: true },
-			{ answerText: '1980', isCorrect: false },
-			{ answerText: '1936', isCorrect: false },
+			{ answerText: 'Dan Gun', isCorrect: false },
+			{ answerText: 'Won hyo', isCorrect: false },
+			{ answerText: 'Do san', isCorrect: true },
+			{ answerText: 'Yul gok', isCorrect: false },
 		],
 	},
 	{
-		questionText: '¿Cuántos movimientos tiene Saju Jirugi?',
+		questionText: 'Si realizamos correctamente la Dwitbal Sogui ¿Podría el sabon Lucca pasar por entre medio de nuestras piernas como si fuera por debajo de un puente?',
 		answerOptions: [
-			{ answerText: '7', isCorrect: true },
-			{ answerText: '8', isCorrect: false },
-			{ answerText: '12', isCorrect: false },
-			{ answerText: '6', isCorrect: false },
+			{ answerText: 'Si, porque el largo de la posición le permite pasar sin problemas', isCorrect: false },
+			{ answerText: 'No, porque al ser muy corta la posición Lucca no podría pasar', isCorrect: true },
+			{ answerText: 'A veces, debido a que es una posición cambiante', isCorrect: false },
+			{ answerText: 'Depende de que tan larga tengas las piernas', isCorrect: false },
 		],
 	},
 	{
-		questionText: '¿Cuántos nudos lleva el cinto del dobok?',
+		questionText: '¿Qué significa el color azul del cinto?',
 		answerOptions: [
-			{ answerText: '1', isCorrect: false },
-			{ answerText: '2', isCorrect: true },
-			{ answerText: '3', isCorrect: false },
-			{ answerText: 'Todos los que pueda', isCorrect: false },
+			{ answerText: 'El color de el mar, hacia el cual nos sumergimos al adentrarnos mas en el tkd', isCorrect: false },
+			{ answerText: 'Significa cielo hacia el cual la planta crece y madura', isCorrect: true },
+			{ answerText: 'El color azul es por la planta que cambia de color', isCorrect: false },
+			{ answerText: 'Es azul ya que significa peligro', isCorrect: false },
 		],
 	},
 	{
-		questionText: '¿Cómo se llama la posición en que se realizan los movimientos de Saju Makgi?',
+		questionText: '¿Cómo se realiza la moción lenta en Joon Gun?',
 		answerOptions: [
-			{ answerText: 'Jumbi', isCorrect: false },
-			{ answerText: 'Posición de forma', isCorrect: false },
-			{ answerText: 'Posición de ataque', isCorrect: false },
-			{ answerText: 'Gunnun sogi', isCorrect: true },
+			{ answerText: 'Muy rápida', isCorrect: false },
+			{ answerText: 'Al momento de terminar el movimiento debe ser con toda la fuerza', isCorrect: false },
+			{ answerText: 'Como lo dice su nombre, debe ser lenta y controlada de principio a fin', isCorrect: true },
+			{ answerText: 'Ninguna es correcta', isCorrect: false },
 		],
 	},
 	{
-		questionText: '¿Cúal de estos no es un principio del Taekwon-Do?',
+		questionText: 'En la defensa en el movimiento 21 de Joon Gun ¿Cómo debe ir la mano?',
+		answerOptions: [
+			{ answerText: 'Abierta', isCorrect: false },
+			{ answerText: 'Cerrada', isCorrect: false },
+			{ answerText: 'Como si fuera el movimiento 1 de Do San', isCorrect: false },
+			{ answerText: 'Ninguna es correcta', isCorrect: true },
+		],
+	},
+	{
+		questionText: 'Si voy a competir a un torneo y pierdo en primera ronda:',
+		answerOptions: [
+			{ answerText: 'Me rindo, no vale la pena entrenar si voy a perder siempre', isCorrect: false },
+			{
+				answerText: 'Dejo tkd ya que no es para mí',
+				isCorrect: false
+			},
+			{ answerText: 'Podría jugar al basquetball, capaz se me da mejor', isCorrect: false },
+			{ answerText: 'No importa que me haya ido mal en este torneo, voy a seguir entrenando para superarme', isCorrect: true },
+		],
+	},
+	{
+		questionText: '¿Cual de estas opciones es verdadera?',
+		answerOptions: [
+			{ answerText: 'La Kyocha Sogui es la posición mas larga de tkd', isCorrect: false },
+			{ answerText: 'En Joon Gun debemos hacer las defensas sin fuerza', isCorrect: false },
+			{ answerText: 'Won Hyo tiene 30 movimientos', isCorrect: false },
+			{ answerText: 'En el movimiento 13 de Joon Gun debemos poder mirar por debajo de nuestros brazos', isCorrect: true },
+		],
+	},
+	{
+		questionText: 'Si un T-Rex los quiere golpear con un golpe de puño,¿Con que técnica lo defiendo?',
+		answerOptions: [
+			{ answerText: 'Defensa media, obviamente ', isCorrect: false },
+			{ answerText: 'Defensa alta, porque es mucho mas alto que yo', isCorrect: false },
+			{ answerText: 'Es imposible defender, el trex es muy fuerte', isCorrect: false },
+			{ answerText: 'Jamás me logrará golpear con sus puñitos', isCorrect: true },
+		],
+	},
+	{
+		questionText: 'Si estamos jugando al manchado, me manchan, yo no digo nada y sigo jugando ¿A cuál principio de tkd estoy fallando?',
 		answerOptions: [
 			{ answerText: 'Cortesía', isCorrect: false },
+			{ answerText: 'Integridad', isCorrect: true },
+			{ answerText: 'Autocontrol', isCorrect: false },
 			{ answerText: 'Perseverancia', isCorrect: false },
-			{ answerText: 'Paciencia', isCorrect: true },
-			{ answerText: 'Espíritu indomable', isCorrect: false },
 		],
 	},
 	{
-		questionText: 'Una persona tiene integridad cuando...',
+		questionText: '¿Cuál es la medida correcta de la Niunja sogi?',
 		answerOptions: [
-			{ answerText: '...sabe integrarse a un grupo', isCorrect: false },
 			{
-				answerText: '...sabe diferenciar lo correcto de lo incorrecto',
+				answerText: 'Ancho y medio de hombros',
 				isCorrect: true,
 			},
-			{ answerText: '...miente muy seguido', isCorrect: false },
-			{ answerText: '...nunca se rinde', isCorrect: false },
-		],
-	},
-	{
-		questionText: '¿A qué altura va la mano que defiende al realizar una defensa media?',
-		answerOptions: [
-			{ answerText: 'A la boca del estómago ', isCorrect: false },
-			{ answerText: 'A la del hombro', isCorrect: true },
-			{ answerText: 'A la de la nariz', isCorrect: false },
-			{ answerText: 'A la del cinturón', isCorrect: false },
-		],
-	},
-	{
-		questionText: '¿Quién es el creador del Taekwon-Do?',
-		answerOptions: [
-			{ answerText: 'Chang Yong Sae ', isCorrect: false },
-			{ answerText: 'Dong Qui Kong', isCorrect: false },
-			{ answerText: 'Choi Hong Hi', isCorrect: true },
-			{ answerText: 'Juan Pedro Veiga', isCorrect: false },
-		],
-	},
-	{
-		questionText: 'Si el profesor me dice "Charyot"; ¿qué estoy por hacer?',
-		answerOptions: [
-			{ answerText: 'Saludar', isCorrect: true },
-			{ answerText: 'Golpear', isCorrect: false },
-			{ answerText: 'Practicar la forma', isCorrect: false },
-			{ answerText: 'Comenzar un trabajo', isCorrect: false },
-		],
-	},
-	{
-		questionText: '¿Qué debo hacer si una técnica no me sale?',
-		answerOptions: [
 			{
-				answerText: 'Buscar excusas para no tener que hacerla',
+				answerText: 'Ancho de hombros',
 				isCorrect: false,
 			},
 			{
-				answerText: 'Seguir practicándola exactamente igual',
+				answerText: 'No tiene medida',
+				isCorrect: false,
+			},
+			{ answerText: 'Ancho y medio de hombros más medio pie o 10 centímetros', isCorrect: false },
+		],
+	},
+	{
+		questionText: 'Si en lucha hago una dolyo a la cabeza, luego una hyop al medio y por último dos puños al medio ¿Cuántos puntos hice?',
+		answerOptions: [
+			{
+				answerText: '6',
 				isCorrect: false,
 			},
 			{
-				answerText: 'Pensar la razón por la que no me sale y corregir ese detalle',
+				answerText: '7',
 				isCorrect: true,
 			},
-			{ answerText: 'Intentar no tener que hacerla', isCorrect: false },
-		],
-	},
-	{
-		questionText: 'Cuál de estás opciones es falsa?',
-		answerOptions: [
 			{
-				answerText: 'Saju Makgi tiene 8 movimientos',
+				answerText: '8',
 				isCorrect: false,
 			},
 			{
-				answerText: 'La yop chagi no debe usarse en lucha',
+				answerText: '5',
 				isCorrect: false,
-			},
-			{
-				answerText: 'Todas las formas empiezan y terminan en el mismo lugar',
-				isCorrect: false,
-			},
-			{
-				answerText: 'La insignia del dobok se usa del lado derecho',
-				isCorrect: true,
 			},
 		],
 	},

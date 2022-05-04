@@ -70,8 +70,8 @@ const QuizChooser = () => {
             <div className="row mt-3">
                 <div className="col">
                     <button
-                        className="btn form-control btn-primary fs-3 disabled"
-                        onClick={() => quizChoose("white", 6)}
+                        className="btn form-control btn-primary fs-3"
+                        onClick={() => quizChoose("blue", 6)}
                     >
                         Cinturón azul (próximamente)
                     </button>
