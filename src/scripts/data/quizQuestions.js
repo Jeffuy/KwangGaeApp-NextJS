@@ -958,8 +958,8 @@ const questionsBlue = [
 		answerOptions: [
 			{ answerText: 'Me rindo, no vale la pena entrenar si voy a perder siempre', isCorrect: false },
 			{
-				answerText: 'Dejo tkd ya que no es para mí',
-				isCorrect: false
+				answerText: 'Dejo Taekwon-Do ya que no es para mí',
+				isCorrect: false,
 			},
 			{ answerText: 'Podría jugar al basquetball, capaz se me da mejor', isCorrect: false },
 			{ answerText: 'No importa que me haya ido mal en este torneo, voy a seguir entrenando para superarme', isCorrect: true },
@@ -984,7 +984,7 @@ const questionsBlue = [
 		],
 	},
 	{
-		questionText: 'Si estamos jugando al manchado, me manchan, yo no digo nada y sigo jugando ¿A cuál principio de tkd estoy fallando?',
+		questionText: 'Si estamos jugando al manchado, me manchan, yo no digo nada y sigo jugando ¿A cuál principio de Taekwon-Do estoy fallando?',
 		answerOptions: [
 			{ answerText: 'Cortesía', isCorrect: false },
 			{ answerText: 'Integridad', isCorrect: true },
@@ -993,7 +993,7 @@ const questionsBlue = [
 		],
 	},
 	{
-		questionText: '¿Cuál es la medida correcta de la Niunja sogi?',
+		questionText: '¿Cuál es el largo de la Niunja sogi?',
 		answerOptions: [
 			{
 				answerText: 'Ancho y medio de hombros',
@@ -1011,7 +1011,7 @@ const questionsBlue = [
 		],
 	},
 	{
-		questionText: 'Si en lucha hago una dolyo a la cabeza, luego una hyop al medio y por último dos puños al medio ¿Cuántos puntos hice?',
+		questionText: 'Si en lucha hago una dolyo a la cabeza, luego una yop al medio y por último dos puños al medio ¿Cuántos puntos hice?',
 		answerOptions: [
 			{
 				answerText: '6',
