@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { QuizContext } from '@context/QuizContext';
+import libraryFunctions from 'scripts/libreryFunctions'
 
 const SelectedQuestions = () => {
 	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back } = useContext(QuizContext);
@@ -20,6 +21,23 @@ const SelectedQuestions = () => {
 									<div className="text-center fs-2">
 										Tu puntaje fue de {score} sobre {questions.length}
 									</div>
+
+									<div className="text-center">
+										<br />
+										<input type="text" placeholder='Ingrese tu nombre' id='username'/> 
+										<button onClick={ () => {
+											// Si hay token que no importa si pone o no el username
+											let username = document.getElementById('username').value
+											console.log(username)
+											libraryFunctions.sendMail(username,score,'Grado del quiz');
+										}}> 
+											Enviar 
+										</button>
+									</div>
+									
+									
+									
+									
 									<button className="btn btn-dark form-control mt-4 mb-4" onClick={() => back()}>
 										Volver
 									</button>

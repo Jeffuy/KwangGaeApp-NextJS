@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import loginFunctions from 'scripts/libreryFunctions'
 
 const LoginCard = () => {
 	return (
 		<>
 			<div>
-				<label htmlFor="">
+				<label htmlFor="username">
 					Usuario
-					<input type="text" />
+					<input type="text" id='username'/>
 				</label>
 				<br />
-				<label htmlFor="">
+				<label htmlFor="password">
 					Password
-					<input type="password" />
+					<input type="password" id='password'/>
 				</label>
 				<br />
-				<button>Login</button>
+				<button onClick={() => {
+					let username = document.getElementById('username').value
+					let password = document.getElementById('password').value
+					loginFunctions.verifyUser(username,password)
+				}}>
+					Login
+				</button>
+				
 			</div>
+			
 		</>
 	);
 };

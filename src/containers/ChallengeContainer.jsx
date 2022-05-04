@@ -7,6 +7,7 @@ import ChallengeRestart from '@components/challenges/ChallengeRestart';
 
 const ChallengeContainer = () => {
 	const { challenges, onCompleteChallenge, onDeleteChallenge } = useContext(ChallengesContext);
+	
 
 	return (
 		<>

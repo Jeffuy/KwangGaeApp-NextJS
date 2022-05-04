@@ -1,13 +1,13 @@
 import React, { createContext } from 'react';
 import useLocalStorage from '@hooks/useLocalStorage';
 import { challengesList } from '@scripts/data/challengeList';
+import editFunctions from 'scripts/libreryFunctions'
 
 const ChallengesContext = createContext();
 
 function ChallengesProvider(props) {
 	if (typeof window !== 'undefined') {
 		const { item: challenges, saveItem: saveChallenges, restartItem: restartChallenges } = useLocalStorage('activeChallenges', []);
-
 		const { item: totalPoints, saveItemPoints: savePoints, restartItem: restartPoints } = useLocalStorage('totalPoints', 0);
 
 		const onCompleteChallenge = text => {
@@ -18,10 +18,13 @@ function ChallengesProvider(props) {
 			const points = newChallenges[challengeIndex].points;
 			saveChallenges(newChallenges);
 			if (newChallenges[challengeIndex].completed) {
+				editFunctions.editPoints(points)
 				savePoints(points);
 			} else {
+				editFunctions.editPoints(-points)
 				savePoints(-points);
 			}
+			// Hacer que se cargue el total sacandolo de la base de datos
 		};
 
 		const onDeleteChallenge = text => {
