@@ -11,7 +11,7 @@ const SelectedQuestions = () => {
 		setSent(true);
 
 		try {
-			await axios.post('http://localhost:3000/api/mails', {
+			await axios.post('www.kwanggae.com/api/mails', {
 				text: text,
 			});
 		} catch (error) {
