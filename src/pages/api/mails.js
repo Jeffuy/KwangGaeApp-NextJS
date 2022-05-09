@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 // eslint-disable-next-line no-unused-vars
 export default function async(req, res) {
 	if (req.method === 'POST') {
-		let { text } = req.body;
+		const { text } = req.body;
 
 		const transport = nodemailer.createTransport({
 			host: process.env.MAIL_HOST,
@@ -15,14 +15,27 @@ export default function async(req, res) {
 			},
 		});
 
-		transport.sendMail({
+		const mailOptions = {
 			from: process.env.MAIL_FROM,
 			to: 'blablabla@gmail.com',
+
 			subject: 'Contacto desde la web',
 			html: `<h1>${text}</h1>`,
+		};
+
+		// eslint-disable-next-line no-unused-vars
+		transport.sendMail(mailOptions, (err, info) => {
+			if (err) {
+				return console.log(err);
+			} else {
+				return res.status(200).json({
+					message: 'Email sent',
+				});
+			}
 		});
 	}
 }
+// 	await new Promise((resolve, reject) => {
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
