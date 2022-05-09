@@ -1,6 +1,7 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 
+// eslint-disable-next-line no-unused-vars
 export default function async(req, res) {
 	if (req.method === 'POST') {
 		let { text } = req.body;
