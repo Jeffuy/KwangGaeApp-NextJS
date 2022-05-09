@@ -43,7 +43,7 @@ const SelectedQuestions = () => {
 									<div className="text-center fs-2">
 										Tu puntaje fue de {score} sobre {questions.length}
 									</div>
-									<div className="text-center">
+									{/* <div className="text-center">
 										<input type="text" onChange={e => setText(`El puntaje de ${e.target.value} fue de ${score} sobre ${questions.length} en el test de ${grado}`)} />
 										{!sent ? (
 											<button onClick={() => handleSend()}>Enviar</button>
@@ -64,7 +64,7 @@ const SelectedQuestions = () => {
 										>
 											Volver
 										</button>
-									</div>
+									</div> */}
 								</div>
 							</div>
 						</div>
