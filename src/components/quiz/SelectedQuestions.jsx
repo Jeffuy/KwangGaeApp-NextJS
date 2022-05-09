@@ -1,27 +1,27 @@
-import axios from 'axios';
-import React, { useContext, useState } from 'react';
+//import axios from 'axios';
+import React, { useContext } from 'react';
 import { QuizContext } from '@context/QuizContext';
 
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
-	const [sent, setSent] = useState(false);
-	const [text, setText] = useState('');
+	// const [sent, setSent] = useState(false);
+	// const [text, setText] = useState('');
 
-	const handleSend = async () => {
-		setSent(true);
+	// const handleSend = async () => {
+	// 	setSent(true);
 
-		try {
-			await axios.post('http://localhost:4000/send_mail', {
-				text: text,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-		console.log(text);
-	};
+	// 	try {
+	// 		await axios.post('http://localhost:4000/send_mail', {
+	// 			text: text,
+	// 		});
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// 	console.log(text);
+	// };
 
 	// FINAL PRUEBA MAIL
-	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back, grado } = useContext(QuizContext);
+	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back } = useContext(QuizContext);
 	if (questions != null) {
 		return (
 			<div className="container">
@@ -52,19 +52,19 @@ const SelectedQuestions = () => {
 												<p>EMAIL SENT</p>
 											</div>
 										)}
-									</div>
+									</div>*/}
 									<div className="container-fluid flex">
 										<button
 											className="btn btn-dark form-control mt-4 mb-4"
 											onClick={() => {
 												back();
-												setSent(false);
-												setText('');
+												//setSent(false);
+												//setText('');
 											}}
 										>
 											Volver
 										</button>
-									</div> */}
+									</div>
 								</div>
 							</div>
 						</div>
