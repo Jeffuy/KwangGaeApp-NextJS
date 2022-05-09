@@ -1,9 +1,27 @@
-import React, { useContext } from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import { QuizContext } from '@context/QuizContext';
-import main from '@scripts/sendMail';
 
 const SelectedQuestions = () => {
-	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back } = useContext(QuizContext);
+	// PRUEBA MAIL
+	const [sent, setSent] = useState(false);
+	const [text, setText] = useState('');
+
+	const handleSend = async () => {
+		setSent(true);
+
+		try {
+			await axios.post('http://localhost:4000/send_mail', {
+				text: text,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+		console.log(text);
+	};
+
+	// FINAL PRUEBA MAIL
+	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back, grado } = useContext(QuizContext);
 	if (questions != null) {
 		return (
 			<div className="container">
@@ -26,26 +44,24 @@ const SelectedQuestions = () => {
 										Tu puntaje fue de {score} sobre {questions.length}
 									</div>
 									<div className="text-center">
-										<br />
-										<input id="username" placeholder="Ingrese tu nombre" type="text" />
-										<button
-											onClick={() => {
-												// Si hay token que no importa si pone o no el username
-												let username = document.getElementById('username').value;
-												console.log(username);
-												main();
-												// libraryFunctions.sendMail(
-												// 	username,
-												// 	score,
-												// 	"Grado del quiz"
-												// );
-											}}
-										>
-											Enviar
-										</button>
+										<input type="text" onChange={e => setText(`El puntaje de ${e.target.value} fue de ${score} sobre ${questions.length} en el test de ${grado}`)} />
+										{!sent ? (
+											<button onClick={() => handleSend()}>Enviar</button>
+										) : (
+											<div className="text-center">
+												<p>EMAIL SENT</p>
+											</div>
+										)}
 									</div>
 									<div className="container-fluid flex">
-										<button className="btn btn-dark form-control mt-4 mb-4" onClick={() => back()}>
+										<button
+											className="btn btn-dark form-control mt-4 mb-4"
+											onClick={() => {
+												back();
+												setSent(false);
+												setText('');
+											}}
+										>
 											Volver
 										</button>
 									</div>
