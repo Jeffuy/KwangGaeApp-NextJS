@@ -71,3 +71,21 @@ button:focus {
 button svg {
     margin-right: 5px;
 }
+
+.result-title {
+	width: 30%;
+	margin: 0 auto;
+}
+.result {
+	width: 30%;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+	.result-title {
+		width: 100%;
+	}
+	.result {
+		width: 80%;
+	}
+}
