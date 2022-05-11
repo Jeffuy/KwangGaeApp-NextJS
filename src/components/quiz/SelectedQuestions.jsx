@@ -57,7 +57,7 @@ const SelectedQuestions = () => {
 									<div className="text-center fs-2">
 										Tu puntaje fue de {score} sobre {questions.length}
 									</div>
-									<div className="d-flex text-center flex-col justify-content-around mt-2 mb-2">
+									<div className="d-flex text-center flex-col justify-content-around mt-2 mb-2 justify-content-lg-center">
 										<input
 											placeholder="escribe tu nombre"
 											type="text"
@@ -70,9 +70,9 @@ const SelectedQuestions = () => {
 									<div className="text-center">
 										<p>{help}</p>
 									</div>
-									<div className="container-fluid flex">
+									<div className="d-flex justify-content-center">
 										<button
-											className="btn btn-dark form-control mt-2"
+											className="btn-block btn-dark mt-2 mb-lg-1"
 											onClick={() => {
 												back();
 												setSent(false);
