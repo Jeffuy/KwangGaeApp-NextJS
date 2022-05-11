@@ -1,4 +1,4 @@
-import axios from 'axios';
+//import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { QuizContext } from '@context/QuizContext';
 
@@ -10,13 +10,17 @@ const SelectedQuestions = () => {
 	const handleSend = async () => {
 		setSent(true);
 
-		try {
-			await axios.post('api/mails', {
-				text: text,
-			});
-		} catch (error) {
-			console.log(error);
-		}
+		let data = { text };
+
+		fetch('api/mails', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json, text/plain, */*',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		});
+
 		console.log(text);
 	};
 
