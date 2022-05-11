@@ -7,10 +7,12 @@ const SelectedQuestions = () => {
 	const [sent, setSent] = useState(false);
 	const [text, setText] = useState('');
 
-	const handleSend = async () => {
+	const handleSend = async e => {
+		e.preventDefault();
 		setSent(true);
 
 		let data = { text };
+		console.log(text);
 
 		fetch('/api/mails', {
 			method: 'POST',
@@ -50,7 +52,7 @@ const SelectedQuestions = () => {
 									<div className="text-center">
 										<input type="text" onChange={e => setText(`El puntaje de ${e.target.value} fue de ${score} sobre ${questions.length} en el test de ${grado}`)} />
 										{!sent ? (
-											<button onClick={() => handleSend()}>Enviar</button>
+											<button onClick={e => handleSend(e)}>Enviar</button>
 										) : (
 											<div className="text-center">
 												<p>EMAIL SENT</p>
