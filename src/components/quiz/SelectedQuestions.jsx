@@ -1,27 +1,27 @@
-//import axios from 'axios';
-import React, { useContext } from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import { QuizContext } from '@context/QuizContext';
 
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
-	// const [sent, setSent] = useState(false);
-	// const [text, setText] = useState('');
+	const [sent, setSent] = useState(false);
+	const [text, setText] = useState('');
 
-	// const handleSend = async () => {
-	// 	setSent(true);
+	const handleSend = async () => {
+		setSent(true);
 
-	// 	try {
-	// 		await axios.post('api/mails', {
-	// 			text: text,
-	// 		});
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// 	console.log(text);
-	// };
+		try {
+			await axios.post('api/mails', {
+				text: text,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+		console.log(text);
+	};
 
 	// FINAL PRUEBA MAIL
-	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back } = useContext(QuizContext);
+	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back, grado } = useContext(QuizContext);
 	if (questions != null) {
 		return (
 			<div className="container">
@@ -43,7 +43,7 @@ const SelectedQuestions = () => {
 									<div className="text-center fs-2">
 										Tu puntaje fue de {score} sobre {questions.length}
 									</div>
-									{/* <div className="text-center">
+									<div className="text-center">
 										<input type="text" onChange={e => setText(`El puntaje de ${e.target.value} fue de ${score} sobre ${questions.length} en el test de ${grado}`)} />
 										{!sent ? (
 											<button onClick={() => handleSend()}>Enviar</button>
@@ -51,15 +51,15 @@ const SelectedQuestions = () => {
 											<div className="text-center">
 												<p>EMAIL SENT</p>
 											</div>
-										)} 
-									</div>*/}
+										)}
+									</div>
 									<div className="container-fluid flex">
 										<button
 											className="btn btn-dark form-control mt-4 mb-4"
 											onClick={() => {
 												back();
-												// setSent(false);
-												// setText('');
+												setSent(false);
+												setText('');
 											}}
 										>
 											Volver
