@@ -12,7 +12,7 @@ const SelectedQuestions = () => {
 
 		let data = { text };
 
-		fetch('api/mails', {
+		fetch('/api/mails', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json, text/plain, */*',
