@@ -30,7 +30,7 @@ export default async (req, res) => {
 
 		const mailOptions = {
 			from: process.env.MAIL_FROM,
-			to: 'blablabla@gmail.com',
+			to: process.env.MAIL_TO,
 
 			subject: 'Contacto desde la web',
 			html: `<h1>${text}</h1>`,
