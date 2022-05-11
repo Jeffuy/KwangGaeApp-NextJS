@@ -1,19 +1,23 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
 
 // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
 	if (req.method === 'POST') {
 		const { text } = req.body;
 
-		const transporter = nodemailer.createTransport({
-			host: process.env.MAIL_HOST,
-			port: process.env.MAIL_PORT,
-			auth: {
-				user: process.env.MAIL_USER,
-				pass: process.env.MAIL_PASS,
-			},
-		});
+		const transporter = nodemailer.createTransport(
+			smtpTransport({
+				host: process.env.MAIL_HOST,
+				port: process.env.MAIL_PORT,
+				auth: {
+					user: process.env.MAIL_USER,
+					pass: process.env.MAIL_PASS,
+				},
+			})
+		);
 
 		await new Promise((resolve, reject) => {
 			// verify connection configuration
