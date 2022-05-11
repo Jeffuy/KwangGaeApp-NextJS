@@ -8,11 +8,11 @@ export default async (req, res) => {
 		const { text } = req.body;
 
 		const transporter = nodemailer.createTransport({
-			host: process.env.MAIL_HOST,
-			port: process.env.MAIL_PORT,
+			host: 'smtp.mailtrap.io',
+			port: 2525,
 			auth: {
-				user: process.env.MAIL_USER,
-				pass: process.env.MAIL_PASS,
+				user: '4f7898d8db280e',
+				pass: '2ae54009d1139c',
 			},
 		});
 		await new Promise((resolve, reject) => {
@@ -29,7 +29,7 @@ export default async (req, res) => {
 		});
 
 		const mailOptions = {
-			from: process.env.MAIL_FROM,
+			from: 'blablablabla',
 			to: 'blablabla@gmail.com',
 
 			subject: 'Contacto desde la web',
