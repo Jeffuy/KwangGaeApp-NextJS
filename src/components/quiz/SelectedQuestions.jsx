@@ -6,24 +6,32 @@ const SelectedQuestions = () => {
 	// PRUEBA MAIL
 	const [sent, setSent] = useState(false);
 	const [text, setText] = useState('');
+	const [help, setHelp] = useState('Escribe tu nombre');
 
 	const handleSend = async e => {
 		e.preventDefault();
-		setSent(true);
 
-		let data = { text };
-		console.log(text);
+		if (text.length > 0) {
+			setSent(true);
 
-		fetch('/api/mails', {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json, text/plain, */*',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		});
+			let data = { text };
+			console.log('tiene texto ' + text);
+			fetch('/api/mails', {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json, text/plain, */*',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
 
-		console.log(text);
+			setHelp('Puntaje enviado');
+			setText('');
+		} else {
+			setHelp('Debes escribir un nombre');
+			console.log('error ' + text);
+		}
+		console.log('fin ' + text);
 	};
 
 	// FINAL PRUEBA MAIL
@@ -49,19 +57,22 @@ const SelectedQuestions = () => {
 									<div className="text-center fs-2">
 										Tu puntaje fue de {score} sobre {questions.length}
 									</div>
+									<div className="d-flex text-center flex-col justify-content-around mt-2 mb-2">
+										<input
+											placeholder="escribe tu nombre"
+											type="text"
+											onChange={e => setText(`El puntaje de ${e.target.value} fue de ${score} sobre ${questions.length} en el test de ${grado}`)}
+										/>
+
+										{!sent && <button onClick={e => handleSend(e)}>Enviar</button>}
+									</div>
+
 									<div className="text-center">
-										<input type="text" onChange={e => setText(`El puntaje de ${e.target.value} fue de ${score} sobre ${questions.length} en el test de ${grado}`)} />
-										{!sent ? (
-											<button onClick={e => handleSend(e)}>Enviar</button>
-										) : (
-											<div className="text-center">
-												<p>EMAIL SENT</p>
-											</div>
-										)}
+										<p>{help}</p>
 									</div>
 									<div className="container-fluid flex">
 										<button
-											className="btn btn-dark form-control mt-4 mb-4"
+											className="btn btn-dark form-control mt-2"
 											onClick={() => {
 												back();
 												setSent(false);
