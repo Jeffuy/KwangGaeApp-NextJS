@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import useScoreHook from '@hooks/useScoreHook';
 import useTimerHook from '@hooks/useTimerHook';
+import * as gtag from '../lib/gtag';
 
 const FightContext = createContext();
 
@@ -44,6 +45,12 @@ function FightProvider(props) {
 		blueRestart();
 		redRestart();
 		setTimerOn(true);
+		gtag.event({
+			action: 'start_fight',
+			category: 'fight',
+			label: 'fight started',
+			value: 'Playing cards',
+		});
 	};
 
 	const pauseFight = () => {
