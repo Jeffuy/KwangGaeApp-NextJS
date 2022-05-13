@@ -1,6 +1,7 @@
 //import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { QuizContext } from '@context/QuizContext';
+import * as gtag from '../lib/gtag';
 
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
@@ -13,6 +14,12 @@ const SelectedQuestions = () => {
 
 		if (text.length > 0) {
 			setSent(true);
+			gtag.event({
+				action: 'start_fight',
+				category: 'fight',
+				label: 'fight started',
+				value: 'Playing cards',
+			});
 
 			let data = { text };
 			console.log('tiene texto ' + text);
