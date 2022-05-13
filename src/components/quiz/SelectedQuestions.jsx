@@ -15,9 +15,9 @@ const SelectedQuestions = () => {
 		if (text.length > 0) {
 			setSent(true);
 			gtag.event({
-				action: 'start_fight',
-				category: 'fight',
-				label: 'fight started',
+				action: 'quiz_sent',
+				category: 'quiz',
+				label: 'quiz sent',
 				value: 'Playing cards',
 			});
 
