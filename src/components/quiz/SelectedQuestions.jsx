@@ -1,7 +1,7 @@
 //import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { QuizContext } from '@context/QuizContext';
-import * as gtag from '../lib/gtag';
+import * as gtag from '../../lib/gtag';
 
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
