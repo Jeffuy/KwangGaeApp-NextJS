@@ -7,6 +7,7 @@ import '@styles/challenges.css';
 import '@styles/quiz.css';
 import '@styles/MemoryGame.css';
 import '@styles/main.css';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
 	const router = useRouter();
@@ -22,6 +23,11 @@ function MyApp({ Component, pageProps }) {
 
 	return (
 		<>
+			<Head>
+				<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+				<meta charSet="UTF-8" />
+				<meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+			</Head>
 			<Layout>
 				<Component {...pageProps} />
 			</Layout>
