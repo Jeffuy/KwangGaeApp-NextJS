@@ -5,7 +5,7 @@
 			"@pages/*": ["pages/*"],
 			"@components/*": ["components/*"],
 			"@containers/*": ["containers/*"],
-			"@icons/*": ["assets/icons/*"],
+			"@icons/*": ["assets/ico/*"],
 			"@logos/*": ["assets/logos/*"],
 			"@context/*": ["context/*"],
 			"@styles/*": ["styles/*"],

@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
 import { GA_TRACKING_ID } from '../lib/gtag';
 
 class MyDocument extends Document {
@@ -9,7 +8,6 @@ class MyDocument extends Document {
 				<Head>
 					<div>
 						{/* Global site tag (gtag.js) - Google Analytics */}
-
 						<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
 						<script
 							dangerouslySetInnerHTML={{
@@ -43,13 +41,15 @@ class MyDocument extends Document {
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> */}
 						<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-
 						{/* ANIMATE CSS */}
 						<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
 						<meta charSet="UTF-8" />
 						<meta content="IE=edge" httpEquiv="X-UA-Compatible" />
 						<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-						<title>Kwang-Gae App</title>
+						<link href="/favicon.ico" rel="shortcut icon" />
+						<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+						<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+						<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
 					</div>
 				</Head>
 

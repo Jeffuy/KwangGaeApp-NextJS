@@ -6,17 +6,19 @@ import SelectorResults from '@components/selector/SelectorResults';
 
 const PatternSelectorContainer = () => {
 	return (
-		<section className="d-flex flex-column min-vh-100">
-			<div className="container-fluid mt-5">
-				<div className="row">
-					<SelectorOptionsDegree />
-					<SelectorOptionsQuantity />
+		<>
+			<section className="d-flex flex-column min-vh-100">
+				<div className="container-fluid mt-5">
+					<div className="row">
+						<SelectorOptionsDegree />
+						<SelectorOptionsQuantity />
+					</div>
 				</div>
-			</div>
 
-			<SelectorChooseButton />
-			<SelectorResults />
-		</section>
+				<SelectorChooseButton />
+				<SelectorResults />
+			</section>
+		</>
 	);
 };
 

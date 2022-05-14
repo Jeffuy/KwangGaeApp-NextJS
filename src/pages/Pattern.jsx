@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NextSeo } from 'next-seo';
 import PatternStartMatchButton from '@components/pattern/PatternStartMatchButton';
 import PatternMatchStatus from '@components/pattern/PatternMatchStatus';
 import PatternResults from '@components/pattern/PatternResults';
@@ -47,56 +48,59 @@ const Pattern = () => {
 	};
 
 	return (
-		<section className="container d-flex flex-column min-vh-100">
-			<PatternMatchStatus status={matchStatus} />
-			{matchLevel == 0 && <PatternResults blue={blue} red={red} />}
-			{matchLevel == 0 && <PatternStartMatchButton changeLevel={changeLevel} />}
-			{matchLevel == 1 && (
-				<PatternLevelOne
-					blue={blue}
-					blueLast={blueLast}
-					blueQuantity={blueQuantity}
-					blueScore={blueScore}
-					changeLevel={changeLevel}
-					red={red}
-					redLast={redLast}
-					redQuantity={redQuantity}
-					redScore={redScore}
-					setBlueQuantity={setBlueQuantity}
-					setRedQuantity={setRedQuantity}
-				/>
-			)}
-			{matchLevel == 2 && (
-				<PatternLevelTwo
-					blue={blue}
-					blueLast={blueLast}
-					blueQuantity={blueQuantity}
-					blueScore={blueScore}
-					changeLevel={changeLevel}
-					red={red}
-					redLast={redLast}
-					redQuantity={redQuantity}
-					redScore={redScore}
-					setBlueQuantity={setBlueQuantity}
-					setRedQuantity={setRedQuantity}
-				/>
-			)}
-			{matchLevel == 3 && (
-				<PatternLevelThree
-					blue={blue}
-					blueLast={blueLast}
-					blueQuantity={blueQuantity}
-					blueScore={blueScore}
-					changeLevel={changeLevel}
-					red={red}
-					redLast={redLast}
-					redQuantity={redQuantity}
-					redScore={redScore}
-					setBlueQuantity={setBlueQuantity}
-					setRedQuantity={setRedQuantity}
-				/>
-			)}
-		</section>
+		<>
+			<NextSeo description="Arbitraje de formas de Taekwon-Do ITF" title="Arbitraje de Formas" />
+			<section className="container d-flex flex-column min-vh-100">
+				<PatternMatchStatus status={matchStatus} />
+				{matchLevel == 0 && <PatternResults blue={blue} red={red} />}
+				{matchLevel == 0 && <PatternStartMatchButton changeLevel={changeLevel} />}
+				{matchLevel == 1 && (
+					<PatternLevelOne
+						blue={blue}
+						blueLast={blueLast}
+						blueQuantity={blueQuantity}
+						blueScore={blueScore}
+						changeLevel={changeLevel}
+						red={red}
+						redLast={redLast}
+						redQuantity={redQuantity}
+						redScore={redScore}
+						setBlueQuantity={setBlueQuantity}
+						setRedQuantity={setRedQuantity}
+					/>
+				)}
+				{matchLevel == 2 && (
+					<PatternLevelTwo
+						blue={blue}
+						blueLast={blueLast}
+						blueQuantity={blueQuantity}
+						blueScore={blueScore}
+						changeLevel={changeLevel}
+						red={red}
+						redLast={redLast}
+						redQuantity={redQuantity}
+						redScore={redScore}
+						setBlueQuantity={setBlueQuantity}
+						setRedQuantity={setRedQuantity}
+					/>
+				)}
+				{matchLevel == 3 && (
+					<PatternLevelThree
+						blue={blue}
+						blueLast={blueLast}
+						blueQuantity={blueQuantity}
+						blueScore={blueScore}
+						changeLevel={changeLevel}
+						red={red}
+						redLast={redLast}
+						redQuantity={redQuantity}
+						redScore={redScore}
+						setBlueQuantity={setBlueQuantity}
+						setRedQuantity={setRedQuantity}
+					/>
+				)}
+			</section>
+		</>
 	);
 };
 

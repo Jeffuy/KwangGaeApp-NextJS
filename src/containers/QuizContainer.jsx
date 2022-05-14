@@ -7,13 +7,15 @@ const QuizContainer = () => {
 	const { grado, questionsAreSelected, showScore, title } = useContext(QuizContext);
 
 	return (
-		<div className="d-flex flex-column min-vh-100">
-			{grado == null && <QuizChooser />}
-			<div>
-				<h1 className="mt-4">{!showScore && title}</h1>
-				{questionsAreSelected && <SelectedQuestions />}
+		<>
+			<div className="d-flex flex-column min-vh-100">
+				{grado == null && <QuizChooser />}
+				<div>
+					<h1 className="mt-4">{!showScore && title}</h1>
+					{questionsAreSelected && <SelectedQuestions />}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NextSeo } from 'next-seo';
 import { useEffect, useState } from 'react';
 import SingleCard from '@components/memory/SingleCard';
 
@@ -78,20 +79,23 @@ function App() {
 	};
 
 	return (
-		<div className="container d-flex flex-column min-vh-100 text-center memory">
-			<h1 className="mt-3">Taekwon-Do Memory</h1>
-			<div className="container mt-4">
-				<button onClick={shuffleCards}>New Game</button>
+		<>
+			<NextSeo description="Juego de memoria de Taekwondo para niños" title="Juego de Memoria" />
+			<div className="container d-flex flex-column min-vh-100 text-center memory">
+				<h1 className="mt-3">Taekwon-Do Memory</h1>
+				<div className="container mt-4">
+					<button onClick={shuffleCards}>New Game</button>
+				</div>
+				<div className="card-grid">
+					{cards.map(card => (
+						<SingleCard key={card.id} card={card} disabled={disabled} flipped={card === choiceOne || card === choiceTwo || card.matched} handleChoice={handleChoice} />
+					))}
+				</div>
+				<div className="container mt-4">
+					<h2 className="mt-2">Turns: {turns}</h2>
+				</div>
 			</div>
-			<div className="card-grid">
-				{cards.map(card => (
-					<SingleCard key={card.id} card={card} disabled={disabled} flipped={card === choiceOne || card === choiceTwo || card.matched} handleChoice={handleChoice} />
-				))}
-			</div>
-			<div className="container mt-4">
-				<h2 className="mt-2">Turns: {turns}</h2>
-			</div>
-		</div>
+		</>
 	);
 }
 
