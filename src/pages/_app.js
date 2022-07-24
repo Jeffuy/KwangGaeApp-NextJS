@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
 import Layout from '@containers/Layout';
+import '@styles/home.css';
+import '@styles/footer.css';
 import '@styles/style.css';
 import '@styles/challenges.css';
 import '@styles/quiz.css';

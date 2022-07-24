@@ -4,10 +4,10 @@ import Link from 'next/link';
 const Footer = () => {
 	return (
 		<div>
-			<footer className="bg-dark text-center p-2 mt-auto text-black sticky-bottom">
-				<Link href="https://github.com/Jeffuy">
-					<a className="h3 text-white" href="https://github.com/Jeffuy">
-						JeffUy 2021 ©
+			<footer className="footer-container">
+				<Link passHref href="https://github.com/Jeffuy">
+					<a className="footer-link" target="_blank">
+						JeffUy 2021-22 ©
 					</a>
 				</Link>
 			</footer>

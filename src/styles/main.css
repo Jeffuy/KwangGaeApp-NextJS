@@ -21,6 +21,17 @@ body {
     margin-bottom: 25px;
 }
 
+.main-container {
+	width: 100%;
+	min-height: 100vh;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+
+}
+
 @keyframes gainOpacity {
     0% {
         opacity: 0;
