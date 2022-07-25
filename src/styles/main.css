@@ -14,13 +14,6 @@ body {
     color: #fff;
 }
 
-.logo {
-    height: 275px;
-    width: 275px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-
 .main-container {
 	width: 100%;
 	min-height: 100vh;
@@ -28,18 +21,5 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-
-
 }
-
-@keyframes gainOpacity {
-    0% {
-        opacity: 0;
-    }
-    100% {
-		
-        opacity: 1;
-    }
-}
-
 
