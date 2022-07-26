@@ -7,12 +7,10 @@ import SelectorResults from '@components/selector/SelectorResults';
 const PatternSelectorContainer = () => {
 	return (
 		<>
-			<section className="d-flex flex-column min-vh-100">
-				<div className="container-fluid mt-5">
-					<div className="row">
-						<SelectorOptionsDegree />
-						<SelectorOptionsQuantity />
-					</div>
+			<section>
+				<div className="pattern-selector-container">
+					<SelectorOptionsDegree />
+					<SelectorOptionsQuantity />
 				</div>
 
 				<SelectorChooseButton />

@@ -1,68 +1,38 @@
-import React from "react";
+import React from 'react';
 
 const SelectorOptionsDegree = () => {
-    return (
-        <div className="col text-center text-white">
-            <div className="card bg-dark card-special">
-                <div className="card-body">
-                    <h3 className="text-center">Grado</h3>
-                    <br />
-                    <div className="form-check ">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="1erDan"
-                            name="grado"
-                            defaultValue={1}
-                            defaultChecked
-                        />
-                        <label className="form-check-label mb-1" htmlFor="1erDan">
-                            Hasta 1er Dan
-                        </label>
-                        <br />
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="2doDan"
-                            name="grado"
-                            defaultValue={2}
-                        />
-                        <label className="form-check-label mb-1" htmlFor="2doDan">
-                            Hasta 2do Dan
-                        </label>
-                        <br />
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="3erDan"
-                            name="grado"
-                            defaultValue={3}
-                        />
-                        <label className="form-check-label mb-1" htmlFor="3erDan">
-                            Hasta 3er Dan
-                        </label>
-                        <br />
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="4toDan"
-                            name="grado"
-                            defaultValue={4}
-                        />
-                        <label className="form-check-label" htmlFor="4toDan">
-                            Hasta 4to Dan
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+	return (
+		<div className="pattern-selector__card">
+			<div className="pattern-selector__card--title">
+				<h3 className="">Grado</h3>
+			</div>
+			<div className="pattern-selector__card--options">
+				<input defaultChecked className="" defaultValue={1} id="1erDan" name="grado" type="radio" />
+				<label className="" htmlFor="1erDan">
+					Hasta I Dan
+				</label>
+			</div>
+			<div className="pattern-selector__card--options">
+				<input className="" defaultValue={2} id="2doDan" name="grado" type="radio" />
+				<label className="" htmlFor="2doDan">
+					Hasta II Dan
+				</label>
+			</div>
+			<div className="pattern-selector__card--options">
+				<input className="" defaultValue={3} id="3erDan" name="grado" type="radio" />
+				<label className="" htmlFor="3erDan">
+					Hasta III Dan
+				</label>
+			</div>
+
+			<div className="pattern-selector__card--options">
+				<input className="" defaultValue={4} id="4toDan" name="grado" type="radio" />
+				<label className="" htmlFor="4toDan">
+					Hasta IV Dan
+				</label>
+			</div>
+		</div>
+	);
 };
 
 export default SelectorOptionsDegree;
