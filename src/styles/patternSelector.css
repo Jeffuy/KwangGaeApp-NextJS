@@ -47,9 +47,18 @@
 @media screen and (max-width: 768px) {
 	.pattern-selector__card {
 		width: 100%;
+		padding-bottom: 5%;
+	}
+
+	.pattern-selector__card--options {
+		width: 100%;
+		margin-bottom: 3%;
+	}
+
+	.pattern-selector__card--title {
+		margin-block: 3%;
 	}
 }
-	
 
 
 
