@@ -43,11 +43,35 @@
 	padding-inline: 5%;
 }
 
+.pattern-selector__button-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: max-content;
+	align-items: center;
+	justify-content: center;
+	margin-top: 3%;
+}
+
+.pattern-selector__button-container button {
+	background-color: rgb(255, 174, 74);
+	color: #212529;
+	border: none
+}
+
 
 @media screen and (max-width: 768px) {
+	.pattern-selector-container {
+		height: 100%;
+		justify-content: flex-start;
+	}
+
 	.pattern-selector__card {
 		width: 100%;
 		padding-bottom: 5%;
+		margin: 0;
+		margin-inline: 5%;
+		margin-top: 3%;
 	}
 
 	.pattern-selector__card--options {

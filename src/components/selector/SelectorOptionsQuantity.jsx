@@ -1,69 +1,38 @@
-import React from "react";
+import React from 'react';
 
 const SelectorOptionsQuantity = () => {
-    return (
-        <div className="col text-center text-white">
-            <div className="card bg-dark  card-special ">
-                <div className="card-body ">
-                    <h3>Cantidad</h3>
-                    <br />
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="1-1formas"
-                            name="cantidad"
-                            defaultValue={1}
-                        />
-                        <label className="form-check-label mb-1" htmlFor="1-1formas">
-                            Modo torneo
-                        </label>
-                        <br />
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="1grado"
-                            name="cantidad"
-                            defaultValue={0}
-                            defaultChecked
-                        />
-                        <label className="form-check-label mb-1" htmlFor="1grado">
-                            Del grado
-                        </label>
-                        <br />
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="1forma"
-                            name="cantidad"
-                            defaultValue={2}
-                        />
-                        <label className="form-check-label mb-1" htmlFor="1forma">
-                            Una forma
-                        </label>
-                        <br />
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            id="2formas"
-                            name="cantidad"
-                            defaultValue={3}
-                        />
-                        <label className="form-check-label " htmlFor="2formas">
-                            Dos formas
-                        </label>
-                        <br />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+	return (
+		<div className="pattern-selector__card">
+			<div className="pattern-selector__card--title">
+				<h3>Cantidad</h3>
+			</div>
+			<div className="pattern-selector__card--options">
+				<input className="" defaultValue={1} id="1-1formas" name="cantidad" type="radio" />
+				<label className="" htmlFor="1-1formas">
+					Modo torneo
+				</label>
+			</div>
+
+			<div className="pattern-selector__card--options">
+				<input defaultChecked className="" defaultValue={0} id="1grado" name="cantidad" type="radio" />
+				<label className="" htmlFor="1grado">
+					Del grado
+				</label>
+			</div>
+			<div className="pattern-selector__card--options">
+				<input className="" defaultValue={2} id="1forma" name="cantidad" type="radio" />
+				<label className="" htmlFor="1forma">
+					Una forma
+				</label>
+			</div>
+			<div className="pattern-selector__card--options">
+				<input className="" defaultValue={3} id="2formas" name="cantidad" type="radio" />
+				<label className="" htmlFor="2formas">
+					Dos formas
+				</label>
+			</div>
+		</div>
+	);
 };
 
 export default SelectorOptionsQuantity;
