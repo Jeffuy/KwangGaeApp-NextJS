@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GiHamburgerMenu } from 'react-icons/gi';
+//import { GiHamburgerMenu } from 'react-icons/gi';
 
 import Link from 'next/link';
 
