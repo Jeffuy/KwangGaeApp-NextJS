@@ -10,6 +10,7 @@ import '@styles/quiz.css';
 import '@styles/MemoryGame.css';
 import '@styles/main.css';
 import '@styles/patternSelector.css';
+import '@styles/menu.css';
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
