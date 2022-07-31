@@ -137,7 +137,6 @@
 
 	.hamburger__menu.opened {
 		transform: translateY(calc(0% + 64px));
-		
 	}
 
 	.hamburger__menu--item {
@@ -149,8 +148,6 @@
 		padding-block: 1%;
 		flex-direction: column;
 		opacity: 1;
-		
-		
 	}
 
 	.hamburger__menu--item a {
