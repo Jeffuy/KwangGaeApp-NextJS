@@ -11,9 +11,9 @@ const FigthButtons = () => {
 
 	return (
 		<>
-			{pro && <FightButtonsPro />}
-			{!pro && <FightButtonsNoob />}
 			<FightTime />
+			{pro && status && <FightButtonsPro />}
+			{!pro && status && <FightButtonsNoob />}
 			<div className="d-flex justify-content-center">
 				{!timerOn && time < 20 && (
 					<button className="btn btn-dark btn-lg mt-1 mb-3" type="button" onClick={status ? undefined : () => startFight()}>

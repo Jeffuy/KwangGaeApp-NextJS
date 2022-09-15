@@ -4,14 +4,14 @@
 	flex-direction: column;
 	/* max-height: calc(100vh - 94px); */
 	height: max-content;
-	
+
 	overflow: hidden;
 }
 
 .fight-status__container {
 	display: flex;
-	justify-content: center;	
-	width: 100%
+	justify-content: center;
+	width: 100%;
 }
 
 .fight-status__container h3 {
@@ -27,7 +27,6 @@
 	height: max-content;
 	justify-content: space-around;
 	gap: 5rem;
-
 }
 
 .fight-results__container-result {
@@ -42,7 +41,7 @@
 }
 
 .winner {
-	font-size: .8rem;
+	font-size: 0.8rem;
 	margin-top: -0;
 }
 
@@ -53,3 +52,53 @@
 .blue {
 	background-color: blue;
 }
+
+.fight-buttons__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+	align-self: center;
+	margin-bottom: 10px;
+}
+.fight-buttons__column {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 45%;
+	gap: 10px;
+}
+.fight-buttons-points {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 98%;
+}
+
+.fight-buttons-others {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+}
+
+.fight-buttons-points button {
+	border-radius: 10%;
+	width: 100%;
+	margin-top: 10px;
+	height: 80px;
+}
+
+.fight-buttons-others button{
+	border-radius: 10%;
+	width: max-content;
+	height: 50px;
+	font-size: 8px;
+	padding: 0;
+}
+
+
+
