@@ -6,47 +6,23 @@ const FightResults = () => {
 
 	return (
 		<>
-			<div className="container">
-				{timerOn && status && <h3 className="mt-2 text-center text-white">Combate Iniciado</h3>}
-				{!timerOn && status && <h3 className="mt-2 text-center text-white">Combate en Pausa</h3>}
-				{!timerOn && !status && <h3 className="mt-2 text-center text-white">Combate en Finalizado</h3>}
+			<div className="fight-status__container">
+				{timerOn && status && <h3>Combate Iniciado</h3>}
+				{!timerOn && status && <h3>Combate en Pausa</h3>}
+				{!timerOn && !status && <h3>Combate en Finalizado</h3>}
 			</div>
-			<div className="container">
-				<div className="row">
-					<div className="col-6">
-						<div className="text-center text-white" style={{ fontSize: 30, backgroundColor: 'red' }}>
-							<p>{!status && red.score}</p>
-							{!status && red.score > blue.score && (
-								<p
-									style={{
-										fontSize: 15,
-										backgroundColor: 'red',
-										marginTop: '-22px',
-									}}
-								>
-									Winner!
-								</p>
-							)}
-						</div>
+			{!status && (
+				<div className="fight-results__container">
+					<div className="fight-results__container-result red">
+						<p>{!status && red.score}</p>
+						{!status && red.score > blue.score && <p className="winner">Winner!</p>}
 					</div>
-					<div className="col-6">
-						<div className="text-center text-white" style={{ fontSize: 30, backgroundColor: 'blue' }}>
-							<p>{!status && blue.score}</p>
-							{!status && blue.score > red.score && (
-								<p
-									style={{
-										fontSize: 15,
-										backgroundColor: 'blue',
-										marginTop: '-22px',
-									}}
-								>
-									Winner!
-								</p>
-							)}
-						</div>
+					<div className="fight-results__container-result blue">
+						<p>{!status && blue.score}</p>
+						{!status && blue.score > red.score && <p className="winner">Winner!</p>}
 					</div>
 				</div>
-			</div>
+			)}
 		</>
 	);
 };

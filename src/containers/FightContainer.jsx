@@ -8,7 +8,7 @@ const Fight = () => {
 	const { showError } = useContext(FightContext);
 
 	return (
-		<section>
+		<section className="fight-container">
 			<FightResults />
 			{showError && <FightNotStartedError />}
 			<FigthButtons />
