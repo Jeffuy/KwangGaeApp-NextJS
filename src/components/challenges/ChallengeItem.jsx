@@ -9,9 +9,14 @@ const ChallengeItem = props => {
 				} `}
 			>
 				<i className={`Icon Icon-check fas fa-check-circle fa-2x ${props.completed && 'Icon-check--active'}`} onClick={props.onComplete} />
-				<p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
-					Haz <b>{props.text}</b>. Recompensa: <b>{props.points} puntos.</b>
-				</p>
+				<div className="TodoItem-Text-Container">
+					<p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
+						Haz <b>{props.text}</b>.
+					</p>
+					<p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
+						Recompensa: <b>{props.points} puntos.</b>
+					</p>
+				</div>
 
 				<i className="fas fa-trash-alt fa-2x Icon-delete" onClick={props.onDelete} />
 				<div className="Icon-type">

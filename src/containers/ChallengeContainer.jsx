@@ -11,7 +11,7 @@ const ChallengeContainer = () => {
 
 	return (
 		<>
-			<section className="container d-flex flex-column min-vh-100">
+			<section className="challenges-container">
 				<ChallengeCounter />
 
 				{challenges.map(challenge => (

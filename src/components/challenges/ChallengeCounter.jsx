@@ -8,7 +8,7 @@ const ChallengeCounter = () => {
 	const totalChallenges = challenges.length;
 
 	return (
-		<h2 className="text-center mt-3 ">
+		<h2 className="challenges-counter">
 			Completado: <b>{completedChallenges}</b> de <b>{totalChallenges}</b> desafíos. <br /> Puntos totales: <b>{totalPoints}</b>.
 		</h2>
 	);

@@ -14,33 +14,30 @@ const FigthButtons = () => {
 			<FightTime />
 			{!pro && status && <FightButtonsPro />}
 			{pro && status && <FightButtonsNoob />}
-			<div className="d-flex justify-content-center">
+			<div className="fight-buttons-container">
 				{!timerOn && time < 20 && (
-					<button className="btn btn-dark btn-lg mt-1 mb-3" type="button" onClick={status ? undefined : () => startFight()}>
+					<button type="button" onClick={status ? undefined : () => startFight()}>
 						<i className="fa fa-play" />
 					</button>
 				)}
 				{timerOn && (
 					<>
-						<button className="btn btn-dark btn-lg mt-1 mb-3 m-3" onClick={() => pauseFight()}>
+						<button onClick={() => pauseFight()}>
 							<i className="fa fa-pause" />
 						</button>
-						<button className="btn btn-dark btn-lg mt-1 mb-3 m-3" type="button" onClick={() => endFight()}>
+						<button type="button" onClick={() => endFight()}>
 							<i className="fa fa-stop" />
 						</button>
 					</>
 				)}
 				{!timerOn && time > 10 && (
 					<>
-						<button className="btn btn-dark btn-lg mt-1 mb-3" onClick={() => resumeFight()}>
-							Resume
-						</button>
+						<button onClick={() => resumeFight()}>Resume</button>
 					</>
 				)}
 			</div>
-			<div className="d-flex justify-content-center">
+			<div className="fight-mode-container">
 				<button
-					className="btn btn-warning btn-sm mb-4"
 					type="button"
 					onClick={() => {
 						setPro(!pro);
