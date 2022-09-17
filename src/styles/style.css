@@ -6,12 +6,6 @@
 	display: inline-block
 }
 
-h1 {
-    color: #fff;
-    text-align: center;
-    padding: 2px 0;
-}
-
 #question {
     font-size: 1.5rem;
     color: #fff;
@@ -48,34 +42,6 @@ h1 {
     padding: 2px 0;
 }
 
-.btn-yellow-stripe {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 1) 71%,
-        rgba(255, 193, 7, 1) 74%
-    );
-}
-
-.btn-green-stripe {
-    background: rgb(255,193,7);
-background: linear-gradient(90deg, rgba(255,193,7,1) 71%, rgba(25,135,84,1) 74%);
-}
-
-.btn-blue-stripe {
-    background: rgb(25,135,84);
-background: linear-gradient(90deg, rgba(25,135,84,1) 71%, rgba(13,110,253,1) 74%);
-}
-
-.btn-red-stripe {
-	background: rgb(13,110,253);
-	background: linear-gradient(90deg, rgba(13,110,253,1) 71%, rgba(220,53,69,1) 74%);
-}
-
-.btn-black-stripe {
-	background: rgb(220,53,69);
-	background: linear-gradient(90deg, rgba(220,53,69,1) 71%, rgba(33,37,41,1) 74%);
-}
 
 .card-special {
 	border-radius: 25px;

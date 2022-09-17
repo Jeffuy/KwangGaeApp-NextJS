@@ -4,86 +4,66 @@ import { QuizContext } from '@context/QuizContext';
 const QuizChooser = () => {
 	const { quizChoose } = useContext(QuizContext);
 	return (
-		<div className="container">
-			<h1 className="mt-4">Elige tu Quiz</h1>
-			<div className="row mt-4">
-				<div className="col">
-					<button className="btn form-control btn-light fs-3" onClick={() => quizChoose('white', 0)}>
-						Cinturón Blanco
-					</button>
-				</div>
+		<>
+			<div className="quiz-tit">
+				<h1 className="mt-4">Elige tu Quiz</h1>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-yellow-stripe fs-3" onClick={() => quizChoose('yellowStripe', 1)}>
-						Punta Amarilla
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-white" onClick={() => quizChoose('white', 0)}>
+					Cinturón Blanco
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-warning fs-3" onClick={() => quizChoose('yellow', 2)}>
-						Cinturón Amarillo
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-yellow-stripe" onClick={() => quizChoose('yellowStripe', 1)}>
+					Punta Amarilla
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-warning btn-green-stripe fs-3" onClick={() => quizChoose('greenStripe', 3)}>
-						Punta Verde
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-yellow" onClick={() => quizChoose('yellow', 2)}>
+					Cinturón Amarillo
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-success fs-3" onClick={() => quizChoose('green', 4)}>
-						Cinturón Verde
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-green-stripe" onClick={() => quizChoose('greenStripe', 3)}>
+					Punta Verde
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-success btn-blue-stripe fs-3" onClick={() => quizChoose('blueStripe', 5)}>
-						Punta azul
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-green" onClick={() => quizChoose('green', 4)}>
+					Cinturón Verde
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-primary fs-3" onClick={() => quizChoose('blue', 6)}>
-						Cinturón azul
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-blue-stripe" onClick={() => quizChoose('blueStripe', 5)}>
+					Punta azul
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-primary btn-red-stripe fs-3" onClick={() => quizChoose('redStripe', 7)}>
-						Punta Roja
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-blue" onClick={() => quizChoose('blue', 6)}>
+					Cinturón azul
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-danger fs-3" onClick={() => quizChoose('red', 8)}>
-						Cinturón Rojo
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-red-stripe" onClick={() => quizChoose('redStripe', 7)}>
+					Punta Roja
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-danger btn-black-stripe fs-3 disabled" onClick={() => quizChoose('white', 9)}>
-						Punta Negra (próximamente)
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button className="btn-red" onClick={() => quizChoose('red', 8)}>
+					Cinturón Rojo
+				</button>
 			</div>
-			<div className="row mt-3">
-				<div className="col">
-					<button className="btn form-control btn-dark text-white fs-3" onClick={() => quizChoose('umpire', 10)}>
-						Arbitraje
-					</button>
-				</div>
+			<div className="quiz-selection">
+				<button disabled className="btn-black-stripe" onClick={() => quizChoose('white', 9)}>
+					Punta Negra (próximamente)
+				</button>
 			</div>
-		</div>
+			<div className="quiz-selection">
+				<button className="btn-black" onClick={() => quizChoose('umpire', 10)}>
+					Arbitraje
+				</button>
+			</div>
+		</>
 	);
 };
 

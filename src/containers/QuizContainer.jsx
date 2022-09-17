@@ -8,10 +8,10 @@ const QuizContainer = () => {
 
 	return (
 		<>
-			<div className="d-flex flex-column min-vh-100">
+			<div className="quiz-container">
 				{grado == null && <QuizChooser />}
 				<div>
-					<h1 className="mt-4">{!showScore && title}</h1>
+					<h1>{!showScore && title}</h1>
 					{questionsAreSelected && <SelectedQuestions />}
 				</div>
 			</div>
