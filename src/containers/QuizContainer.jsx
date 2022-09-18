@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { QuizContext } from '@context/QuizContext';
+import { QuizContext } from '@context/QuizContext.js';
 import QuizChooser from '@components/quiz/QuizChooser';
 import SelectedQuestions from '@components/quiz/SelectedQuestions';
 

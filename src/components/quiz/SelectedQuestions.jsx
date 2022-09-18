@@ -1,7 +1,7 @@
 //import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { imgList } from '@scripts/data/quizImg';
-import { QuizContext } from '@context/QuizContext';
+import { QuizContext } from '@context/QuizContext.js';
 import * as gtag from '../../lib/gtag';
 import Image from 'next/image';
 
