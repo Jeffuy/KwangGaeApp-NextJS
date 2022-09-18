@@ -5,9 +5,8 @@ const QuizChooser = () => {
 	const { quizChoose } = useContext(QuizContext);
 	return (
 		<>
-			<div className="quiz-tit">
-				<h1 className="mt-4">Elige tu Quiz</h1>
-			</div>
+			<h1>Elige tu Quiz</h1>
+
 			<div className="quiz-selection">
 				<button className="btn-white" onClick={() => quizChoose('blanco', 0)}>
 					Cinturón Blanco
