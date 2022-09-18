@@ -1,13 +1,15 @@
 //import axios from 'axios';
 import React, { useContext, useState } from 'react';
+import { imgList } from '@scripts/data/quizImg';
 import { QuizContext } from '@context/QuizContext';
 import * as gtag from '../../lib/gtag';
+import Image from 'next/image';
 
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
 	const [sent, setSent] = useState(false);
 	const [text, setText] = useState('');
-	const [help, setHelp] = useState('Escribe tu nombre');
+	const [help, setHelp] = useState('');
 
 	const handleSend = async e => {
 		e.preventDefault();
@@ -22,7 +24,6 @@ const SelectedQuestions = () => {
 			});
 
 			let data = { text };
-			console.log('tiene texto ' + text);
 			fetch('/api/mails', {
 				method: 'POST',
 				headers: {
@@ -36,85 +37,68 @@ const SelectedQuestions = () => {
 			setText('');
 		} else {
 			setHelp('Debes escribir un nombre');
-			console.log('error ' + text);
 		}
-		console.log('fin ' + text);
+	};
+
+	const handleBack = () => {
+		back();
+		setSent(false);
+		setText('');
+		setHelp('');
 	};
 
 	// FINAL PRUEBA MAIL
-	const { titleChanger, imgList, score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back, grado } = useContext(QuizContext);
+	const { score, showScore, questions, currentQuestionNumber, handleAnswerOptionClick, back, grado } = useContext(QuizContext);
+
 	if (questions != null) {
 		return (
-			<div className="container">
+			<div>
+				<h1 className="quiz-questions-title">Cinturón {grado}</h1>
 				{showScore ? (
 					<>
-						<div className="app">
-							<div className="col">
-								<div className="row">
-									<img alt="" className="result-title pb-4" src={titleChanger()} />
-								</div>
-								<div className="row">
-									<img alt="" className="result" src={imgList[score]} />
-								</div>
+						<div className="quiz-card">
+							<p className="quiz-result-text">
+								Tu puntaje fue de {score} sobre {questions.length}
+							</p>
+							<div className="quiz-result-image">
+								<Image alt="Resultado" className="result" height={150} src={imgList[score]} width={150} />
+							</div>
+							<div className="quiz-result-input">
+								<input
+									placeholder="Escribe tu nombre"
+									type="text"
+									onChange={e => setText(`Nombre: ${e.target.value}. Puntaje: ${score} sobre ${questions.length}. Cinturón: ${grado}`)}
+								/>
+
+								{!sent && <button onClick={e => handleSend(e)}>Enviar</button>}
+								{help != '' && <p className="quiz-result-help">{help}</p>}
 							</div>
 						</div>
-						<div className="container-fluid mt-4">
-							<div className="row">
-								<div className="col">
-									<div className="text-center fs-2">
-										Tu puntaje fue de {score} sobre {questions.length}
-									</div>
-									<div className="d-flex text-center flex-col justify-content-around mt-2 mb-2 justify-content-lg-center">
-										<input
-											placeholder="escribe tu nombre"
-											type="text"
-											onChange={e => setText(`El puntaje de ${e.target.value} fue de ${score} sobre ${questions.length} en el test de ${grado}`)}
-										/>
-
-										{!sent && <button onClick={e => handleSend(e)}>Enviar</button>}
-									</div>
-
-									<div className="text-center">
-										<p>{help}</p>
-									</div>
-									<div className="d-flex justify-content-center">
-										<button
-											className="btn-block btn-dark mt-2 mb-lg-1"
-											onClick={() => {
-												back();
-												setSent(false);
-												setText('');
-											}}
-										>
-											Volver
-										</button>
-									</div>
-								</div>
-							</div>
+						<div className="quiz-button-back">
+							<button
+								onClick={() => {
+									handleBack();
+								}}
+							>
+								Volver
+							</button>
 						</div>
 					</>
 				) : (
-					<>
-						<div className="app">
-							<div className="container">
-								<div className="row">
-									<div className="col">
-										<span className="fs-4">Pregunta {currentQuestionNumber + 1}</span>/{questions.length}
-									</div>
-									<div className="row">
-										<div className="col text-center mt-2 fs-4">{questions[currentQuestionNumber].questionText}</div>
-									</div>
-								</div>
-								<div className="answer-section mt-4">
-									{questions[currentQuestionNumber].answerOptions.map(answerOption => (
-										<button key={answerOption.answerText} className="btn btn-dark mt-3" onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>
-											{answerOption.answerText}
-										</button>
-									))}
-								</div>
-							</div>
+					<div className="quiz-card">
+						<span>
+							Pregunta <b>{currentQuestionNumber + 1}</b>/{questions.length}
+						</span>
+
+						<span>{questions[currentQuestionNumber].questionText}</span>
+						<div className="quiz-answer-buttons">
+							{questions[currentQuestionNumber].answerOptions.map(answerOption => (
+								<button key={answerOption.answerText} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>
+									{answerOption.answerText}
+								</button>
+							))}
 						</div>
-					</>
+					</div>
 				)}
 			</div>
 		);

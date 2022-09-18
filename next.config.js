@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	//image
+	images: {
+		domains: ['i.imgur.com'],
+	},
 	reactStrictMode: true,
 };
 

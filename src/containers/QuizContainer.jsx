@@ -4,18 +4,13 @@ import QuizChooser from '@components/quiz/QuizChooser';
 import SelectedQuestions from '@components/quiz/SelectedQuestions';
 
 const QuizContainer = () => {
-	const { grado, questionsAreSelected, showScore, title } = useContext(QuizContext);
+	const { grado, questions } = useContext(QuizContext);
 
 	return (
-		<>
-			<div className="quiz-container">
-				{grado == null && <QuizChooser />}
-				<div>
-					<h1>{!showScore && title}</h1>
-					{questionsAreSelected && <SelectedQuestions />}
-				</div>
-			</div>
-		</>
+		<div className="quiz-container">
+			{grado == '' && <QuizChooser />}
+			<div>{questions.length > 0 && <SelectedQuestions />}</div>
+		</div>
 	);
 };
 

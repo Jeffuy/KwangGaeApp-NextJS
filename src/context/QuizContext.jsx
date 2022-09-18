@@ -1,22 +1,14 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 import { questionList } from '@scripts/data/quizQuestions';
-import { imgList, imgTitle } from '@scripts/data/quizImg';
 
 const QuizContext = createContext();
 
 function QuizProvider(props) {
-	const [grado, setGrado] = useState(null);
-	const [questions, setQuestions] = useState(null);
+	const [grado, setGrado] = useState('');
+	const [questions, setQuestions] = useState([]);
 	const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
-	const [questionsAreSelected, setQuestionsAreSelected] = useState(false);
-	const [title, setTitle] = useState(null);
-	const [imgTitleSetter, setImgTitleSetter] = useState(imgTitle);
-
-	const titleChanger = () => {
-		return imgTitleSetter;
-	};
 
 	const handleAnswerOptionClick = isCorrect => {
 		if (isCorrect) {
@@ -34,20 +26,15 @@ function QuizProvider(props) {
 	function quizChoose(choice, index) {
 		setGrado(choice);
 		setQuestions(questionList[index]);
-		setImgTitleSetter(imgTitle[index]);
 	}
 
 	const back = () => {
-		setQuestions(null);
-		setGrado(null);
+		setQuestions([]);
+		setGrado('');
 		setScore(0);
 		setCurrentQuestionNumber(0);
 		setShowScore(false);
-		setTitle(null);
 	};
-	useEffect(() => {
-		setQuestionsAreSelected(true);
-	}, [questions]);
 
 	return (
 		<QuizContext.Provider
@@ -58,13 +45,8 @@ function QuizProvider(props) {
 				showScore,
 				score,
 				handleAnswerOptionClick,
-				questionsAreSelected,
-				title,
-				titleChanger,
-				imgTitleSetter,
 				back,
 				quizChoose,
-				imgList,
 			}}
 		>
 			{props.children}

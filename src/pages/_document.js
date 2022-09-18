@@ -21,7 +21,7 @@ class MyDocument extends Document {
 						}}
 					/>
 					{/* BOOTSTRAP */}
-					<link
+					{/* <link
 						crossOrigin="anonymous"
 						href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
 						integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
@@ -32,7 +32,7 @@ class MyDocument extends Document {
 						href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
 						integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 						rel="stylesheet"
-					/>
+					/> */}
 					{/* FONT AWESOME */}
 					<link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
 
