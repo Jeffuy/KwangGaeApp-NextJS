@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { imgList } from '@scripts/data/quizImg';
 import { QuizContext } from '@context/QuizContext.js';
 import * as gtag from '../../lib/gtag';
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
