@@ -7,7 +7,7 @@ const Menu = () => {
 	return (
 		<div className="dojang-menu">
 			<ul>
-				<li className={selected == 'cintos' ? `dojang-selected` : ''} onClick={() => newSelect('cintos')}>
+				<li className={selected == 'cintos' ? `dojang-selected` : ''} onClick={() => setSelected('cintos')}>
 					Cintos
 				</li>
 				<li className={selected == 'formas' ? `dojang-selected` : ''} onClick={() => setSelected('formas')}>
