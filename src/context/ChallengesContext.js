@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import React, { createContext } from 'react';
 import useLocalStorage from '@hooks/useLocalStorage';
 import { challengesList } from '@scripts/data/challengeList';
