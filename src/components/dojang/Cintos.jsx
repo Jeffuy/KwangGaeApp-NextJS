@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import whiteBelt from '@images/white-belt.png';
 import yellowBelt from '@images/yellow-belt.png';
 import greenBelt from '@images/green-belt.png';
@@ -8,13 +8,16 @@ import blackBelt from '@images/black-belt.png';
 import wave from '@images/wave.png';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
+import { DojangContext } from '@context/DojangContext';
 
 const Cintos = () => {
+	const { selected } = useContext(DojangContext);
+
 	return (
 		<>
 			<NextSeo description="Significados de los Cinturones de Taekwondo ITF" title="Significado de los cinturones" />
 			<div className="cintos">
-				<h1>CINTOS</h1>
+				<h1>{selected}</h1>
 				<div className="cintos-wave-container">
 					<Image alt="separator" src={wave} />
 				</div>

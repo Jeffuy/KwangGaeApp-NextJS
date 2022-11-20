@@ -1,0 +1,50 @@
+.dojang-menu ul {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	
+	list-style: none;
+	height: 50px;
+	align-items: center;
+	padding: 0;
+}
+
+.dojang-menu li {
+	cursor: pointer;
+	border-right: 2px solid white;
+	width: 100%;
+	height: 100%;
+	line-height: 50px;
+	text-align: center;
+	background-color: rgb(235, 39, 62);
+	transition: all 1s;
+}
+
+.dojang-menu li:hover {
+	background-color: rgb(227, 91, 91);
+	width: 150%;
+}
+
+
+.dojang-selected {
+	background-color: rgb(87, 87, 87) !important
+}
+
+.dojang-last {
+	border-right: none !important;
+}
+
+@media screen and (max-width: 600px) {
+
+	.dojang-menu ul {
+		height: 30px;
+	}
+
+	.dojang-menu li {
+		width: 100%;
+		font-size: 0.6em;
+		height: 100%;
+		line-height: 30px;
+	}
+}
+

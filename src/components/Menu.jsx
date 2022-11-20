@@ -38,9 +38,9 @@ const Menu = () => {
 							</Link>
 						</div>
 						<div className="menu__container__menu--item">
-							<Link passHref href="/Pattern">
+							<Link passHref href="/Dojang">
 								<a href="/">
-									<i className="fas fa-calculator" /> Arbitraje de Forma
+									<i className="fas fa-calculator" /> Dojang
 								</a>
 							</Link>
 						</div>
