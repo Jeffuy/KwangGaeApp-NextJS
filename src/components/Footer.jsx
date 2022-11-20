@@ -10,9 +10,6 @@ const Footer = () => {
 						JeffUy 2021-22 ©
 					</a>
 				</Link>
-				<Link passHref href="www.kwanggae.com/Cintos">
-					<a> HOLAAA</a>
-				</Link>
 			</footer>
 		</div>
 	);
