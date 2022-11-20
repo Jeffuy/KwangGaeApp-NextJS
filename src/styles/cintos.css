@@ -31,6 +31,8 @@
 .cintos-grid-image-container {
 	width: 50%;
 	margin: 0 auto;
+	opacity: 0.5;
+	transition: 1s;
 }
 
 .cintos-black {
@@ -61,6 +63,11 @@
 	margin-bottom: 50px;
 }
 
+.cintos-grid-image-container:hover {
+	opacity:  1;
+
+}
+
 @media (max-width: 768px) {
 	.cintos-grid {
 		width: 100%;
@@ -75,5 +82,9 @@
 
 	.cintos-wave-container {
 		width: 100%;
+	}
+
+	.cintos-grid-image-container {
+		opacity: 1;
 	}
 }
