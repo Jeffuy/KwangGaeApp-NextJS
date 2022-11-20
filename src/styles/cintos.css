@@ -1,8 +1,7 @@
 .cintos {
 	display: flex;
 	flex-direction: column;
-	background: rgb(89,88,95);
-background: linear-gradient(315deg, rgba(89,88,95,1) 0%, rgba(213,230,229,0.9868989832261029) 100%, rgba(0,212,255,1) 100%);
+	background-color: rgb(255, 0, 0)
 }
 
 .cintos h1 {
