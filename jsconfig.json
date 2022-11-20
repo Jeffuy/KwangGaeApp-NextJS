@@ -6,6 +6,7 @@
 			"@components/*": ["components/*"],
 			"@containers/*": ["containers/*"],
 			"@icons/*": ["assets/ico/*"],
+			"@images/*": ["assets/img/*"],
 			"@logos/*": ["assets/logos/*"],
 			"@context/*": ["context/*"],
 			"@styles/*": ["styles/*"],

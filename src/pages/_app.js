@@ -12,6 +12,7 @@ import '@styles/main.css';
 import '@styles/patternSelector.css';
 import '@styles/menu.css';
 import '@styles/fight.css';
+import '@styles/cintos.css';
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
