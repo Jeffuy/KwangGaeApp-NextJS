@@ -30,7 +30,7 @@ const Cintos = () => {
 				<div className="cintos-wave-container reverse main">
 					<Image alt="separator" src={wave} />
 				</div>
-				<div className="cintos-grid">
+				<div className="cintos-grid cintos-white">
 					<div>
 						<h2> Cinto Amarillo</h2>
 						<p> Representa el color de la tierra en la que la planta nace y hecha raíces, ejemplificando que los fundamentos del Taekwon-Do están empezando a establecerse.</p>
@@ -55,7 +55,7 @@ const Cintos = () => {
 					<Image alt="separator" src={wave} />
 				</div>
 
-				<div className="cintos-grid">
+				<div className="cintos-grid cintos-white">
 					<div>
 						<h2> Cinto Azul</h2>
 						<p> Significa cielo hacia el cual la planta crece y madura, tal como se madura a medida que se progresa en el Taekwon-Do.</p>
@@ -79,7 +79,7 @@ const Cintos = () => {
 				<div className="cintos-wave-container reverse">
 					<Image alt="separator" src={wave} />
 				</div>
-				<div className="cintos-grid last">
+				<div className="cintos-grid last cintos-white">
 					<div>
 						<h2> Cinto Negro</h2>
 						<p> Opuesto al blanco, significa madurez, perfeccionamiento y responsabilidad. Punto de partida para un camino que comienza más allá de la oscuridad y el miedo.</p>

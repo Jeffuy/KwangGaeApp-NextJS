@@ -1,11 +1,13 @@
 .cintos {
 	display: flex;
 	flex-direction: column;
+	background-color: #f8f9fa;
 }
 
 .cintos h1 {
 	text-align: center;
 	margin-bottom: 10px;
+	color: #000;
 }
 
 .cintos-grid {
@@ -35,6 +37,10 @@
 	background-color: #212529;
 }
 
+.cintos-white {
+	color: #212529;
+}
+
 .cintos-wave-container {
 	margin-top: 5px;
 	width: 80%;
@@ -44,22 +50,17 @@
 }
 
 .reverse {
-	margin-top: -5px;
+	margin-top: -6px;
 	rotate: 180deg;
 	margin-bottom: 10px;
+	
 }
 
 .last {
 	margin-bottom: 50px;
 }
 
-.mobile {
-	display: none;
-}
 
-.desktop {
-	display: block;
-}
 
 @media (max-width: 768px) {
 	.cintos-grid {
@@ -75,17 +76,4 @@
 	.cintos-wave-container {
 		width: 100%;
 	}
-
-	.desktop {
-		display: none;
-	}
-
-	.mobile {
-		display: block;
-	}
-	
-	.cintos .cintos-grid:nth-of-type(1) {
-		background-color: red;
-	}
-	
 }
