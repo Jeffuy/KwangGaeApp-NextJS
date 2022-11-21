@@ -1,11 +1,11 @@
 .dojang-formas {
-	background-color: #f2f2f2;
+	background-color: #212529;
 }
 
 .dojang-formas h1 {
 	text-align: center;
 	margin: 0 auto;
-	color: #212529;
+	color: #f2f2f2;
 	margin-bottom: 10px;
 }
 
@@ -13,21 +13,20 @@
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(250px);
-	grid-template-rows: repeat(3);
-	gap: 5px;
+	grid-template-rows: repeat(4);
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-bottom: 10px;
-	margin-bottom: 10px;
-}
-
-.even {
-	background-color: #f2f2f2;
-	border-top: 1px solid #f2f2f2;
-	color: #212529;
 }
 
 .odd {
+	background-color: #848282;
+	border-top: 1px solid #f2f2f2;
+	color: #212529;
+	border-top: 1px solid;
+}
+
+.even {
 	background-color: #212529;
 	color: #f2f2f2;
 }
@@ -69,11 +68,23 @@
 	text-align: center;
 }
 
+.dojang-pattern-img {
+	position: relative;
+	margin: 0 auto;
+	width: 100px;
+	height: 50px;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row: 2;
+	margin-top: -20px;
+	rotate: 3deg;
+}
+
 .dojang-pattern-diagram {
 	width: 200px;
 	text-align: center;
-	grid-row-start: 2;
-	grid-row-end: 4;
+	grid-row-start: 3;
+	grid-row-end: 5;
 	padding-bottom: 10px;
 }
 
@@ -86,7 +97,7 @@
 
 .dojang-pattern-description {
 	grid-column-start: 2;
-	grid-column-end: 3;
+	grid-column-end: 3;	
 }
 
 .dojang-pattern-description p,
@@ -115,7 +126,7 @@
 		grid-template-rows: repeat(minmax(100px, auto));
 	}
 
-	.dojang-patter-grid h2 {
+	.dojang-pattern-grid h2 {
 		grid-row-start: 1;
 		grid-row-end: 2;
 		grid-column-start: 1;
@@ -127,6 +138,7 @@
 		grid-column-start: 1;
 		grid-column-end: 2;
 		margin: 0 auto;
+		padding-top: 15px;
 	}
 	.dojang-pattern-description {
 		grid-row-start: 3;
