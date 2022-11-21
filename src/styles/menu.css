@@ -126,7 +126,7 @@
 		padding-block: 1%;
 		flex-direction: column;
 		opacity: 0.95;
-		z-index: 1;
+		z-index: 3;
 		transition: all 1s;
 		background-color: #212529;
 	}
