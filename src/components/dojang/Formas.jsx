@@ -12,7 +12,7 @@ const Formas = () => {
 				<h1>Formas</h1>
 				{Patterns.map((pattern, index) => {
 					return (
-						<div key={pattern.name} className={`${index % 2 == 0 ? 'odd' : 'even'} dojang-pattern-grid`}>
+						<div key={pattern.name} className={`${index <= 4 ? 'odd' : 'even'} dojang-pattern-grid`}>
 							<h2>{pattern.name}</h2>
 							<div className="dojang-pattern-img">
 								<Image alt={`cinturon de ${pattern.name}`} layout="fill" src={whiteBelt} />

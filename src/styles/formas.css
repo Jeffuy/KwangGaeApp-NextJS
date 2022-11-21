@@ -1,12 +1,21 @@
 .dojang-formas {
-	background-color: #212529;
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 1) 6%,
+		rgba(255, 252, 4, 1) 20%,
+		rgba(0, 255, 41, 1) 33%,
+		rgba(0, 10, 255, 1) 48%,
+		rgba(255, 0, 0, 1) 64%,
+		rgba(0, 0, 0, 1) 75%
+	);
 }
 
 .dojang-formas h1 {
 	text-align: center;
 	margin: 0 auto;
-	color: #f2f2f2;
-	margin-bottom: 10px;
+	color: #212529;
+	border-bottom: 1px solid transparent;
 }
 
 .dojang-pattern-grid {
@@ -20,14 +29,14 @@
 }
 
 .odd {
-	background-color: #848282;
+	/*background-color: #848282;*/
 	border-top: 1px solid #f2f2f2;
 	color: #212529;
-	border-top: 1px solid;
+	border-top: 1px solid transparent;
 }
 
 .even {
-	background-color: #212529;
+	/*background-color: #212529;*/
 	color: #f2f2f2;
 }
 
@@ -97,7 +106,7 @@
 
 .dojang-pattern-description {
 	grid-column-start: 2;
-	grid-column-end: 3;	
+	grid-column-end: 3;
 }
 
 .dojang-pattern-description p,
