@@ -19,12 +19,14 @@ background: linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(253,253,150,1) 
 	padding-right: 10%;
 	padding-bottom: 10px;
 	opacity: 0.2;
-	transition: all 1s;
+	transition: all 0.5s;
 }
 
 .dojang-pattern-grid:hover {
 	opacity: 1;
+	transform : scale(1.1);
 }
+
 
 .odd {
 	/*background-color: #848282;*/
