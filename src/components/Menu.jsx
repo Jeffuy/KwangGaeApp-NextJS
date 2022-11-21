@@ -84,9 +84,9 @@ const Menu = () => {
 					</Link>
 				</div>
 				<div className={`hamburger__menu--item ${show && 'opened'}`}>
-					<Link passHref href="/PatternSelector">
+					<Link passHref href="/Dojang">
 						<a href="/" onClick={() => setShow(false)}>
-							<i className="fas fa-random" /> Selector de Formas
+							<i className="fas fa-random" /> Dojang
 						</a>
 					</Link>
 				</div>
