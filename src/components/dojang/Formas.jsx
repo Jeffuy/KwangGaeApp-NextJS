@@ -9,9 +9,9 @@ const Formas = () => {
 			<NextSeo description="Significados de las formas de Taekwondo ITF" title="Significado de las Formas" />
 			<div className="dojang-formas">
 				<h1>Formas</h1>
-				{Patterns.map((pattern, index) => {
+				{Patterns.map(pattern => {
 					return (
-						<div key={pattern.name} className={`${index % 2 == 0 ? 'odd' : 'even'} dojang-pattern-grid`}>
+						<div key={pattern.name} className={`${pattern.style} dojang-pattern-grid`}>
 							<h2>{pattern.name}</h2>
 							<div className="dojang-pattern-diagram">
 								<h3>Diagrama:</h3>

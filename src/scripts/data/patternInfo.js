@@ -5,30 +5,35 @@ const patterns = [
 		diagram: 'https://i.imgur.com/P4FN4dG.png',
 		description: `Significa literalmente “El Cielo y la Tierra”. En oriente se interpreta como la creación del mundo o el comienzo de la historia humana. Por
 	consiguiente, es la primera forma que ha de aprender un principiante. Esta forma consiste en dos partes similares, una representa el cielo y la otra la tierra`,
+		style: 'dojang-yellowStripe',
 	},
 	{
 		name: 'Dangun',
 		movements: '21',
 		diagram: 'https://i.imgur.com/P4FN4dG.png',
 		description: `En honor al santo del mismo nombre. Dan-Gun es el legendario fundador de Corea en el año 2333 a.C.`,
+		style: 'dojang-yellow',
 	},
 	{
 		name: 'Do-San',
 		movements: '24',
 		diagram: 'https://i.imgur.com/P4FN4dG.png',
 		description: `Es el seudónimo del patriota Ahn Chang-Ho (1876-1938), los 24 movimientos representan su vida, la cual dedicó a promover la educación de Corea y su independencia.`,
+		style: 'dojang-greenStripe',
 	},
 	{
 		name: 'WonHyo',
 		movements: '28',
 		diagram: 'https://i.imgur.com/P4FN4dG.png',
 		description: `Fue el monje que introdujo el Budismo en la dinastía Silla en el año 686 d.C.`,
+		style: 'dojang-green',
 	},
 	{
 		name: 'Yulgok',
 		movements: '38',
 		diagram: 'https://i.imgur.com/P4FN4dG.png',
 		description: `Es el seudónimo del gran filósofo y maestro Yil (1536-1584), que fue apodado el Confucio de Corea. Los 38 movimientos de esta forma hacen referencia a su lugar de nacimiento a 38º de latitud. El diagrama representa al “Maestro”.`,
+		style: 'dojang-blueStripe',
 	},
 ];
 
