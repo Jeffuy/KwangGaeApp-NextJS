@@ -1,6 +1,7 @@
 .dojang-formas {
 	background: rgb(255,255,255);
 background: linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(253,253,150,1) 20%, rgba(189,236,182,1) 33%, rgba(117,148,246,1) 48%, rgba(255,124,124,1) 64%, rgba(33,37,41,1) 75%);
+overflow-x: hidden;
 }
 
 .dojang-formas h1 {
@@ -25,6 +26,7 @@ background: linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(253,253,150,1) 
 .dojang-pattern-grid:hover {
 	opacity: 1;
 	transform : scale(1.1);
+
 }
 
 
