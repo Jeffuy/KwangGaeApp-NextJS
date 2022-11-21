@@ -18,7 +18,7 @@ background: linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(253,253,150,1) 
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-bottom: 10px;
-	opacity: 1;
+	opacity: 0.2;
 	transition: all 1s;
 }
 
