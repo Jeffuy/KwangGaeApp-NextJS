@@ -84,9 +84,9 @@ const Menu = () => {
 					</Link>
 				</div>
 				<div className={`hamburger__menu--item ${show && 'opened'}`}>
-					<Link passHref href="/Dojang">
+					<Link passHref href="/PatternSelector">
 						<a href="/" onClick={() => setShow(false)}>
-							<i className="fas fa-store-alt" /> Dojang
+							<i className="fas fa-random" /> Selector de Formas
 						</a>
 					</Link>
 				</div>
@@ -98,9 +98,9 @@ const Menu = () => {
 					</Link>
 				</div>
 				<div className={`hamburger__menu--item ${show && 'opened'}`}>
-					<Link passHref href="/Pattern">
+					<Link passHref href="/Dojang">
 						<a href="/" onClick={() => setShow(false)}>
-							<i className="fas fa-calculator" /> Arbitraje de Forma
+							<i className="fas fa-store-alt" /> Dojang
 						</a>
 					</Link>
 				</div>
