@@ -2,7 +2,7 @@ import React from 'react';
 import { NextSeo } from 'next-seo';
 import Patterns from '@scripts/data/patternInfo';
 import Image from 'next/image';
-import whiteBelt from '@images/white-belt.png';
+import yellowStripe from '@images/yellow-stripe.png';
 
 const Formas = () => {
 	return (
@@ -15,7 +15,7 @@ const Formas = () => {
 						<div key={pattern.name} className={`${index <= 4 ? 'odd' : 'even'} dojang-pattern-grid`}>
 							<h2>{pattern.name}</h2>
 							<div className="dojang-pattern-img">
-								<Image alt={`cinturon de ${pattern.name}`} layout="fill" src={whiteBelt} />
+								<Image alt={`cinturon de ${pattern.name}`} layout="fill" src={yellowStripe} />
 							</div>
 							<div className="dojang-pattern-diagram">
 								<h3>Diagrama:</h3>
