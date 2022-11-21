@@ -1,22 +1,23 @@
 .cintos {
 	display: flex;
 	flex-direction: column;
-	background-color: #596296
+	background-color: #212529;
+	margin-bottom: -1px;
 }
-
 .cintos h1 {
 	text-align: center;
 	margin-bottom: 10px;
-	color: #000;
+	color: aliceblue;
 }
 
 .cintos-grid {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(1, 1fr);
 	align-items: center;
+	z-index: 2;
 }
 
 
@@ -26,7 +27,7 @@
 }
 
 .cintos-grid p {
-	padding-right: 20px;
+	padding: 20px;
 	text-align: justify;
 }
 
@@ -43,30 +44,58 @@
 
 .cintos-white {
 	color: #212529;
+	background-color: #9ba2a8;
+	margin-bottom: -5px;
+}
+
+.cintos-green {
+	background-color: #144314;
+	border: 1px solid #144314;
+}
+
+.cintos-black {
+	color: #fff;
+	background-color: #212529;
+	margin-top: 6px;
+}
+
+.cintos-red {
+	background-color: #ec5151;
+}
+
+.cintos-yellow {
+	background-color: #f0ad4e;
+	border-top: 1px solid #f0ad4e;
+	margin-top: 4px;
+	margin-bottom: -5px;
 }
 
 .cintos-wave-container {
-	margin-top: 5px;
-	width: 80%;
+	width: 100%;
 	align-self: center;
 	justify-self: center;
 	margin-bottom: -5px;
 }
 
+.cintos-blue {
+	background-color: #2341e8;
+	border-top: 1px solid #2341e8;
+	color: #fff;
+	margin-top: 4px;
+	margin-bottom: -5px;
+}
+
 .reverse {
-	margin-top: -6px;
+	margin-top: -5px;
 	rotate: 180deg;
-	margin-bottom: 10px;
-	
 }
 
 .last {
-	margin-bottom: 50px;
+	margin-bottom: 25px;
 }
 
 .cintos-grid-image-container:hover {
 	opacity:  1;
-
 }
 
 @media (max-width: 768px) {

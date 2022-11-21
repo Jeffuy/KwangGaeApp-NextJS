@@ -1,6 +1,8 @@
 import { useContext } from 'react';
-import Cintos from '@components/dojang/Cintos';
 import Menu from '@components/dojang/Menu';
+import Cintos from '@components/dojang/Cintos';
+import Formas from '@components/dojang/Formas';
+
 import { DojangContext } from '@context/DojangContext';
 
 const DojangContainer = () => {
@@ -9,7 +11,8 @@ const DojangContainer = () => {
 	return (
 		<>
 			<Menu />
-			{selected && <Cintos />}
+			{selected != 'formas' && <Cintos />}
+			{selected == 'formas' && <Formas />}
 		</>
 	);
 };
