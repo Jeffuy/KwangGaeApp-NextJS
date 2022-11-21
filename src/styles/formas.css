@@ -9,6 +9,7 @@ overflow-x: hidden;
 	margin: 0 auto;
 	color: #212529;
 	border-bottom: 1px solid transparent;
+	margin-bottom: 15px;
 }
 
 .dojang-pattern-grid {

@@ -3,8 +3,19 @@ import { NextSeo } from 'next-seo';
 import Patterns from '@scripts/data/patternInfo';
 import Image from 'next/image';
 import yellowStripe from '@images/yellow-stripe.png';
+import greenStripe from '@images/green-stripe.png';
+import blueStripe from '@images/blue-stripe.png';
+import redStripe from '@images/red-stripe.png';
+import blackStripe from '@images/black-stripe.png';
+import yellowBelt from '@images/yellow-belt.png';
+import greenBelt from '@images/green-belt.png';
+import blueBelt from '@images/blue-belt.png';
+import redBelt from '@images/red-belt.png';
+import blackBelt from '@images/black-belt.png';
 
 const Formas = () => {
+	const belts = [yellowStripe, yellowBelt, greenStripe, greenBelt, blueStripe, blueBelt, redStripe, redBelt, blackStripe, blackBelt, blackBelt, blackBelt];
+
 	return (
 		<>
 			<NextSeo description="Significados de las formas de Taekwondo ITF" title="Significado de las Formas" />
@@ -15,7 +26,7 @@ const Formas = () => {
 						<div key={pattern.name} className={`${index <= 4 ? 'odd' : 'even'} dojang-pattern-grid`}>
 							<h2>{pattern.name}</h2>
 							<div className="dojang-pattern-img">
-								<Image alt={`cinturon de ${pattern.name}`} layout="fill" src={yellowStripe} />
+								<Image alt={`cinturon de ${pattern.name}`} layout="fill" src={belts[index]} />
 							</div>
 							<div className="dojang-pattern-diagram">
 								<h3>Diagrama:</h3>
