@@ -1,7 +1,15 @@
 .dojang-formas {
-	background: rgb(255,255,255);
-background: linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(253,253,150,1) 20%, rgba(189,236,182,1) 33%, rgba(117,148,246,1) 48%, rgba(255,124,124,1) 64%, rgba(33,37,41,1) 75%);
-overflow-x: hidden;
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 1) 6%,
+		rgba(253, 253, 150, 1) 20%,
+		rgba(189, 236, 182, 1) 33%,
+		rgba(117, 148, 246, 1) 48%,
+		rgba(255, 124, 124, 1) 64%,
+		rgba(33, 37, 41, 1) 75%
+	);
+	overflow-x: hidden;
 }
 
 .dojang-formas h1 {
@@ -24,12 +32,12 @@ overflow-x: hidden;
 	transition: all 0.5s;
 }
 
+
+
 .dojang-pattern-grid:hover {
 	opacity: 1;
-	transform : scale(1.1);
-
+	transform: scale(1.1);
 }
-
 
 .odd {
 	/*background-color: #848282;*/
@@ -76,8 +84,9 @@ overflow-x: hidden;
 }
 .dojang-pattern-grid h2 {
 	grid-column-start: 1;
-	grid-column-end: 3;
+	grid-column-end: 4;
 	text-align: center;
+	font-size: 2rem;
 }
 
 .dojang-pattern-img {
@@ -86,7 +95,7 @@ overflow-x: hidden;
 	width: 100px;
 	height: 50px;
 	grid-column-start: 1;
-	grid-column-end: 3;
+	grid-column-end: 4;
 	grid-row: 2;
 	margin-top: -20px;
 	rotate: 3deg;
@@ -97,6 +106,8 @@ overflow-x: hidden;
 	text-align: center;
 	grid-row-start: 3;
 	grid-row-end: 5;
+	grid-column-start: 1;
+	grid-column-end: 3;
 	padding-bottom: 10px;
 }
 
@@ -108,8 +119,16 @@ overflow-x: hidden;
 }
 
 .dojang-pattern-description {
-	grid-column-start: 2;
-	grid-column-end: 3;
+	grid-column-start: 3;
+	grid-column-end: 4;
+	padding-left: 20px;
+}
+
+.dojang-pattern-movements {
+	grid-row-start: 3;
+	grid-column-start: 3;
+	grid-column-end: 4;
+	padding-left: 20px;
 }
 
 .dojang-pattern-description p,
@@ -117,26 +136,14 @@ overflow-x: hidden;
 	text-align: justify;
 }
 
-.dojang-pattern-description h3,
-.dojang-pattern-movements h3 {
-	text-align: center;
-}
-
-.dojang-pattern-movements {
-	grid-row-start: 3;
-	grid-column-start: 2;
-	grid-column-end: 3;
-}
-
-.dojang-pattern-movements p {
-	text-align: center;
-}
-
 @media screen and (max-width: 600px) {
 	.dojang-pattern-grid {
-		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(minmax(100px, auto));
 		opacity: 1;
+		padding-top: 40px;
+	}
+
+	.dojang-pattern-grid:last-of-type {
+		padding-bottom: 40px;
 	}
 
 	.dojang-pattern-grid h2 {
@@ -151,7 +158,7 @@ overflow-x: hidden;
 		grid-column-start: 1;
 		grid-column-end: 2;
 		margin: 0 auto;
-		padding-top: 15px;
+		padding-top: 25px;
 	}
 	.dojang-pattern-description {
 		grid-row-start: 3;
@@ -159,6 +166,9 @@ overflow-x: hidden;
 		grid-column-start: 1;
 		grid-column-end: 2;
 		margin: 0 auto;
+		padding-left: 0;
+		margin-top: -15px;
+		margin-bottom: -15px;
 	}
 	.dojang-pattern-movements {
 		grid-row-start: 4;
@@ -166,5 +176,13 @@ overflow-x: hidden;
 		grid-column-start: 1;
 		grid-column-end: 2;
 		margin: 0 auto;
+		padding-left: 0;
+	}
+
+	.dojang-pattern-description h3,
+	.dojang-pattern-movements h3,
+	.dojang-pattern-movements p {
+		text-align: center;
+		margin-bottom: -10px;
 	}
 }
