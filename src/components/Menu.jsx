@@ -40,7 +40,7 @@ const Menu = () => {
 						<div className="menu__container__menu--item">
 							<Link passHref href="/Dojang">
 								<a href="/">
-									<i className="fas fa-calculator" /> Dojang
+									<i className="fas fa-store-alt" /> Dojang
 								</a>
 							</Link>
 						</div>
@@ -86,7 +86,7 @@ const Menu = () => {
 				<div className={`hamburger__menu--item ${show && 'opened'}`}>
 					<Link passHref href="/Dojang">
 						<a href="/" onClick={() => setShow(false)}>
-							<i className="fas fa-random" /> Dojang
+							<i className="fas fa-store-alt" /> Dojang
 						</a>
 					</Link>
 				</div>
