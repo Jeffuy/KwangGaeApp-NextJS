@@ -118,6 +118,11 @@
 	height: 150px;
 }
 
+.dojang-pattern-diagram-img img {
+	border-radius: 50%;
+
+}
+
 .dojang-pattern-description {
 	grid-column-start: 3;
 	grid-column-end: 4;
