@@ -12,9 +12,11 @@ import greenBelt from '@images/green-belt.png';
 import blueBelt from '@images/blue-belt.png';
 import redBelt from '@images/red-belt.png';
 import blackBelt from '@images/black-belt.png';
+import blackBelt1 from '@images/black-belt1.png';
+import blackBelt2 from '@images/black-belt2.png';
 
 const Formas = () => {
-	const belts = [yellowStripe, yellowBelt, greenStripe, greenBelt, blueStripe, blueBelt, redStripe, redBelt, blackStripe, blackBelt, blackBelt, blackBelt];
+	const belts = [yellowStripe, yellowBelt, greenStripe, greenBelt, blueStripe, blueBelt, redStripe, redBelt, blackStripe, blackBelt, blackBelt1, blackBelt2];
 
 	return (
 		<>
