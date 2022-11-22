@@ -2,12 +2,12 @@
 	background: rgb(255, 255, 255);
 	background: linear-gradient(
 		180deg,
-		rgba(255, 255, 255, 1) 6%,
-		rgba(253, 253, 150, 1) 20%,
-		rgba(189, 236, 182, 1) 33%,
-		rgba(117, 148, 246, 1) 48%,
-		rgba(255, 124, 124, 1) 64%,
-		rgba(33, 37, 41, 1) 75%
+		rgba(255, 255, 255, 1) 0%,
+		rgba(253, 253, 150, 1) 8%,
+		rgba(189, 236, 182, 1) 15%,
+		rgba(117, 148, 246, 1) 23%,
+		rgba(255, 124, 124, 1) 32%,
+		rgba(33, 37, 41, 1) 38%
 	);
 	overflow-x: hidden;
 }
@@ -31,8 +31,6 @@
 	opacity: 0.2;
 	transition: all 0.5s;
 }
-
-
 
 .dojang-pattern-grid:hover {
 	opacity: 1;
@@ -120,7 +118,6 @@
 
 .dojang-pattern-diagram-img img {
 	border-radius: 50%;
-
 }
 
 .dojang-pattern-description {
