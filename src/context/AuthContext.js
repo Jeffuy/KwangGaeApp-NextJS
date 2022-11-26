@@ -1,22 +1,36 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/firebase';
+import { auth, db } from '../firebase/firebase.js';
+import { doc, getDoc } from 'firebase/firestore';
 import { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState({});
+	const [userData, setUserData] = useState({});
+
+	const getUserData = async () => {
+		if (currentUser?.uid) {
+			const res = await getDoc(doc(db, 'users', currentUser.uid));
+			if (res.exists()) {
+				setUserData(res.data());
+			} else {
+				console.log('No such document!');
+			}
+		}
+	};
 
 	useEffect(() => {
 		const unsub = onAuthStateChanged(auth, user => {
 			setCurrentUser(user);
 			console.log(user);
+			getUserData();
 		});
 
 		return () => {
 			unsub();
 		};
-	}, []);
+	}, [currentUser]);
 
-	return <AuthContext.Provider value={{ currentUser }}>{children}</AuthContext.Provider>;
+	return <AuthContext.Provider value={{ currentUser: currentUser, userData: userData }}>{children}</AuthContext.Provider>;
 };
