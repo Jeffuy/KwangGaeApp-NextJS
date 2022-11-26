@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { AuthContextProvider } from '@context/AuthContext';
 import * as gtag from '../lib/gtag';
 import Layout from '@containers/Layout';
 import '@styles/home.css';
@@ -37,9 +38,11 @@ function MyApp({ Component, pageProps }) {
 				<meta charSet="UTF-8" />
 				<meta content="IE=edge" httpEquiv="X-UA-Compatible" />
 			</Head>
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+			<AuthContextProvider>
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</AuthContextProvider>
 		</>
 	);
 }

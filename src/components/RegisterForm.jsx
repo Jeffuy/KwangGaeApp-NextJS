@@ -1,10 +1,14 @@
-import React from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { useRouter } from 'next/router';
 //import { ref } from 'firebase/storage';
 import { auth, db } from '../firebase/firebase.js';
 import { doc, setDoc } from 'firebase/firestore';
 
 const RegisterForm = () => {
+	const router = useRouter();
+	const [error, setError] = useState(false);
+
 	const handleSubmit = async e => {
 		e.preventDefault();
 		const displayName = e.target[0].value;
@@ -17,16 +21,22 @@ const RegisterForm = () => {
 			return;
 		} else {
 			try {
-				const { user } = await createUserWithEmailAndPassword(auth, email, password);
-				const userRef = doc(db, 'users', user.uid);
+				const res = await createUserWithEmailAndPassword(auth, email, password);
+
+				const userRef = doc(db, 'users', res.user.uid);
 				const userDoc = {
-					uid: user.uid,
+					uid: res.user.uid,
 					displayName,
 					email,
 					createdAt: new Date(),
 				};
+				await updateProfile(res.user, {
+					displayName,
+				});
 				await setDoc(userRef, userDoc);
+				router.push('/dashboard');
 			} catch (error) {
+				setError(true);
 				console.error(error);
 			}
 		}
@@ -47,6 +57,7 @@ const RegisterForm = () => {
 						<label htmlFor="password2">Confirm Password</label>
 						<input id="password2" name="password2" placeholder="Confirm Password" type="password" />
 						<button>Register</button>
+						{error && <span>Something went wrong</span>}
 					</div>
 				</form>
 				<p>
