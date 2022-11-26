@@ -28,7 +28,7 @@ const Dashboard = () => {
 					<p>
 						Tu avatar es <Image priority alt={userData.avatarUrl} height={100} src={userData.avatarUrl} width={100} />
 					</p>
-					<p> Eres miembro desde {userData.createdAt.toDate().toLocaleDateString()} </p>
+					<p> Eres miembro desde el {userData.createdAt.toDate().toLocaleDateString('es-ES')} </p>
 					<button onClick={() => logout()}> Logout </button>
 				</div>
 			) : (
