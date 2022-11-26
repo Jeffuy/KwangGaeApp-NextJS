@@ -1,11 +1,42 @@
 import React from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+//import { ref } from 'firebase/storage';
+import { auth, db } from '../firebase/firebase.js';
+import { doc, setDoc } from 'firebase/firestore';
 
 const RegisterForm = () => {
+	const handleSubmit = async e => {
+		e.preventDefault();
+		const displayName = e.target[0].value;
+		const email = e.target[1].value;
+		const password = e.target[2].value;
+		const confirmPassword = e.target[3].value;
+
+		if (password !== confirmPassword) {
+			alert('Passwords do not match');
+			return;
+		} else {
+			try {
+				const { user } = await createUserWithEmailAndPassword(auth, email, password);
+				const userRef = doc(db, 'users', user.uid);
+				const userDoc = {
+					uid: user.uid,
+					displayName,
+					email,
+					createdAt: new Date(),
+				};
+				await setDoc(userRef, userDoc);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+	};
+
 	return (
 		<>
 			<section className="register">
 				<h1>Register</h1>
-				<form action="">
+				<form onSubmit={handleSubmit}>
 					<div className="register-form-group">
 						<label htmlFor="username">Username:</label>
 						<input id="username" name="username" placeholder="Username" type="text" />
@@ -15,7 +46,7 @@ const RegisterForm = () => {
 						<input id="password" name="password" placeholder="Password" type="password" />
 						<label htmlFor="password2">Confirm Password</label>
 						<input id="password2" name="password2" placeholder="Confirm Password" type="password" />
-						<button type="submit">Register</button>
+						<button>Register</button>
 					</div>
 				</form>
 				<p>

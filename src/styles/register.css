@@ -24,7 +24,7 @@
 	text-align: center;
 }
 
-.register button[type="submit"] {
+.register button {
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -49,4 +49,10 @@
 	color: black;
 	text-decoration: none;
 	font-weight: bold;
+}
+
+@media (max-width: 768px) {
+	.register {
+		width: 80%
+	}
 }
