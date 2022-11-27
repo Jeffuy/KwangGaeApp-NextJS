@@ -51,25 +51,29 @@ const Dashboard = () => {
 					</p>
 				) : (
 					<>
-						<p style={{ display: 'inline' }}>No tienes puntos por desafíos completados. </p>
+						<p style={{ display: 'inline-block' }}>No tienes puntos por desafíos completados. </p>
 
 						<Link passHref href="/Challenge">
-							<p style={{ cursor: 'pointer', display: 'inline' }}>¡Comienza a completar desafíos!</p>
+							<button>
+								<a style={{ cursor: 'pointer', display: 'inline-block', margin: '10px' }}>¡Comienza a completar desafíos!</a>
+							</button>
 						</Link>
 					</>
 				)}
-				<button style={{ display: 'block' }} onClick={logout}>
+				<button style={{ display: 'block', margin: '15px' }} onClick={logout}>
 					Logout
 				</button>
 
 				<Link passhref href="/test">
-					<a href="">Test</a>
+					<button>
+						<a href="">Test</a>
+					</button>
 				</Link>
 
 				<h3>Rankings</h3>
 				{showRanking ? (
 					<>
-						<h2>Ranking de puntos</h2>
+						<h2>Ranking de puntos de Challenges</h2>
 						<div className="dashboard-ranking">
 							<div className="dashboard-ranking-first">
 								<p>Posición</p>
