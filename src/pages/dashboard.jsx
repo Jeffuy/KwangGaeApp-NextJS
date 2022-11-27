@@ -7,13 +7,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const Dashboard = () => {
-	const { user, loading, logout, userData, userDataLoading } = useContext(AuthContext);
+	const { user, loading, logout, userData, userDataLoading, userPoints, userPointsLoading } = useContext(AuthContext);
 
 	console.log(userData);
 
 	const router = useRouter();
 
-	if (loading || userDataLoading || !userData) {
+	if (loading || userDataLoading || !userData || userPointsLoading) {
 		setTimeout(() => {
 			router.push('/login');
 		}, 5000);
@@ -34,9 +34,28 @@ const Dashboard = () => {
 				</p>
 				<p>
 					Eres miembro desde el {userData.createdAt.toDate().toLocaleDateString('es-ES')} a las{' '}
-					{userData.createdAt.toDate().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
+					{userData.createdAt.toDate().toLocaleTimeString('es-ES', {
+						hour: '2-digit',
+						minute: '2-digit',
+					})}
 				</p>
-				<button onClick={logout}> Logout </button>
+
+				{userPoints?.points ? (
+					<p>
+						Tienes <b>{userPoints.points}</b> puntos por desafíos completados!
+					</p>
+				) : (
+					<>
+						<p style={{ display: 'inline' }}>No tienes puntos por desafíos completados. </p>
+
+						<Link passHref href="/Challenge">
+							<p style={{ cursor: 'pointer', display: 'inline' }}>¡Comienza a completar desafíos!</p>
+						</Link>
+					</>
+				)}
+				<button style={{ display: 'block' }} onClick={logout}>
+					Logout
+				</button>
 
 				<Link href="/test">
 					<p>Test</p>

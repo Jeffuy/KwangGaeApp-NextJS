@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import React, { createContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import useLocalStorage from '@hooks/useLocalStorage';
+import { AuthContext } from './AuthContext';
 import { challengesList } from '@scripts/data/challengeList';
 
 const ChallengesContext = createContext();
 
 function ChallengesProvider(props) {
+	const { user, updateUserPoints } = useContext(AuthContext);
+
 	if (typeof window !== 'undefined') {
 		const { item: challenges, saveItem: saveChallenges, restartItem: restartChallenges } = useLocalStorage('activeChallenges', []);
 
@@ -21,8 +24,10 @@ function ChallengesProvider(props) {
 			saveChallenges(newChallenges);
 			if (newChallenges[challengeIndex].completed) {
 				savePoints(points);
+				updateUserPoints(points, user.uid);
 			} else {
 				savePoints(-points);
+				updateUserPoints(-points, user.uid);
 			}
 		};
 
