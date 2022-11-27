@@ -28,7 +28,9 @@ function useLocalStorage(itemName, initialValue) {
 	const restartItem = () => {
 		localStorage.setItem(itemName, initialValue);
 		setItems(initialValue);
-		updateUserPoints(-5000, user.uid);
+		if (user?.uid) {
+			updateUserPoints(-5000, user.uid);
+		}
 	};
 
 	const [item, setItems] = useState(parsedItem);

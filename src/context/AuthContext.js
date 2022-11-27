@@ -1,13 +1,15 @@
 import { auth, db } from '../firebase/firebase.js';
-import { doc, setDoc } from 'firebase/firestore';
-import { createContext } from 'react';
+import { doc, setDoc, collection, getDoc } from 'firebase/firestore';
+import { createContext, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { useDocumentData, useCollectionData } from 'react-firebase-hooks/firestore';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 	const [user, loading] = useAuthState(auth);
+
+	const [results, setResults] = useState([]);
 
 	// leer la info del usuario de firestore
 
@@ -19,7 +21,26 @@ export const AuthContextProvider = ({ children }) => {
 		snapshotListenOptions: { includeMetadataChanges: true },
 	});
 
-	const updateUserPoints = async (points, uid) => {
+	const [userChallenges, userChallengesLoading, userChallengesError] = useCollectionData(collection(db, 'userPoints'), {
+		snapshotListenOptions: { includeMetadataChanges: true },
+	});
+
+	const getRankings = async () => {
+		setResults([]);
+		for (let i = 0; i < userChallenges.length; i++) {
+			console.log(results);
+			console.log(userChallenges);
+			const user = await getDoc(doc(db, 'users', userChallenges[i].uid));
+			setResults(prev => [...prev, { ...user.data(), points: userChallenges[i].points }]);
+		}
+	};
+
+	const sortRankings = async () => {
+		await getRankings();
+		setResults(prev => prev.sort((a, b) => b.points - a.points));
+	};
+
+	async function updateUserPoints(points, uid) {
 		if (!userPoints?.points) {
 			await setDoc(doc(db, 'userPoints', uid), {
 				uid: uid,
@@ -33,7 +54,7 @@ export const AuthContextProvider = ({ children }) => {
 				points: points,
 			});
 		}
-	};
+	}
 
 	console.log(userData);
 
@@ -42,7 +63,25 @@ export const AuthContextProvider = ({ children }) => {
 	};
 
 	return (
-		<AuthContext.Provider value={{ user, loading, logout, userData, userDataLoading, userDataError, userPoints, userPointsLoading, userPointsError, updateUserPoints }}>
+		<AuthContext.Provider
+			value={{
+				user,
+				loading,
+				logout,
+				userData,
+				userDataLoading,
+				userDataError,
+				userPoints,
+				userPointsLoading,
+				userPointsError,
+				updateUserPoints,
+				userChallenges,
+				results,
+				sortRankings,
+				userChallengesError,
+				userChallengesLoading,
+			}}
+		>
 			{children}
 		</AuthContext.Provider>
 	);

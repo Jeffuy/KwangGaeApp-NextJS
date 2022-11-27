@@ -24,10 +24,15 @@ function ChallengesProvider(props) {
 			saveChallenges(newChallenges);
 			if (newChallenges[challengeIndex].completed) {
 				savePoints(points);
-				updateUserPoints(points, user.uid);
+
+				if (user?.uid) {
+					updateUserPoints(points, user.uid);
+				}
 			} else {
 				savePoints(-points);
-				updateUserPoints(-points, user.uid);
+				if (user?.uid) {
+					updateUserPoints(-points, user.uid);
+				}
 			}
 		};
 
