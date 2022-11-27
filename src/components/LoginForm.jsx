@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '@context/AuthContext.js';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase.js';
 import Link from 'next/link';
@@ -6,6 +7,7 @@ import { useRouter } from 'next/router';
 
 const LoginForm = () => {
 	const router = useRouter();
+	const { user, loading } = useContext(AuthContext);
 
 	const [error, setError] = useState(false);
 
@@ -15,12 +17,21 @@ const LoginForm = () => {
 		const password = e.target[1].value;
 		console.log(email, password);
 		try {
-			await signInWithEmailAndPassword(auth, email, password);
+			const result = await signInWithEmailAndPassword(auth, email, password);
+			console.log(result);
 			router.push('/dashboard');
 		} catch (err) {
 			setError(true);
 		}
 	};
+
+	if (loading) {
+		return <div>Loading...</div>;
+	}
+
+	if (user) {
+		router.push('/dashboard');
+	}
 
 	return (
 		<div className="formContainer">
@@ -37,6 +48,10 @@ const LoginForm = () => {
 					¿No tienes una cuenta? <Link href="/register">Registrate</Link>
 				</p>
 			</div>
+
+			<Link href="/test">
+				<p>Test</p>
+			</Link>
 		</div>
 	);
 };

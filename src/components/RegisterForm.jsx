@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '@context/AuthContext.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
 //import { ref } from 'firebase/storage';
 import { auth, db } from '../firebase/firebase.js';
 import { doc, setDoc } from 'firebase/firestore';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const RegisterForm = () => {
+	const { user, loading } = useContext(AuthContext);
+	const [clicked, setClicked] = useState(false);
+
 	const router = useRouter();
 	const [error, setError] = useState(false);
 	const [avatarUrl, setAvatarUrl] = useState('');
@@ -27,6 +32,7 @@ const RegisterForm = () => {
 			return;
 		} else {
 			try {
+				setClicked(true);
 				const res = await createUserWithEmailAndPassword(auth, email, password);
 
 				// const userRef = doc(db, 'users', res.user.uid);
@@ -55,9 +61,18 @@ const RegisterForm = () => {
 			} catch (error) {
 				setError(true);
 				console.error(error);
+				setClicked(false);
 			}
 		}
 	};
+
+	if (loading) {
+		return <div>Loading...</div>;
+	}
+
+	if (user) {
+		router.push('/dashboard');
+	}
 
 	return (
 		<>
@@ -91,7 +106,11 @@ const RegisterForm = () => {
 								<input name="avatar" type="radio" value="https://i.imgur.com/ER2y2us.png" onClick={handleAvatarUrl} />
 							</div>
 						</div>
-						<button>Register</button>
+						{error && <p className="error">Something went wrong</p>}
+						<button disabled={clicked} type="submit">
+							{clicked ? 'Loading...' : 'Register'}
+						</button>
+
 						{error && <span>Something went wrong</span>}
 					</div>
 				</form>
@@ -99,6 +118,10 @@ const RegisterForm = () => {
 					Already have an account? <a href="/login">Login</a>
 				</p>
 			</section>
+			{/* LINK TO TEST	 */}
+			<Link href="/test">
+				<p>Test</p>
+			</Link>
 		</>
 	);
 };

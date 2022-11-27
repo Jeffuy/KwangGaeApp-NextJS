@@ -1,51 +1,25 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth, db } from '../firebase/firebase.js';
-import { doc, getDoc } from 'firebase/firestore';
-import { createContext, useState, useEffect } from 'react';
+import { doc } from 'firebase/firestore';
+import { createContext } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-	const [currentUser, setCurrentUser] = useState({});
-	const [userData, setUserData] = useState({});
-	const [isLogged, setIsLogged] = useState(false);
+	const [user, loading] = useAuthState(auth);
 
-	const getUserData = async () => {
-		if (currentUser?.uid) {
-			const res = await getDoc(doc(db, 'users', currentUser.uid));
-			if (res.exists()) {
-				setUserData(res.data());
-				setIsLogged(true);
-			} else {
-				console.log('No such document!');
-			}
-		}
+	// leer la info del usuario de firestore
+
+	const [userData, userDataLoading, userDataError] = useDocumentData(user ? doc(db, 'users', user.uid) : null, {
+		snapshotListenOptions: { includeMetadataChanges: true },
+	});
+
+	console.log(userData);
+
+	const logout = () => {
+		auth.signOut();
 	};
 
-	useEffect(() => {
-		const unsub = onAuthStateChanged(auth, user => {
-			setCurrentUser(user);
-			console.log(user);
-			getUserData();
-		});
-
-		return () => {
-			unsub();
-		};
-	}, [currentUser]);
-
-	const firebaseLogout = () => {
-		signOut(auth)
-			.then(() => {
-				setCurrentUser({});
-			})
-			.then(() => {
-				setIsLogged(false);
-			})
-			.catch(error => {
-				console.log(error);
-			});
-	};
-
-	return <AuthContext.Provider value={{ currentUser: currentUser, userData: userData, firebaseLogout: firebaseLogout, isLogged }}>{children}</AuthContext.Provider>;
+	return <AuthContext.Provider value={{ user, loading, logout, userData, userDataLoading, userDataError }}>{children}</AuthContext.Provider>;
 };
