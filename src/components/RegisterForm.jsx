@@ -59,8 +59,13 @@ const RegisterForm = () => {
 
 				router.push('/dashboard');
 			} catch (error) {
-				setError(true);
-				console.error(error);
+				if (error.code === 'auth/email-already-in-use') {
+					setError('Email already in use');
+				} else if (error.code === 'auth/invalid-email') {
+					setError('Invalid email');
+				} else if (error.code === 'auth/weak-password') {
+					setError('Password must be at least 6 characters');
+				}
 				setClicked(false);
 			}
 		}
@@ -106,12 +111,10 @@ const RegisterForm = () => {
 								<input name="avatar" type="radio" value="https://i.imgur.com/ER2y2us.png" onClick={handleAvatarUrl} />
 							</div>
 						</div>
-						{error && <p className="error">Something went wrong</p>}
+						{error && <p className="error">{error}</p>}
 						<button disabled={clicked} type="submit">
 							{clicked ? 'Loading...' : 'Register'}
 						</button>
-
-						{error && <span>Something went wrong</span>}
 					</div>
 				</form>
 				<p>
