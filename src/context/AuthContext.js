@@ -28,8 +28,6 @@ export const AuthContextProvider = ({ children }) => {
 	const getRankings = async () => {
 		setResults([]);
 		for (let i = 0; i < userChallenges.length; i++) {
-			console.log(results);
-			console.log(userChallenges);
 			const user = await getDoc(doc(db, 'users', userChallenges[i].uid));
 			setResults(prev => [...prev, { ...user.data(), points: userChallenges[i].points }]);
 		}
@@ -55,8 +53,6 @@ export const AuthContextProvider = ({ children }) => {
 			});
 		}
 	}
-
-	console.log(userData);
 
 	const logout = () => {
 		auth.signOut();

@@ -9,19 +9,24 @@ const LoginForm = () => {
 	const router = useRouter();
 	const { user, loading } = useContext(AuthContext);
 
-	const [error, setError] = useState(false);
+	const [error, setError] = useState('');
 
 	const handleSubmit = async e => {
 		e.preventDefault();
 		const email = e.target[0].value;
 		const password = e.target[1].value;
-		console.log(email, password);
 		try {
+			// eslint-disable-next-line no-unused-vars
 			const result = await signInWithEmailAndPassword(auth, email, password);
-			console.log(result);
 			router.push('/dashboard');
 		} catch (err) {
-			setError(true);
+			if (err.code === 'auth/wrong-password') {
+				setError('Contraseña incorrecta');
+			} else if (err.code === 'auth/user-not-found') {
+				setError('Usuario no encontrado');
+			} else {
+				setError('Error al iniciar sesión');
+			}
 		}
 	};
 
@@ -42,16 +47,15 @@ const LoginForm = () => {
 					<input id="" name="" placeholder="email" type="email" />
 					<input placeholder="password" type="password" />
 					<button>Sign in</button>
-					{error && <span>Something went wrong</span>}
+					{error && <span>{error}</span>}
 				</form>
 				<p>
-					¿No tienes una cuenta? <Link href="/register">Registrate</Link>
+					¿No tienes una cuenta?
+					<Link passHref href="/register">
+						<b>Registrate</b>
+					</Link>
 				</p>
 			</div>
-
-			<Link href="/test">
-				<p>Test</p>
-			</Link>
 		</div>
 	);
 };

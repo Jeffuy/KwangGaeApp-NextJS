@@ -13,10 +13,7 @@ const Dashboard = () => {
 
 	const router = useRouter();
 
-	if (loading || userDataLoading || !userData || userPointsLoading) {
-		setTimeout(() => {
-			router.push('/login');
-		}, 5000);
+	if (loading || userDataLoading || userPointsLoading || userPointsLoading) {
 		return (
 			<>
 				<div>Loading...</div>;
@@ -27,26 +24,26 @@ const Dashboard = () => {
 		);
 	}
 
+	if (!user || !userData) {
+		router.push('/login');
+		return <div>Loading...</div>;
+	}
+
 	const handleShowRankings = async () => {
 		await sortRankings();
 		setShowRanking(true);
 	};
 
-	if (!user) {
-		router.push('/login');
-		return <p>Not logged in</p>;
-	}
-
 	if (user?.uid) {
 		return (
 			<section className="dashboard-main">
-				<h1> Hello {userData.displayName} </h1>
+				<h1> Hello {userData?.displayName} </h1>
 				<p>
-					Tu avatar es <Image priority alt={userData.avatarUrl} height={100} src={userData.avatarUrl} width={100} />
+					Tu avatar es <Image priority alt={userData?.avatarUrl} height={100} src={userData?.avatarUrl} width={100} />
 				</p>
 				<p>
-					Eres miembro desde el {userData.createdAt.toDate().toLocaleDateString('es-ES')} a las{' '}
-					{userData.createdAt.toDate().toLocaleTimeString('es-ES', {
+					Eres miembro desde el {userData?.createdAt.toDate().toLocaleDateString('es-ES')} a las
+					{userData?.createdAt.toDate().toLocaleTimeString('es-ES', {
 						hour: '2-digit',
 						minute: '2-digit',
 					})}
