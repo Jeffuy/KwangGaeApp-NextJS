@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { auth, db } from '../firebase/firebase.js';
 import { doc, setDoc } from 'firebase/firestore';
 import Image from 'next/image';
-// import Link from 'next/link';
+import Link from 'next/link';
 
 const RegisterForm = () => {
 	const { user, loading, updateProfile } = useContext(AuthContext);
@@ -14,10 +14,16 @@ const RegisterForm = () => {
 
 	const router = useRouter();
 	const [error, setError] = useState(false);
+	const [chosenAvatar, setChosenAvatar] = useState(1);
 	const [avatarUrl, setAvatarUrl] = useState('https://i.imgur.com/nmEa4QX.png');
 
 	const handleAvatarUrl = e => {
 		setAvatarUrl(e.target.value);
+		console.log(avatarUrl);
+	};
+
+	const handleChosenAvatar = index => {
+		setChosenAvatar(index);
 	};
 
 	const handleSubmit = async e => {
@@ -72,55 +78,57 @@ const RegisterForm = () => {
 	return (
 		<>
 			<section className="register">
-				<h1>Register</h1>
+				<h1>Crea tu cuenta</h1>
 				<form onSubmit={handleSubmit}>
 					<div className="register-form-group">
-						<label htmlFor="username">Username:</label>
-						<input id="username" name="username" placeholder="Username" type="text" />
-						<label htmlFor="email">Email: </label>
-						<input id="email" name="email" placeholder="Email" type="email" />
-						<label htmlFor="password">Password</label>
-						<input id="password" name="password" placeholder="Password" type="password" />
-						<label htmlFor="password2">Confirm Password</label>
-						<input id="password2" name="password2" placeholder="Confirm Password" type="password" />
+						<div className="register-form-inputs">
+							<label htmlFor="username">Nombre de usuario:</label>
+							<input id="username" name="username" placeholder="Username" type="text" />
+							<label htmlFor="email">Email: </label>
+							<input id="email" name="email" placeholder="Email" type="email" />
+							<label htmlFor="password">Contraseña: </label>
+							<input id="password" name="password" placeholder="Password" type="password" />
+							<label htmlFor="password2">Confirma tu contraseña: </label>
+							<input id="password2" name="password2" placeholder="Confirm Password" type="password" />
+						</div>
 						<div className="register-avatar-boxes">
-							<div className="register-avatar-box">
-								<label onClick={handleAvatarUrl}>
-									<Image alt="avatar1" height={100} src="https://i.imgur.com/nmEa4QX.png" width={100} />
-									<input defaultChecked name="avatar" type="radio" value="https://i.imgur.com/nmEa4QX.png" />
+							<h2>Elige tu avatar:</h2>
+							<div className={`register-avatar-box ${chosenAvatar == 1 && 'register-avatar-choose'}`}>
+								<label onClick={() => handleChosenAvatar(1)}>
+									<Image alt="avatar1" layout="fill" src="https://i.imgur.com/nmEa4QX.png" />
+									<input defaultChecked name="avatar" type="radio" value="https://i.imgur.com/nmEa4QX.png" onClick={handleAvatarUrl} />
 								</label>
 							</div>
-							<div className="register-avatar-box">
-								<label onClick={handleAvatarUrl}>
-									<Image alt="avatar2" height={100} src="https://i.imgur.com/6PZ8U3s.png" width={100} />
-									<input name="avatar" type="radio" value="https://i.imgur.com/6PZ8U3s.png" />
+							<div className={`register-avatar-box ${chosenAvatar == 2 && 'register-avatar-choose'}`}>
+								<label onClick={() => handleChosenAvatar(2)}>
+									<Image alt="avatar2" layout="fill" src="https://i.imgur.com/6PZ8U3s.png" />
+									<input name="avatar" type="radio" value="https://i.imgur.com/6PZ8U3s.png" onClick={handleAvatarUrl} />
 								</label>
 							</div>
-							<div className="register-avatar-box">
-								<label onClick={handleAvatarUrl}>
-									<Image alt="avatar3" height={100} src="https://i.imgur.com/pL2AfZk.png" width={100} />
-									<input name="avatar" type="radio" value="https://i.imgur.com/pL2AfZk.png" />
+							<div className={`register-avatar-box ${chosenAvatar == 3 && 'register-avatar-choose'}`}>
+								<label onClick={() => handleChosenAvatar(3)}>
+									<Image alt="avatar3" layout="fill" src="https://i.imgur.com/pL2AfZk.png" />
+									<input name="avatar" type="radio" value="https://i.imgur.com/pL2AfZk.png" onClick={handleAvatarUrl} />
 								</label>
 							</div>
-							<div className="register-avatar-box">
-								<label onClick={handleAvatarUrl}>
-									<Image alt="avatar4" height={100} src="https://i.imgur.com/ER2y2us.png" width={100} />
-									<input name="avatar" type="radio" value="https://i.imgur.com/ER2y2us.png" />
+							<div className={`register-avatar-box ${chosenAvatar == 4 && 'register-avatar-choose'}`}>
+								<label onClick={() => handleChosenAvatar(4)}>
+									<Image alt="avatar4" layout="fill" src="https://i.imgur.com/ER2y2us.png" />
+									<input name="avatar" type="radio" value="https://i.imgur.com/ER2y2us.png" onClick={handleAvatarUrl} />
 								</label>
 							</div>
 						</div>
-						{error && <p className="error">{error}</p>}
-						{clicked ? <p>Creando tu cuenta...</p> : <button type="submit">Register</button>}
+						{error && <p className="register-form-error">{error}</p>}
+						{clicked ? <p>Creando tu cuenta...</p> : <button type="submit">Registrame!</button>}
 					</div>
 				</form>
 				<p>
-					Already have an account? <a href="/login">Login</a>
+					Ya tienes una cuenta?{'   '}
+					<Link passHref href="/login">
+						<a href="/login">Ingresa</a>
+					</Link>
 				</p>
 			</section>
-			{/* LINK TO TEST
-			<Link href="/test">
-				<p>Test</p>
-			</Link> */}
 		</>
 	);
 };

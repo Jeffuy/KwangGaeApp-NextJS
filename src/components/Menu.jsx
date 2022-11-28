@@ -21,9 +21,9 @@ const Menu = () => {
 					</div>
 					<div className="menu__container__menu">
 						<div className="menu__container__menu--item">
-							<Link passHref href="/">
+							<Link passHref href="/dashboard">
 								<a href="/">
-									<i className="fas fa-home" /> Home
+									<i className="fas fa-home" /> {userData?.avatarUrl ? 'Mi Perfil' : 'Login'}
 								</a>
 							</Link>
 						</div>
