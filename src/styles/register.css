@@ -1,8 +1,7 @@
 .register {
 	background-color: #fff;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #ccc;
+	border: 5px double rgba(13, 65, 164, 0.5);
+	border-radius: 11px;
 	margin: 0 auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
