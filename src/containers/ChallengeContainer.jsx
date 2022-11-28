@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-
 import { ChallengesContext } from '@context/ChallengesContext';
 import ChallengeItem from '@components/challenges/ChallengeItem';
 import ChallengeCounter from '@components/challenges/ChallengeCounter';
 import ChallengeGet from '@components/challenges/ChallengeGet';
 import ChallengeRestart from '@components/challenges/ChallengeRestart';
+import Ranking from '@components/challenges/Ranking';
 
 const ChallengeContainer = () => {
 	const { challenges, onCompleteChallenge, onDeleteChallenge } = useContext(ChallengesContext);
@@ -28,6 +28,7 @@ const ChallengeContainer = () => {
 
 				<ChallengeGet />
 				<ChallengeRestart />
+				<Ranking />
 			</section>
 		</>
 	);
