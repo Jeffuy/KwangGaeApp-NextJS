@@ -1,7 +1,7 @@
 import { auth, db } from '../firebase/firebase.js';
 import { doc, setDoc, collection, getDoc } from 'firebase/firestore';
 import { createContext, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useDocumentData, useCollectionData } from 'react-firebase-hooks/firestore';
 
 export const AuthContext = createContext();
@@ -11,11 +11,11 @@ export const AuthContextProvider = ({ children }) => {
 
 	const [results, setResults] = useState([]);
 
-	// leer la info del usuario de firestore
-
 	const [userData, userDataLoading, userDataError] = useDocumentData(user ? doc(db, 'users', user.uid) : null, {
 		snapshotListenOptions: { includeMetadataChanges: true },
 	});
+
+	const [updateProfile, updating, updateProfileError] = useUpdateProfile(auth);
 
 	const [userPoints, userPointsLoading, userPointsError] = useDocumentData(user ? doc(db, 'userPoints', user.uid) : null, {
 		snapshotListenOptions: { includeMetadataChanges: true },
@@ -27,14 +27,14 @@ export const AuthContextProvider = ({ children }) => {
 
 	const getRankings = async () => {
 		setResults([]);
-		for (let i = 0; i < userChallenges.length; i++) {
+		for (let i = 0; i < userChallenges?.length; i++) {
 			const user = await getDoc(doc(db, 'users', userChallenges[i].uid));
 			setResults(prev => [...prev, { ...user.data(), points: userChallenges[i].points }]);
 		}
+		sortResults();
 	};
 
-	const sortRankings = async () => {
-		await getRankings();
+	const sortResults = async () => {
 		setResults(prev => prev.sort((a, b) => b.points - a.points));
 	};
 
@@ -72,10 +72,13 @@ export const AuthContextProvider = ({ children }) => {
 				userPointsError,
 				updateUserPoints,
 				userChallenges,
+				getRankings,
 				results,
-				sortRankings,
 				userChallengesError,
 				userChallengesLoading,
+				updateProfile,
+				updating,
+				updateProfileError,
 			}}
 		>
 			{children}

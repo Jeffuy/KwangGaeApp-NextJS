@@ -9,12 +9,12 @@ import Image from 'next/image';
 // import Link from 'next/link';
 
 const RegisterForm = () => {
-	const { user, loading } = useContext(AuthContext);
+	const { user, loading, updateProfile } = useContext(AuthContext);
 	const [clicked, setClicked] = useState(false);
 
 	const router = useRouter();
 	const [error, setError] = useState(false);
-	const [avatarUrl, setAvatarUrl] = useState('');
+	const [avatarUrl, setAvatarUrl] = useState('https://i.imgur.com/nmEa4QX.png');
 
 	const handleAvatarUrl = e => {
 		setAvatarUrl(e.target.value);
@@ -35,6 +35,8 @@ const RegisterForm = () => {
 				setClicked(true);
 				const res = await createUserWithEmailAndPassword(auth, email, password);
 
+				await updateProfile({ displayName, photoURL: avatarUrl });
+
 				await setDoc(doc(db, 'users', res.user.uid), {
 					uid: res.user.uid,
 					displayName,
@@ -42,6 +44,7 @@ const RegisterForm = () => {
 					avatarUrl,
 					createdAt: new Date(),
 				});
+
 				router.push('/dashboard');
 			} catch (error) {
 				if (error.code === 'auth/email-already-in-use') {

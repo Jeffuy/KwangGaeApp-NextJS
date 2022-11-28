@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { AuthContext } from '@context/AuthContext';
 
@@ -7,14 +7,39 @@ import { AuthContext } from '@context/AuthContext';
 import Image from 'next/image';
 
 const UserInfo = () => {
-	const { logout, userData, userPoints } = useContext(AuthContext);
+	const { user, logout, userData, userPoints, updateProfile } = useContext(AuthContext);
+
+	const [edit, setEdit] = useState(false);
+
+	const [displayName, setDisplayName] = useState(userData?.displayName);
+
+	const handleSubmit = async () => {
+		const success = await updateProfile({ displayName });
+		if (success) {
+			setEdit(false);
+			console.log(user);
+		}
+	};
 
 	return (
 		<>
 			<div className="dashboard-profile-card">
-				<h1> Hello {userData?.displayName} </h1>
+				{!edit && (
+					<>
+						{user?.displayName != null ? <h1> Hello {user?.displayName} </h1> : <h1> Hello {userData?.displayName} </h1>}
+
+						<p onClick={() => setEdit(true)}>edit</p>
+					</>
+				)}
+				{edit && (
+					<>
+						<input defaultValue={userData?.displayName} name="displayName" placeholder="Nombre" type="text" onChange={e => setDisplayName(e.target.value)} />
+						<button onClick={() => handleSubmit()}>save</button>
+					</>
+				)}
+
 				<div className="dashboard-profile-image">
-					<Image priority alt={userData?.avatarUrl} layout="fill" src={userData?.avatarUrl} />
+					<Image priority alt={user?.photoURL ? user?.photoURL : userData.avatarUrl} height={100} src={user?.photoURL ? user?.photoURL : userData?.avatarUrl} width={100} />
 				</div>
 				<div className="dashboard-profile-grid">
 					<p>Miembro desde:</p>
