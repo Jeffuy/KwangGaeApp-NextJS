@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '@context/AuthContext.js';
+//import { GiHamburgerMenu } from 'react-icons/gi';
+import Image from 'next/image';
 
 import Link from 'next/link';
 
 const Menu = () => {
 	const [show, setShow] = useState(false);
+
+	const { userData } = useContext(AuthContext);
 
 	return (
 		<>
@@ -69,14 +73,43 @@ const Menu = () => {
 					<div className="menu__container__hamburger">
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
-							<GiHamburgerMenu size={30} onClick={() => setShow(!show)} />
+							<div className="hamburger__image--container" onClick={() => setShow(!show)}>
+								<Image alt="imagen de perfil" layout="fill" src={userData ? userData.avatarUrl : 'https://i.imgur.com/uBUfUOx.png'} />
+							</div>
 						</label>
 					</div>
 				</div>
 			</div>
 
 			<div className={`hamburger__menu ${show && 'opened'}`}>
-				<div className={`hamburger__menu--item ${show && 'opened'}`}>
+				{userData ? (
+					<div className={`hamburger__menu--item ${show && 'opened'} hamburger__menu--last-item`}>
+						<Link passHref href="/dashboard">
+							<a href="/dashboard" onClick={() => setShow(false)}>
+								<i className="fas fa-home" /> Mi Perfil
+							</a>
+						</Link>
+					</div>
+				) : (
+					<>
+						<div className={`hamburger__menu--item ${show && 'opened'}`}>
+							<Link passHref href="/login">
+								<a href="/dashboard" onClick={() => setShow(false)}>
+									<i className="fas fa-home" /> Login
+								</a>
+							</Link>
+						</div>
+						<div className={`hamburger__menu--item ${show && 'opened'} hamburger__menu--last-item`}>
+							<Link passHref href="/register">
+								<a href="/register" onClick={() => setShow(false)}>
+									<i className="fas fa-home" /> Registrate
+								</a>
+							</Link>
+						</div>
+					</>
+				)}
+
+				<div className={`hamburger__menu--item ${show && 'opened'} hamburger__menu--first-item`}>
 					<Link passHref href="/">
 						<a href="/" onClick={() => setShow(false)}>
 							<i className="fas fa-home" /> Home

@@ -91,6 +91,16 @@
 		padding-right: 5%;
 	}
 
+	.hamburger__image--container {
+		width: 35px;
+		height: 35px;
+		position: relative;
+	}
+
+	.hamburger__image--container img {
+		border-radius: 50%;
+	}
+
 	/* .hamburger__menu {
 		display: flex;
 		height: 0%;
@@ -122,13 +132,21 @@
 		width: 100%;
 		height: max-content;
 		justify-content: flex-end;
-		padding-inline: 3%;
-		padding-block: 1%;
 		flex-direction: column;
 		opacity: 0.95;
 		z-index: 3;
 		transition: all 1s;
 		background-color: #212529;
+	}
+
+	.hamburger__menu--last-item {
+		padding-bottom: 10px !important;
+		border-bottom:rgba(255, 255, 255, 0.55) 1px solid;
+	}
+
+	.hamburger__menu--first-item {
+		padding-top: 10px !important;
+		border-top:rgba(255, 255, 255, 0.55) 1px solid;
 	}
 
 	.hamburger__checkbox {
@@ -144,7 +162,6 @@
 		width: 100%;
 		height: max-content;
 		justify-content: flex-end;
-		padding-inline: 3%;
 		padding-block: 1%;
 		flex-direction: column;
 		opacity: 1;
