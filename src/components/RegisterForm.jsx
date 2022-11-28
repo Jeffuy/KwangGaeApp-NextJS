@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { auth, db } from '../firebase/firebase.js';
 import { doc, setDoc } from 'firebase/firestore';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 const RegisterForm = () => {
 	const { user, loading } = useContext(AuthContext);
@@ -28,26 +28,12 @@ const RegisterForm = () => {
 		const confirmPassword = e.target[3].value;
 
 		if (password !== confirmPassword) {
-			alert('Passwords do not match');
+			setError('Las contraseñas no coinciden');
 			return;
 		} else {
 			try {
 				setClicked(true);
 				const res = await createUserWithEmailAndPassword(auth, email, password);
-
-				// const userRef = doc(db, 'users', res.user.uid);
-				// const userDoc = {
-				// 	uid: res.user.uid,
-				// 	displayName,
-				// 	email,
-				// 	avatarUrl,
-				// 	createdAt: new Date(),
-				// };
-				// await updateProfile(res.user, {
-				// 	displayName,
-				// 	avatarUrl,
-				// 	createdAt: new Date(),
-				// });
 
 				await setDoc(doc(db, 'users', res.user.uid), {
 					uid: res.user.uid,
@@ -56,15 +42,16 @@ const RegisterForm = () => {
 					avatarUrl,
 					createdAt: new Date(),
 				});
-
 				router.push('/dashboard');
 			} catch (error) {
 				if (error.code === 'auth/email-already-in-use') {
-					setError('Email already in use');
+					setError('El email ya está en uso');
 				} else if (error.code === 'auth/invalid-email') {
-					setError('Invalid email');
+					setError('El email no es válido');
 				} else if (error.code === 'auth/weak-password') {
-					setError('Password must be at least 6 characters');
+					setError('La contraseña debe tener al menos 6 caracteres');
+				} else {
+					setError(error.message);
 				}
 				setClicked(false);
 			}
@@ -95,36 +82,42 @@ const RegisterForm = () => {
 						<input id="password2" name="password2" placeholder="Confirm Password" type="password" />
 						<div className="register-avatar-boxes">
 							<div className="register-avatar-box">
-								<Image alt="avatar1" height={100} src="https://i.imgur.com/nmEa4QX.png" width={100} onClick={handleAvatarUrl} />
-								<input defaultChecked name="avatar" type="radio" value="https://i.imgur.com/nmEa4QX.png" />
+								<label onClick={handleAvatarUrl}>
+									<Image alt="avatar1" height={100} src="https://i.imgur.com/nmEa4QX.png" width={100} />
+									<input defaultChecked name="avatar" type="radio" value="https://i.imgur.com/nmEa4QX.png" />
+								</label>
 							</div>
 							<div className="register-avatar-box">
-								<Image alt="avatar2" height={100} src="https://i.imgur.com/6PZ8U3s.png" width={100} />
-								<input name="avatar" type="radio" value="https://i.imgur.com/6PZ8U3s.png" onClick={handleAvatarUrl} />
+								<label onClick={handleAvatarUrl}>
+									<Image alt="avatar2" height={100} src="https://i.imgur.com/6PZ8U3s.png" width={100} />
+									<input name="avatar" type="radio" value="https://i.imgur.com/6PZ8U3s.png" />
+								</label>
 							</div>
 							<div className="register-avatar-box">
-								<Image alt="avatar3" height={100} src="https://i.imgur.com/pL2AfZk.png" width={100} />
-								<input name="avatar" type="radio" value="https://i.imgur.com/pL2AfZk.png" onClick={handleAvatarUrl} />
+								<label onClick={handleAvatarUrl}>
+									<Image alt="avatar3" height={100} src="https://i.imgur.com/pL2AfZk.png" width={100} />
+									<input name="avatar" type="radio" value="https://i.imgur.com/pL2AfZk.png" />
+								</label>
 							</div>
 							<div className="register-avatar-box">
-								<Image alt="avatar4" height={100} src="https://i.imgur.com/ER2y2us.png" width={100} />
-								<input name="avatar" type="radio" value="https://i.imgur.com/ER2y2us.png" onClick={handleAvatarUrl} />
+								<label onClick={handleAvatarUrl}>
+									<Image alt="avatar4" height={100} src="https://i.imgur.com/ER2y2us.png" width={100} />
+									<input name="avatar" type="radio" value="https://i.imgur.com/ER2y2us.png" />
+								</label>
 							</div>
 						</div>
 						{error && <p className="error">{error}</p>}
-						<button disabled={clicked} type="submit">
-							{clicked ? 'Loading...' : 'Register'}
-						</button>
+						{clicked ? <p>Creando tu cuenta...</p> : <button type="submit">Register</button>}
 					</div>
 				</form>
 				<p>
 					Already have an account? <a href="/login">Login</a>
 				</p>
 			</section>
-			{/* LINK TO TEST	 */}
+			{/* LINK TO TEST
 			<Link href="/test">
 				<p>Test</p>
-			</Link>
+			</Link> */}
 		</>
 	);
 };

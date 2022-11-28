@@ -17,7 +17,14 @@ const Dashboard = () => {
 		setTimeout(() => {
 			router.push('/login');
 		}, 5000);
-		return <div>Loading...</div>;
+		return (
+			<>
+				<div>Loading...</div>;
+				<button style={{ display: 'block', margin: '15px' }} onClick={logout}>
+					Logout
+				</button>
+			</>
+		);
 	}
 
 	const handleShowRankings = async () => {
