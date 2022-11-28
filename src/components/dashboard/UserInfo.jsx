@@ -7,13 +7,14 @@ import { AuthContext } from '@context/AuthContext';
 import Image from 'next/image';
 
 const UserInfo = () => {
-	const { user, logout, userData, userPoints, updateProfile } = useContext(AuthContext);
+	const { user, logout, userData, userPoints, updateProfile, updateUserInfo } = useContext(AuthContext);
 
 	const [edit, setEdit] = useState(false);
 
 	const [displayName, setDisplayName] = useState(userData?.displayName);
 
 	const handleSubmit = async () => {
+		updateUserInfo(displayName, user?.email, user?.uid);
 		const success = await updateProfile({ displayName });
 		if (success) {
 			setEdit(false);

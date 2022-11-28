@@ -28,8 +28,8 @@ export const AuthContextProvider = ({ children }) => {
 	const getRankings = async () => {
 		setResults([]);
 		for (let i = 0; i < userChallenges?.length; i++) {
-			const user = await getDoc(doc(db, 'users', userChallenges[i].uid));
-			setResults(prev => [...prev, { ...user.data(), points: userChallenges[i].points }]);
+			const userInfo = await getDoc(doc(db, 'users', userChallenges[i].uid));
+			setResults(prev => [...prev, { ...userInfo.data(), points: userChallenges[i].points }]);
 		}
 		sortResults();
 	};
@@ -52,6 +52,16 @@ export const AuthContextProvider = ({ children }) => {
 				points: points,
 			});
 		}
+	}
+
+	async function updateUserInfo(displayName, email) {
+		await setDoc(doc(db, 'users', user.uid), {
+			uid: user.uid,
+			displayName,
+			email,
+			createdAt: userData.createdAt,
+			avatarUrl: userData.avatarUrl,
+		});
 	}
 
 	const logout = () => {
@@ -79,6 +89,7 @@ export const AuthContextProvider = ({ children }) => {
 				updateProfile,
 				updating,
 				updateProfileError,
+				updateUserInfo,
 			}}
 		>
 			{children}
