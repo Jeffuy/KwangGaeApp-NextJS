@@ -39,24 +39,26 @@ const LoginForm = () => {
 	}
 
 	return (
-		<div className="formContainer">
-			<div className="formWrapper">
-				<span className="logo">KwangGae</span>
-				<span className="title">Login</span>
-				<form onSubmit={handleSubmit}>
-					<input id="" name="" placeholder="email" type="email" />
-					<input placeholder="password" type="password" />
-					<button>Sign in</button>
-					{error && <span>{error}</span>}
+		<section className="login-section">
+			<div className="login-section-items">
+				<h1>Kwang-Gae</h1>
+				<span>Ingresa</span>
+				<form className="login-form" onSubmit={handleSubmit}>
+					<label htmlFor="email">Email: </label>
+					<input id="email" name="email" placeholder="email" type="email" />
+					<label htmlFor="password">Contraseña: </label>
+					<input id="password" name="password" placeholder="password" type="password" />
+					<button>Ingresa</button>
+					{error && <p className="login-form-error">{error}</p>}
 				</form>
 				<p>
-					¿No tienes una cuenta?
+					¿No tienes una cuenta? {'   '}
 					<Link passHref href="/register">
-						<b>Registrate</b>
+						<a href="/">Registrate</a>
 					</Link>
 				</p>
 			</div>
-		</div>
+		</section>
 	);
 };
 
