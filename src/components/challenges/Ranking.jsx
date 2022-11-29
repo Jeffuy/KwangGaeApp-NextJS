@@ -36,9 +36,7 @@ const Ranking = () => {
 	}
 
 	return (
-		<>
-			<h3>Rankings</h3>
-
+		<section className="challenges-ranking">
 			<h2>Ranking de puntos de Challenges</h2>
 			<div className="dashboard-ranking">
 				<div className="dashboard-ranking-first">
@@ -62,7 +60,7 @@ const Ranking = () => {
 					</div>
 				))}
 			</div>
-		</>
+		</section>
 	);
 };
 

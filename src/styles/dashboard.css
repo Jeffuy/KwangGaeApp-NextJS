@@ -68,7 +68,6 @@
 }
 
 .dashboard-ranking {
-	background-color: grey;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -76,6 +75,7 @@
 	align-items: center;
 	margin: 0 auto;
 	margin-bottom: 15px;
+	
 }
 
 .dashboard-ranking-item {
@@ -83,6 +83,12 @@
 	width: 100%;
 	text-align: center;
 	border: 1px solid black;
+}
+
+.dashboard-ranking-item:last-child {
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+
 }
 
 .dashboard-ranking-item p {
@@ -95,9 +101,11 @@
 	width: 100%;
 	justify-content: space-between;
 	text-align: center;
-	border: 1px solid black;
-	background-color: #4CAF50;
-	color: white;
+	border: 1px solid #212529;
+	background-color: #707870;
+	color: #f2f2f2;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 }
 
 .dashboard-ranking-first p {
@@ -109,11 +117,18 @@
 	border-right: none;
 }
 
-
+.challenges-ranking h2 {
+	text-align: center;
+}
 
 .dashboard-ranking-item:nth-child(odd) {
 	background-color: #f2f2f2;
-	color: black;
+	color: #212529;
+}
+
+.dashboard-ranking-item:nth-child(even) {
+	background-color:#212529;
+	color: #f2f2f2;
 }
 
 .ranking-photo {

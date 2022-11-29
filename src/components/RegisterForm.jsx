@@ -19,7 +19,6 @@ const RegisterForm = () => {
 
 	const handleAvatarUrl = e => {
 		setAvatarUrl(e.target.value);
-		console.log(avatarUrl);
 	};
 
 	const handleChosenAvatar = index => {

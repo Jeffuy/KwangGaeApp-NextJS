@@ -8,7 +8,7 @@ import Link from 'next/link';
 const Menu = () => {
 	const [show, setShow] = useState(false);
 
-	const { userData } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 
 	return (
 		<>
@@ -23,7 +23,7 @@ const Menu = () => {
 						<div className="menu__container__menu--item">
 							<Link passHref href="/dashboard">
 								<a href="/">
-									<i className="fas fa-home" /> {userData?.avatarUrl ? 'Mi Perfil' : 'Login'}
+									<i className="fas fa-home" /> {user ? 'Mi Perfil' : 'Login'}
 								</a>
 							</Link>
 						</div>
@@ -74,7 +74,7 @@ const Menu = () => {
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
 							<div className="hamburger__image--container" onClick={() => setShow(!show)}>
-								<Image alt="imagen de perfil" layout="fill" src={userData ? userData.avatarUrl : 'https://i.imgur.com/uBUfUOx.png'} />
+								<Image alt="imagen de perfil" layout="fill" src={user ? user.photoURL : 'https://i.imgur.com/uBUfUOx.png'} />
 							</div>
 						</label>
 					</div>
@@ -82,7 +82,7 @@ const Menu = () => {
 			</div>
 
 			<div className={`hamburger__menu ${show && 'opened'}`}>
-				{userData ? (
+				{user ? (
 					<div className={`hamburger__menu--item ${show && 'opened'} hamburger__menu--last-item`}>
 						<Link passHref href="/dashboard">
 							<a href="/dashboard" onClick={() => setShow(false)}>

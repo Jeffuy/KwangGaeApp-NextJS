@@ -112,6 +112,12 @@
 	height: 100px;
 }
 
+.register-avatar-box label {
+	position: relative;
+	width: 100px;
+	height: 100px;
+}
+
 .register-avatar-choose {
 	box-shadow: 0 0 10px rgb(130, 130, 130);
 	border-radius: 10px;
@@ -176,6 +182,12 @@
 		width: 75px;
 		height: 75px;
 		margin: 0 auto;
+	}
+
+	.register-avatar-box label {
+		position: relative;
+		width: 75px;
+		height: 75px;
 	}
 
 	.register button {
