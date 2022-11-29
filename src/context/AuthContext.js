@@ -78,8 +78,8 @@ export const AuthContextProvider = ({ children }) => {
 			email,
 			createdAt: userData.createdAt,
 			avatarUrl: userData.avatarUrl,
-			photoURL: photoURL || 'https://i.imgur.com/uBUfUOx.png',
-			photoSmall: userData.photoSmall || 'https://i.imgur.com/uBUfUOx.png',
+			photoURL: photoURL,
+			photoSmall: userData.photoSmall,
 		});
 	}
 
