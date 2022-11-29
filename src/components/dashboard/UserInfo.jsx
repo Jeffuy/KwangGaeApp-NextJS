@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import Compressor from 'compressorjs';
 import { AuthContext } from '@context/AuthContext';
 import Link from 'next/link';
 
@@ -17,20 +18,26 @@ const UserInfo = () => {
 
 	const handleDisplayNameSubmit = async () => {
 		updateUserInfo(displayName, user?.email);
-		const success = await updateProfile({ displayName });
+		const success = await updateProfile({ displayName, photoURL: user?.photoURL || 'https://i.imgur.com/uBUfUOx.png' });
 		if (success) {
 			setEditDisplayName(false);
 		}
 	};
 
 	const handleEditPhotoUrl = async () => {
-		const success = upload(selectedFile);
-		if (success) {
-			updateProfile({ displayName, photoURL: downloadUrl });
-			updateUserInfo(displayName, user?.email, downloadUrl);
-			setEditPhotoUrl(false);
-			setSelectedFile(null);
-		}
+		const image = selectedFile;
+		new Compressor(image, {
+			quality: 0.8,
+			success: compressedResult => {
+				const success2 = upload(compressedResult);
+				if (success2) {
+					updateProfile({ displayName, photoURL: downloadUrl });
+					updateUserInfo(displayName, user?.email, downloadUrl);
+					setEditPhotoUrl(false);
+					setSelectedFile(null);
+				}
+			},
+		});
 	};
 
 	useEffect(() => {
