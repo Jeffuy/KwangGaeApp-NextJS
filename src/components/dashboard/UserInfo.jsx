@@ -6,7 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const UserInfo = () => {
-	const { user, logout, userData, userPoints, updateProfile, updateUserInfo, downloadUrl, downloadUrlLoading, upload, uploading } = useContext(AuthContext);
+	const { user, logout, userData, userPoints, updateProfile, updateUserInfo, downloadUrl, downloadUrlLoading, upload, uploading, uploadSmall, photoSmallUrl, updatePhotoSmall } =
+		useContext(AuthContext);
 
 	const [editDisplayName, setEditDisplayName] = useState(false);
 	const [editPhotoUrl, setEditPhotoUrl] = useState(false);
@@ -28,17 +29,30 @@ const UserInfo = () => {
 		if (selectedFile) {
 			const image = selectedFile;
 			new Compressor(image, {
-				quality: 0.8,
+				quality: 0.2,
 				success: compressedResult => {
 					const success2 = upload(compressedResult);
 					if (success2) {
 						updateProfile({ displayName, photoURL: downloadUrl });
 						updateUserInfo(displayName, user?.email, downloadUrl);
-						setSelectedFile(null);
+					}
+				},
+			});
+
+			const imageSmall = selectedFile;
+			new Compressor(imageSmall, {
+				quality: 0.05,
+				success: compressedResult2 => {
+					const success4 = uploadSmall(compressedResult2);
+					console.log('success');
+					if (success4) {
+						updatePhotoSmall(photoSmallUrl);
+						console.log('done2');
 					}
 				},
 			});
 		}
+		setSelectedFile(null);
 		setEditPhotoUrl(false);
 	};
 

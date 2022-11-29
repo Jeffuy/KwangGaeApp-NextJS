@@ -18,6 +18,8 @@ export const AuthContextProvider = ({ children }) => {
 
 	const [downloadUrl, downloadUrlLoading, downloadUrlError] = useDownloadURL(storageRef(storage, `users/${user?.uid}/profilePicture.jpeg`));
 
+	const [photoSmallUrl, photoSmallUrlLoading, photoSmallUrlError] = useDownloadURL(storageRef(storage, `users/${user?.uid}/profilePictureSmall.jpeg`));
+
 	const [results, setResults] = useState([]);
 
 	const [userData, userDataLoading, userDataError] = useDocumentData(user ? doc(db, 'users', user.uid) : null, {
@@ -37,6 +39,8 @@ export const AuthContextProvider = ({ children }) => {
 	});
 
 	const ref = storageRef(storage, `users/${user?.uid}/profilePicture.jpeg`);
+
+	const ref2 = storageRef(storage, `users/${user?.uid}/profilePictureSmall.jpeg`);
 
 	async function getRankings() {
 		setResults([]);
@@ -75,6 +79,19 @@ export const AuthContextProvider = ({ children }) => {
 			createdAt: userData.createdAt,
 			avatarUrl: userData.avatarUrl,
 			photoURL: photoURL || 'https://i.imgur.com/uBUfUOx.png',
+			photoSmall: userData.photoSmall || 'https://i.imgur.com/uBUfUOx.png',
+		});
+	}
+
+	async function updatePhotoSmall(photoSmall) {
+		await setDoc(doc(db, 'users', user.uid), {
+			uid: user.uid,
+			displayName: user.displayName,
+			email: user.email,
+			createdAt: userData.createdAt,
+			avatarUrl: userData.avatarUrl,
+			photoURL: user.photoURL || 'https://i.imgur.com/uBUfUOx.png',
+			photoSmall: photoSmall ? photoSmall : 'https://i.imgur.com/uBUfUOx.png',
 		});
 	}
 
@@ -89,6 +106,17 @@ export const AuthContextProvider = ({ children }) => {
 			});
 			if (result) {
 				console.log('DONE');
+			}
+		}
+	};
+
+	const uploadSmall = async selectedFile => {
+		if (selectedFile) {
+			const result = await uploadFile(ref2, selectedFile, {
+				contentType: 'image/jpeg',
+			});
+			if (result) {
+				console.log('DONE2');
 			}
 		}
 	};
@@ -125,6 +153,11 @@ export const AuthContextProvider = ({ children }) => {
 				downloadUrlError,
 				uploading,
 				snapshot,
+				uploadSmall,
+				photoSmallUrl,
+				photoSmallUrlLoading,
+				photoSmallUrlError,
+				updatePhotoSmall,
 			}}
 		>
 			{children}

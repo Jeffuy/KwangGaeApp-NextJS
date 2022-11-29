@@ -74,7 +74,7 @@ const Menu = () => {
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
 							<div className="hamburger__image--container" onClick={() => setShow(!show)}>
-								<Image alt="imagen de perfil" layout="fill" src={user?.photoURL != null ? user?.photoURL : 'https://i.imgur.com/uBUfUOx.png'} />
+								<Image alt="imagen de perfil" layout="fill" src={userData?.photoSmall != null ? userData?.photoSmall : 'https://i.imgur.com/uBUfUOx.png'} />
 							</div>
 						</label>
 					</div>
