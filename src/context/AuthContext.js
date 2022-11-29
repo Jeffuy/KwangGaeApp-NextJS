@@ -74,7 +74,7 @@ export const AuthContextProvider = ({ children }) => {
 			email,
 			createdAt: userData.createdAt,
 			avatarUrl: userData.avatarUrl,
-			photoURL: photoURL,
+			photoURL: photoURL || userData.photoURL,
 		});
 	}
 

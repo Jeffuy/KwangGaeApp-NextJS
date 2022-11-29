@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '@context/AuthContext';
-
-//import Link from 'next/link';
+import Link from 'next/link';
 
 import Image from 'next/image';
 
@@ -17,7 +16,7 @@ const UserInfo = () => {
 	const [selectedFile, setSelectedFile] = useState(null);
 
 	const handleDisplayNameSubmit = async () => {
-		updateUserInfo(displayName, user?.email, 'https://i.imgur.com/nmEa4QX.png');
+		updateUserInfo(displayName, user?.email);
 		const success = await updateProfile({ displayName });
 		if (success) {
 			setEditDisplayName(false);
@@ -45,11 +44,10 @@ const UserInfo = () => {
 		<>
 			<div className="dashboard-profile-card">
 				{!editDisplayName && (
-					<>
-						{user?.displayName != null ? <h1> Hello {user?.displayName} </h1> : <h1> Hello {userData?.displayName} </h1>}
-
-						<p onClick={() => setEditDisplayName(true)}>edit</p>
-					</>
+					<div>
+						{user?.displayName != null ? <h1> Hola {user?.displayName} </h1> : <h1> Hola {userData?.displayName} </h1>}
+						<i className="fas fa-edit" onClick={() => setEditDisplayName(true)} />
+					</div>
 				)}
 				{editDisplayName && (
 					<>
@@ -58,8 +56,9 @@ const UserInfo = () => {
 					</>
 				)}
 				{!editPhotoUrl && !downloadUrlLoading && (
-					<div className="dashboard-profile-image" onClick={() => setEditPhotoUrl(true)}>
+					<div className="dashboard-profile-image">
 						<Image priority alt="Imagen de perfil" layout="fill" src={actualUrl ? actualUrl : 'https://i.imgur.com/uBUfUOx.png'} />
+						<i className="fas fa-edit" onClick={() => setEditPhotoUrl(true)} />
 					</div>
 				)}
 				{editPhotoUrl && (
@@ -88,25 +87,19 @@ const UserInfo = () => {
 					</p>
 					<p>Correo electrónico:</p>
 					<p>{userData?.email}</p>
-					<p>Puntos por desafíos:</p>
+					<p>
+						Puntos por <Link href="/Challenge"> desafíos:</Link>
+					</p>
 					{userPoints?.points ? (
 						<p>{userPoints.points}</p>
 					) : (
 						<>
 							<p style={{ display: 'inline-block' }}>0 </p>
-
-							{/* <Link passHref href="/Challenge">
-							<button>
-								<a style={{ cursor: 'pointer', display: 'inline-block', margin: '10px' }}>¡Comienza a completar desafíos!</a>
-							</button>
-						</Link> */}
 						</>
 					)}
+					<button onClick={logout}>Logout</button>
 				</div>
 			</div>
-			<button style={{ display: 'block', margin: '15px' }} onClick={logout}>
-				Logout
-			</button>
 		</>
 	);
 };

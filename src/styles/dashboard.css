@@ -14,16 +14,34 @@
 	margin-top: 10px;
 }
 
+.dashboard-profile-card h1 {
+	display: inline;
+	padding-right: 5px;
+}
+
+.dashboard-profile-card i {
+	position: absolute;
+	padding-left: 10px;
+}
+
 .dashboard-profile-image {
 	position: relative;
 	width: 150px;
 	height: 150px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .dashboard-profile-image img {
 	width: 150px;
-	height: 150px;
+	height: 100px;
 	border-radius: 50%;
+}
+
+.dashboard-profile-image i {
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .dashboard-profile-grid {
