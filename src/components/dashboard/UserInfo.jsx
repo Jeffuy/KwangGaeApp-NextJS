@@ -25,19 +25,21 @@ const UserInfo = () => {
 	};
 
 	const handleEditPhotoUrl = async () => {
-		const image = selectedFile;
-		new Compressor(image, {
-			quality: 0.8,
-			success: compressedResult => {
-				const success2 = upload(compressedResult);
-				if (success2) {
-					updateProfile({ displayName, photoURL: downloadUrl });
-					updateUserInfo(displayName, user?.email, downloadUrl);
-					setEditPhotoUrl(false);
-					setSelectedFile(null);
-				}
-			},
-		});
+		if (selectedFile) {
+			const image = selectedFile;
+			new Compressor(image, {
+				quality: 0.8,
+				success: compressedResult => {
+					const success2 = upload(compressedResult);
+					if (success2) {
+						updateProfile({ displayName, photoURL: downloadUrl });
+						updateUserInfo(displayName, user?.email, downloadUrl);
+						setSelectedFile(null);
+					}
+				},
+			});
+		}
+		setEditPhotoUrl(false);
 	};
 
 	useEffect(() => {
