@@ -78,8 +78,8 @@ export const AuthContextProvider = ({ children }) => {
 			email,
 			createdAt: userData.createdAt,
 			avatarUrl: userData.avatarUrl,
-			photoURL: photoURL,
-			photoSmall: userData.photoSmall,
+			photoURL: photoURL || null,
+			photoSmall: userData?.photoSmall || null,
 		});
 	}
 
@@ -90,8 +90,8 @@ export const AuthContextProvider = ({ children }) => {
 			email: user.email,
 			createdAt: userData.createdAt,
 			avatarUrl: userData.avatarUrl,
-			photoURL: photoURL,
-			photoSmall: photoSmall,
+			photoURL: photoURL || null,
+			photoSmall: photoSmall || null,
 		});
 	}
 

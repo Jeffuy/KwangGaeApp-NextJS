@@ -13,6 +13,8 @@ const UserInfo = () => {
 	const [editPhotoUrl, setEditPhotoUrl] = useState(false);
 
 	const [actualUrl, setActualUrl] = useState(downloadUrl);
+	// eslint-disable-next-line no-unused-vars
+	const [smallUrl, setSmallUrl] = useState(photoSmallUrl);
 
 	const [displayName, setDisplayName] = useState(userData?.displayName);
 	const [selectedFile, setSelectedFile] = useState(null);
@@ -59,6 +61,7 @@ const UserInfo = () => {
 	useEffect(() => {
 		const wait = setTimeout(() => {
 			setActualUrl(downloadUrl);
+			setSmallUrl(photoSmallUrl);
 		}, 1000);
 		return () => clearTimeout(wait);
 	});
