@@ -21,13 +21,11 @@ const Menu = () => {
 					</div>
 					<div className="menu__container__menu">
 						<div className="menu__container__menu--item">
-							{userData && (
-								<Link passHref href="/dashboard">
-									<a href="/">
-										<i className="fas fa-home" /> {userData?.displayName ? 'Mi Perfil' : 'Login'}
-									</a>
-								</Link>
-							)}
+							<Link passHref href="/dashboard">
+								<a href="/">
+									<i className="fas fa-home" /> {userData?.displayName ? 'Mi Perfil' : 'Login'}
+								</a>
+							</Link>
 						</div>
 						<div className="menu__container__menu--item">
 							<Link passHref href="/PatternSelector">
@@ -76,7 +74,7 @@ const Menu = () => {
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
 							<div className="hamburger__image--container" onClick={() => setShow(!show)}>
-								<Image alt="imagen de perfil" layout="fill" src={user ? user.photoURL : 'https://i.imgur.com/uBUfUOx.png'} />
+								<Image alt="imagen de perfil" layout="fill" src={user?.photoURL != null ? user?.photoURL : 'https://i.imgur.com/uBUfUOx.png'} />
 							</div>
 						</label>
 					</div>
