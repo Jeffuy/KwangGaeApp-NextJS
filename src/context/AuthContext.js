@@ -67,14 +67,14 @@ export const AuthContextProvider = ({ children }) => {
 		}
 	}
 
-	async function updateUserInfo(displayName, email) {
+	async function updateUserInfo(displayName, email, photoURL) {
 		await setDoc(doc(db, 'users', user.uid), {
 			uid: user.uid,
 			displayName,
 			email,
 			createdAt: userData.createdAt,
 			avatarUrl: userData.avatarUrl,
-			photoURL: user?.photoURL || 'https://i.imgur.com/uBUfUOx.png',
+			photoURL: photoURL || 'https://i.imgur.com/uBUfUOx.png',
 		});
 	}
 
