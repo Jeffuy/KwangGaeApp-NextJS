@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '@context/AuthContext.js';
 
 const Test = () => {
-	const { value, valueLoading } = useContext(AuthContext);
+	const { value } = useContext(AuthContext);
 
 	value?.docs.map(doc => {
 		console.log(doc.data());
