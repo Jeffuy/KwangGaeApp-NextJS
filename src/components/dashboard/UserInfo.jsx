@@ -50,10 +50,12 @@ const UserInfo = () => {
 					</div>
 				)}
 				{editDisplayName && (
-					<>
+					<div className="dashboard-edit-display-name">
 						<input defaultValue={userData?.displayName} name="displayName" placeholder="Nombre" type="text" onChange={e => setDisplayName(e.target.value)} />
-						<button onClick={() => handleDisplayNameSubmit()}>save</button>
-					</>
+						<button className="dashboard-save-button" onClick={() => handleDisplayNameSubmit()}>
+							Ok
+						</button>
+					</div>
 				)}
 				{!editPhotoUrl && !downloadUrlLoading && (
 					<div className="dashboard-profile-image">
@@ -62,17 +64,26 @@ const UserInfo = () => {
 					</div>
 				)}
 				{editPhotoUrl && (
-					<>
-						<input
-							type="file"
-							onChange={e => {
-								const file = e.target.files ? e.target.files[0] : undefined;
-								setSelectedFile(file);
-							}}
-						/>
-						{uploading && <p>Uploading...</p>}
-						{!uploading && <button onClick={() => handleEditPhotoUrl()}>Save</button>}
-					</>
+					<div className="dashboard-custom-file">
+						<label className="custom-file-upload" htmlFor="file-upload">
+							<i className="fas fa-cloud-upload-alt" /> <p>Subir imagen</p>
+							<input
+								id="file-upload"
+								type="file"
+								onChange={e => {
+									const file = e.target.files ? e.target.files[0] : undefined;
+									setSelectedFile(file);
+								}}
+							/>
+						</label>
+
+						{uploading && <p>Subiendo...</p>}
+						{!uploading && (
+							<button className="dashboard-save-button" onClick={() => handleEditPhotoUrl()}>
+								Ok
+							</button>
+						)}
+					</div>
 				)}
 
 				<div className="dashboard-profile-grid">
@@ -86,7 +97,8 @@ const UserInfo = () => {
 						})} */}
 					</p>
 					<p>Correo electrónico:</p>
-					<p>{userData?.email}</p>
+					{/* censurar primeras letras */}
+					<p>{user?.email.substring(0, 3) + '***' + user?.email.substring(user?.email.indexOf('@'))}</p>
 					<p>
 						Puntos por <Link href="/Challenge"> desafíos:</Link>
 					</p>
@@ -97,7 +109,7 @@ const UserInfo = () => {
 							<p style={{ display: 'inline-block' }}>0 </p>
 						</>
 					)}
-					<button onClick={logout}>Logout</button>
+					<button onClick={logout}>Salir</button>
 				</div>
 			</div>
 		</>

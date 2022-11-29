@@ -8,7 +8,7 @@ import Link from 'next/link';
 const Menu = () => {
 	const [show, setShow] = useState(false);
 
-	const { user } = useContext(AuthContext);
+	const { user, userData } = useContext(AuthContext);
 
 	return (
 		<>
@@ -21,11 +21,13 @@ const Menu = () => {
 					</div>
 					<div className="menu__container__menu">
 						<div className="menu__container__menu--item">
-							<Link passHref href="/dashboard">
-								<a href="/">
-									<i className="fas fa-home" /> {user ? 'Mi Perfil' : 'Login'}
-								</a>
-							</Link>
+							{userData && (
+								<Link passHref href="/dashboard">
+									<a href="/">
+										<i className="fas fa-home" /> {userData?.displayName ? 'Mi Perfil' : 'Login'}
+									</a>
+								</Link>
+							)}
 						</div>
 						<div className="menu__container__menu--item">
 							<Link passHref href="/PatternSelector">
