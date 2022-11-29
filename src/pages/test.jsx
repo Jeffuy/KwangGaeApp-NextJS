@@ -1,19 +1,19 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useContext } from 'react';
+import { AuthContext } from '@context/AuthContext.js';
 
 const Test = () => {
+	const { value, valueLoading } = useContext(AuthContext);
+
+	value?.docs.map(doc => {
+		console.log(doc.data());
+	});
 	return (
 		// links to login, dasbhboard and register
 		<div>
-			<Link href="/login">
-				<p>Login</p>
-			</Link>
-			<Link href="/dashboard">
-				<p>Dashboard</p>
-			</Link>
-			<Link href="/register">
-				<p>Register</p>
-			</Link>
+			<h1>Test</h1>
+			{value?.docs.map(doc => (
+				<React.Fragment key={doc.id}>{JSON.stringify(doc.data())}, </React.Fragment>
+			))}
 		</div>
 	);
 };

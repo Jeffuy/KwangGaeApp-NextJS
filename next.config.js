@@ -2,7 +2,7 @@
 const nextConfig = {
 	//image
 	images: {
-		domains: ['i.imgur.com'],
+		domains: ['i.imgur.com', 'firebasestorage.googleapis.com'],
 	},
 	reactStrictMode: true,
 	env: {

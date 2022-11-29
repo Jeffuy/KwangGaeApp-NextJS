@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '@context/AuthContext';
 
 //import Link from 'next/link';
@@ -7,41 +6,76 @@ import { AuthContext } from '@context/AuthContext';
 import Image from 'next/image';
 
 const UserInfo = () => {
-	const { user, logout, userData, userPoints, updateProfile, updateUserInfo } = useContext(AuthContext);
+	const { user, logout, userData, userPoints, updateProfile, updateUserInfo, downloadUrl, downloadUrlLoading, upload, uploading } = useContext(AuthContext);
 
-	const [edit, setEdit] = useState(false);
+	const [editDisplayName, setEditDisplayName] = useState(false);
+	const [editPhotoUrl, setEditPhotoUrl] = useState(false);
+
+	const [actualUrl, setActualUrl] = useState(downloadUrl);
 
 	const [displayName, setDisplayName] = useState(userData?.displayName);
+	const [selectedFile, setSelectedFile] = useState(null);
 
-	const handleSubmit = async () => {
-		updateUserInfo(displayName, user?.email, user?.uid);
+	const handleDisplayNameSubmit = async () => {
+		updateUserInfo(displayName, user?.email, 'https://i.imgur.com/nmEa4QX.png');
 		const success = await updateProfile({ displayName });
 		if (success) {
-			setEdit(false);
-			console.log(user);
+			setEditDisplayName(false);
 		}
 	};
+
+	const handleEditPhotoUrl = async () => {
+		const success = upload(selectedFile);
+		if (success) {
+			updateProfile({ displayName, photoURL: downloadUrl });
+			updateUserInfo(displayName, user?.email, downloadUrl);
+			setEditPhotoUrl(false);
+			setSelectedFile(null);
+		}
+	};
+
+	useEffect(() => {
+		const wait = setTimeout(() => {
+			setActualUrl(downloadUrl);
+		}, 1000);
+		return () => clearTimeout(wait);
+	});
 
 	return (
 		<>
 			<div className="dashboard-profile-card">
-				{!edit && (
+				{!editDisplayName && (
 					<>
 						{user?.displayName != null ? <h1> Hello {user?.displayName} </h1> : <h1> Hello {userData?.displayName} </h1>}
 
-						<p onClick={() => setEdit(true)}>edit</p>
+						<p onClick={() => setEditDisplayName(true)}>edit</p>
 					</>
 				)}
-				{edit && (
+				{editDisplayName && (
 					<>
 						<input defaultValue={userData?.displayName} name="displayName" placeholder="Nombre" type="text" onChange={e => setDisplayName(e.target.value)} />
-						<button onClick={() => handleSubmit()}>save</button>
+						<button onClick={() => handleDisplayNameSubmit()}>save</button>
+					</>
+				)}
+				{!editPhotoUrl && !downloadUrlLoading && (
+					<div className="dashboard-profile-image" onClick={() => setEditPhotoUrl(true)}>
+						<Image priority alt="Imagen de perfil" layout="fill" src={actualUrl ? actualUrl : 'https://i.imgur.com/uBUfUOx.png'} />
+					</div>
+				)}
+				{editPhotoUrl && (
+					<>
+						<input
+							type="file"
+							onChange={e => {
+								const file = e.target.files ? e.target.files[0] : undefined;
+								setSelectedFile(file);
+							}}
+						/>
+						{uploading && <p>Uploading...</p>}
+						{!uploading && <button onClick={() => handleEditPhotoUrl()}>Save</button>}
 					</>
 				)}
 
-				<div className="dashboard-profile-image">
-					<Image priority alt={user?.photoURL ? user?.photoURL : userData.avatarUrl} height={100} src={user?.photoURL ? user?.photoURL : userData?.avatarUrl} width={100} />
-				</div>
 				<div className="dashboard-profile-grid">
 					<p>Miembro desde:</p>
 					<p>

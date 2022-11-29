@@ -56,8 +56,8 @@ const Ranking = () => {
 							<b>{result.displayName}</b>
 						</p>
 						<p>{result.points}</p>
-						<div>
-							<Image priority alt={result.avatarUrl} height={40} src={result.avatarUrl} width={40} />
+						<div className="ranking-photo">
+							<Image priority alt="foto de perfil" layout="fill" src={result.photoURL ? result.photoURL : 'https://i.imgur.com/uBUfUOx.png'} />
 						</div>
 					</div>
 				))}
