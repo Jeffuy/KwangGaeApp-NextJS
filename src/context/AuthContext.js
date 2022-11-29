@@ -72,27 +72,33 @@ export const AuthContextProvider = ({ children }) => {
 	}
 
 	async function updateUserInfo(displayName, email) {
-		await setDoc(doc(db, 'users', user.uid), {
-			uid: user.uid,
-			displayName,
-			email,
-			createdAt: userData.createdAt,
-			avatarUrl: userData.avatarUrl,
-			photoURL: downloadUrl,
-			photoSmall: photoSmallUrl || null,
-		});
+		if (!downloadUrlLoading && !photoSmallUrlLoading) {
+			await setDoc(doc(db, 'users', user.uid), {
+				uid: user.uid,
+				displayName,
+				email,
+				createdAt: userData.createdAt,
+				avatarUrl: userData.avatarUrl,
+				photoURL: downloadUrl,
+				photoSmall: photoSmallUrl || null,
+			});
+		} else {
+			updateUserInfo(displayName, email);
+		}
 	}
 
 	async function updatePhotoSmall() {
-		await setDoc(doc(db, 'users', user.uid), {
-			uid: user.uid,
-			displayName: user.displayName,
-			email: user.email,
-			createdAt: userData.createdAt,
-			avatarUrl: userData.avatarUrl,
-			photoURL: downloadUrl,
-			photoSmall: photoSmallUrl || null,
-		});
+		if (!downloadUrlLoading && !photoSmallUrlLoading) {
+			await setDoc(doc(db, 'users', user.uid), {
+				uid: user.uid,
+				displayName: user.displayName,
+				email: user.email,
+				createdAt: userData.createdAt,
+				avatarUrl: userData.avatarUrl,
+				photoURL: downloadUrl,
+				photoSmall: photoSmallUrl || null,
+			});
+		} else updatePhotoSmall();
 	}
 
 	const logout = () => {
