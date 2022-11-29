@@ -83,15 +83,15 @@ export const AuthContextProvider = ({ children }) => {
 		});
 	}
 
-	async function updatePhotoSmall(photoSmall) {
+	async function updatePhotoSmall(photoURL, photoSmall) {
 		await setDoc(doc(db, 'users', user.uid), {
 			uid: user.uid,
 			displayName: user.displayName,
 			email: user.email,
 			createdAt: userData.createdAt,
 			avatarUrl: userData.avatarUrl,
-			photoURL: user.photoURL || 'https://i.imgur.com/uBUfUOx.png',
-			photoSmall: photoSmall ? photoSmall : 'https://i.imgur.com/uBUfUOx.png',
+			photoURL: photoURL,
+			photoSmall: photoSmall,
 		});
 	}
 

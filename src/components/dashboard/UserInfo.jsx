@@ -46,7 +46,7 @@ const UserInfo = () => {
 					const success4 = uploadSmall(compressedResult2);
 					console.log('success');
 					if (success4) {
-						updatePhotoSmall(photoSmallUrl);
+						updatePhotoSmall(downloadUrl, photoSmallUrl);
 						console.log('done2');
 					}
 				},
