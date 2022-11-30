@@ -16,7 +16,8 @@ const RegisterForm = () => {
 	const [clicked, setClicked] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 
-	const [createUserWithEmailAndPassword, error] = useCreateUserWithEmailAndPassword(auth);
+	// eslint-disable-next-line no-unused-vars
+	const [createUserWithEmailAndPassword, createLoading, user, error] = useCreateUserWithEmailAndPassword(auth);
 
 	const handleAvatarUrl = e => {
 		setAvatarUrl(e.target.value);
