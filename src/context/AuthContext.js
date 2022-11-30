@@ -80,7 +80,7 @@ export const AuthContextProvider = ({ children }) => {
 				createdAt: userData.createdAt,
 				avatarUrl: userData.avatarUrl,
 				photoURL: downloadUrl,
-				photoSmall: photoSmallUrl || null,
+				photoSmall: photoSmallUrl,
 			});
 		} else {
 			updateUserInfo(displayName, email);
@@ -96,7 +96,7 @@ export const AuthContextProvider = ({ children }) => {
 				createdAt: userData.createdAt,
 				avatarUrl: userData.avatarUrl,
 				photoURL: downloadUrl,
-				photoSmall: photoSmallUrl || null,
+				photoSmall: photoSmallUrl,
 			});
 		} else updatePhotoSmall();
 	}

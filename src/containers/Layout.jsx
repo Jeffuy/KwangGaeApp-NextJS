@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '@context/AuthContext.js';
+import React from 'react';
+
 import Menu from '@components/Menu';
 import Footer from '@components/Footer';
 
 const Layout = ({ children }) => {
-	const { user, userData } = useContext(AuthContext);
-
 	return (
 		<>
 			<div className="main-container">
-				<Menu user={user} userData={userData} />
+				<Menu />
 				{children}
 				<Footer />
 			</div>

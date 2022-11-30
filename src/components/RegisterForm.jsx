@@ -1,30 +1,46 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '@context/AuthContext.js';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
-//import { ref } from 'firebase/storage';
 import { auth, db } from '../firebase/firebase.js';
-import { doc, setDoc } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const RegisterForm = () => {
-	const { user, loading, updateProfile } = useContext(AuthContext);
-	const [clicked, setClicked] = useState(false);
-
+	const { user: userLogged, loading, updateProfile } = useContext(AuthContext);
 	const router = useRouter();
-	const [error, setError] = useState(false);
+
 	const [chosenAvatar, setChosenAvatar] = useState(1);
 	const [avatarUrl, setAvatarUrl] = useState('https://i.imgur.com/nmEa4QX.png');
+	const [clicked, setClicked] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
+
+	const [createUserWithEmailAndPassword, error] = useCreateUserWithEmailAndPassword(auth);
 
 	const handleAvatarUrl = e => {
 		setAvatarUrl(e.target.value);
-		console.log(avatarUrl);
 	};
+
+	const usersRef = collection(db, 'users');
 
 	const handleChosenAvatar = index => {
 		setChosenAvatar(index);
 	};
+
+	if (userLogged) {
+		router.push('/dashboard');
+	}
+
+	useEffect(() => {
+		if (error?.message === 'Firebase: Error (auth/email-already-in-use).') {
+			setErrorMessage('El mail ya esta en uso');
+		} else if (error?.message === 'Firebase: Error (auth/invalid-email).') {
+			setErrorMessage('El mail no es valido');
+		} else if (error?.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+			setErrorMessage('La contraseña debe tener al menos 6 caracteres');
+		} else setErrorMessage('');
+	}, [error?.message]);
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -34,34 +50,29 @@ const RegisterForm = () => {
 		const confirmPassword = e.target[3].value;
 
 		if (password !== confirmPassword) {
-			setError('Las contraseñas no coinciden');
+			setErrorMessage('Las contraseñas no coinciden');
 			return;
 		} else {
+			setClicked(true);
+
 			try {
-				setClicked(true);
-				const res = await createUserWithEmailAndPassword(auth, email, password);
+				const res = await createUserWithEmailAndPassword(email, password);
 
 				await updateProfile({ displayName, photoURL: avatarUrl });
 
-				await setDoc(doc(db, 'users', res.user.uid), {
-					uid: res.user.uid,
+				await setDoc(doc(usersRef, res?.user?.uid), {
+					uid: res?.user.uid,
 					displayName,
 					email,
 					avatarUrl,
 					createdAt: new Date(),
+					photoURL: 'https://i.imgur.com/uBUfUOx.png',
+					photoSmall: 'https://i.imgur.com/uBUfUOx.png',
 				});
 
 				router.push('/dashboard');
 			} catch (error) {
-				if (error.code === 'auth/email-already-in-use') {
-					setError('El email ya está en uso');
-				} else if (error.code === 'auth/invalid-email') {
-					setError('El email no es válido');
-				} else if (error.code === 'auth/weak-password') {
-					setError('La contraseña debe tener al menos 6 caracteres');
-				} else {
-					setError(error.message);
-				}
+				console.log(error);
 				setClicked(false);
 			}
 		}
@@ -69,10 +80,6 @@ const RegisterForm = () => {
 
 	if (loading) {
 		return <div>Loading...</div>;
-	}
-
-	if (user) {
-		router.push('/dashboard');
 	}
 
 	return (
@@ -118,7 +125,7 @@ const RegisterForm = () => {
 								</label>
 							</div>
 						</div>
-						{error && <p className="register-form-error">{error}</p>}
+						{errorMessage && <p className="register-form-error">{errorMessage}</p>}
 						{clicked ? <p>Creando tu cuenta...</p> : <button type="submit">Registrame!</button>}
 					</div>
 				</form>
