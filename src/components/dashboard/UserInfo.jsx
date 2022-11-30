@@ -35,8 +35,12 @@ const UserInfo = () => {
 				success: compressedResult => {
 					const success2 = upload(compressedResult);
 					if (success2) {
-						updateProfile({ displayName, photoURL: downloadUrl });
-						updateUserInfo(displayName, user?.email, downloadUrl);
+						try {
+							updateProfile({ displayName, photoURL: downloadUrl });
+							updateUserInfo(displayName, user?.email, downloadUrl);
+						} catch (error) {
+							console.log(error);
+						}
 					}
 				},
 			});
@@ -48,8 +52,12 @@ const UserInfo = () => {
 					const success4 = uploadSmall(compressedResult2);
 					console.log('success');
 					if (success4) {
-						updatePhotoSmall(downloadUrl, photoSmallUrl);
-						console.log('done2');
+						try {
+							updatePhotoSmall(downloadUrl, photoSmallUrl);
+							console.log('done2');
+						} catch (error) {
+							console.log(error);
+						}
 					}
 				},
 			});
