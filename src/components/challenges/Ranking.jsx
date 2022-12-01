@@ -1,31 +1,51 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 import { AuthContext } from '@context/AuthContext';
+import { db } from '../../firebase/firebase.js';
 
 import Image from 'next/image';
 
 const Ranking = () => {
-	const { userPointsLoading, getRankings, results } = useContext(AuthContext);
+	const { loading, userDataLoading, userPointsLoading, userChallengesLoading } = useContext(AuthContext);
 
 	//const [showRanking, setShowRanking] = useState(false);
+	const [points, setPoints] = useState([]);
 	const [info, setInfo] = useState([]);
+	const [done, setDone] = useState(false);
 
-	useEffect(() => {
-		getRankings();
-		console.count('primero');
-	}, []);
-
-	useEffect(() => {
-		const sub = () =>
-			results.sort((a, b) => {
-				return b.points - a.points;
-			});
-		console.count('segundo');
+	const readCollection = async () => {
+		setPoints([]);
+		setInfo([]);
+		const querySnapshot = await getDocs(collection(db, 'userPoints'));
+		querySnapshot.forEach(doc => {
+			setPoints(prevPoints => [...prevPoints, doc.data()]);
+		});
+		const results = [];
+		const querySnapshot2 = await getDocs(collection(db, 'users'));
+		querySnapshot2.forEach(doc => {
+			for (let i = 0; i < points.length; i++) {
+				if (points[i].uid === doc.data().uid) {
+					results.push({ displayName: doc.data().displayName, photoSmall: doc.data().photoSmall, points: points[i].points });
+				}
+			}
+		});
+		results.sort((a, b) => b.points - a.points);
 		setInfo(results);
+		setDone(true);
+	};
 
-		return () => {
-			sub();
-		};
-	}, [results]);
+	useEffect(() => {
+		readCollection();
+		console.count('primero');
+	}, [done]);
+
+	if (loading || userDataLoading || userPointsLoading || userChallengesLoading) {
+		return (
+			<>
+				<div>Loading...</div>
+			</>
+		);
+	}
 
 	if (userPointsLoading) {
 		return (
@@ -47,6 +67,7 @@ const Ranking = () => {
 					<p>Puntos</p>
 					<p>Avatar</p>
 				</div>
+
 				{info?.map((result, index) => (
 					<div key={index} className="dashboard-ranking-item">
 						<p>{index + 1}</p>
