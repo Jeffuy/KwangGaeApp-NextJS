@@ -1,14 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '@context/AuthContext.js';
 //import { GiHamburgerMenu } from 'react-icons/gi';
 import Image from 'next/image';
-
 import Link from 'next/link';
+import { storage } from '../firebase/firebase.js';
+import { ref as storageRef, getDownloadURL } from 'firebase/storage';
 
 const Menu = () => {
 	const [show, setShow] = useState(false);
+	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
 
-	const { user, userData } = useContext(AuthContext);
+	const profilePictureSmall = storageRef(storage, `users/${user?.uid}/profilePictureSmall.jpeg`);
+	const [imageURL, setImageURL] = useState('');
+
+	useEffect(() => {
+		getDownloadURL(profilePictureSmall).then(url => setImageURL(url));
+		console.count('Efecto ');
+	}, [userData]);
+
+	if (loading || userDataLoading) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<>
@@ -23,7 +35,7 @@ const Menu = () => {
 						<div className="menu__container__menu--item">
 							<Link passHref href="/dashboard">
 								<a href="/">
-									<i className="fas fa-home" /> {userData?.displayName ? 'Mi Perfil' : 'Login'}
+									<i className="fas fa-home" /> {user ? 'Mi Perfil' : 'Login'}
 								</a>
 							</Link>
 						</div>
@@ -74,7 +86,7 @@ const Menu = () => {
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
 							<div className="hamburger__image--container" onClick={() => setShow(!show)}>
-								<Image alt="imagen de perfil" layout="fill" src={userData?.photoSmall != null ? userData?.photoSmall : 'https://i.imgur.com/uBUfUOx.png'} />
+								<Image alt="imagen de perfil" layout="fill" src={imageURL || 'https://i.imgur.com/uBUfUOx.png'} />
 							</div>
 						</label>
 					</div>

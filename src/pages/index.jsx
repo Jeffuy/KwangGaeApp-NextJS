@@ -9,7 +9,7 @@ const Home = () => {
 			<NextSeo description="Sitio web para alumnos, instructores y arbítros de Taekwon-Do I.T.F. Útil para torneos, clases y examenes" title="KwangGae App" />
 			<div className="home">
 				<div className="home__logo-container">
-					<Image alt="kwang-gae" className="home__logo-container--img" height={250} src={logo} width={250} />
+					<Image priority alt="kwang-gae" className="home__logo-container--img" height={250} src={logo} width={250} />
 				</div>
 
 				<div className="home__description-container">

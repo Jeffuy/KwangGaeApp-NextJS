@@ -2,28 +2,89 @@ import React, { useContext, useState, useEffect } from 'react';
 import Compressor from 'compressorjs';
 import { AuthContext } from '@context/AuthContext';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { storage, auth, db } from '../../firebase/firebase.js';
+import { ref as storageRef, getDownloadURL, uploadBytes } from 'firebase/storage';
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 import Image from 'next/image';
 
 const UserInfo = () => {
-	const { user, logout, userData, userPoints, updateProfile, updateUserInfo, downloadUrl, downloadUrlLoading, upload, uploading, uploadSmall, photoSmallUrl, updatePhotoSmall } =
-		useContext(AuthContext);
+	const {
+		user,
+		loading,
+		logout,
+		userData,
+		userDataLoading,
+		userDataError,
+		userPoints,
+		userPointsLoading,
+		userPointsError,
+
+		userChallengesError,
+		userChallengesLoading,
+
+		valueLoading,
+		valueError,
+	} = useContext(AuthContext);
+
+	const router = useRouter();
+
+	//FIREBASE HOOKS //
+
+	const profilePicture = storageRef(storage, `users/${user?.uid}/profilePicture.jpeg`);
+
+	const profilePictureSmall = storageRef(storage, `users/${user?.uid}/profilePictureSmall.jpeg`);
+
+	// eslint-disable-next-line no-unused-vars
+	const [updateProfile, updating, updateProfileError] = useUpdateProfile(auth);
 
 	const [editDisplayName, setEditDisplayName] = useState(false);
 	const [editPhotoUrl, setEditPhotoUrl] = useState(false);
 
-	const [actualUrl, setActualUrl] = useState(downloadUrl);
-	// eslint-disable-next-line no-unused-vars
-	const [smallUrl, setSmallUrl] = useState(photoSmallUrl);
-
 	const [displayName, setDisplayName] = useState(userData?.displayName);
 	const [selectedFile, setSelectedFile] = useState(null);
+	const [imageURL, setImageURL] = useState(userData?.photoURL);
+
+	async function updateUserInfo(displayName) {
+		await setDoc(doc(db, 'users', user.uid), { displayName }, { merge: true });
+	}
+
+	async function updatePhotoSmall(photoSmall) {
+		await setDoc(doc(db, 'users', user.uid), { photoSmall }, { merge: true });
+	}
+
+	async function updatePhotoUrl(photoURL) {
+		await setDoc(doc(db, 'users', user.uid), { photoURL }, { merge: true });
+	}
+
+	const upload = async (selectedFile, ref, size) => {
+		if (selectedFile) {
+			const result = await uploadBytes(ref, selectedFile).then(snapshot => {
+				console.log('uploaded');
+				getDownloadURL(snapshot.ref).then(url => {
+					setImageURL(url);
+					if (size == 'big') {
+						updateProfile({ displayName, photoURL: url });
+						updatePhotoUrl(url);
+					} else if (size == 'small') {
+						updatePhotoSmall(url);
+					}
+				});
+			});
+			if (result) {
+				console.count('DONE');
+			}
+		}
+	};
 
 	const handleDisplayNameSubmit = async () => {
-		updateUserInfo(displayName, user?.email);
-		const success = await updateProfile({ displayName, photoURL: user?.photoURL || 'https://i.imgur.com/uBUfUOx.png' });
+		updateUserInfo(displayName);
+		const success = await updateProfile({ displayName });
 		if (success) {
 			setEditDisplayName(false);
+			setDisplayName(userData?.displayName);
 		}
 	};
 
@@ -33,15 +94,7 @@ const UserInfo = () => {
 			new Compressor(image, {
 				quality: 0.2,
 				success: compressedResult => {
-					const success2 = upload(compressedResult);
-					if (success2) {
-						try {
-							updateProfile({ displayName, photoURL: downloadUrl });
-							updateUserInfo(displayName, user?.email, downloadUrl);
-						} catch (error) {
-							console.log(error);
-						}
-					}
+					upload(compressedResult, profilePicture, 'big');
 				},
 			});
 
@@ -49,16 +102,7 @@ const UserInfo = () => {
 			new Compressor(imageSmall, {
 				quality: 0.05,
 				success: compressedResult2 => {
-					const success4 = uploadSmall(compressedResult2);
-					console.log('success');
-					if (success4) {
-						try {
-							updatePhotoSmall(downloadUrl, photoSmallUrl);
-							console.log('done2');
-						} catch (error) {
-							console.log(error);
-						}
-					}
+					upload(compressedResult2, profilePictureSmall, 'small');
 				},
 			});
 		}
@@ -67,12 +111,29 @@ const UserInfo = () => {
 	};
 
 	useEffect(() => {
-		const wait = setTimeout(() => {
-			setActualUrl(downloadUrl);
-			setSmallUrl(photoSmallUrl);
-		}, 1000);
-		return () => clearTimeout(wait);
-	});
+		getDownloadURL(profilePicture).then(url => setImageURL(url));
+		console.count('Efecto ');
+	}, [userData]);
+
+	if (loading || userDataLoading || userPointsLoading || valueLoading || userChallengesLoading) {
+		return (
+			<>
+				<div>Loading...</div>
+			</>
+		);
+	}
+
+	if (updateProfileError || userDataError || userPointsError || valueError || userChallengesError) {
+		return (
+			<>
+				<div>Hubo un error al actualizar el perfil</div>
+			</>
+		);
+	}
+
+	if (!user || !userData) {
+		router.push('/login');
+	}
 
 	return (
 		<>
@@ -91,9 +152,9 @@ const UserInfo = () => {
 						</button>
 					</div>
 				)}
-				{!editPhotoUrl && !downloadUrlLoading && (
+				{!editPhotoUrl && (
 					<div className="dashboard-profile-image">
-						<Image priority alt="Imagen de perfil" layout="fill" src={actualUrl ? actualUrl : 'https://i.imgur.com/uBUfUOx.png'} />
+						<Image priority alt="Imagen de perfil" layout="fill" src={imageURL || 'https://i.imgur.com/uBUfUOx.png'} />
 						<i className="fas fa-edit" onClick={() => setEditPhotoUrl(true)} />
 					</div>
 				)}
@@ -111,12 +172,9 @@ const UserInfo = () => {
 							/>
 						</label>
 
-						{uploading && <p>Subiendo...</p>}
-						{!uploading && (
-							<button className="dashboard-save-button" onClick={() => handleEditPhotoUrl()}>
-								Ok
-							</button>
-						)}
+						<button className="dashboard-save-button" onClick={() => handleEditPhotoUrl()}>
+							Ok
+						</button>
 					</div>
 				)}
 
