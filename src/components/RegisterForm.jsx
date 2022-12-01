@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '@context/AuthContext.js';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useState, useEffect } from 'react';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile, useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { auth, db } from '../firebase/firebase.js';
 import { collection, doc, setDoc } from 'firebase/firestore';
@@ -8,39 +7,40 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const RegisterForm = () => {
-	const { user: userLogged, loading, updateProfile } = useContext(AuthContext);
 	const router = useRouter();
+
+	// FIREBASE HOOKS //
+
+	const [user, loading] = useAuthState(auth);
+	// eslint-disable-next-line no-unused-vars
+	const [createUserWithEmailAndPassword, createLoading, userReg, error] = useCreateUserWithEmailAndPassword(auth);
+	const [updateProfile] = useUpdateProfile(auth);
+	const usersRef = collection(db, 'users');
 
 	const [chosenAvatar, setChosenAvatar] = useState(1);
 	const [avatarUrl, setAvatarUrl] = useState('https://i.imgur.com/nmEa4QX.png');
 	const [clicked, setClicked] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 
-	// eslint-disable-next-line no-unused-vars
-	const [createUserWithEmailAndPassword, createLoading, user, error] = useCreateUserWithEmailAndPassword(auth);
-
 	const handleAvatarUrl = e => {
 		setAvatarUrl(e.target.value);
 	};
-
-	const usersRef = collection(db, 'users');
 
 	const handleChosenAvatar = index => {
 		setChosenAvatar(index);
 	};
 
-	if (userLogged) {
-		router.push('/dashboard');
-	}
-
 	useEffect(() => {
-		if (error?.message === 'Firebase: Error (auth/email-already-in-use).') {
-			setErrorMessage('El mail ya esta en uso');
-		} else if (error?.message === 'Firebase: Error (auth/invalid-email).') {
-			setErrorMessage('El mail no es valido');
-		} else if (error?.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
-			setErrorMessage('La contraseña debe tener al menos 6 caracteres');
-		} else setErrorMessage('');
+		const start = () => {
+			if (error?.message === 'Firebase: Error (auth/email-already-in-use).') {
+				setErrorMessage('El mail ya esta en uso');
+			} else if (error?.message === 'Firebase: Error (auth/invalid-email).') {
+				setErrorMessage('El mail no es valido');
+			} else if (error?.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+				setErrorMessage('La contraseña debe tener al menos 6 caracteres');
+			}
+		};
+		return start();
 	}, [error?.message]);
 
 	const handleSubmit = async e => {
@@ -70,10 +70,8 @@ const RegisterForm = () => {
 					photoURL: 'https://i.imgur.com/uBUfUOx.png',
 					photoSmall: 'https://i.imgur.com/uBUfUOx.png',
 				});
-
 				router.push('/dashboard');
 			} catch (error) {
-				console.log(error);
 				setClicked(false);
 			}
 		}
@@ -81,6 +79,10 @@ const RegisterForm = () => {
 
 	if (loading) {
 		return <div>Loading...</div>;
+	}
+
+	if (user) {
+		router.push('/dashboard');
 	}
 
 	return (
