@@ -6,7 +6,7 @@ import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
 
 const Ranking = () => {
-	const { loading, userDataLoading, userPointsLoading, userChallengesLoading } = useContext(AuthContext);
+	const { loading, userDataLoading } = useContext(AuthContext);
 
 	//const [showRanking, setShowRanking] = useState(false);
 	const [points, setPoints] = useState([]);
@@ -39,15 +39,7 @@ const Ranking = () => {
 		console.count('primero');
 	}, [done]);
 
-	if (loading || userDataLoading || userPointsLoading || userChallengesLoading) {
-		return (
-			<>
-				<div>Loading...</div>
-			</>
-		);
-	}
-
-	if (userPointsLoading) {
+	if (loading || userDataLoading) {
 		return (
 			<>
 				<div>Loading...</div>
