@@ -1,0 +1,42 @@
+.quiz-points {
+	color: #fff;
+	
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
+.quiz-points-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.quiz-points-grid p {
+	margin: 0;
+	padding-bottom: 2px;
+
+}
+
+.quiz-points-grid p:nth-child(1) {
+	text-align: center;
+}
+
+.quiz-points-grid p:nth-child(2n) {
+	text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+	.quiz-points-grid {
+		width: 95%;
+		grid-template-columns: 3fr 1fr;
+	}
+
+	.quiz-points-grid p {
+		padding-bottom: 0;
+		font-size: 0.8em;
+	}
+}

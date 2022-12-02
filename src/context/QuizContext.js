@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
-import { questionList } from '@scripts/data/quizQuestions';
+import { questionList, questionTitles } from '@scripts/data/quizQuestions';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { AuthContext } from '@context/AuthContext';
 import { db } from '../firebase/firebase.js';
@@ -15,8 +15,10 @@ function QuizProvider(props) {
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
 	const [done, setDone] = useState(false);
+	const [listIndex, setListIndex] = useState(0);
 
-	async function updateUserPoints(points, quizTitle) {
+	async function updateUserPoints(points, index) {
+		let quizTitle = questionTitles[index];
 		const actualUserQuiz = await getDoc(doc(db, 'userQuiz', user?.uid));
 		try {
 			let oldScore = actualUserQuiz?.data().quizzes[quizTitle];
@@ -75,6 +77,7 @@ function QuizProvider(props) {
 	function quizChoose(choice, index) {
 		setGrado(choice);
 		setQuestions(questionList[index]);
+		setListIndex(index);
 	}
 
 	const back = () => {
@@ -87,9 +90,10 @@ function QuizProvider(props) {
 
 	useEffect(() => {
 		if (user && done) {
-			updateUserPoints(score, grado);
+			updateUserPoints(score, listIndex);
 		}
 		console.count('Final ');
+		console.log();
 	}, [showScore]);
 
 	return (
@@ -103,6 +107,7 @@ function QuizProvider(props) {
 				handleAnswerOptionClick,
 				back,
 				quizChoose,
+				done,
 			}}
 		>
 			{props.children}

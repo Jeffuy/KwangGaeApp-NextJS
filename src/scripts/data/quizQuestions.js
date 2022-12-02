@@ -1555,6 +1555,8 @@ const questionsUmpire = [
 	},
 ];
 
+export const questionTitles = ['white', 'yellowStripe', 'yellow', 'greenStripe', 'green', 'blueStripe', 'blue', 'redStripe', 'red', 'blackStripe'];
+
 export const questionList = [
 	questionsWhite,
 	questionsYellowStripe,

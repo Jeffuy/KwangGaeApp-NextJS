@@ -19,6 +19,7 @@ import '@styles/formas.css';
 import '@styles/register.css';
 import '@styles/dashboard.css';
 import '@styles/login.css';
+import '@styles/quizPoints.css';
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
