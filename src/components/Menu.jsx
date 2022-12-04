@@ -81,8 +81,27 @@ const Menu = () => {
 								</a>
 							</Link>
 						</div>
+						{user && (
+							<div className="menu__container__menu--item">
+								<Link passHref href="/dashboard">
+									<a href="/">
+										<i className="fas fa-trophy" /> {userData?.availablePoints} pts.
+									</a>
+								</Link>
+							</div>
+						)}
 					</div>
+
 					<div className="menu__container__hamburger">
+						{user && (
+							<div className="menu__container__menu--item">
+								<Link passHref href="/dashboard">
+									<a href="/">
+										<i className="fas fa-trophy" /> {userData?.availablePoints} pts.
+									</a>
+								</Link>
+							</div>
+						)}
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
 							<div className="hamburger__image--container" onClick={() => setShow(!show)}>

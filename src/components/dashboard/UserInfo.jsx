@@ -10,7 +10,7 @@ import { doc, setDoc } from 'firebase/firestore';
 
 import Image from 'next/image';
 
-const UserInfo = () => {
+const UserInfo = ({ viewChallengesRanking, setViewChallengesRanking, viewQuizRanking, setViewQuizRanking }) => {
 	const {
 		user,
 		loading,
@@ -180,16 +180,8 @@ const UserInfo = () => {
 
 				<div className="dashboard-profile-grid">
 					<p>Miembro desde:</p>
-					<p>
-						{userData?.createdAt.toDate().toLocaleDateString('es-ES')}
-						{/* a las{' '}
-						{userData?.createdAt.toDate().toLocaleTimeString('es-ES', {
-							hour: '2-digit',
-							minute: '2-digit',
-						})} */}
-					</p>
+					<p>{userData?.createdAt.toDate().toLocaleDateString('es-ES')}</p>
 					<p>Correo electrónico:</p>
-					{/* censurar primeras letras */}
 					<p>{user?.email.substring(0, 3) + '***' + user?.email.substring(user?.email.indexOf('@'))}</p>
 					<p>
 						Puntos por <Link href="/Challenge"> desafíos:</Link>
@@ -201,7 +193,25 @@ const UserInfo = () => {
 							<p style={{ display: 'inline-block' }}>0 </p>
 						</>
 					)}
+					<p>
+						Puntos por <Link href="/Quiz"> cuestionarios:</Link>
+					</p>
+					{userData?.availablePoints ? (
+						<p>{userData?.availablePoints}</p>
+					) : (
+						<>
+							<p style={{ display: 'inline-block' }}>0 </p>
+						</>
+					)}
 					<button onClick={logout}>Salir</button>
+				</div>
+				<div className="dashboard-profile-button-container">
+					<button className="dashboard-profile-button" onClick={() => setViewChallengesRanking(!viewChallengesRanking)}>
+						{viewChallengesRanking ? 'Esconder' : 'Ver ranking de desafíos'}
+					</button>
+					<button className="dashboard-profile-button" onClick={() => setViewQuizRanking(!viewQuizRanking)}>
+						{viewQuizRanking ? 'Esconder' : 'Ver ranking de cuestionarios'}
+					</button>
 				</div>
 			</div>
 		</>

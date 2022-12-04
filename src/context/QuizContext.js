@@ -17,7 +17,25 @@ function QuizProvider(props) {
 	const [done, setDone] = useState(true);
 	const [listIndex, setListIndex] = useState(0);
 
-	async function updateUserPoints(points, index) {
+	async function updateUserGeneralPoints(points) {
+		const userRef = doc(db, 'users', user.uid);
+		const docSnap = await getDoc(userRef);
+
+		if (docSnap.exists()) {
+			let newPoints = docSnap.data().points + points || points;
+			let availablePoints = docSnap.data().availablePoints + points || points;
+			await setDoc(
+				userRef,
+				{
+					points: newPoints,
+					availablePoints: availablePoints,
+				},
+				{ merge: true }
+			);
+		}
+	}
+
+	async function updateUserQuizPoints(points, index) {
 		setDone(false);
 		let quizTitle = questionTitles[index];
 		let isCompleted = false;
@@ -34,6 +52,7 @@ function QuizProvider(props) {
 					},
 					{ merge: true }
 				);
+				updateUserGeneralPoints(points - oldScore);
 			}
 		} catch (error) {
 			console.log(score);
@@ -47,7 +66,9 @@ function QuizProvider(props) {
 			);
 
 			console.log(score);
+			updateUserGeneralPoints(points);
 		}
+
 		setDone(true);
 	}
 
@@ -80,7 +101,7 @@ function QuizProvider(props) {
 
 	useEffect(() => {
 		if (user && done) {
-			updateUserPoints(score, listIndex);
+			updateUserQuizPoints(score, listIndex);
 		}
 		console.count('Final ');
 		console.log();

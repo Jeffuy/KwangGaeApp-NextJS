@@ -69,6 +69,9 @@ const RegisterForm = () => {
 					createdAt: new Date(),
 					photoURL: 'https://i.imgur.com/uBUfUOx.png',
 					photoSmall: 'https://i.imgur.com/uBUfUOx.png',
+					points: 0,
+					usedPoints: 0,
+					availablePoints: 0,
 				});
 				router.push('/dashboard');
 			} catch (error) {
