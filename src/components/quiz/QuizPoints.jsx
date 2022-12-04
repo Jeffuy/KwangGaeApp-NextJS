@@ -64,16 +64,13 @@ const QuizPoints = () => {
 			<button onClick={() => setClicked(!clicked)}>{clicked ? 'Esconder' : 'Ver mi puntaje'}</button>
 			{!actualUserQuizzesLoading && clicked && (
 				<>
-					<h1>Tus resultados {user?.displayName}</h1>
-
-					<div className="quiz-points-grid quiz-points-grid-title">
+					<div className="quiz-points-grid-title">
 						<p>Test</p>
 						<p>Puntaje</p>
 					</div>
-
 					{infoToShow.map(info => {
 						return (
-							<div key={info.number} className="quiz-points-grid">
+							<div key={info.number} className="quiz-points-grid-map">
 								{info.number === 10 ? (
 									<>
 										<p>Prueba de {info.title}</p>
@@ -88,8 +85,7 @@ const QuizPoints = () => {
 							</div>
 						);
 					})}
-
-					<div className="quiz-points-grid quiz-points-grid-title">
+					<div className="quiz-points-grid-title">
 						<p>Total</p>
 						<p>{sum}</p>
 					</div>
