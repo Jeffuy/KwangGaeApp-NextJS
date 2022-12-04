@@ -1,69 +1,100 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { getDoc, doc } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 import { db } from '../../firebase/firebase.js';
 import { AuthContext } from '@context/AuthContext.js';
-import { QuizContext } from '@context/QuizContext.js';
+import jp from 'jsonpath';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 
 const QuizPoints = () => {
 	const { user, loading } = useContext(AuthContext);
-	const { done } = useContext(QuizContext);
 
-	const [actualUser, setActualUser] = useState({});
+	const [actualUserQuizzes, actualUserQuizzesLoading, actualUserQuizzesError] = useDocumentData(user ? doc(db, 'userQuiz', user.uid) : null);
+	const [infoToShow, setInfoToShow] = useState([]);
+	const [sum, setSum] = useState(0);
+	const [clicked, setClicked] = useState(false);
+
+	const orderData = async actualUserQuizzes => {
+		console.log(actualUserQuizzes);
+		if (actualUserQuizzes) {
+			let pointed = jp.query(actualUserQuizzes, '$[*].points');
+			let titles = jp.query(actualUserQuizzes, '$[*].grado');
+			let indexed = jp.query(actualUserQuizzes, '$[*].number');
+
+			let pointedTitlesIndexed = titles
+				.map((title, key) => {
+					return { title, points: pointed[key], number: indexed[key] };
+				})
+				.sort((a, b) => a.number - b.number);
+			setInfoToShow(pointedTitlesIndexed);
+
+			let getSum = 0;
+			for (let i = 0; i < pointed.length; i++) {
+				getSum += pointed[i];
+			}
+			setSum(getSum);
+		}
+	};
+
+	const getQuizzesFromUser = async () => {
+		if (user) {
+			await orderData(actualUserQuizzes);
+		}
+	};
 
 	useEffect(() => {
-		console.log(actualUser);
-		if (user) {
-			const getUser = async () => {
-				const selectedUser = await getDoc(doc(db, 'userQuiz', user?.uid));
-				selectedUser && setActualUser(selectedUser.data());
-			};
-			getUser();
+		if (actualUserQuizzes) {
+			getQuizzesFromUser();
 		}
-	}, [user, done]);
+	}, [actualUserQuizzes]);
 
-	console.log(actualUser);
-
-	if (loading || !user) {
+	if (loading || actualUserQuizzesLoading) {
 		return <div>Loading...</div>;
+	}
+
+	if (!user) {
+		return <div>No has ingresado. Ingresa para poder guardar tus puntuaciones.</div>;
+	}
+
+	if (actualUserQuizzesError) {
+		return <div>Error: {actualUserQuizzesError}</div>;
 	}
 
 	return (
 		<section className="quiz-points">
-			<h1>Tus resultados</h1>
-			<div className="quiz-points-grid">
-				<p>Test</p>
-				<p>Puntaje</p>
+			<button onClick={() => setClicked(!clicked)}>{clicked ? 'Esconder' : 'Ver mi puntaje'}</button>
+			{!actualUserQuizzesLoading && clicked && (
+				<>
+					<h1>Tus resultados {user?.displayName}</h1>
 
-				<p>Cinturón blanco</p>
-				<p>{actualUser?.quizzes?.white || 0}</p>
+					<div className="quiz-points-grid quiz-points-grid-title">
+						<p>Test</p>
+						<p>Puntaje</p>
+					</div>
 
-				<p> Cinturón blanco punta amarilla: </p>
-				<p>{actualUser?.quizzes?.yellowStripe || 0}</p>
+					{infoToShow.map(info => {
+						return (
+							<div key={info.number} className="quiz-points-grid">
+								{info.number === 10 ? (
+									<>
+										<p>Prueba de {info.title}</p>
+										<p>{info.points}</p>
+									</>
+								) : (
+									<>
+										<p>Cinturón {info.title}</p>
+										<p>{info.points}</p>
+									</>
+								)}
+							</div>
+						);
+					})}
 
-				<p> Cinturón amarillo: </p>
-				<p>{actualUser?.quizzes?.yellow || 0}</p>
-
-				<p> Cinturón amarillo punta verde: </p>
-				<p>{actualUser?.quizzes?.greenStripe || 0}</p>
-
-				<p> Cinturón verde: </p>
-				<p>{actualUser?.quizzes?.green || 0}</p>
-
-				<p> Cinturón verde punta azul: </p>
-				<p>{actualUser?.quizzes?.blueStripe || 0}</p>
-
-				<p> Cinturón azul: </p>
-				<p>{actualUser?.quizzes?.blue || 0}</p>
-
-				<p> Cinturón azul punta roja: </p>
-				<p>{actualUser?.quizzes?.redStripe || 0}</p>
-
-				<p> Cinturón rojo: </p>
-				<p>{actualUser?.quizzes?.red || 0}</p>
-
-				<p> Cinturón rojo punta negra: </p>
-				<p>{actualUser?.quizzes?.blackStripe || 0}</p>
-			</div>
+					<div className="quiz-points-grid quiz-points-grid-title">
+						<p>Total</p>
+						<p>{sum}</p>
+					</div>
+				</>
+			)}
 		</section>
 	);
 };

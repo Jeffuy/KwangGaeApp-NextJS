@@ -3,6 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { AuthContext } from '@context/AuthContext';
 import { db } from '../../firebase/firebase.js';
 
+
 import Image from 'next/image';
 
 const Ranking = () => {

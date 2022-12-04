@@ -7,34 +7,30 @@ import { db } from '../firebase/firebase.js';
 const QuizContext = createContext();
 
 function QuizProvider(props) {
-	const { user, userData } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 
 	const [grado, setGrado] = useState('');
 	const [questions, setQuestions] = useState([]);
 	const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
-	const [done, setDone] = useState(false);
+	const [done, setDone] = useState(true);
 	const [listIndex, setListIndex] = useState(0);
 
 	async function updateUserPoints(points, index) {
+		setDone(false);
 		let quizTitle = questionTitles[index];
+		let isCompleted = false;
 		const actualUserQuiz = await getDoc(doc(db, 'userQuiz', user?.uid));
+		let oldScore = 0;
 		try {
-			let oldScore = actualUserQuiz?.data().quizzes[quizTitle];
-			console.log(oldScore);
-			console.log(score);
-			if (points > oldScore || oldScore === undefined) {
-				console.log(oldScore);
+			oldScore = actualUserQuiz.data()[quizTitle].points;
+			points || oldScore == 12 ? (isCompleted = true) : (isCompleted = false);
+			if (points > oldScore) {
 				await setDoc(
 					doc(db, 'userQuiz', user.uid),
 					{
-						uid: user.uid,
-						displayName: userData.displayName,
-						quizzes: {
-							[quizTitle]: points,
-						},
-						photoSmall: userData.photoSmall,
+						[quizTitle]: { points, isCompleted, grado, number: index },
 					},
 					{ merge: true }
 				);
@@ -45,19 +41,14 @@ function QuizProvider(props) {
 			await setDoc(
 				doc(db, 'userQuiz', user.uid),
 				{
-					uid: user.uid,
-					displayName: userData.displayName,
-					quizzes: {
-						[quizTitle]: points,
-					},
-					photoSmall: userData.photoSmall,
+					[quizTitle]: { points, isCompleted, grado, number: index },
 				},
 				{ merge: true }
 			);
 
 			console.log(score);
 		}
-		setDone(false);
+		setDone(true);
 	}
 
 	const handleAnswerOptionClick = async isCorrect => {
@@ -70,7 +61,6 @@ function QuizProvider(props) {
 			setCurrentQuestionNumber(nextQuestion);
 		} else {
 			setShowScore(true);
-			setDone(true);
 		}
 	};
 
