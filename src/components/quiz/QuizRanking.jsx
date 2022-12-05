@@ -18,7 +18,7 @@ const QuizRanking = () => {
 		const results = [];
 		const querySnapshot2 = await getDocs(collection(db, 'users'));
 		querySnapshot2.forEach(doc => {
-			results.push({ displayName: doc.data().displayName, photoSmall: doc.data().photoSmall, points: doc.data().availablePoints });
+			results.push({ displayName: doc.data().displayName, photoSmall: doc.data().photoSmall, points: doc.data().points });
 		});
 		results.sort((a, b) => b.points - a.points);
 		setInfo(results);
