@@ -43,7 +43,7 @@ function QuizProvider(props) {
 		let oldScore = 0;
 		try {
 			oldScore = actualUserQuiz.data()[quizTitle].points;
-			points || oldScore == 12 ? (isCompleted = true) : (isCompleted = false);
+			points == 12 || oldScore == 12 ? (isCompleted = true) : (isCompleted = false);
 			if (points > oldScore) {
 				await setDoc(
 					doc(db, 'userQuiz', user.uid),
@@ -56,6 +56,10 @@ function QuizProvider(props) {
 			}
 		} catch (error) {
 			console.log(score);
+
+			if (points == 12) {
+				isCompleted = true;
+			}
 
 			await setDoc(
 				doc(db, 'userQuiz', user.uid),
