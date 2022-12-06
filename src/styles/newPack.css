@@ -1,0 +1,30 @@
+.album-sticker  .album-image-clicked-back {
+	transform: rotateY(90deg);
+    transition: all ease-in 0.5s;
+	position: absolute;
+}
+
+.album-sticker-vertical .album-image-clicked-back {
+	transform: rotateY(90deg);
+    transition: all ease-in 0.5s;
+	position: absolute;
+}
+
+.album-image-not-clicked-back {
+	transform: rotateY(0deg);
+    transition-delay: 0.5s;
+}
+
+.album-sticker .album-image-clicked {
+	transition: all ease-in 0.5s;
+    transition-delay: 0.5s;
+}
+
+.album-sticker-vertical .album-image-clicked   {
+	transition: all ease-in 0.5s;
+	transition-delay: 0.5s;
+}
+.album-image-not-clicked {
+	transform: rotateY(90deg);
+    transition-delay: 0s;
+}

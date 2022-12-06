@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { AuthContext } from '@context/AuthContext';
 import { getDoc, setDoc, doc, getDocs, collection } from '@firebase/firestore';
 import { db } from '../../firebase/firebase.js';
+import NewPack from './NewPack.jsx';
 
 const MarketMain = () => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const MarketMain = () => {
 		if (user && userData.availablePoints >= 10) {
 			const stickerRef = await getDocs(collection(db, 'stickers'));
 			stickerRef.forEach(doc => {
-				getNewPack.push(doc.data().number);
+				getNewPack.push(doc.data());
 			});
 
 			for (let i = 0; i < 3; i++) {
@@ -44,8 +45,8 @@ const MarketMain = () => {
 
 			for (let i = 0; i < newPack.length; i++) {
 				try {
-					quantity = userStickers.data()['quantity' + newPack[i]];
-					pasted = userStickers.data()['pasted' + newPack[i]];
+					quantity = userStickers.data()['quantity' + newPack[i].number];
+					pasted = userStickers.data()['pasted' + newPack[i].number];
 				} catch (error) {
 					quantity = 0;
 					pasted = false;
@@ -57,11 +58,11 @@ const MarketMain = () => {
 					pasted = false;
 				}
 
-				let pastedField = 'pasted' + newPack[i];
-				let quantityField = 'quantity' + newPack[i];
+				let pastedField = 'pasted' + newPack[i].number;
+				let quantityField = 'quantity' + newPack[i].number;
 				await setDoc(doc(db, 'userStickers', user.uid), { [quantityField]: quantity + 1, [pastedField]: pasted }, { merge: true });
 			}
-			await setDoc(doc(db, 'users', user.uid), { availablePoints: userData.availablePoints, usedPoints: userData.usedPoints }, { merge: true });
+			await setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints, usedPoints: userData?.usedPoints }, { merge: true });
 		}
 		setClicked(false);
 	}
@@ -97,7 +98,7 @@ const MarketMain = () => {
 					<p>Contiene: 3 figuritas</p>
 				</div>
 			</div>
-
+			<NewPack newPack={newPack} />
 			<Link passHref href="/Album">
 				<div className="market-link">
 					<a>Ir al album</a>

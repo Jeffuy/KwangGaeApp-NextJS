@@ -22,6 +22,7 @@ import '@styles/login.css';
 import '@styles/quizPoints.css';
 import '@styles/albumPage.css';
 import '@styles/market.css';
+import '@styles/newPack.css';
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
