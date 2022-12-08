@@ -74,13 +74,13 @@ const Menu = () => {
 								</a>
 							</Link>
 						</div>
-						<div className="menu__container__menu--item">
+						{/* <div className="menu__container__menu--item">
 							<Link passHref href="/MemoryGame">
 								<a href="/">
 									<i className="fas fa-brain" /> Memory
 								</a>
 							</Link>
-						</div>
+						</div> */}
 						{user && (
 							<div className="menu__container__menu--item">
 								<Link passHref href="/dashboard">
@@ -182,13 +182,13 @@ const Menu = () => {
 						</a>
 					</Link>
 				</div>
-				<div className={`hamburger__menu--item ${show && 'opened'}`}>
+				{/* <div className={`hamburger__menu--item ${show && 'opened'}`}>
 					<Link passHref href="/MemoryGame">
 						<a href="/" onClick={() => setShow(false)}>
 							<i className="fas fa-brain" /> Memory
 						</a>
 					</Link>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);

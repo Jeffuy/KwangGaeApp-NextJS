@@ -15,7 +15,10 @@ const NewPack = ({ newPack }) => {
 			<div className="album-page new-pack">
 				{newPack.map(sticker => (
 					<div key={sticker.number} className="album-map-container">
-						<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'}`} onClick={() => setClicked([...clicked, sticker.number])}>
+						<div
+							className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''}`}
+							onClick={() => setClicked([...clicked, sticker.number])}
+						>
 							<p className={clicked.includes(sticker.number) ? 'album-sticker-number-clicked' : 'album-sticker-number'}>{clicked.includes(sticker.number) ? sticker.number : '?'}</p>
 							<Image alt={sticker.number} className={clicked.includes(sticker.number) ? 'album-image-clicked' : 'album-image-not-clicked'} layout="fill" src={sticker.url} />
 							<Image
@@ -23,7 +26,7 @@ const NewPack = ({ newPack }) => {
 								alt={sticker.number}
 								className={clicked.includes(sticker.number) ? 'album-image-clicked-back' : 'album-image-not-clicked-back'}
 								layout="fill"
-								src="https://i.imgur.com/rwYWQuA.png"
+								src={`${sticker.circular ? 'https://i.imgur.com/GDWAqoq.png' : 'https://i.imgur.com/rwYWQuA.png'} `}
 							/>
 						</div>
 					</div>
