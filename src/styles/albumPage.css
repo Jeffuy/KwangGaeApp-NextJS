@@ -87,6 +87,7 @@
 .sticker7 {
 	grid-column: 4 / 6;
 	grid-row: 9 / 12;
+	padding-left: 4px;
 }
 
 .sticker7 .album-sticker-vertical {
@@ -228,12 +229,15 @@
 	.sticker7 {
 		grid-column: 5 / 8;
 		grid-row: 8 / 10;
+		padding-left: 3px;
 	}
 	
 	.sticker8 {
 		grid-column: 5 / 11;
 		grid-row: 11 / 13;
 	}
+
+	
 
 	.sticker1:hover, .sticker2:hover, .sticker3:hover, .sticker4:hover, .sticker5:hover, .sticker6:hover, .sticker7:hover, .sticker8:hover {
 		transform: none;
