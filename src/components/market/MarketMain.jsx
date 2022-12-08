@@ -41,11 +41,13 @@ const MarketMain = () => {
 				</div>
 			</div>
 			<NewPack newPack={newPack} />
-			<Link passHref href="/Album">
-				<div className="market-link">
-					<a>Ir al album</a>
-				</div>
-			</Link>
+			<div className="album-market-button">
+				<Link passHref href="/Album">
+					<div className="market-link">
+						<a>Ir al album</a>
+					</div>
+				</Link>
+			</div>
 		</section>
 	);
 };

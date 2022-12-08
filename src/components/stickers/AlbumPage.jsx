@@ -77,9 +77,11 @@ const AlbumPage = ({ user, loading }) => {
 					</div>
 				))}
 			</div>
-			<Link passHref href="/Market">
-				<button className="album-market-button">Ir a comprar sobres</button>
-			</Link>
+			<div className="album-market-button">
+				<Link passHref href="/Market">
+					<button className="album-market-button">Ir a comprar sobres</button>
+				</Link>
+			</div>
 			{/* <button onClick={setStickers}> Set stickers</button> */}
 		</section>
 	);
