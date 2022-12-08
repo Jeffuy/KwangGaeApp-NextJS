@@ -4,9 +4,21 @@
 	position: absolute;
 }
 
+.new-sticker .new-sticker-clicked-back {
+	transform: rotateY(90deg);
+    transition: all ease-in 0.5s;
+	position: absolute;
+}
+
 .album-sticker-vertical .album-image-clicked-back {
 	transform: rotateY(90deg);
     transition: all ease-in 0.5s;
+	position: absolute;
+}
+
+.new-sticker-vertical .new-sticker-clicked-back {
+	transform: rotateY(90deg);
+	transition: all ease-in 0.5s;
 	position: absolute;
 }
 
@@ -15,16 +27,37 @@
     transition-delay: 0.5s;
 }
 
+.new-sticker-not-clicked-back {
+	transform: rotateY(0deg);
+	transition-delay: 0.5s;
+}
+
 .album-sticker .album-image-clicked {
 	transition: all ease-in 0.5s;
     transition-delay: 0.5s;
+}
+
+.new-sticker .new-sticker-clicked {
+	transition: all ease-in 0.5s;
+	transition-delay: 0.5s;
 }
 
 .album-sticker-vertical .album-image-clicked   {
 	transition: all ease-in 0.5s;
 	transition-delay: 0.5s;
 }
+
+.new-sticker-vertical .new-sticker-clicked {
+	transition: all ease-in 0.5s;
+	transition-delay: 0.5s;
+}
+
 .album-image-not-clicked {
 	transform: rotateY(90deg);
     transition-delay: 0s;
+}
+
+.new-sticker-not-clicked {
+	transform: rotateY(90deg);
+	transition-delay: 0s;
 }

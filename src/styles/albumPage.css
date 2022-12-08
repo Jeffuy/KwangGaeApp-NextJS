@@ -45,6 +45,16 @@
 	overflow: hidden;
 }
 
+.new-sticker-circular {
+	display: inline-block;
+	position: relative;
+	width: 250px;
+	height: 250px;
+	border: none;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
 .sticker1 {
 	grid-column: 8 / 10;
 	grid-row: 2 / 4;
