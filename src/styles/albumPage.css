@@ -234,4 +234,9 @@
 		grid-column: 5 / 11;
 		grid-row: 11 / 13;
 	}
+
+	.sticker1:hover, .sticker2:hover, .sticker3:hover, .sticker4:hover, .sticker5:hover, .sticker6:hover, .sticker7:hover, .sticker8:hover {
+		transform: none;
+		transition: 0;
+	}
 }
