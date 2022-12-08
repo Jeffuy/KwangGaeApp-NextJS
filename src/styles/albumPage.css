@@ -1,5 +1,4 @@
 .album-page {
-	height: calc(100vh - 64px); 
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
