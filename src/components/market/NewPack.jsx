@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards } from 'swiper';
+import { Pagination } from 'swiper';
 
 const NewPack = ({ newPack }) => {
 	const [clicked, setClicked] = useState([]);
@@ -12,9 +15,18 @@ const NewPack = ({ newPack }) => {
 
 	return (
 		<>
-			<div className="new-pack">
+			<Swiper
+				className="swiper-container-new-pack mySwiper"
+				effect={'cards'}
+				grabCursor={true}
+				modules={[EffectCards, Pagination]}
+				pagination={{
+					dynamicBullets: true,
+					clickable: true,
+				}}
+			>
 				{newPack.map(sticker => (
-					<div key={sticker.number} className="album-map-container">
+					<SwiperSlide key={sticker.number}>
 						<div
 							className={`${sticker.vertical ? 'new-sticker-vertical' : 'new-sticker'} ${sticker.circular ? 'new-sticker-circular' : ''}`}
 							onClick={() => setClicked([...clicked, sticker.number])}
@@ -29,9 +41,9 @@ const NewPack = ({ newPack }) => {
 								src={`${sticker.circular ? 'https://i.imgur.com/GDWAqoq.png' : 'https://i.imgur.com/rwYWQuA.png'} `}
 							/>
 						</div>
-					</div>
+					</SwiperSlide>
 				))}
-			</div>
+			</Swiper>
 		</>
 	);
 };
