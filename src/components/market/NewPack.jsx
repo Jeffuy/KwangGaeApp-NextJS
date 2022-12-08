@@ -12,11 +12,11 @@ const NewPack = ({ newPack }) => {
 
 	return (
 		<>
-			<div className="album-page new-pack">
+			<div className="new-pack">
 				{newPack.map(sticker => (
 					<div key={sticker.number} className="album-map-container">
 						<div
-							className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''}`}
+							className={`${sticker.vertical ? 'new-sticker-vertical' : 'new-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''}`}
 							onClick={() => setClicked([...clicked, sticker.number])}
 						>
 							<p className={clicked.includes(sticker.number) ? 'album-sticker-number-clicked' : 'album-sticker-number'}>{clicked.includes(sticker.number) ? sticker.number : '?'}</p>

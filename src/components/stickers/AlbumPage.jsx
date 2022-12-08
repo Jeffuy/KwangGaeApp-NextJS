@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { doc, collection, updateDoc } from '@firebase/firestore';
 import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
+// import { setStickers } from '@scripts/data/addStickers';
 import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,8 +43,8 @@ const AlbumPage = ({ user, loading }) => {
 		<section>
 			<div className="album-page">
 				{cardList.map(sticker => (
-					<div key={sticker.number} className="album-map-container">
-						<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''}`}>
+					<div key={sticker.number} className={`sticker${sticker.number}`}>
+						<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
 							<p className={userStickers['quantity' + sticker.number] && !userStickers['pasted' + sticker.number] ? 'album-sticker-number' : 'album-sticker-number-clicked'}>
 								{sticker.number}
 							</p>
@@ -68,30 +69,11 @@ const AlbumPage = ({ user, loading }) => {
 						</div>
 					</div>
 				))}
-
-				{/* {allStickers.map(sticker => (
-					<div key={sticker.number} className="album-map-container">
-						<div className="album-sticker">
-							<p className={userActualStickers.includes(sticker) ? '' : 'album-sticker-number'}>{sticker.number}</p>
-
-							<Image
-								alt={sticker.uid}
-								layout="fill"
-								src={userActualStickers.includes(sticker) & userOwnedStickers?.['pasted' + sticker.number] ? sticker.url : 'https://i.imgur.com/kpoQKeK.jpg'}
-							/>
-
-							{!userOwnedStickers?.['pasted' + sticker.number] && userOwnedStickers?.['quantity' + sticker.number] > 0 && (
-								<button className="album-sticker-pasted-button" onClick={() => pasteSticker(`${sticker.number}`)}>
-									Pegar
-								</button>
-							)}
-						</div>
-					</div>
-				))}*/}
 			</div>
 			<Link passHref href="/Market">
 				<button className="album-market-button">Ir a comprar sobres</button>
 			</Link>
+			{/* <button onClick={setStickers}> Set stickers</button> */}
 		</section>
 	);
 };
