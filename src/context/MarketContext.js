@@ -22,10 +22,29 @@ export const MarketContextProvider = ({ children }) => {
 
 			for (let i = 0; i < 3; i++) {
 				let random = Math.floor(Math.random() * getNewPack.length);
+				if (getNewPack[random].isGolden === true) {
+					let randomGolden = Math.floor(Math.random() * 100);
+					if (randomGolden < 45) {
+						console.log(randomGolden + ' LEGENDARIA');
+					} else {
+						random = Math.floor(Math.random() * getNewPack.length);
+						console.log(randomGolden + 'NO LEGENDARIA');
+					}
+				}
+
 				let randomSticker = getNewPack[random];
 
 				while (readyPack.includes(randomSticker)) {
 					random = Math.floor(Math.random() * getNewPack.length);
+					if (getNewPack[random].isGolden === true) {
+						let randomGolden = Math.floor(Math.random() * 100);
+						if (randomGolden < 45) {
+							console.log(randomGolden + ' LEGENDARIA');
+						} else {
+							random = Math.floor(Math.random() * getNewPack.length);
+							console.log(randomGolden + 'NO LEGENDARIA');
+						}
+					}
 					randomSticker = getNewPack[random];
 				}
 
@@ -37,7 +56,6 @@ export const MarketContextProvider = ({ children }) => {
 
 	async function giveStickerToUser() {
 		setClicked(true);
-		console.log('EL NEW PACK ES', newPack);
 		let quantity;
 		let pasted = false;
 		if (user) {

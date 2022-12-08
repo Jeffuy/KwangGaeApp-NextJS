@@ -43,18 +43,25 @@ const AlbumPage = ({ user, loading }) => {
 		<section>
 			<div className="album-page">
 				{cardList.map(sticker => (
-					<div key={sticker.number} className={`sticker${sticker.number}`}>
+					<div key={sticker.number} className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}`}>
 						<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
-							<p className={userStickers['quantity' + sticker.number] && !userStickers['pasted' + sticker.number] ? 'album-sticker-number' : 'album-sticker-number-clicked'}>
+							<p
+								className={
+									(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
+									(userStickers?.['quantity' + sticker.number] > 0 && !userStickers?.['pasted' + sticker.number])
+										? 'album-sticker-number'
+										: 'album-sticker-number-clicked'
+								}
+							>
 								{sticker.number}
 							</p>
 							<Image
 								alt={sticker.number}
-								className={userStickers['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'}
+								className={userStickers?.['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'}
 								layout="fill"
 								src={sticker.url}
 							/>
-							{userStickers['quantity' + sticker.number] && !userStickers['pasted' + sticker.number] && (
+							{userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number] && (
 								<button className="album-sticker-pasted-button" onClick={() => pasteSticker(`${sticker.number}`)}>
 									Pegar
 								</button>
@@ -62,7 +69,7 @@ const AlbumPage = ({ user, loading }) => {
 							<Image
 								priority
 								alt={sticker.number}
-								className={userStickers['pasted' + sticker.number] ? 'album-image-clicked-back' : 'album-image-not-clicked-back'}
+								className={userStickers?.['pasted' + sticker.number] ? 'album-image-clicked-back' : 'album-image-not-clicked-back'}
 								layout="fill"
 								src={`${sticker.circular ? 'https://i.imgur.com/GDWAqoq.png' : 'https://i.imgur.com/rwYWQuA.png'} `}
 							/>
