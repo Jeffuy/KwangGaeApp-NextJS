@@ -178,7 +178,7 @@
 }
 
 @media (max-width: 768px) {
-	.album-page {
+	/* .album-page {
 		grid-template-columns: repeat(1, 1fr);
 		margin: 0 auto;
 		place-items: center;
@@ -190,5 +190,5 @@
 
 	.album-sticker-vertical {
 		margin-bottom: 25px;
-	}
+	} */
 }
