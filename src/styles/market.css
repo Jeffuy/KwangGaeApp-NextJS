@@ -34,3 +34,16 @@
 	width: max-content;
 	cursor: pointer;
 }
+
+.fifty-points-award {
+background-color: rgb(238, 64, 64);
+width: max-content;
+margin: 0 auto;
+padding: 10px;
+border-radius: 5px;
+color: white;
+font-size: 20px;
+/* no pasarse del ancho de la pantalla */
+max-width: 80%;
+text-align: center;
+}

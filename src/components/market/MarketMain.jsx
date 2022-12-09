@@ -14,7 +14,7 @@ const MarketMain = () => {
 	useEffect(() => {
 		if (!userData?.firstTime) {
 			giveFirst100Points();
-			setMessage('Has recibido 50 puntos para comprar tus primeros sobres!');
+			setMessage('Has recibido 50 puntos de regalo para comprar tus primeros sobres!');
 		}
 	}, [userData]);
 
@@ -38,7 +38,7 @@ const MarketMain = () => {
 	return (
 		<section className="market-section">
 			<h1>Comprar un sobre de figuritas</h1>
-			<p>{message}</p>
+			<p className="fifty-points-award">{message}</p>
 
 			<div className="market-grid">
 				<div className="market-image-container">
