@@ -196,8 +196,8 @@ const UserInfo = ({ viewChallengesRanking, setViewChallengesRanking, viewQuizRan
 					<p>
 						Puntos por <Link href="/Quiz"> cuestionarios:</Link>
 					</p>
-					{userData?.availablePoints ? (
-						<p>{userData?.availablePoints}</p>
+					{userData?.points ? (
+						<p>{userData?.points}</p>
 					) : (
 						<>
 							<p style={{ display: 'inline-block' }}>0 </p>
