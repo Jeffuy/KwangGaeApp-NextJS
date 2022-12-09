@@ -8,7 +8,7 @@ import { ref as storageRef, getDownloadURL } from 'firebase/storage';
 
 const Menu = () => {
 	const [show, setShow] = useState(false);
-	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
+	const { user, loading, userData, userDataLoading, logout } = useContext(AuthContext);
 
 	const profilePictureSmall = storageRef(storage, `users/${user?.uid}/profilePictureSmall.jpeg`);
 	const [imageURL, setImageURL] = useState('');
@@ -147,6 +147,13 @@ const Menu = () => {
 						</a>
 					</Link>
 				</div>
+				<div className={`hamburger__menu--item ${show && 'opened'} hamburger__menu--item`}>
+					<Link passHref href="/Album">
+						<a href="/" onClick={() => setShow(false)}>
+							<i className="fas fa-book-open" /> Album
+						</a>
+					</Link>
+				</div>
 				<div className={`hamburger__menu--item ${show && 'opened'}`}>
 					<Link passHref href="/PatternSelector">
 						<a href="/" onClick={() => setShow(false)}>
@@ -182,6 +189,15 @@ const Menu = () => {
 						</a>
 					</Link>
 				</div>
+				{user && (
+					<div className={`hamburger__menu--item ${show && 'opened'}`}>
+						<Link passHref href="/">
+							<a href="/" onClick={logout}>
+								<i className="fas fa-sign-out-alt" /> Salir
+							</a>
+						</Link>
+					</div>
+				)}
 				{/* <div className={`hamburger__menu--item ${show && 'opened'}`}>
 					<Link passHref href="/MemoryGame">
 						<a href="/" onClick={() => setShow(false)}>

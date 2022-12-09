@@ -80,10 +80,19 @@ export const MarketContextProvider = ({ children }) => {
 				let quantityField = 'quantity' + newPack[i].number;
 				await setDoc(doc(db, 'userStickers', user.uid), { [quantityField]: quantity + 1, [pastedField]: pasted }, { merge: true });
 			}
-			await setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints, usedPoints: userData?.usedPoints }, { merge: true });
+
+			if (newPack.length > 0) {
+				await setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints - 10, usedPoints: userData?.usedPoints + 10 }, { merge: true });
+			}
 		}
 		setClicked(false);
 	}
+
+	const giveFirst100Points = async () => {
+		if (user && userData) {
+			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 50, firstTime: true }, { merge: true });
+		}
+	};
 
 	return (
 		<MarketContext.Provider
@@ -92,6 +101,7 @@ export const MarketContextProvider = ({ children }) => {
 				giveStickerToUser,
 				newPack,
 				clicked,
+				giveFirst100Points,
 			}}
 		>
 			{children}

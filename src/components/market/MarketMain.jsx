@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AuthContext } from '@context/AuthContext';
@@ -7,7 +7,16 @@ import NewPack from './NewPack.jsx';
 
 const MarketMain = () => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
-	const { newPack, clicked, giveStickerToUser, getStickersToGive } = useContext(MarketContext);
+	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points } = useContext(MarketContext);
+
+	const [message, setMessage] = useState('');
+
+	useEffect(() => {
+		if (!userData?.firstTime) {
+			giveFirst100Points();
+			setMessage('Has recibido 50 puntos para comprar tus primeros sobres!');
+		}
+	}, [userData]);
 
 	useEffect(() => {
 		const sub = giveStickerToUser();
@@ -29,6 +38,8 @@ const MarketMain = () => {
 	return (
 		<section className="market-section">
 			<h1>Comprar un sobre de figuritas</h1>
+			<p>{message}</p>
+
 			<div className="market-grid">
 				<div className="market-image-container">
 					<Image alt="album" layout="fill" src="https://i.imgur.com/d1qiA9x.png" />
