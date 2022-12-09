@@ -15,7 +15,12 @@
 	grid-template-columns: repeat(24, calc(100% / 24));
 	grid-template-rows: repeat(24, calc(100% / 24));
 	margin: 0 auto;
-	padding-bottom: 40px;
+	padding-bottom: 40px;	
+}
+
+.album-page1-bg {
+	background-image: url("https://media.istockphoto.com/id/502451497/photo/dark-blue-aluminum-background.jpg?b=1&s=170667a&w=0&k=20&c=9SxDAN3Sl5V7_n9GcakkfF54G3U67tPnk7VkLa160Wk=");
+	background-size: fixed;
 }
 
 .new-pack {
@@ -32,7 +37,7 @@
 	position: relative;
 	width: 250px;
 	height: 187.5px;
-	border: 4px solid white;
+	/* border: 4px solid white; */
 	overflow: hidden;
 }
 
@@ -41,7 +46,7 @@
 	position: relative;
 	width: 250px;
 	height: 187.5px;
-	border: 4px solid white;
+	/* border: 4px solid white; */
 	overflow: hidden;
 	background-color: none;
 }
@@ -69,7 +74,7 @@
 
 .sticker2 {
 	grid-column: 10 / 16 ;
-	grid-row: 9 / 17;
+	grid-row: 9 / 15;
 }
 
 .sticker3 {
@@ -92,18 +97,18 @@
 	grid-row: 19 /25 ;
 }
 
-.sticker6 .album-sticker-vertical {
+.sticker6 .album-sticker-vertical .album-sticker-border {
 	border-right: none;
+	padding-right: 4px;
 }
 
 .sticker7 {
 	grid-column: 13 / 19;
 	grid-row: 19 / 25;
-	padding-left: 4px;
 }
 
-.sticker7 .album-sticker-vertical {
-	border-left: none;
+.sticker7 .album-sticker-vertical .album-sticker-border {
+	border-left: none !important;
 }
 
 .sticker8 {
@@ -113,7 +118,8 @@
 
 .album-market-button {
 	display: flex;
-	margin: 0 auto;
+	justify-content: flex-end;
+	padding-right: 20px;
 	font-size: 20px;
 	text-align: center;
 	margin-bottom: 20px;
@@ -139,7 +145,7 @@
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border: 4px solid white;
+	/* border: 4px solid white; */
 	overflow: hidden;
 }
 
@@ -148,8 +154,9 @@
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border: 4px solid white;
+	/* border: 4px solid white; */
 	overflow: hidden;
+	
 }
 
 .album-sticker-circular {
@@ -215,19 +222,17 @@
 	.album-page {
 		display: grid;
 		width: 100%;
-		height: 600px;
+		height: 500px;
 		/* 12 columnas iguales y 12 filas iguales */
+		grid-template-columns: repeat(24, calc(100% / 24));
+	grid-template-rows: repeat(24, calc(100% / 24));
 		margin: 0 auto;
 		padding-top: 10px;
 	}
-
-	
-	
 
 	.sticker-pasted:hover {
 		transform: none;
 		transition: 0;
 		z-index: 0;
 	}
-	
 }

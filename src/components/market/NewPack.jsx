@@ -31,15 +31,17 @@ const NewPack = ({ newPack }) => {
 							className={`${sticker.vertical ? 'new-sticker-vertical' : 'new-sticker'} ${sticker.circular ? 'new-sticker-circular' : ''}`}
 							onClick={() => setClicked([...clicked, sticker.number])}
 						>
-							<p className={clicked.includes(sticker.number) ? 'album-sticker-number-clicked' : 'album-sticker-number'}>{clicked.includes(sticker.number) ? sticker.number : '?'}</p>
-							<Image alt={sticker.number} className={clicked.includes(sticker.number) ? 'new-sticker-clicked' : 'new-sticker-not-clicked'} layout="fill" src={sticker.url} />
-							<Image
-								priority
-								alt={sticker.number}
-								className={clicked.includes(sticker.number) ? 'new-sticker-clicked-back' : 'new-sticker-not-clicked-back'}
-								layout="fill"
-								src={`${sticker.circular ? 'https://i.imgur.com/GDWAqoq.png' : 'https://i.imgur.com/rwYWQuA.png'} `}
-							/>
+							<div className={clicked.includes(sticker.number) ? 'new-pack-border' : 'new-pack-not-border'}>
+								<p className={clicked.includes(sticker.number) ? 'album-sticker-number-clicked' : 'album-sticker-number'}>{clicked.includes(sticker.number) ? sticker.number : '?'}</p>
+								<Image alt={sticker.number} className={clicked.includes(sticker.number) ? 'new-sticker-clicked' : 'new-sticker-not-clicked'} layout="fill" src={sticker.url} />
+								<Image
+									priority
+									alt={sticker.number}
+									className={clicked.includes(sticker.number) ? 'new-sticker-clicked-back' : 'new-sticker-not-clicked-back'}
+									layout="fill"
+									src={`${sticker.circular ? 'https://i.imgur.com/GDWAqoq.png' : 'https://i.imgur.com/rwYWQuA.png'} `}
+								/>
+							</div>
 						</div>
 					</SwiperSlide>
 				))}
