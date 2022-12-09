@@ -1,0 +1,65 @@
+.album-page3-title {
+	grid-column: 1 / 10;
+	text-align: center;
+	grid-row: 2
+}
+
+.sticker17 {
+	grid-column: 3 / 10;
+	grid-row: 3 / 8;
+}
+
+.sticker18 {
+	grid-column: 14 / 22;
+	grid-row: 8 / 13;
+}
+
+.sticker19 {
+	grid-column: 14 / 22;
+	grid-row: 2 / 7;
+}
+
+.sticker20 {
+	grid-column: 2 / 11;
+	grid-row: 9 / 15;
+}
+
+.sticker21 {
+	grid-column: 15 / 22;
+	grid-row: 14 / 19;
+}
+
+.sticker22 {
+	grid-column: 3 / 13;
+	grid-row: 16 / 20;
+}
+
+.sticker23 {
+	grid-column: 4 / 12;
+	grid-row: 21/ 25;
+}
+
+.sticker24 {
+	grid-column: 16 / 23;
+	grid-row: 20 / 24;
+}
+
+@media screen and (max-width: 768px) {
+	.album-page3-title {
+		grid-row: 1;
+		grid-column: 1 / 15;
+		font-size: 14px;
+	}
+
+	.sticker17 {
+		grid-column: 4 / 12;
+	}
+
+	.sticker20 {
+		grid-column: 4 / 13;
+	}
+
+	.sticker24 {
+		grid-column: 14 / 22;
+	}
+}

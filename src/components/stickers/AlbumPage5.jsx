@@ -6,7 +6,7 @@ import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const AlbumPage2 = ({ user, loading }) => {
+const AlbumPage5 = ({ user, loading }) => {
 	const [userId, setUserId] = useState('ly7S2mIBXrXSwoXvKgsj');
 
 	// eslint-disable-next-line no-unused-vars
@@ -40,25 +40,39 @@ const AlbumPage2 = ({ user, loading }) => {
 	console.log(userStickers);
 
 	return (
-		<section className="album-page2-bg">
+		<section className="album-page4-bg">
 			<div className="album-page">
-				<h2 className="album-page2-title"> Torneos Virtuales </h2>
+				<h2 className="album-page5-title"> Torneo Noviembre 2022 </h2>
 				{cardList.map(sticker => (
 					<React.Fragment key={sticker.number}>
-						{(sticker.number <= 16) & (sticker.number >= 9) ? (
-							<div className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}`}>
+						{(sticker.number <= 44) & (sticker.number >= 33) ? (
+							<div key={sticker.number} className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}`}>
 								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
 									<div className={userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}>
-										<p
-											className={
-												(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
-												(userStickers?.['quantity' + sticker.number] > 0 && !userStickers?.['pasted' + sticker.number])
-													? 'album-sticker-number'
-													: 'album-sticker-number-clicked'
-											}
-										>
-											{sticker.number}
-										</p>
+										{(sticker.number != 33) & (sticker.number != 41) && (
+											<p
+												className={
+													(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
+													(userStickers?.['quantity' + sticker.number] > 0 && !userStickers?.['pasted' + sticker.number])
+														? 'album-sticker-number'
+														: 'album-sticker-number-clicked'
+												}
+											>
+												{sticker.number}
+											</p>
+										)}
+										{(sticker.number == 33) | (sticker.number == 41) && (
+											<p
+												className={
+													(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
+													(userStickers?.['quantity' + sticker.number] > 0 && !userStickers?.['pasted' + sticker.number])
+														? 'album-sticker-number'
+														: 'album-sticker-number33-clicked'
+												}
+											>
+												{sticker.number}
+											</p>
+										)}
 										<Image
 											alt={sticker.number}
 											className={userStickers?.['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'}
@@ -116,4 +130,4 @@ const AlbumPage2 = ({ user, loading }) => {
 	);
 };
 
-export default AlbumPage2;
+export default AlbumPage5;

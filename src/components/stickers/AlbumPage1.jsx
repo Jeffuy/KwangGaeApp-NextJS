@@ -43,11 +43,11 @@ const AlbumPage1 = ({ user, loading }) => {
 		<section className="album-page1-bg">
 			<div className="album-page">
 				{cardList.map(sticker => (
-					<>
+					<React.Fragment key={sticker.number}>
 						{sticker.number <= 8 && (
-							<div key={sticker.number} className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}`}>
+							<div className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}`}>
 								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
-									<div className={userStickers['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}>
+									<div className={userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}>
 										<p
 											className={
 												(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
@@ -80,7 +80,7 @@ const AlbumPage1 = ({ user, loading }) => {
 								</div>
 							</div>
 						)}
-					</>
+					</React.Fragment>
 				))}
 			</div>
 			<div className="album-market-button">

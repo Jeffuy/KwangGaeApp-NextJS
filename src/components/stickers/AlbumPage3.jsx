@@ -6,7 +6,7 @@ import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const AlbumPage2 = ({ user, loading }) => {
+const AlbumPage3 = ({ user, loading }) => {
 	const [userId, setUserId] = useState('ly7S2mIBXrXSwoXvKgsj');
 
 	// eslint-disable-next-line no-unused-vars
@@ -42,10 +42,10 @@ const AlbumPage2 = ({ user, loading }) => {
 	return (
 		<section className="album-page2-bg">
 			<div className="album-page">
-				<h2 className="album-page2-title"> Torneos Virtuales </h2>
+				<h2 className="album-page3-title"> Torneos Virtuales </h2>
 				{cardList.map(sticker => (
 					<React.Fragment key={sticker.number}>
-						{(sticker.number <= 16) & (sticker.number >= 9) ? (
+						{(sticker.number <= 24) & (sticker.number >= 17) ? (
 							<div className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}`}>
 								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
 									<div className={userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}>
@@ -116,4 +116,4 @@ const AlbumPage2 = ({ user, loading }) => {
 	);
 };
 
-export default AlbumPage2;
+export default AlbumPage3;

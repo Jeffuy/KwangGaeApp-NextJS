@@ -21,6 +21,10 @@ import '@styles/dashboard.css';
 import '@styles/login.css';
 import '@styles/quizPoints.css';
 import '@styles/albumPage.css';
+import '@styles/albumPage2.css';
+import '@styles/albumPage3.css';
+import '@styles/albumPage4.css';
+import '@styles/albumPage5.css';
 import '@styles/market.css';
 import '@styles/newPack.css';
 import 'swiper/css';
@@ -28,6 +32,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-cards';
+
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
