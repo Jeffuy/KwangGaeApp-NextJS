@@ -40,6 +40,13 @@ const Menu = () => {
 							</Link>
 						</div>
 						<div className="menu__container__menu--item">
+							<Link passHref href="/Album">
+								<a href="/">
+									<i className="fas fa-book-open" /> Album
+								</a>
+							</Link>
+						</div>
+						<div className="menu__container__menu--item">
 							<Link passHref href="/PatternSelector">
 								<a href="/">
 									<i className="fas fa-random" /> Selector de Formas
