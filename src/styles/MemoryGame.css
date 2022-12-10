@@ -1,3 +1,5 @@
+@import 'var.css';
+
 .memory {
     max-width: 860px;
     margin: 40px auto;
@@ -6,19 +8,15 @@
 
 button {
     background: none;
-    border: 2px solid #fff;
+    border: 2px solid var(--color-secondary);
     padding: 6px 12px;
     border-radius: 4px;
-    color: #fff;
+    color: var(--color-secondary);
     font-weight: bold;
     cursor: pointer;
     font-size: 1em;
+	background-color: var(--color-primary);
 
-}
-
-button:hover {
-    background: #97005c;
-    color: #fff;
 }
 
 .card-grid {
@@ -32,7 +30,7 @@ button:hover {
 }
 
 .card {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba( var(--color-primary), 0);
 	position: relative;
 
 }
@@ -41,12 +39,12 @@ button:hover {
     width: 100%;
     height: 100%;
     display: block;
-    border: 2px solid #fff;
+    border: 2px solid var(--color-secondary);
     border-radius: 6px;
 } */
 
 .card-image {
-    border: 2px solid #fff;
+    border: 2px solid var(--color-secondary);
     border-radius: 6px;
 }
 

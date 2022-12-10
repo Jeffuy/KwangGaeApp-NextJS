@@ -1,3 +1,5 @@
+@import 'var.css';
+
 .pattern-selector-container {
 	display: flex;	
 	align-items: center;
@@ -12,9 +14,9 @@
 	flex-direction: column;
 	width: 40%;
 	height: max-content;
-	background-color: #212529;
+	background-color: var(--color-primary);
 	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 0px 10px rgba( var(--color-primary), 0.5);
 	margin: 5%;
 	padding-inline: 5%;
 	justify-content: space-between;
@@ -28,9 +30,9 @@
 	flex-direction: row;
 	width: 100%;
 	height: max-content;
-	background-color: #212529;
+	background-color: var(--color-primary);
 	border-radius: 3px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 0px 10px rgba( var(--color-primary), 0.5);
 	margin: 1%;
 	justify-content: space-between;
 	align-items: center;
@@ -53,7 +55,7 @@
 
 .pattern-selector__button-container button {
 	background-color: rgb(255, 174, 74);
-	color: #212529;
+	color: var(--color-primary);
 	border: none
 }
 

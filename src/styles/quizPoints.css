@@ -1,5 +1,7 @@
+@import 'var.css';
+
 .quiz-points {
-	color: #fff;
+	color: var(--color-secondary);
 	border-radius: 5px;
 	padding-bottom: 5px;
 	font-size: 1.2em;
@@ -10,7 +12,7 @@
 
 
 .quiz-points button {
-	background: #fff;
+	background: var(--color-secondary);
 	color: #000;
 	border: 0;
 	border-radius: 5px;
@@ -52,13 +54,13 @@
 }
 
 .quiz-points-grid-title p:nth-child(2) {
-	border-left: 1px solid black;
+	border-left: 1px solid var(--color-primary);
 	text-align: center;
 	padding-left: 0;
 }
 
 .quiz-points-grid-map p:nth-child(2) {
-	border-left: 1px solid black;
+	border-left: 1px solid var(--color-primary);
 	text-align: center;
 	padding-left: 0;
 }
@@ -68,12 +70,12 @@
 }
 
 .quiz-points-grid-map:nth-child(even)  {
-	background-color: #212529;
+	background-color: var(--color-primary);
 }
 
 .quiz-points-grid-map:nth-child(odd)  {
 	background-color: #cecece;
-	color:#212529;
+	color:var(--color-primary);
 }
 
 @media screen and (max-width: 600px) {

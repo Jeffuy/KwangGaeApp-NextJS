@@ -1,3 +1,5 @@
+@import 'var.css';
+
 #quiz {
     margin-top: 20px;
 }
@@ -8,12 +10,12 @@
 
 #question {
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--color-secondary);
     font-weight: bold;
 }
 
 .button {
-    color: white;
+    color: var(--color-secondary);
     width: 250px;
     font-size: 20px;
     font-weight: bold;
@@ -29,13 +31,13 @@
 }
 
 #progress {
-    color: #fff;
+    color: var(--color-secondary);
     text-align: center;
     font-size: 20px;
 }
 
 .result {
-    color: rgb(0, 0, 0);
+    color: var(--color-primary);
     font-size: 3rem;
     font-weight: bold;
     text-align: center;

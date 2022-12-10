@@ -1,7 +1,9 @@
+@import 'var.css';
+
 .cintos {
 	display: flex;
 	flex-direction: column;
-	background-color: #212529;
+	background-color: var(--color-primary);
 	margin-bottom: -1px;
 }
 .cintos h1 {
@@ -37,11 +39,11 @@
 }
 
 .cintos-black {
-	background-color: #212529;
+	background-color: var(--color-primary);
 }
 
 .cintos-white {
-	color: #212529;
+	color: var(--color-primary);
 	background-color: #9ba2a8;
 	margin-bottom: -5px;
 }
@@ -52,8 +54,8 @@
 }
 
 .cintos-black {
-	color: #fff;
-	background-color: #212529;
+	color: var(--color-secondary);
+	background-color: var(--color-primary);
 	margin-top: 6px;
 }
 
@@ -78,7 +80,7 @@
 .cintos-blue {
 	background-color: #7f8fef;
 	border-top: 1px solid #7f8fef;
-	color: #fff;
+	color: var(--color-secondary);
 	margin-top: 4px;
 	margin-bottom: -5px;
 }

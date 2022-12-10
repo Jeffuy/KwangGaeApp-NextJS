@@ -1,3 +1,5 @@
+@import 'var.css';
+
 /* USER INFO */
 
 .dashboard-profile-card {
@@ -9,8 +11,8 @@
 	justify-content: center;
 	padding: 1rem;
 	border-radius: 0.5rem;
-	background-color: #212529;
-	color:rgb(255, 255, 255);
+	background-color: var(--color-primary);
+	color:var(--color-secondary);
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -55,8 +57,8 @@
 	font-size: 14px;
 	border-width: 1px;
 	border-color: #fbf9f9;
-	background-color: #ffffff;
-	color: #212529;
+	background-color: var(--color-secondary);
+	color: var(--color-primary);
 	border-style: solid;
 	border-radius: 20px;
 	box-shadow: 0px 0px 5px rgba(66, 66, 66, 0.75);
@@ -64,8 +66,8 @@
 }
 
 .dashboard-edit-display-name button {
-	color: white;
-	background-color: #212529;
+	color: var(--color-secondary);
+	background-color: var(--color-primary);
 	margin: 0 auto;
 	margin-left: 20px;
 	border-radius: 20px;
@@ -84,8 +86,8 @@
 }
 
 .dashboard-custom-file button {
-	color: white;
-	background-color: #212529;
+	color: var(--color-secondary);
+	background-color: var(--color-primary);
 	margin: 0 auto;
 	margin-left: 20px;
 }
@@ -93,7 +95,7 @@
 .custom-file-upload {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border: 2px solid rgb(255, 255, 255);
+	border: 2px solid var(--color-secondary);
 	display: inline-block;
 	padding: 6px;
 	cursor: pointer;
@@ -149,7 +151,7 @@
 	display: flex;
 	width: 100%;
 	text-align: center;
-	border: 1px solid black;
+	border: 1px solid var(--color-primary);
 }
 
 .dashboard-ranking-item:last-child {
@@ -160,7 +162,7 @@
 
 .dashboard-ranking-item p {
 	width: 25%;
-	border-right: 1px solid black;
+	border-right: 1px solid var(--color-primary);
 }
 
 .dashboard-ranking-first {
@@ -168,7 +170,7 @@
 	width: 100%;
 	justify-content: space-between;
 	text-align: center;
-	border: 1px solid #212529;
+	border: 1px solid var(--color-primary);
 	background-color: #707870;
 	color: #f2f2f2;
 	border-top-left-radius: 15px;
@@ -177,7 +179,7 @@
 
 .dashboard-ranking-first p {
 	width: 25%;
-	border-right: 1px solid black;
+	border-right: 1px solid var(--color-primary);
 }
 
 .dashboard-ranking-first p:last-child {
@@ -190,11 +192,11 @@
 
 .dashboard-ranking-item:nth-child(odd) {
 	background-color: #cecece;
-	color: #212529;
+	color: var(--color-primary);
 }
 
 .dashboard-ranking-item:nth-child(even) {
-	background-color:#212529;
+	background-color:var(--color-primary);
 	color: #f2f2f2;
 }
 

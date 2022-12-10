@@ -1,5 +1,7 @@
+@import 'var.css';
+
 .dojang-formas {
-	background: rgb(255, 255, 255);
+	background: var(--color-secondary);
 	background: linear-gradient(
 		180deg,
 		rgba(255, 255, 255, 1) 0%,
@@ -16,7 +18,7 @@
 .dojang-formas h1 {
 	text-align: center;
 	margin: 0 auto;
-	color: #212529;
+	color: var(--color-primary);
 	border-bottom: 1px solid transparent;
 	margin-bottom: 15px;
 }
@@ -41,45 +43,45 @@
 .odd {
 	/*background-color: #848282;*/
 	border-top: 1px solid #f2f2f2;
-	color: #212529;
+	color: var(--color-primary);
 	border-top: 1px solid transparent;
 }
 
 .even {
-	/*background-color: #212529;*/
+	/*background-color: var(--color-primary);*/
 	color: #f2f2f2;
 }
 
 .dojang-yellowStripe {
-	background: rgb(255, 255, 255);
+	background: var(--color-secondary);
 	background: linear-gradient(
 		-270deg,
-		rgba(255, 255, 255, 1) 78%,
+		 var(--color-secondary) 78%,
 		rgba(245, 255, 70, 1) 94%
 	);
-	color: #212529;
+	color: var(--color-primary);
 }
 
 .dojang-yellow {
 	background-color: #f5ff46;
-	color: #212529;
+	color: var(--color-primary);
 }
 
 .dojang-greenStripe {
-	background: rgb(255, 255, 255);
+	background: var(--color-secondary);
 	background: linear-gradient(-270deg, #f5ff46 78%, rgba(0, 255, 0, 1) 94%);
-	color: #212529;
+	color: var(--color-primary);
 }
 
 .dojang-green {
 	background-color: #00ff00;
-	color: #212529;
+	color: var(--color-primary);
 }
 
 .dojang-blueStripe {
-	background: rgb(255, 255, 255);
+	background: var(--color-secondary);
 	background: linear-gradient(-270deg, #00ff00 78%, rgba(0, 0, 255, 1) 94%);
-	color: #212529;
+	color: var(--color-primary);
 }
 .dojang-pattern-grid h2 {
 	grid-column-start: 1;

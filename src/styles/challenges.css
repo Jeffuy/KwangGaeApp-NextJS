@@ -1,3 +1,5 @@
+@import 'var.css';
+
 .challenges-container {
 	display: flex;
 	flex-direction: column;
@@ -22,7 +24,7 @@
     box-shadow: 0px 5px 50px rgba(146, 146, 146, 0.925);
     border-radius: 20px;
     text-align: center;
-    color: black;
+    color: var(--color-primary);
 	width: 95%;
 }
 
@@ -36,7 +38,7 @@
     box-shadow: 0px 5px 50px rgba(146, 146, 146, 0.925);
     border-radius: 20px;
     text-align: center;
-    color: black;
+    color: var(--color-primary);
 }
 
 .TodoItemAttack {
@@ -49,7 +51,7 @@
     box-shadow: 0px 5px 50px rgba(146, 146, 146, 0.925);
     border-radius: 20px;
     text-align: center;
-    color: black;
+    color: var(--color-primary);
 }
 
 .TodoItemStrat {
@@ -62,7 +64,7 @@
     box-shadow: 0px 5px 50px rgba(146, 146, 146, 0.925);
     border-radius: 20px;
     text-align: center;
-    color: black;
+    color: var(--color-primary);
 }
 .TodoItem-Text-Container {
 	margin-top: 10px;
@@ -84,7 +86,7 @@
 .TodoItem-p--complete {
     text-decoration: line-through;
     /* opacity: 0.5; */
-	color:rgba(0, 0, 0, 0.329);
+	color:rgba( var(--color-primary), 0.329);
 	
 }
 
@@ -117,12 +119,12 @@
     top: -20px;
 	left: 0;
     margin: 10px;
-	background-color: rgb(0, 0, 0);
-	color: white;
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
 	border-radius: 15px;
 	padding-right: 5px;
 	padding-left: 5px;
-	border: white dotted 2px;
+	border: var(--color-secondary) dotted 2px;
 }
 
 .Icon-type p {

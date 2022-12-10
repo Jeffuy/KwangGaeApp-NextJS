@@ -1,17 +1,19 @@
+@import 'var.css';
+
 body {
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
-    background: #005c97; /* fallback for old browsers */
+    background: var(--gradient-first);
     background: -webkit-linear-gradient(
         to right,
-        #363795,
-        #005c97
-    ); /* Chrome 10-25, Safari 5.1-6 */
+        var(--gradient-first),
+		var(--gradient-second)
+    );
     background: linear-gradient(
         to right,
-        #363795,
-        #005c97
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: rgb(255, 255, 255);
+        var(--gradient-first),
+        var(--gradient-second)
+    );
+    color: var(--color-secondary);
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -32,10 +34,9 @@ body {
 	max-height: 100%;
 	min-height: 0;
 	min-width: 0;
-	/* background-color: #212529; */
-  }
+}
 
-  .swiper-container-new-pack {
+.swiper-container-new-pack {
 	width: 100%;
 	max-width: 260px;
 	max-height: 100%;

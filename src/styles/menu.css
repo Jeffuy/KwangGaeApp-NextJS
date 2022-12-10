@@ -1,10 +1,12 @@
+@import 'var.css';
+
 .menu {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	height: 64px;
 	align-content: center;
-	background-color: #212529;
+	background-color: var(--color-primary);
 	z-index: 100;
 }
 
@@ -27,13 +29,13 @@
 
 .menu__container__logo a {
 	text-decoration: none;
-	color: #fff;
+	color: var(--color-secondary);
 	font-size: 1.5rem;
 	font-weight: bold;
 }
 
 .menu__container__logo a:visited {
-	color: #fff;
+	color: var(--color-secondary);
 }
 
 .menu__container__menu {
@@ -60,14 +62,14 @@
 
 .menu__container__menu--item a {
 	text-decoration: none;
-	color: #fff;
+	color: var(--color-secondary);
 	font-size: 0.7rem;
 	padding: 0.5rem;
 	transition-duration: 0.5s;
 }
 
 .menu__container__menu--item a:visited {
-	color: #fff;
+	color: var(--color-secondary);
 }
 
 .menu__container__menu--item a:hover {
@@ -136,7 +138,7 @@
 		opacity: 0.95;
 		z-index: 3;
 		transition: all 1s;
-		background-color: #212529;
+		background-color: var(--color-primary);
 	}
 
 	.hamburger__menu--last-item {
@@ -172,7 +174,10 @@
 		display: flex;
 		text-decoration: none;
 		color: rgba(255, 255, 255, 0.55);
-		font-size: 1rem;
+		font-size: 1.2rem;
 		opacity: 1;
+		padding-left: 10px;
+		padding-top: 2.5px;
+		padding-bottom: 2.5px;
 	}
 }

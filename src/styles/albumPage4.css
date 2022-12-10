@@ -1,3 +1,5 @@
+@import 'var.css';
+
 .album-page4-title {
 	grid-column: 1 / 10;
 	text-align: center;
