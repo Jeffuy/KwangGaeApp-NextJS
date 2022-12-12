@@ -1,4 +1,4 @@
-@import 'var.css';
+@import "var.css";
 
 .market-section {
 	padding-bottom: 30px;
@@ -38,14 +38,52 @@
 }
 
 .fifty-points-award {
-background-color: rgb(238, 64, 64);
-width: max-content;
-margin: 0 auto;
-padding: 10px;
-border-radius: 5px;
-color: var(--color-secondary);
-font-size: 20px;
-/* no pasarse del ancho de la pantalla */
-max-width: 80%;
-text-align: center;
+	background-color: rgb(238, 64, 64);
+	width: max-content;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 5px;
+	color: var(--color-secondary);
+	font-size: 20px;
+	/* no pasarse del ancho de la pantalla */
+	max-width: 80%;
+	text-align: center;
+}
+
+.album-percentage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 20px;
+	width: 50%;
+	height: 30px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	box-shadow: 0 1px 0 #fff;
+	border-radius: 4px;
+}
+
+.album-percentage b {
+	color: #fff;
+	line-height: 20px;
+	padding-left: 2px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+	.album-percentage {
+		width: 80%;
+		font-size: 12px;
+		height: 20px;
+	}
+	.market-section h1 {
+		font-size: 20px;
+	}
+
+	.fifty-points-award {
+		color: var(--color-secondary);
+		font-size: 12px;
+		max-width: 90%;
+	}
 }

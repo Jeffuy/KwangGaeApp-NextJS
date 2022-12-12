@@ -7,7 +7,7 @@ import NewPack from './NewPack.jsx';
 
 const MarketMain = () => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
-	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points } = useContext(MarketContext);
+	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage } = useContext(MarketContext);
 
 	const [message, setMessage] = useState('');
 
@@ -58,6 +58,16 @@ const MarketMain = () => {
 						<a>Ir al album</a>
 					</div>
 				</Link>
+			</div>
+			{/* El div ira cambiando de color a medida que el porcentaje crezca */}
+			<div
+				className="album-percentage"
+				style={{
+					// crea un degradado de acuerdo al porcentaje
+					background: `linear-gradient(to right, #00adee ${percentage}%, #212529 ${percentage}%)`,
+				}}
+			>
+				<b>¡Has completado un {percentage}% del álbum!</b>
 			</div>
 		</section>
 	);
