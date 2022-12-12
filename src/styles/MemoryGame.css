@@ -10,7 +10,7 @@ button {
     background: none;
     border: 2px solid var(--color-secondary);
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 5px;
     color: var(--color-secondary);
     font-weight: bold;
     cursor: pointer;
