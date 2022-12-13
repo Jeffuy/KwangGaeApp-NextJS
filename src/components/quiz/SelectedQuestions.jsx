@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { imgList } from '@scripts/data/quizImg';
 import { QuizContext } from '@context/QuizContext.js';
+import { AuthContext } from '@context/AuthContext';
 import * as gtag from '../../lib/gtag';
 import Image from 'next/future/image';
 
@@ -10,6 +11,8 @@ const SelectedQuestions = () => {
 	const [sent, setSent] = useState(false);
 	const [text, setText] = useState('');
 	const [help, setHelp] = useState('');
+
+	const { user } = useContext(AuthContext);
 
 	const handleSend = async e => {
 		e.preventDefault();
@@ -67,6 +70,7 @@ const SelectedQuestions = () => {
 								<input
 									placeholder="Escribe tu nombre"
 									type="text"
+									value={user?.displayName || ''}
 									onChange={e => setText(`Nombre: ${e.target.value}. Puntaje: ${score} sobre ${questions.length}. Cinturón: ${grado}`)}
 								/>
 
