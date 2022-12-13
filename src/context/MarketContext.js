@@ -10,8 +10,6 @@ export const MarketContext = createContext();
 export const MarketContextProvider = ({ children }) => {
 	const { user, userData } = useContext(AuthContext);
 
-	const [loadingPercentage, setLoadingPercentage] = useState(false);
-
 	const [totalStickers, loadingTotalStickers, errorTotalStickers] = useCollectionData(collection(db, 'stickers'));
 
 	const [userStickers, loadingUserStickers, errorUserStickers] = useDocumentData(doc(db, 'userStickers', user?.uid || ' '));
@@ -131,8 +129,6 @@ export const MarketContextProvider = ({ children }) => {
 				giveFirst100Points,
 				percentage,
 				totalStickers,
-				loadingPercentage,
-				setLoadingPercentage,
 			}}
 		>
 			{children}

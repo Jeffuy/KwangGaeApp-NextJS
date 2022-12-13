@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const MarketRanking = () => {
 	const { loading, userDataLoading } = useContext(AuthContext);
-	const { totalStickers, setLoadingPercentage } = useContext(MarketContext);
+	const { totalStickers } = useContext(MarketContext);
 
 	//const [showRanking, setShowRanking] = useState(false);
 
@@ -16,7 +16,6 @@ const MarketRanking = () => {
 	const [done, setDone] = useState(false);
 
 	const readCollection = async () => {
-		setLoadingPercentage(true);
 		setInfo([]);
 		const results = [];
 		let totalStickersQuantity = totalStickers.length;
@@ -47,7 +46,6 @@ const MarketRanking = () => {
 		results.sort((a, b) => b.percentage - a.percentage);
 		setInfo(results);
 		setDone(true);
-		setLoadingPercentage(false);
 	};
 
 	useEffect(() => {

@@ -8,7 +8,7 @@ import NewPack from './NewPack.jsx';
 
 const MarketMain = () => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
-	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage, loadingPercentage } = useContext(MarketContext);
+	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage } = useContext(MarketContext);
 
 	const [showRanking, setShowRanking] = useState(false);
 
@@ -25,12 +25,6 @@ const MarketMain = () => {
 		const sub = giveStickerToUser();
 		return () => sub;
 	}, [newPack]);
-
-	useEffect(() => {
-		if (!loadingPercentage) {
-			setShowRanking(true);
-		}
-	}, [loadingPercentage]);
 
 	if ((loading, userDataLoading)) {
 		return <div>Loading...</div>;
@@ -78,6 +72,14 @@ const MarketMain = () => {
 			>
 				<b>¡Has completado un {percentage}% del álbum!</b>
 			</div>
+			{/* button para mostrar el ranking */}
+
+			<div className="show-ranking-button">
+				<button className="show-ranking-button" onClick={() => setShowRanking(!showRanking)}>
+					{!showRanking ? 'Quien tiene el albúm más completo?' : 'Ocultar'}
+				</button>
+			</div>
+
 			{showRanking && <MarketRanking />}
 		</section>
 	);

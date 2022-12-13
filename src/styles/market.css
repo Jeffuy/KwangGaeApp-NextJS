@@ -71,6 +71,18 @@
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
+.show-ranking-button {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.show-ranking-button button {
+	width: max-content;
+	margin-top: 20px;
+	
+}
+
 @media screen and (max-width: 768px) {
 	.album-percentage {
 		width: 80%;
