@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import MarketRanking from './MarketRanking.jsx';
 import { AuthContext } from '@context/AuthContext';
 import { MarketContext } from '@context/MarketContext';
 import NewPack from './NewPack.jsx';
 
 const MarketMain = () => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
-	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage } = useContext(MarketContext);
+	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage, loadingPercentage } = useContext(MarketContext);
+
+	const [showRanking, setShowRanking] = useState(false);
 
 	const [message, setMessage] = useState('');
 
@@ -22,6 +25,12 @@ const MarketMain = () => {
 		const sub = giveStickerToUser();
 		return () => sub;
 	}, [newPack]);
+
+	useEffect(() => {
+		if (!loadingPercentage) {
+			setShowRanking(true);
+		}
+	}, [loadingPercentage]);
 
 	if ((loading, userDataLoading)) {
 		return <div>Loading...</div>;
@@ -69,6 +78,7 @@ const MarketMain = () => {
 			>
 				<b>¡Has completado un {percentage}% del álbum!</b>
 			</div>
+			{showRanking && <MarketRanking />}
 		</section>
 	);
 };
