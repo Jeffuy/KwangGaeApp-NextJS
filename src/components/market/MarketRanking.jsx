@@ -75,22 +75,22 @@ const MarketRanking = () => {
 				</div>
 
 				{info?.map((result, index) => (
-					<div key={index} className="dashboard-ranking-item">
+					<React.Fragment key={index} className="dashboard-ranking-item">
 						{result.percentage > 0 ? (
-							<>
+							<div className="dashboard-ranking-item">
 								<p>{index + 1}</p>
 								<p>
-									<b>{result.displayName}</b>
+									<b>{result.displayName.length > 20 ? result.displayName.substring(0, 15) + '...' : result.displayName}</b>
 								</p>
 								<p>{result.percentage}%</p>
 								<div className="ranking-photo">
 									<Image priority alt="foto de perfil" layout="fill" src={result.photoSmall ? result.photoSmall : 'https://i.imgur.com/uBUfUOx.png'} />
 								</div>
-							</>
+							</div>
 						) : (
 							<></>
 						)}
-					</div>
+					</React.Fragment>
 				))}
 			</div>
 		</section>

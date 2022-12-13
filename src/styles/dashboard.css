@@ -200,6 +200,10 @@
 	color: #f2f2f2;
 }
 
+.dashboard-ranking-item:nth-child(even) p {
+	border-right: 1px solid #f2f2f2;
+}
+
 .ranking-photo {
 	position: relative;
 	margin: 0 auto;
@@ -225,5 +229,15 @@
 	justify-self: right;
 }
 
+@media screen and (max-width: 768px) {
+	.dashboard-ranking-item p, .dashboard-ranking-item b {
+		font-size: 12px;
+	}
+
+	.ranking-photo {
+		width: 30px;
+		height: 30px;
+	}
+}
 
 

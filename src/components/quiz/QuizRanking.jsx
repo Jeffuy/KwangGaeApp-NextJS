@@ -57,7 +57,7 @@ const QuizRanking = () => {
 					<div key={index} className="dashboard-ranking-item">
 						<p>{index + 1}</p>
 						<p>
-							<b>{result.displayName}</b>
+							<b>{result.displayName.length > 20 ? result.displayName.substring(0, 15) + '...' : result.displayName}</b>
 						</p>
 						<p>{result.points}</p>
 						<div className="ranking-photo">

@@ -3,7 +3,6 @@ import { collection, getDocs } from 'firebase/firestore';
 import { AuthContext } from '@context/AuthContext';
 import { db } from '../../firebase/firebase.js';
 
-
 import Image from 'next/image';
 
 const Ranking = () => {
@@ -65,7 +64,7 @@ const Ranking = () => {
 					<div key={index} className="dashboard-ranking-item">
 						<p>{index + 1}</p>
 						<p>
-							<b>{result.displayName}</b>
+							<b>{result.displayName.length > 20 ? result.displayName.substring(0, 15) + '...' : result.displayName}</b>
 						</p>
 						<p>{result.points}</p>
 						<div className="ranking-photo">
