@@ -16,7 +16,7 @@
 	height: max-content;
 	background-color: var(--color-primary);
 	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba( var(--color-primary), 0.5);
+	box-shadow: 0px 0px 10px rgba(33, 37, 41, 0.5);
 	margin: 5%;
 	padding-inline: 5%;
 	justify-content: space-between;
@@ -32,7 +32,7 @@
 	height: max-content;
 	background-color: var(--color-primary);
 	border-radius: 3px;
-	box-shadow: 0px 0px 10px rgba( var(--color-primary), 0.5);
+	box-shadow: 0px 0px 10px rgba(33, 37, 41, 0.5);
 	margin: 1%;
 	justify-content: space-between;
 	align-items: center;

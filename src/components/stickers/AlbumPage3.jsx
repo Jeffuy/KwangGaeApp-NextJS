@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 const AlbumPage3 = ({ user, loading }) => {
 	const [userId, setUserId] = useState('ly7S2mIBXrXSwoXvKgsj');
+	const [expand, setExpand] = useState(0);
 
 	// eslint-disable-next-line no-unused-vars
 	const [cardList, loadingCardList, errorCardList, snapshotCardList] = useCollectionData(collection(db, 'stickers'), {
@@ -27,6 +28,10 @@ const AlbumPage3 = ({ user, loading }) => {
 		});
 	};
 
+	const expandSticker = number => {
+		expand === number ? setExpand(0) : setExpand(number);
+	};
+
 	useEffect(() => {
 		if (user?.uid) {
 			setUserId(user.uid);
@@ -41,12 +46,17 @@ const AlbumPage3 = ({ user, loading }) => {
 
 	return (
 		<section className="album-page2-bg">
-			<div className="album-page">
-				<h2 className="album-page3-title"> Torneos Virtuales </h2>
+				<h2 className="album-page-title"> Torneos Virtuales </h2>
+			<div className={`${expand != 0 ? 'expanded' : 'album-page'}`}>
 				{cardList.map(sticker => (
 					<React.Fragment key={sticker.number}>
 						{(sticker.number <= 24) & (sticker.number >= 17) ? (
-							<div className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}`}>
+							<div
+								className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''} ${
+									expand === sticker.number && !sticker.vertical ? 'sticker-expanded' : ''
+								} ${expand === sticker.number && sticker.vertical ? 'sticker-expanded-vertical' : ''} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''}`}
+								onClick={() => expandSticker(sticker.number)}
+							>
 								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
 									<div className={userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}>
 										<p

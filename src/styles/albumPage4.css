@@ -1,10 +1,5 @@
 @import 'var.css';
 
-.album-page4-title {
-	grid-column: 1 / 10;
-	text-align: center;
-	grid-row: 1
-}
 
 .sticker7 .album-sticker-vertical .album-sticker-border {
 	border-left: none !important;
@@ -81,11 +76,6 @@
 }
 
 @media screen and (max-width: 768px) {
-	.album-page4-title {
-		grid-row: 1;
-		grid-column: 1 / 15;
-		font-size: 14px;
-	}
 
 	.sticker26 {
 		grid-column: 4 / 13;

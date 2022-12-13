@@ -30,7 +30,7 @@ button {
 }
 
 .card {
-    background-color: rgba( var(--color-primary), 0);
+    background-color: rgba(33, 37, 41, 0);
 	position: relative;
 
 }
