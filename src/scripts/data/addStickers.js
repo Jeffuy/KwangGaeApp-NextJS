@@ -1,7 +1,7 @@
 import { doc, setDoc } from '@firebase/firestore';
 import { db } from '../../firebase/firebase.js';
 
-const stickers = [
+export const stickers = [
 	{ circular: true, isGolden: true, number: 1, isLegendary: false, url: 'https://i.imgur.com/CqCP2Lc.png' },
 	{ vertical: true, isGolden: false, number: 2, isLegendary: false, url: 'https://i.imgur.com/GCYoXGU.jpg' },
 	{ isGolden: false, number: 3, isLegendary: false, url: 'https://i.imgur.com/pfRVUuh.jpg' },

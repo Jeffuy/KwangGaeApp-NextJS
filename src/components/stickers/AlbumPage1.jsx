@@ -40,8 +40,6 @@ const AlbumPage1 = ({ user, loading }) => {
 		return <p>Loading...</p>;
 	}
 
-	console.log(userStickers);
-
 	return (
 		<section className="album-page1-bg">
 			<div className={`${expand != 0 ? 'expanded' : 'album-page'}`}>
@@ -93,7 +91,10 @@ const AlbumPage1 = ({ user, loading }) => {
 			</div>
 			<div className="album-market-button">
 				<Link passHref href="/Market">
-					<button className="album-market-button">Ir a comprar sobres</button>
+					<button>Ir a comprar sobres</button>
+				</Link>
+				<Link passHref href="/Repeats">
+					<button>Ver repetidas</button>
 				</Link>
 			</div>
 			{/* <button onClick={setStickers}> Set stickers</button> */}

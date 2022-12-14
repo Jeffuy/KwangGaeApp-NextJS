@@ -46,7 +46,7 @@ const AlbumPage2 = ({ user, loading }) => {
 
 	return (
 		<section className="album-page2-bg">
-				<h2 className="album-page-title"> Torneos Virtuales </h2>
+			<h2 className="album-page-title"> Torneos Virtuales </h2>
 			<div className={`${expand != 0 ? 'expanded' : 'album-page'}`}>
 				{cardList.map(sticker => (
 					<React.Fragment key={sticker.number}>
@@ -118,7 +118,10 @@ const AlbumPage2 = ({ user, loading }) => {
 			</div>
 			<div className="album-market-button">
 				<Link passHref href="/Market">
-					<button className="album-market-button">Ir a comprar sobres</button>
+					<button>Ir a comprar sobres</button>
+				</Link>
+				<Link passHref href="/Repeats">
+					<button>Ver repetidas</button>
 				</Link>
 			</div>
 			{/* <button onClick={setStickers}> Set stickers</button> */}

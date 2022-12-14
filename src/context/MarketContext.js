@@ -10,7 +10,9 @@ export const MarketContext = createContext();
 export const MarketContextProvider = ({ children }) => {
 	const { user, userData } = useContext(AuthContext);
 
-	const [totalStickers, loadingTotalStickers, errorTotalStickers] = useCollectionData(collection(db, 'stickers'));
+	const [totalStickers, loadingTotalStickers, errorTotalStickers] = useCollectionData(collection(db, 'stickers'), {
+		snapshotListenOptions: { includeMetadataChanges: true },
+	});
 
 	const [userStickers, loadingUserStickers, errorUserStickers] = useDocumentData(doc(db, 'userStickers', user?.uid || ' '));
 

@@ -19,21 +19,17 @@ const MarketRanking = () => {
 		setInfo([]);
 		const results = [];
 		let totalStickersQuantity = totalStickers.length;
-		const querySnapshot2 = await getDocs(collection(db, 'users'));
-		querySnapshot2.forEach(doc => {
+		const usersCollection = await getDocs(collection(db, 'users'));
+		usersCollection.forEach(doc => {
 			results.push({ displayName: doc.data().displayName, photoSmall: doc.data().photoSmall, uid: doc.data().uid });
 		});
 		for (let i = 0; i < results.length; i++) {
 			try {
 				let stickersOwned = 0;
-				const querySnapshot = await getDoc(doc(db, 'userStickers', results[i].uid));
-				const data = querySnapshot.data();
+				const usersStickersCollection = await getDoc(doc(db, 'userStickers', results[i].uid));
+				const data = usersStickersCollection.data();
 				if (data && results[i].uid != 'ouqD9z5Fy7OoYD4pz8FZoBR5YNv1') {
-					for (let j = 1; j <= totalStickersQuantity; j++) {
-						if (data['quantity' + j] > 0) {
-							stickersOwned++;
-						}
-					}
+					stickersOwned = Object.keys(data).length / 2;
 				}
 
 				let total = ((stickersOwned / totalStickersQuantity) * 100).toFixed(0);
@@ -75,7 +71,7 @@ const MarketRanking = () => {
 				</div>
 
 				{info?.map((result, index) => (
-					<React.Fragment key={index} className="dashboard-ranking-item">
+					<React.Fragment key={index}>
 						{result.percentage > 0 ? (
 							<div className="dashboard-ranking-item">
 								<p>{index + 1}</p>

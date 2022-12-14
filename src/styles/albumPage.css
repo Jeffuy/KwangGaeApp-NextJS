@@ -148,10 +148,10 @@
 	margin-bottom: 20px;
 }
 
-.album-market-button button {
-	background-color: var(--color-primary);
-	border: none;
-	border-radius: 5px;
+.album-repeats-button {
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
 }
 
 .new-pack {
