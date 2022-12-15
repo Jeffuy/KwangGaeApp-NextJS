@@ -58,7 +58,10 @@ const AlbumPage3 = ({ user, loading }) => {
 								onClick={() => expandSticker(sticker.number)}
 							>
 								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
-									<div className={userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}>
+									<div
+										className={`${userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}
+											${userStickers?.['pasted' + sticker.number] & sticker.isGolden ? 'border-golden' : ''}`}
+									>
 										<p
 											className={
 												(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||

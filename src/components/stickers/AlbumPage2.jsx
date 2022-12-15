@@ -54,11 +54,14 @@ const AlbumPage2 = ({ user, loading }) => {
 							<div
 								className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''} ${
 									expand === sticker.number && !sticker.vertical ? 'sticker-expanded' : ''
-								} ${expand === sticker.number && sticker.vertical ? 'sticker-expanded-vertical' : ''} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''}`}
+								} ${expand === sticker.number && sticker.vertical ? 'sticker-expanded-vertical' : ''} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''} `}
 								onClick={() => expandSticker(sticker.number)}
 							>
 								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
-									<div className={userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}>
+									<div
+										className={`${userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}
+											${userStickers?.['pasted' + sticker.number] & sticker.isGolden ? 'border-golden' : ''}`}
+									>
 										<p
 											className={
 												(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
@@ -71,7 +74,7 @@ const AlbumPage2 = ({ user, loading }) => {
 										</p>
 										<Image
 											alt={sticker.number}
-											className={userStickers?.['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'}
+											className={`${userStickers?.['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'} `}
 											layout="fill"
 											src={sticker.url}
 										/>
