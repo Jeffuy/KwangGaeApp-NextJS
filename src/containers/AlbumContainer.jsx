@@ -6,13 +6,14 @@ import AlbumPage4 from '@components/stickers/AlbumPage4';
 import AlbumPage5 from '@components/stickers/AlbumPage5';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
+import Link from 'next/link';
 
-const AlbumContainer = ({ user, loading }) => {
+const AlbumContainer = ({ user, loading, cardList }) => {
 	return (
 		<>
 			<Swiper
 				// install Swiper modules
-				className="swiper-container mySwiper"
+				className="swiper-container"
 				modules={[Navigation, Pagination]}
 				pagination={{
 					dynamicBullets: true,
@@ -20,25 +21,31 @@ const AlbumContainer = ({ user, loading }) => {
 				}}
 				slidesPerView={1}
 				spaceBetween={50}
-				onSlideChange={() => console.log('slide change')}
-				onSwiper={swiper => console.log(swiper)}
 			>
 				<SwiperSlide>
-					<AlbumPage1 loading={loading} user={user} />
+					<AlbumPage1 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<AlbumPage2 loading={loading} user={user} />
+					<AlbumPage2 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<AlbumPage3 loading={loading} user={user} />
+					<AlbumPage3 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<AlbumPage4 loading={loading} user={user} />
+					<AlbumPage4 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<AlbumPage5 loading={loading} user={user} />
+					<AlbumPage5 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 			</Swiper>
+			<div className="album-market-button">
+				<Link passHref href="/Market">
+					<button>Ir a comprar sobres</button>
+				</Link>
+				<Link passHref href="/Repeats">
+					<button>Ver repetidas</button>
+				</Link>
+			</div>
 		</>
 	);
 };

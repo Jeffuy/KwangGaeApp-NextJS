@@ -4,7 +4,6 @@ import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firesto
 // import { setStickers } from '@scripts/data/addStickers';
 import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const AlbumPage5 = ({ user, loading }) => {
 	const [userId, setUserId] = useState('ly7S2mIBXrXSwoXvKgsj');
@@ -133,14 +132,7 @@ const AlbumPage5 = ({ user, loading }) => {
 					</React.Fragment>
 				))}
 			</div>
-			<div className="album-market-button">
-				<Link passHref href="/Market">
-					<button>Ir a comprar sobres</button>
-				</Link>
-				<Link passHref href="/Repeats">
-					<button>Ver repetidas</button>
-				</Link>
-			</div>
+
 			{/* <button onClick={setStickers}> Set stickers</button> */}
 		</section>
 	);
