@@ -43,7 +43,7 @@ const AlbumPage1 = ({ user, loading, cardList }) => {
 	return (
 		<section className="album-page1-bg">
 			<div className={`${expand != 0 ? 'expanded' : 'album-page'}`}>
-				{cardList.map(sticker => (
+				{cardList?.map(sticker => (
 					<React.Fragment key={sticker.number}>
 						{sticker.number <= 8 && (
 							<div
