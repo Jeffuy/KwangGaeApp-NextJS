@@ -118,7 +118,25 @@ export const MarketContextProvider = ({ children }) => {
 		}
 	};
 
-	if (loadingTotalStickers || loadingUserStickers) return <div> Loading </div>;
+	if (loadingTotalStickers || loadingUserStickers)
+		return (
+			<div className="loadingio-spinner-interwind-rsplu6pobz">
+				<div className="ldio-4j9eyrs77kq">
+					<div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 	if (errorTotalStickers || errorUserStickers) return <div> Error </div>;
 
 	return (
