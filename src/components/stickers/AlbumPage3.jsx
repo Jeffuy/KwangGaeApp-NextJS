@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { doc, collection, updateDoc } from '@firebase/firestore';
-import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
+import { doc, updateDoc } from '@firebase/firestore';
+import {  useDocumentData } from 'react-firebase-hooks/firestore';
 // import { setStickers } from '@scripts/data/addStickers';
 import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
 
-const AlbumPage3 = ({ user, loading }) => {
+const AlbumPage3 = ({ user, loading, cardList }) => {
 	const [userId, setUserId] = useState('ly7S2mIBXrXSwoXvKgsj');
 	const [expand, setExpand] = useState(0);
-
-	// eslint-disable-next-line no-unused-vars
-	const [cardList, loadingCardList, errorCardList, snapshotCardList] = useCollectionData(collection(db, 'stickers'), {
-		snapshotListenOptions: { includeMetadataChanges: true },
-	});
-
-	console.log('HOLA ', user?.uid);
 
 	// eslint-disable-next-line no-unused-vars
 	const [userStickers, loadingUserStickers, errorUserStickers, snapshotUserStickers] = useDocumentData(doc(db, 'userStickers', userId), {
@@ -37,8 +30,25 @@ const AlbumPage3 = ({ user, loading }) => {
 		}
 	}, [user]);
 
-	if ((loadingCardList, loading, loadingUserStickers)) {
-		return <p>Loading...</p>;
+	if ((loading, loadingUserStickers)) {
+		return (
+			<div className="loadingio-spinner-interwind-rsplu6pobz">
+				<div className="ldio-4j9eyrs77kq">
+					<div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 	}
 
 	console.log(userStickers);

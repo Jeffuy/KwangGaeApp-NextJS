@@ -35,7 +35,20 @@ const QuizRanking = () => {
 	if (loading || userDataLoading) {
 		return (
 			<>
-				<div>Loading...</div>
+				<div className="lds-spinner">
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+					<div />
+				</div>
 			</>
 		);
 	}

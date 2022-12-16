@@ -5,7 +5,6 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
 
-
 const AlbumPage1 = ({ user, loading, cardList }) => {
 	const [userId, setUserId] = useState('ly7S2mIBXrXSwoXvKgsj');
 	const [expand, setExpand] = useState(0);
@@ -37,7 +36,24 @@ const AlbumPage1 = ({ user, loading, cardList }) => {
 	}, [user]);
 
 	if ((loading, loadingUserStickers)) {
-		return <p>Loading...</p>;
+		return (
+			<div className="loadingio-spinner-interwind-rsplu6pobz">
+				<div className="ldio-4j9eyrs77kq">
+					<div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 	}
 
 	return (

@@ -81,7 +81,24 @@ const RegisterForm = () => {
 	};
 
 	if (loading) {
-		return <div>Loading...</div>;
+		return (
+			<div className="loadingio-spinner-interwind-rsplu6pobz">
+				<div className="ldio-4j9eyrs77kq">
+					<div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 	}
 
 	if (user) {

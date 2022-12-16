@@ -117,9 +117,22 @@ const UserInfo = ({ viewChallengesRanking, setViewChallengesRanking, viewQuizRan
 
 	if (loading || userDataLoading || userPointsLoading || valueLoading || userChallengesLoading) {
 		return (
-			<>
-				<div>Loading...</div>
-			</>
+			<div className="loadingio-spinner-interwind-rsplu6pobz">
+				<div className="ldio-4j9eyrs77kq">
+					<div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		);
 	}
 

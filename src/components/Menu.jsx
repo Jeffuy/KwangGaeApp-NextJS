@@ -8,7 +8,7 @@ import { ref as storageRef, getDownloadURL } from 'firebase/storage';
 
 const Menu = () => {
 	const [show, setShow] = useState(false);
-	const { user, loading, userData, userDataLoading, logout } = useContext(AuthContext);
+	const { user, userData, logout } = useContext(AuthContext);
 
 	const profilePictureSmall = storageRef(storage, `users/${user?.uid}/profilePictureSmall.jpeg`);
 	const [imageURL, setImageURL] = useState('');
@@ -18,9 +18,9 @@ const Menu = () => {
 		console.count('Efecto ');
 	}, [userData]);
 
-	if (loading || userDataLoading) {
-		return <div>Loading...</div>;
-	}
+	// if (loading || userDataLoading) {
+	// 	return <div>Loading...</div>;
+	// }
 
 	return (
 		<>
@@ -112,7 +112,16 @@ const Menu = () => {
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
 							<div className="hamburger__image--container" onClick={() => setShow(!show)}>
-								<Image alt="imagen de perfil" layout="fill" src={imageURL || 'https://i.imgur.com/uBUfUOx.png'} />
+								{user ? (
+									<Image alt="imagen de perfil" layout="fill" src={imageURL || 'https://i.imgur.com/uBUfUOx.png'} />
+								) : (
+									<>
+										<div className="lds-ripple-small">
+											<div />
+											<div />
+										</div>
+									</>
+								)}
 							</div>
 						</label>
 					</div>

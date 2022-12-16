@@ -6,7 +6,7 @@ import { AuthContext } from '@context/AuthContext';
 import { MarketContext } from '@context/MarketContext';
 import NewPack from './NewPack.jsx';
 
-const MarketMain = () => {
+const MarketMain = ({ cardList }) => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
 	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage } = useContext(MarketContext);
 
@@ -27,7 +27,24 @@ const MarketMain = () => {
 	}, [newPack]);
 
 	if ((loading, userDataLoading)) {
-		return <div>Loading...</div>;
+		return (
+			<div className="loadingio-spinner-interwind-rsplu6pobz">
+				<div className="ldio-4j9eyrs77kq">
+					<div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 	}
 
 	if (!user) {
@@ -80,7 +97,7 @@ const MarketMain = () => {
 				</button>
 			</div>
 
-			{showRanking && <MarketRanking />}
+			{showRanking && <MarketRanking cardList={cardList} />}
 		</section>
 	);
 };

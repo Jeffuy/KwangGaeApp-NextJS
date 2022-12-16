@@ -17,7 +17,25 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 		snapshotListenOptions: { includeMetadataChanges: true },
 	});
 
-	if (loadingUserStickers || loading) return <div>Loading...</div>;
+	if (loadingUserStickers || loading)
+		return (
+			<div className="loadingio-spinner-interwind-rsplu6pobz">
+				<div className="ldio-4j9eyrs77kq">
+					<div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+						<div>
+							<div>
+								<div />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 
 	return (
 		<section className="repeats">
