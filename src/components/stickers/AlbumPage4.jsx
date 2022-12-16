@@ -51,8 +51,6 @@ const AlbumPage4 = ({ user, loading, cardList }) => {
 		);
 	}
 
-	console.log(userStickers);
-
 	return (
 		<section className="album-page4-bg">
 			<h2 className="album-page-title"> Al aire libre </h2>

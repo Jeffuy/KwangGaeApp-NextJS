@@ -51,8 +51,6 @@ const AlbumPage2 = ({ user, loading, cardList }) => {
 		);
 	}
 
-	console.log(userStickers);
-
 	return (
 		<section className="album-page2-bg">
 			<h2 className="album-page-title"> Torneos Virtuales </h2>

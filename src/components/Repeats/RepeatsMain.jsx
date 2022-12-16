@@ -44,7 +44,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 				{cardList &&
 					cardList.length > 1 &&
 					cardList.map(sticker => (
-						<React.Fragment key={sticker.id}>
+						<React.Fragment key={sticker.number}>
 							{userStickers?.['quantity' + sticker.number] > 1 && (
 								<div
 									className={`${expand === sticker.number && !sticker.vertical ? 'repeats-expanded' : ''} ${

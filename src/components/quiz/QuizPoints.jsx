@@ -14,7 +14,6 @@ const QuizPoints = () => {
 	const [clicked, setClicked] = useState(false);
 
 	const orderData = async actualUserQuizzes => {
-		console.log(actualUserQuizzes);
 		if (actualUserQuizzes) {
 			let pointed = jp.query(actualUserQuizzes, '$[*].points');
 			let titles = jp.query(actualUserQuizzes, '$[*].grado');

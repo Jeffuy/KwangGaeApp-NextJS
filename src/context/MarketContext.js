@@ -2,17 +2,14 @@ import { db } from '../firebase/firebase.js';
 import { doc, setDoc, collection, getDocs, getDoc } from 'firebase/firestore';
 import { createContext, useState, useContext } from 'react';
 import { AuthContext } from './AuthContext.js';
-import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
-// import { setStickers } from '@scripts/data/addStickers';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { stickers } from '@scripts/data/addStickers.js';
 
 export const MarketContext = createContext();
 
 export const MarketContextProvider = ({ children }) => {
 	const { user, userData } = useContext(AuthContext);
-
-	const [totalStickers, loadingTotalStickers, errorTotalStickers] = useCollectionData(collection(db, 'stickers'), {
-		snapshotListenOptions: { includeMetadataChanges: true },
-	});
+	const totalStickers = stickers;
 
 	const [userStickers, loadingUserStickers, errorUserStickers] = useDocumentData(doc(db, 'userStickers', user?.uid || ' '));
 
@@ -47,11 +44,8 @@ export const MarketContextProvider = ({ children }) => {
 				let random = Math.floor(Math.random() * getNewPack.length);
 				if (getNewPack[random].isGolden === true) {
 					let randomGolden = Math.floor(Math.random() * 100);
-					if (randomGolden < 45) {
-						console.log(randomGolden + ' LEGENDARIA');
-					} else {
+					if (randomGolden > 45) {
 						random = Math.floor(Math.random() * getNewPack.length);
-						console.log(randomGolden + 'NO LEGENDARIA');
 					}
 				}
 
@@ -61,11 +55,8 @@ export const MarketContextProvider = ({ children }) => {
 					random = Math.floor(Math.random() * getNewPack.length);
 					if (getNewPack[random].isGolden === true) {
 						let randomGolden = Math.floor(Math.random() * 100);
-						if (randomGolden < 45) {
-							console.log(randomGolden + ' LEGENDARIA');
-						} else {
+						if (randomGolden > 45) {
 							random = Math.floor(Math.random() * getNewPack.length);
-							console.log(randomGolden + 'NO LEGENDARIA');
 						}
 					}
 					randomSticker = getNewPack[random];
@@ -118,7 +109,7 @@ export const MarketContextProvider = ({ children }) => {
 		}
 	};
 
-	if (loadingTotalStickers || loadingUserStickers)
+	if (loadingUserStickers)
 		return (
 			<div className="loadingio-spinner-interwind-rsplu6pobz">
 				<div className="ldio-4j9eyrs77kq">
@@ -137,7 +128,7 @@ export const MarketContextProvider = ({ children }) => {
 				</div>
 			</div>
 		);
-	if (errorTotalStickers || errorUserStickers) return <div> Error </div>;
+	if (errorUserStickers) return <div> Error </div>;
 
 	return (
 		<MarketContext.Provider

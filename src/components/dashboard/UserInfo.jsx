@@ -62,7 +62,6 @@ const UserInfo = ({ viewChallengesRanking, setViewChallengesRanking, viewQuizRan
 	const upload = async (selectedFile, ref, size) => {
 		if (selectedFile) {
 			const result = await uploadBytes(ref, selectedFile).then(snapshot => {
-				console.log('uploaded');
 				getDownloadURL(snapshot.ref).then(url => {
 					setImageURL(url);
 					if (size == 'big') {
@@ -112,7 +111,6 @@ const UserInfo = ({ viewChallengesRanking, setViewChallengesRanking, viewQuizRan
 
 	useEffect(() => {
 		getDownloadURL(profilePicture).then(url => setImageURL(url));
-		console.count('Efecto ');
 	}, [userData]);
 
 	if (loading || userDataLoading || userPointsLoading || valueLoading || userChallengesLoading) {

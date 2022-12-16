@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { doc, updateDoc } from '@firebase/firestore';
-import {  useDocumentData } from 'react-firebase-hooks/firestore';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 // import { setStickers } from '@scripts/data/addStickers';
 import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
@@ -50,8 +50,6 @@ const AlbumPage3 = ({ user, loading, cardList }) => {
 			</div>
 		);
 	}
-
-	console.log(userStickers);
 
 	return (
 		<section className="album-page2-bg">

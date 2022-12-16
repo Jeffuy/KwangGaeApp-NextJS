@@ -19,10 +19,8 @@ export default async (req, res) => {
 			// verify connection configuration
 			transporter.verify(function (error, success) {
 				if (error) {
-					console.log(error);
 					reject(error);
 				} else {
-					console.log('Server is ready to take our messages');
 					resolve(success);
 				}
 			});
@@ -40,10 +38,8 @@ export default async (req, res) => {
 		await new Promise((resolve, reject) => {
 			transporter.sendMail(mailOptions, (err, info) => {
 				if (err) {
-					console.error(err);
 					reject(err);
 				} else {
-					console.log(info);
 					resolve(info);
 				}
 			});
@@ -52,34 +48,3 @@ export default async (req, res) => {
 
 	res.status(200).json({ message: 'Mail sent' });
 };
-// 	await new Promise((resolve, reject) => {
-
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-
-// app.use(cors());
-
-// // eslint-disable-next-line no-unused-vars
-// app.post('/send_mail', cors(), async (req, res) => {
-// 	let { text } = req.body;
-
-// 	const transport = nodemailer.createTransport({
-// 		host: process.env.MAIL_HOST,
-// 		port: process.env.MAIL_PORT,
-// 		auth: {
-// 			user: process.env.MAIL_USER,
-// 			pass: process.env.MAIL_PASS,
-// 		},
-// 	});
-
-// 	await transport.sendMail({
-// 		from: process.env.MAIL_FROM,
-// 		to: 'blablabla@gmail.com',
-// 		subject: 'Contacto desde la web',
-// 		html: `<h1>${text}</h1>`,
-// 	});
-// });
-
-// app.listen(process.env.PORT || 4000, () => {
-// 	console.log('Server started on port 4000');
-// });

@@ -29,7 +29,6 @@ const QuizRanking = () => {
 
 	useEffect(() => {
 		readCollection();
-		console.count('primero');
 	}, [done]);
 
 	if (loading || userDataLoading) {

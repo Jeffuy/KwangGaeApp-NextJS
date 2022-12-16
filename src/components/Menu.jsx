@@ -15,7 +15,6 @@ const Menu = () => {
 
 	useEffect(() => {
 		getDownloadURL(profilePictureSmall).then(url => setImageURL(url));
-		console.count('Efecto ');
 	}, [userData]);
 
 	// if (loading || userDataLoading) {

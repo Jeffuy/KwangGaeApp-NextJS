@@ -55,8 +55,6 @@ function QuizProvider(props) {
 				updateUserGeneralPoints(points - oldScore);
 			}
 		} catch (error) {
-			console.log(score);
-
 			if (points == 12) {
 				isCompleted = true;
 			}
@@ -69,7 +67,6 @@ function QuizProvider(props) {
 				{ merge: true }
 			);
 
-			console.log(score);
 			updateUserGeneralPoints(points);
 		}
 
@@ -107,8 +104,6 @@ function QuizProvider(props) {
 		if (user && done) {
 			updateUserQuizPoints(score, listIndex);
 		}
-		console.count('Final ');
-		console.log();
 	}, [showScore]);
 
 	return (

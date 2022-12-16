@@ -51,8 +51,6 @@ const AlbumPage5 = ({ user, loading, cardList }) => {
 		);
 	}
 
-	console.log(userStickers);
-
 	return (
 		<section className="album-page4-bg">
 			<h2 className="album-page-title"> Torneo Noviembre 2022 </h2>

@@ -9,7 +9,6 @@ const NewPack = ({ newPack }) => {
 
 	useEffect(() => {
 		setClicked([]);
-		console.count('REINICIADO');
 	}, [newPack]);
 
 	return (
