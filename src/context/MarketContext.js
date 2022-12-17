@@ -1,5 +1,5 @@
 import { db } from '../firebase/firebase.js';
-import { doc, setDoc, collection, getDocs, getDoc } from 'firebase/firestore';
+import { doc, setDoc, collection, getDocs, getDoc, updateDoc } from 'firebase/firestore';
 import { createContext, useState, useContext } from 'react';
 import { AuthContext } from './AuthContext.js';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
@@ -28,6 +28,7 @@ export const MarketContextProvider = ({ children }) => {
 			}
 		}
 		let total = ((stickersOwned / totalStickersQuantity) * 100).toFixed(0);
+		await updateDoc(doc(db, 'users', user.uid), { completedPercentage: total });
 		setPercentage(total);
 	}
 
