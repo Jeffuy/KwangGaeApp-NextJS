@@ -17,12 +17,13 @@ const MarketRanking = () => {
 		setInfo([]);
 		const results = [];
 		const usersCollection = await getDocs(collection(db, 'users'));
+		/* sort by completedPercentage */
+
 		usersCollection.forEach(doc => {
 			results.push({ displayName: doc.data().displayName, photoSmall: doc.data().photoSmall, completedPercentage: doc.data().completedPercentage });
 		});
 
-		results.sort((a, b) => b.completedPercentage - a.completedPercentage);
-		setInfo(results);
+		setInfo(results.sort((a, b) => b.completedPercentage - a.completedPercentage));
 		setDone(true);
 	};
 
