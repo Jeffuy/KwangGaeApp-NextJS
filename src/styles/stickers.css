@@ -1,0 +1,139 @@
+.sticker1 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.sticker3 {
+	order: 4;
+}
+
+.sticker6 .album-sticker-vertical {
+	border-right: none;
+	border-radius: 0;
+	margin: 0px;
+}
+
+.sticker7 .album-sticker-vertical {
+	border-left: none;
+	border-radius: 0;
+	margin: -1px;
+}
+
+.sticker29 .album-sticker {
+	border-right: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin: 0px;
+}
+
+.sticker30 .album-sticker {
+	border-left: none !important;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin: -1px;
+}
+
+.sticker35 .album-sticker {
+	height: 300px;
+	border-right: none;
+	margin: 0px;
+	margin-top: 20px;
+}
+
+.sticker35 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	left: 0;
+	margin: 0px;
+
+	border-right: 1px solid rgba(33, 37, 41, 0.8);
+	border-left: none;
+	transition: 2s;
+}
+
+.sticker36 .album-sticker {
+	height: 300px;
+	border-left: none;
+	margin: -0.9px;
+	margin-top: 20px;
+}
+
+.sticker33 .album-sticker {
+	width: 350px;
+	margin: -2.5px;
+	border-bottom: none;
+}
+
+.sticker33 .album-border-golden {
+	width: 350px;
+	margin: -2.5px;
+	border-bottom: none;
+}
+
+.sticker34 .album-sticker {
+	width: 350px;
+	margin: -2.5px;
+	border-top: none;
+}
+
+.sticker34 .album-border-golden {
+	width: 350px;
+	margin: -2.5px;
+	border-top: none;
+}
+
+.sticker33 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	border-top: none;
+}
+
+.sticker41 .album-sticker {
+	width: 350px;
+	margin: -2.5px;
+	border-bottom: 0px;
+}
+
+.sticker41 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	border-top: none;
+}
+
+.sticker42 .album-sticker {
+	width: 350px;
+	margin: -2.5px;
+	border-top: 0px;
+}
+
+@media (max-width: 768px) {
+	.sticker33 .album-sticker {
+		width: 300px;
+		height: 200px;
+		margin: -2.5px;
+		border-bottom: none;
+	}
+
+	.sticker34 .album-sticker {
+		width: 300px;
+		height: 200px;
+		margin: -2.5px;
+		border-top: none;
+	}
+
+	.sticker35 .album-sticker {
+		height: 250px;
+	}
+
+	.sticker36 .album-sticker {
+		height: 250px;
+	}
+
+	.sticker41 .album-sticker {
+		width: 250px;
+	}
+
+	.sticker42 .album-sticker {
+		width: 250px;
+	}
+}

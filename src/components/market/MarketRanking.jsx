@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { AuthContext } from '@context/AuthContext';
 import { db } from '../../firebase/firebase.js';
 
@@ -7,6 +7,8 @@ import Image from 'next/image';
 
 const MarketRanking = () => {
 	const { loading, userDataLoading } = useContext(AuthContext);
+	const usersRef = collection(db, 'users');
+	const q = query(usersRef, orderBy('completedPercentage', 'desc'), limit(11));
 
 	//const [showRanking, setShowRanking] = useState(false);
 
@@ -16,14 +18,15 @@ const MarketRanking = () => {
 	const readCollection = async () => {
 		setInfo([]);
 		const results = [];
-		const usersCollection = await getDocs(collection(db, 'users'));
+
+		const usersCollection = await getDocs(q);
 		/* sort by completedPercentage */
 
 		usersCollection.forEach(doc => {
-			results.push({ displayName: doc.data().displayName, photoSmall: doc.data().photoSmall, completedPercentage: doc.data().completedPercentage });
+			if (doc.data().displayName !== 'Guillermo') results.push({ displayName: doc.data().displayName, photoSmall: doc.data().photoSmall, completedPercentage: doc.data().completedPercentage });
 		});
 
-		setInfo(results.sort((a, b) => b.completedPercentage - a.completedPercentage));
+		setInfo(results);
 		setDone(true);
 	};
 
@@ -72,20 +75,16 @@ const MarketRanking = () => {
 
 						{info?.map((result, index) => (
 							<React.Fragment key={index}>
-								{result.completedPercentage > 0 ? (
-									<div className="dashboard-ranking-item">
-										<p>{index + 1}</p>
-										<p>
-											<b>{result.displayName.length > 20 ? result.displayName.substring(0, 15) + '...' : result.displayName}</b>
-										</p>
-										<p>{result.completedPercentage}%</p>
-										<div className="ranking-photo">
-											<Image priority alt="foto de perfil" layout="fill" src={result.photoSmall ? result.photoSmall : 'https://i.imgur.com/uBUfUOx.png'} />
-										</div>
+								<div className="dashboard-ranking-item">
+									<p>{index + 1}</p>
+									<p>
+										<b>{result.displayName.length > 20 ? result.displayName.substring(0, 15) + '...' : result.displayName}</b>
+									</p>
+									<p>{result.completedPercentage}%</p>
+									<div className="ranking-photo">
+										<Image priority alt="foto de perfil" layout="fill" src={result.photoSmall ? result.photoSmall : 'https://i.imgur.com/uBUfUOx.png'} />
 									</div>
-								) : (
-									<></>
-								)}
+								</div>
 							</React.Fragment>
 						))}
 					</div>

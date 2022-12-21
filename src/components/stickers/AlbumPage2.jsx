@@ -52,22 +52,21 @@ const AlbumPage2 = ({ user, loading, cardList }) => {
 	}
 
 	return (
-		<section className="album-page2-bg">
+		<section className="album-page-bg2">
 			<h2 className="album-page-title"> Torneos Virtuales </h2>
-			<div className={`${expand != 0 ? 'expanded' : 'album-page'}`}>
+			<div className={` ${expand != 0 ? 'album-page-expand' : 'album-page'}`}>
 				{cardList?.map(sticker => (
 					<React.Fragment key={sticker.number}>
-						{(sticker.number <= 16) & (sticker.number >= 9) ? (
-							<div
-								className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''} ${
-									expand === sticker.number && !sticker.vertical ? 'sticker-expanded' : ''
-								} ${expand === sticker.number && sticker.vertical ? 'sticker-expanded-vertical' : ''} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''} `}
-								onClick={() => expandSticker(sticker.number)}
-							>
-								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
+						{sticker.number <= 16 && sticker.number >= 9 ? (
+							<>
+								<div className={`sticker${sticker.number} `}>
 									<div
-										className={`${userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}
-											${userStickers?.['pasted' + sticker.number] & sticker.isGolden ? 'border-golden' : ''}`}
+										className={`${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}  ${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${
+											sticker.circular ? 'album-sticker-circular' : ''
+										} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''} ${expand === sticker.number ? 'sticker-expanded' : ''} ${
+											sticker.isGolden ? 'album-border-golden' : ''
+										} ${sticker.vertical && expand === sticker.number ? 'sticker-expanded-vertical' : ''}`}
+										onClick={() => expandSticker(sticker.number)}
 									>
 										<p
 											className={
@@ -81,7 +80,7 @@ const AlbumPage2 = ({ user, loading, cardList }) => {
 										</p>
 										<Image
 											alt={sticker.number}
-											className={`${userStickers?.['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'} `}
+											className={userStickers?.['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'}
 											layout="fill"
 											src={sticker.url}
 										/>
@@ -89,15 +88,6 @@ const AlbumPage2 = ({ user, loading, cardList }) => {
 											<button className="album-sticker-pasted-button" onClick={() => pasteSticker(`${sticker.number}`)}>
 												Pegar
 											</button>
-										)}
-										{sticker.circular && (
-											<Image
-												priority
-												alt={sticker.number}
-												className={userStickers?.['pasted' + sticker.number] ? 'album-image-clicked-back' : 'album-image-not-clicked-back'}
-												layout="fill"
-												src="https://i.imgur.com/GDWAqoq.png"
-											/>
 										)}
 										{sticker.isGolden && (
 											<Image
@@ -119,13 +109,14 @@ const AlbumPage2 = ({ user, loading, cardList }) => {
 										)}
 									</div>
 								</div>
-							</div>
+							</>
 						) : (
 							''
 						)}
 					</React.Fragment>
 				))}
 			</div>
+
 			{/* <button onClick={setStickers}> Set stickers</button> */}
 		</section>
 	);

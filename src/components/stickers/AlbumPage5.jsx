@@ -54,45 +54,33 @@ const AlbumPage5 = ({ user, loading, cardList }) => {
 	return (
 		<section className="album-page4-bg">
 			<h2 className="album-page-title"> Torneo Noviembre 2022 </h2>
-			<div className={`${expand != 0 ? 'expanded' : 'album-page'}`}>
+			<div className={` ${expand != 0 ? 'album-page-expand' : 'album-page'}`}>
 				{cardList?.map(sticker => (
 					<React.Fragment key={sticker.number}>
-						{(sticker.number <= 44) & (sticker.number >= 33) ? (
-							<div
-								className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''} ${
-									expand === sticker.number && !sticker.vertical ? 'sticker-expanded' : ''
-								} ${expand === sticker.number && sticker.vertical ? 'sticker-expanded-vertical' : ''} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''}`}
-								onClick={() => expandSticker(sticker.number)}
-							>
-								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
+						{sticker.number <= 44 && sticker.number >= 33 ? (
+							<>
+								{(sticker.number === 35 || sticker.number === 43 || sticker.number === 34 || sticker.number === 42 || sticker.number === 41) && (
+									<div className={` ${expand != 0 ? '' : 'album-break'}`} />
+								)}
+								<div className={`sticker${sticker.number}`}>
 									<div
-										className={`${userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}
-											${userStickers?.['pasted' + sticker.number] & sticker.isGolden ? 'border-golden' : ''}`}
+										className={`${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}  ${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${
+											sticker.circular ? 'album-sticker-circular' : ''
+										} ${expand === sticker.number ? 'sticker-expanded' : ''}  ${sticker.isGolden ? 'album-border-golden' : ''} ${
+											sticker.vertical && expand === sticker.number ? 'sticker-expanded-vertical' : ''
+										} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''}`}
+										onClick={() => expandSticker(sticker.number)}
 									>
-										{(sticker.number != 33) & (sticker.number != 41) && (
-											<p
-												className={
-													(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
-													(userStickers?.['quantity' + sticker.number] > 0 && !userStickers?.['pasted' + sticker.number])
-														? 'album-sticker-number'
-														: 'album-sticker-number-clicked'
-												}
-											>
-												{sticker.number}
-											</p>
-										)}
-										{(sticker.number == 33) | (sticker.number == 41) && (
-											<p
-												className={
-													(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
-													(userStickers?.['quantity' + sticker.number] > 0 && !userStickers?.['pasted' + sticker.number])
-														? 'album-sticker-number'
-														: 'album-sticker-number33-clicked'
-												}
-											>
-												{sticker.number}
-											</p>
-										)}
+										<p
+											className={
+												(!userStickers?.['quantity' + sticker.number] && !userStickers?.['pasted' + sticker.number]) ||
+												(userStickers?.['quantity' + sticker.number] > 0 && !userStickers?.['pasted' + sticker.number])
+													? 'album-sticker-number'
+													: 'album-sticker-number-clicked'
+											}
+										>
+											{sticker.number}
+										</p>
 										<Image
 											alt={sticker.number}
 											className={userStickers?.['quantity' + sticker.number] && userStickers['pasted' + sticker.number] ? 'album-image-clicked' : 'album-image-not-clicked'}
@@ -103,15 +91,6 @@ const AlbumPage5 = ({ user, loading, cardList }) => {
 											<button className="album-sticker-pasted-button" onClick={() => pasteSticker(`${sticker.number}`)}>
 												Pegar
 											</button>
-										)}
-										{sticker.circular && (
-											<Image
-												priority
-												alt={sticker.number}
-												className={userStickers?.['pasted' + sticker.number] ? 'album-image-clicked-back' : 'album-image-not-clicked-back'}
-												layout="fill"
-												src="https://i.imgur.com/GDWAqoq.png"
-											/>
 										)}
 										{sticker.isGolden && (
 											<Image
@@ -133,7 +112,7 @@ const AlbumPage5 = ({ user, loading, cardList }) => {
 										)}
 									</div>
 								</div>
-							</div>
+							</>
 						) : (
 							''
 						)}

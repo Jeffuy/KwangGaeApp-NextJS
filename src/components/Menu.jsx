@@ -8,7 +8,7 @@ import { ref as storageRef, getDownloadURL } from 'firebase/storage';
 
 const Menu = () => {
 	const [show, setShow] = useState(false);
-	const { user, userData, logout } = useContext(AuthContext);
+	const { user, userData, userDataLoading, logout } = useContext(AuthContext);
 
 	const profilePictureSmall = storageRef(storage, `users/${user?.uid}/profilePictureSmall.jpeg`);
 	const [imageURL, setImageURL] = useState('');
@@ -111,15 +111,15 @@ const Menu = () => {
 						<input className="hamburger__checkbox" id="hamburger" type="checkbox" />
 						<label htmlFor="hamburger">
 							<div className="hamburger__image--container" onClick={() => setShow(!show)}>
-								{user ? (
-									<Image alt="imagen de perfil" layout="fill" src={imageURL || 'https://i.imgur.com/uBUfUOx.png'} />
-								) : (
+								{userDataLoading ? (
 									<>
 										<div className="lds-ripple-small">
 											<div />
 											<div />
 										</div>
 									</>
+								) : (
+									<Image alt="imagen de perfil" layout="fill" src={imageURL || 'https://i.imgur.com/uBUfUOx.png'} />
 								)}
 							</div>
 						</label>

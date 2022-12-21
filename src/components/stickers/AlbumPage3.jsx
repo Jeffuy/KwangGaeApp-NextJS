@@ -54,20 +54,20 @@ const AlbumPage3 = ({ user, loading, cardList }) => {
 	return (
 		<section className="album-page2-bg">
 			<h2 className="album-page-title"> Torneos Virtuales </h2>
-			<div className={`${expand != 0 ? 'expanded' : 'album-page'}`}>
+			<div className={` ${expand != 0 ? 'album-page-expand' : 'album-page'}`}>
 				{cardList?.map(sticker => (
 					<React.Fragment key={sticker.number}>
-						{(sticker.number <= 24) & (sticker.number >= 17) ? (
-							<div
-								className={`sticker${sticker.number} ${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''} ${
-									expand === sticker.number && !sticker.vertical ? 'sticker-expanded' : ''
-								} ${expand === sticker.number && sticker.vertical ? 'sticker-expanded-vertical' : ''} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''}`}
-								onClick={() => expandSticker(sticker.number)}
-							>
-								<div className={`${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${sticker.circular ? 'album-sticker-circular' : ''} `}>
+						{sticker.number >= 17 && sticker.number <= 24 ? (
+							<>
+								<div className={`sticker${sticker.number} `} />
+								<div className={`sticker${sticker.number} `}>
 									<div
-										className={`${userStickers?.['pasted' + sticker.number] & !sticker.circular ? 'album-sticker-border' : 'album-sticker-not-border'}
-											${userStickers?.['pasted' + sticker.number] & sticker.isGolden ? 'border-golden' : ''}`}
+										className={`${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}  ${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${
+											sticker.circular ? 'album-sticker-circular' : ''
+										} ${expand != 0 && expand != sticker.number ? 'sticker-hidden' : ''} ${expand === sticker.number ? 'sticker-expanded' : ''} ${
+											sticker.isGolden ? 'album-border-golden' : ''
+										} ${sticker.vertical && expand === sticker.number ? 'sticker-expanded-vertical' : ''}`}
+										onClick={() => expandSticker(sticker.number)}
 									>
 										<p
 											className={
@@ -90,15 +90,6 @@ const AlbumPage3 = ({ user, loading, cardList }) => {
 												Pegar
 											</button>
 										)}
-										{sticker.circular && (
-											<Image
-												priority
-												alt={sticker.number}
-												className={userStickers?.['pasted' + sticker.number] ? 'album-image-clicked-back' : 'album-image-not-clicked-back'}
-												layout="fill"
-												src="https://i.imgur.com/GDWAqoq.png"
-											/>
-										)}
 										{sticker.isGolden && (
 											<Image
 												priority
@@ -119,7 +110,7 @@ const AlbumPage3 = ({ user, loading, cardList }) => {
 										)}
 									</div>
 								</div>
-							</div>
+							</>
 						) : (
 							''
 						)}

@@ -93,7 +93,7 @@ const MarketMain = ({ cardList }) => {
 
 			<div className="show-ranking-button">
 				<button className="show-ranking-button" onClick={() => setShowRanking(!showRanking)}>
-					{!showRanking ? 'Quien tiene el albúm más completo?' : 'Ocultar'}
+					{!showRanking ? 'Ver top 10' : 'Ocultar'}
 				</button>
 			</div>
 
