@@ -58,33 +58,21 @@
 	margin-top: 20px;
 }
 
-.sticker33 .album-sticker {
-	width: 350px;
-	margin: -2.5px;
-	border-bottom: none;
-}
-
 .sticker33 .album-border-golden {
 	width: 350px;
 	margin: -2.5px;
 	border-bottom: none;
 }
 
-.sticker34 .album-sticker {
-	width: 350px;
-	margin: -2.5px;
+.sticker33 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
 	border-top: none;
 }
 
 .sticker34 .album-border-golden {
 	width: 350px;
 	margin: -2.5px;
-	border-top: none;
-}
-
-.sticker33 .album-sticker .album-sticker-number-clicked {
-	position: absolute;
-	top: 0;
 	border-top: none;
 }
 
@@ -105,6 +93,140 @@
 	margin: -2.5px;
 	border-top: 0px;
 }
+
+.sticker45 .album-border-golden {
+	width: 350px;
+	margin: 0px;
+	border-bottom: none;
+	border-right: none;
+}
+
+.sticker45 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker46 .album-border-golden {
+	width: 350px;
+	margin: -0px;
+	margin-left: -1px;
+	border-bottom: none;
+	border-left: none;
+}
+
+.sticker46 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top: none;
+}
+
+.sticker47 .album-border-golden {
+	width: 350px;
+	margin: 0px;
+	margin-top: -3.6px;
+	border-top: none;
+	border-right: none;
+}
+
+.sticker47 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker48 .album-border-golden {
+	width: 350px;
+	margin: 0px;
+	margin-left: -1px;
+	margin-top: -3.6px;
+	border-top: none;
+	border-left: none;
+}
+
+.sticker50 .album-sticker {
+	width: 400px;
+	height: 300px;
+	border-right: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin: 0px;
+}
+
+.sticker50 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: 0px;
+	border-left: none;
+	border-bottom: none;
+}
+
+.sticker51 .album-sticker {
+	width: 400px;
+	height: 300px;
+	border-left: none !important;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin: -1px;
+}
+
+.sticker54 .album-border-golden {
+	width: 350px;
+	height: 350px;
+}
+
+.sticker55 .album-sticker {
+	width: 400px;
+	height: 400px;
+	border-right: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin: 0px;
+}
+
+.sticker55 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: 0px;
+	border-left: none;
+	border-bottom: none;
+}
+
+.sticker56 .album-sticker {
+	width: 400px;
+	height: 400px;
+	border-left: none !important;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin: -0px;
+}
+
+.sticker63 .album-border-golden {
+	width: 300px;
+	margin: -2.5px;
+	border-bottom: none;
+}
+
+.sticker63 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	border-top: none;
+}
+
+.sticker64 .album-border-golden {
+	width: 300px;
+	margin: -2.5px;
+	border-top: none;
+}
+
+
 
 @media (max-width: 768px) {
 	.sticker33 .album-sticker {
@@ -135,5 +257,75 @@
 
 	.sticker42 .album-sticker {
 		width: 250px;
+	}
+
+	.sticker45 .album-border-golden {
+		width: 175px;
+		margin-bottom: -1px;
+	}
+
+	.sticker46 .album-border-golden {
+		width: 175px;
+		margin-bottom: -1px;
+	}
+
+	.sticker47 .album-border-golden {
+		width: 175px;
+		margin-top: -3.2px;
+	}
+
+	.sticker48 .album-border-golden {
+		width: 175px;
+		margin-top: -3.2px;
+	}
+
+	.sticker50 .album-sticker {
+		width: 175px;
+		height: 250px;		
+		margin: -0.2px;
+	}
+
+	.sticker51 .album-sticker {
+		width: 175px;
+		height: 250px;
+		margin: 0px;
+	}
+
+	.sticker54 .album-border-golden {
+		width: 225px;
+		height: 225px;
+	}
+
+	.sticker55 .album-sticker {
+		width: 175px;
+		height: 175px;
+		margin: 0px;
+	}
+
+	.sticker56 .album-sticker {
+		width: 175px;
+		height: 175px;
+		border-left: none !important;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		margin: -0.2px;
+	}
+
+	.sticker63 .album-border-golden {
+		width: 250px;
+		margin: -2.5px;
+		border-bottom: none;
+	}
+	
+	.sticker63 .album-sticker .album-sticker-number-clicked {
+		position: absolute;
+		top: 0;
+		border-top: none;
+	}
+	
+	.sticker64 .album-border-golden {
+		width: 250px;
+		margin: -2.5px;
+		border-top: none;
 	}
 }

@@ -46,11 +46,39 @@ export const stickers = [
 	{ vertical: false, isGolden: false, number: 42, isLegendary: false, url: 'https://i.imgur.com/ufSVP3i.jpg' },
 	{ vertical: false, isGolden: false, number: 43, isLegendary: false, url: 'https://i.imgur.com/hOk2WVp.jpg' },
 	{ vertical: false, isGolden: false, number: 44, isLegendary: false, url: 'https://i.imgur.com/RlyOYNr.jpg' },
+	{ vertical: false, isGolden: true, number: 45, isLegendary: false, url: 'https://i.imgur.com/tk5WT15.jpg' },
+	{ vertical: false, isGolden: true, number: 46, isLegendary: false, url: 'https://i.imgur.com/MPwXuSV.jpg' },
+	{ vertical: false, isGolden: true, number: 47, isLegendary: false, url: 'https://i.imgur.com/ALTYC8Q.jpg' },
+	{ vertical: false, isGolden: true, number: 48, isLegendary: false, url: 'https://i.imgur.com/8PlaOtC.jpg' },
+	{ vertical: true, isGolden: false, number: 49, isLegendary: false, url: 'https://i.imgur.com/PjlrybY.jpg' },
+	{ vertical: false, isGolden: false, number: 50, isLegendary: false, url: 'https://i.imgur.com/czYSNLq.png' },
+	{ vertical: false, isGolden: false, number: 51, isLegendary: false, url: 'https://i.imgur.com/eIPNMw3.png' },
+	{ vertical: false, isGolden: false, number: 52, isLegendary: false, url: 'https://i.imgur.com/EL9OIyQ.jpg' },
+	{ vertical: false, isGolden: false, number: 53, isLegendary: false, url: 'https://i.imgur.com/3KNhjr8.jpg' },
+	{ vertical: false, isGolden: true, number: 54, isLegendary: false, url: 'https://i.imgur.com/OKkFKpV.jpg' },
+	{ vertical: false, isGolden: false, number: 55, isLegendary: false, url: 'https://i.imgur.com/63StGgl.jpg' },
+	{ vertical: false, isGolden: false, number: 56, isLegendary: false, url: 'https://i.imgur.com/xO5Zqpe.jpg' },
+	{ vertical: false, isGolden: false, number: 57, isLegendary: false, url: 'https://i.imgur.com/5e6V541.jpg' },
+	{ vertical: false, isGolden: false, number: 58, isLegendary: false, url: 'https://i.imgur.com/pPRDA37.jpg' },
+	{ vertical: false, isGolden: false, number: 59, isLegendary: false, url: 'https://i.imgur.com/GOBvIs9.jpg' },
+	{ vertical: false, isGolden: false, number: 60, isLegendary: false, url: 'https://i.imgur.com/nVU9Yhc.jpg' },
+	{ vertical: false, isGolden: false, number: 61, isLegendary: false, url: 'https://i.imgur.com/GhioCjm.jpg' },
+	{ vertical: false, isGolden: false, number: 62, isLegendary: false, url: 'https://i.imgur.com/YeU4nb4.jpg' },
+	{ vertical: false, isGolden: true, number: 63, isLegendary: false, url: 'https://i.imgur.com/9Zj4riu.png' },
+	{ vertical: false, isGolden: true, number: 64, isLegendary: false, url: 'https://i.imgur.com/QhMZJNb.png' },
 ];
 
 export async function setStickers() {
 	for (let i = 0; i < stickers.length; i++) {
 		const sticker = stickers[i];
-		await setDoc(doc(db, 'stickers', sticker.number.toString()), sticker);
+		await setDoc(doc(db, 'stickers', sticker.number.toString()), sticker), { merge: true };
+	}
+}
+
+export async function giveStickers() {
+	for (let i = 0; i < stickers.length; i++) {
+		const sticker = stickers[i];
+		let quantityField = 'quantity' + sticker.number;
+		await setDoc(doc(db, 'userStickers', 'ouqD9z5Fy7OoYD4pz8FZoBR5YNv1'), { [quantityField]: 1 }, { merge: true });
 	}
 }

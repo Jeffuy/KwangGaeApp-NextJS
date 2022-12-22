@@ -4,6 +4,8 @@ import AlbumPage2 from '@components/stickers/AlbumPage2';
 import AlbumPage3 from '@components/stickers/AlbumPage3';
 import AlbumPage4 from '@components/stickers/AlbumPage4';
 import AlbumPage5 from '@components/stickers/AlbumPage5';
+import AlbumPage6 from '@components/stickers/AlbumPage6';
+import AlbumPage7 from '@components/stickers/AlbumPage7';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import Link from 'next/link';
@@ -36,6 +38,12 @@ const AlbumContainer = ({ user, loading, cardList }) => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<AlbumPage5 cardList={cardList} loading={loading} user={user} />
+				</SwiperSlide>
+				<SwiperSlide>
+					<AlbumPage6 cardList={cardList} loading={loading} user={user} />
+				</SwiperSlide>
+				<SwiperSlide>
+					<AlbumPage7 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 			</Swiper>
 			<div className="album-market-button">
