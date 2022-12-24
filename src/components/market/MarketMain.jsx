@@ -8,16 +8,21 @@ import NewPack from './NewPack.jsx';
 
 const MarketMain = ({ cardList }) => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
-	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage } = useContext(MarketContext);
+	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveChristmas, giveFirst100Points, percentage } = useContext(MarketContext);
 
 	const [showRanking, setShowRanking] = useState(false);
 
 	const [message, setMessage] = useState('');
+	const [message2, setMessage2] = useState('');
 
 	useEffect(() => {
 		if (!userData?.firstTime) {
 			giveFirst100Points();
 			setMessage('Has recibido 50 puntos de regalo para comprar tus primeros sobres!');
+		}
+		if (!userData?.christmasBonus) {
+			giveChristmas();
+			setMessage2('Has recibido 50 puntos de regalo por navidad!');
 		}
 	}, [userData]);
 
@@ -59,6 +64,13 @@ const MarketMain = ({ cardList }) => {
 		<section className="market-section">
 			<h1>Comprar un sobre de figuritas</h1>
 			<p className="fifty-points-award">{message}</p>
+			{message2 !== '' && (
+				<p className="seventy-points-award">
+					<i className="fas fa-candy-cane" />{' '}
+					{message2}{' '}
+					<i className="fas fa-candy-cane" />
+				</p>
+			)}
 
 			<div className="market-grid">
 				<div className="market-image-container">

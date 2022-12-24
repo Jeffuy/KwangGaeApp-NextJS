@@ -109,6 +109,11 @@ export const MarketContextProvider = ({ children }) => {
 			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 50, firstTime: true }, { merge: true });
 		}
 	};
+	const giveChristmas = async () => {
+		if (user && userData) {
+			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 70, christmasBonus: true }, { merge: true });
+		}
+	};
 
 	if (loadingUserStickers)
 		return (
@@ -141,6 +146,7 @@ export const MarketContextProvider = ({ children }) => {
 				giveFirst100Points,
 				percentage,
 				totalStickers,
+				giveChristmas,
 			}}
 		>
 			{children}

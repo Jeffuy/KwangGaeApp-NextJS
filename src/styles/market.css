@@ -50,6 +50,21 @@
 	text-align: center;
 }
 
+.seventy-points-award {
+	background-color: rgb(58, 57, 57);
+	width: max-content;
+	margin: 0 auto;
+	margin-top: 10px;
+	padding: 10px;
+	border-radius: 5px;
+	color: var(--color-secondary);
+	font-size: 20px;
+	/* no pasarse del ancho de la pantalla */
+	max-width: 80%;
+	text-align: center;
+}
+
+
 .album-percentage {
 	display: flex;
 	justify-content: center;
@@ -94,6 +109,12 @@
 	}
 
 	.fifty-points-award {
+		color: var(--color-secondary);
+		font-size: 12px;
+		max-width: 90%;
+	}
+
+	.seventy-points-award {
 		color: var(--color-secondary);
 		font-size: 12px;
 		max-width: 90%;
