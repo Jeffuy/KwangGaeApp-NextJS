@@ -8,7 +8,7 @@ import NewPack from './NewPack.jsx';
 
 const MarketMain = ({ cardList }) => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
-	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage } = useContext(MarketContext);
+	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage, timeLeft, claimPoints, claimText } = useContext(MarketContext);
 
 	const [showRanking, setShowRanking] = useState(false);
 
@@ -59,6 +59,7 @@ const MarketMain = ({ cardList }) => {
 		<section className="market-section">
 			<h1>Comprar un sobre de figuritas</h1>
 			{message != '' && <p className="fifty-points-award">{message}</p>}
+
 			<div className="market-grid">
 				<div className="market-image-container">
 					<Image alt="album" layout="fill" src="https://i.imgur.com/d1qiA9x.png" />
@@ -69,6 +70,14 @@ const MarketMain = ({ cardList }) => {
 					<p>Coste: 10pts (tienes {userData?.availablePoints}) </p>
 					<p>Contiene: 3 figuritas</p>
 				</div>
+				<span className="market-claim-rewards"> {claimText} </span>
+				{!clicked && (
+					<>
+						<button className="market-claim-points-button" disabled={clicked || timeLeft != 'Reclama tus puntos'} onClick={claimPoints}>
+							{timeLeft != 'Reclama tus puntos' ? `Espera ${timeLeft}` : 'Reclamar puntos'}
+						</button>
+					</>
+				)}
 			</div>
 			<NewPack newPack={newPack} />
 			<div className="album-market-button">

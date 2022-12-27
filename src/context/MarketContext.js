@@ -1,6 +1,6 @@
 import { db } from '../firebase/firebase.js';
 import { doc, setDoc, collection, getDocs, getDoc, updateDoc } from 'firebase/firestore';
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { AuthContext } from './AuthContext.js';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { stickers } from '@scripts/data/addStickers.js';
@@ -16,6 +16,9 @@ export const MarketContextProvider = ({ children }) => {
 	const [newPack, setNewPack] = useState([]);
 	const [clicked, setClicked] = useState(false);
 	const [percentage, setPercentage] = useState(0);
+	const [timeLeft, setTimeLeft] = useState(0);
+	const [lastClaim, setLastClaim] = useState(0);
+	const [claimText, setClaimText] = useState('¡Reclama 5 puntos cada 6 horas!');
 
 	async function percentageOfStickersOwned() {
 		let totalStickersQuantity = totalStickers.length;
@@ -109,11 +112,65 @@ export const MarketContextProvider = ({ children }) => {
 			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 50, firstTime: true }, { merge: true });
 		}
 	};
-	const giveChristmas = async () => {
-		if (user && userData) {
-			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 70, christmasBonus: true }, { merge: true });
+	// const giveChristmas = async () => {
+	// 	if (user && userData) {
+	// 		setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 70, christmasBonus: true }, { merge: true });
+	// 	}
+	// };
+
+	const timeLeftToClaim = () => {
+		if (lastClaim === 'first') {
+			setTimeLeft('Reclama tus puntos');
+		} else {
+			let timeLeftUntilSixHours = lastClaim + 21600000 - new Date().getTime();
+			let hours = Math.floor((timeLeftUntilSixHours % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			let minutes = Math.floor((timeLeftUntilSixHours % (1000 * 60 * 60)) / (1000 * 60));
+			let seconds = Math.floor((timeLeftUntilSixHours % (1000 * 60)) / 1000);
+			/* si ya pasaron las 6 horas, ponle 0 a las horas, minutos y segundos */
+			if (timeLeftUntilSixHours < 0) {
+				hours = 0;
+				minutes = 0;
+				seconds = 0;
+			}
+
+			if (hours < 10) {
+				hours = '0' + hours;
+			}
+			if (minutes < 10) {
+				minutes = '0' + minutes;
+			}
+			if (seconds < 10) {
+				seconds = '0' + seconds;
+			}
+			setTimeLeft('' + hours + ':' + minutes + ':' + seconds + '');
+			if (timeLeftUntilSixHours < 0) {
+				setTimeLeft('Reclama tus puntos');
+			}
 		}
 	};
+
+	const claimPoints = async () => {
+		setClicked(true);
+		await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 5, lastClaim: new Date() });
+		setClaimText('¡Has ganado 5 puntos!');
+		setTimeLeft('Vuelve en 6 horas por más');
+		setClicked(false);
+	};
+
+	useEffect(() => {
+		if (userData) {
+			const interval = setInterval(() => {
+				timeLeftToClaim();
+			}, 1000);
+			return () => clearInterval(interval);
+		}
+	});
+
+	useEffect(() => {
+		if (user && userData) {
+			setLastClaim(userData?.lastClaim?.toDate().getTime() || 'first');
+		}
+	}, [user, userData]);
 
 	if (loadingUserStickers)
 		return (
@@ -146,7 +203,10 @@ export const MarketContextProvider = ({ children }) => {
 				giveFirst100Points,
 				percentage,
 				totalStickers,
-				giveChristmas,
+				// giveChristmas,
+				timeLeft,
+				claimPoints,
+				claimText,
 			}}
 		>
 			{children}
