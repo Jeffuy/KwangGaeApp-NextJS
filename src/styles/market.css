@@ -64,7 +64,6 @@
 	text-align: center;
 }
 
-
 .album-percentage {
 	display: flex;
 	justify-content: center;
@@ -95,7 +94,6 @@
 .show-ranking-button button {
 	width: max-content;
 	margin-top: 20px;
-	
 }
 
 .market-claim-rewards {
@@ -110,6 +108,162 @@
 .market-claim-points-button:disabled {
 	color: #fff;
 	cursor: not-allowed;
+}
+
+/* custom dashboard */
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
+.market-ranking-card {
+	min-height: 475px;
+	width: 80%;
+	border-radius: 15px;
+	/*background: #02383c;*/
+	margin: 0 auto;
+	margin-top: 3rem;
+}
+
+.market-ranking-card .market-ranking-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	color: #ddd;
+}
+
+.market-ranking-card .market-ranking-header .market-ranking-title {
+	font-weight: 300;
+	width: 100%;
+	text-align: center;
+}
+
+.market-ranking-photo {
+	position: relative;
+	width: 95px;
+	height: 95px;
+	background: #fff;
+	border-radius: 50%;
+	border: 3px solid cyan;
+	/* box-shadow: 0 0 20px cyan; */
+	margin: 1rem 0;
+}
+
+.market-ranking-profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
+}
+
+.market-ranking-profile .market-ranking-person {
+	display: flex;
+	margin: 1rem 0;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.market-ranking-profile .market-ranking-person.market-ranking-first {
+	z-index: 10;
+	transform: translateY(-10%);
+}
+
+.market-ranking-profile .market-ranking-person.market-ranking-first .market-ranking-photo {
+	width: 115px;
+	height: 115px;
+}
+
+.market-ranking-profile .market-ranking-person.market-ranking-second .market-ranking-photo {
+	width: 105px;
+	height: 105px;
+}
+
+.market-ranking-first .fa-crown {
+	color: gold;
+	filter: drop-shadow(0px 0px 5px gold);
+}
+
+.market-ranking-num {
+	color: white;
+}
+
+.fa-caret-up {
+	color: cyan;
+	font-size: 21px;
+}
+
+.market-ranking-link {
+	margin: 0.2rem 0;
+	color: #fff;
+	margin-top: -0.3rem;
+	font-size: 13px;
+}
+
+.market-ranking-points {
+	color: cyan;
+	font-size: 17px;
+}
+
+.market-ranking-second {
+	margin-right: -0.7rem !important;
+}
+
+.market-ranking-third {
+	margin-left: -0.7rem !important;
+}
+
+.market-ranking-p_img {
+	position: relative;
+	width: 55px;
+	height: 55px;
+	background: #fff;
+	border-radius: 50%;
+}
+
+.market-ranking-flex {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.market-ranking-others {
+	display: flex;
+	width: 100%;
+	margin-top: 1rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.market-ranking-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 30px;
+	background: rgba(210, 255, 213, 0.3);
+}
+
+.market-ranking-info .market-ranking-points {
+	margin-left: 0.2rem;
+	margin-right: 1.2rem;
+}
+
+.market-ranking-info .market-ranking-link {
+	margin: 0 1rem;
+}
+
+.market-ranking-rank {
+	display: flex;
+	align-items: center;
+	margin: 0 1rem;
+	flex-direction: column-reverse;
+}
+
+.market-ranking-rank i {
+	margin-top: -5px !important;
+}
+
+.market-ranking-rank .market-ranking-num {
+	margin: 0 !important;
 }
 
 @media screen and (max-width: 768px) {
