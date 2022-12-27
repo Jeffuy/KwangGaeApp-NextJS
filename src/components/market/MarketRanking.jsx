@@ -8,7 +8,7 @@ import Image from 'next/image';
 const MarketRanking = () => {
 	const { loading, userDataLoading } = useContext(AuthContext);
 	const usersRef = collection(db, 'users');
-	const q = query(usersRef, orderBy('completedPercentage', 'desc'), limit(11));
+	const q = query(usersRef, orderBy('completedPercentage', 'desc'), limit(10));
 
 	//const [showRanking, setShowRanking] = useState(false);
 
