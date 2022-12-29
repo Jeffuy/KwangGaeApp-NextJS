@@ -168,12 +168,21 @@
 	transform: translateY(-10%);
 }
 
-.market-ranking-profile .market-ranking-person.market-ranking-first .market-ranking-photo {
+/* .market-ranking-profile .market-ranking-person.market-ranking-second {
+	z-index: 10;
+	transform: translateY(-4%);
+} */
+
+.market-ranking-profile
+	.market-ranking-person.market-ranking-first
+	.market-ranking-photo {
 	width: 115px;
 	height: 115px;
 }
 
-.market-ranking-profile .market-ranking-person.market-ranking-second .market-ranking-photo {
+.market-ranking-profile
+	.market-ranking-person.market-ranking-second
+	.market-ranking-photo {
 	width: 105px;
 	height: 105px;
 }

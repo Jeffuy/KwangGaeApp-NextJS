@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { NextSeo } from 'next-seo';
-import RepeatsContainer from '@containers/RepeatsContainer';
+import TradesContainer from '@containers/TradesContainer';
 import { ExchangeContextProvider } from '@context/ExchangeContext';
 // import { collection, getDocs } from '@firebase/firestore';
 import { AuthContext } from '@context/AuthContext.js';
@@ -14,9 +14,9 @@ function Repeats() {
 
 	return (
 		<>
-			<NextSeo description="Figuritas del album de Taekwondo ITF" title="Repetidas" />
+			<NextSeo description="Cambios de Figuritas de Taekwon-Do ITF" title="Cambios" />
 			<ExchangeContextProvider>
-				<RepeatsContainer cardList={stickers} loading={loading} user={user} />
+				<TradesContainer cardList={stickers} loading={loading} user={user} />
 			</ExchangeContextProvider>
 		</>
 	);

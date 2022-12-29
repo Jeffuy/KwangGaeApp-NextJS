@@ -46,12 +46,15 @@ const AlbumContainer = ({ user, loading, cardList }) => {
 					<AlbumPage7 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 			</Swiper>
-			<div className="album-market-button">
+			<div className="album-repeats-button">
 				<Link passHref href="/Market">
 					<button>Ir a comprar sobres</button>
 				</Link>
+				<Link passHref href="/Trades">
+					<button>Ver intercambios</button>
+				</Link>
 				<Link passHref href="/Repeats">
-					<button>Ver repetidas</button>
+					<button>Ver mis repetidas</button>
 				</Link>
 			</div>
 		</>

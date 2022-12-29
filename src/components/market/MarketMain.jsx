@@ -80,11 +80,15 @@ const MarketMain = ({ cardList }) => {
 				)}
 			</div>
 			<NewPack newPack={newPack} />
-			<div className="album-market-button">
+			<div className="album-repeats-button">
 				<Link passHref href="/Album">
-					<div className="market-link">
-						<a>Ir al album</a>
-					</div>
+					<button>Ir al album</button>
+				</Link>
+				<Link passHref href="/Trades">
+					<button>Ver intercambios</button>
+				</Link>
+				<Link passHref href="/Repeats">
+					<button>Ver mis repetidas</button>
 				</Link>
 			</div>
 			{/* El div ira cambiando de color a medida que el porcentaje crezca */}

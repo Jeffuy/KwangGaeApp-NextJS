@@ -2,6 +2,7 @@ import { db } from '../firebase/firebase.js';
 import { doc, setDoc, collection, getDocs, getDoc, updateDoc } from 'firebase/firestore';
 import { createContext, useState, useContext, useEffect } from 'react';
 import { AuthContext } from './AuthContext.js';
+
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { stickers } from '@scripts/data/addStickers.js';
 
@@ -9,6 +10,7 @@ export const MarketContext = createContext();
 
 export const MarketContextProvider = ({ children }) => {
 	const { user, userData } = useContext(AuthContext);
+
 	const totalStickers = stickers;
 
 	const [userStickers, loadingUserStickers, errorUserStickers] = useDocumentData(doc(db, 'userStickers', user?.uid || ' '));
