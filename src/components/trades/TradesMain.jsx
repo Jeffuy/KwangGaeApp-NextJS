@@ -49,6 +49,14 @@ const TradesMain = ({ cardList, user, loading }) => {
 			</div>
 		);
 
+	if (!user) {
+		return (
+			<div>
+				<h2>No estas logueado</h2>
+			</div>
+		);
+	}
+
 	return (
 		<section className="trades-main-container">
 			<h1>Intercambios</h1>
