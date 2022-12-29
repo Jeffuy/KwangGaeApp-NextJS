@@ -87,6 +87,7 @@ const TradesMain = ({ cardList, user, loading }) => {
 								</div>
 								<div className="trade-list-item-image">
 									<div className={cardList[trade.stickerOffered - 1].isGolden ? 'border-golden' : ''}>
+										{!userStickers[`quantity${trade.stickerOffered}`] && <p>TE FALTA!</p>}
 										<Image alt={cardList[trade.stickerOffered - 1].url} layout="fill" src={cardList[trade.stickerOffered - 1].url} />
 									</div>
 								</div>
