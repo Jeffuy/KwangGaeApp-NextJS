@@ -109,6 +109,13 @@ export const ExchangeContextProvider = ({ children }) => {
 				availablePoints: userData.availablePoints - 5,
 			});
 
+			// encontrar cantidad actual de stickers del usuario nuevo
+			const oldQuantity = userStickers.quantityFieldNewUserAdd || 0;
+
+			// encontrar cantidad actual de stickers del usuario que creo el intercambio
+			let oldQuantityOriginalUser = await getDoc(doc(db, 'userStickers', trade.userCreated));
+			let oldQuantityOriginalUserData = oldQuantityOriginalUser.data().quantityFieldOriginalUser || 0;
+
 			// Sacar sticker al nuevo usuario
 			// eslint-disable-next-line no-unused-vars
 			const substractUserSticker = await updateDoc(doc(db, 'userStickers', user.uid), {
@@ -118,13 +125,13 @@ export const ExchangeContextProvider = ({ children }) => {
 			// Dar sticker al nuevo usuario
 			// eslint-disable-next-line no-unused-vars
 			const giveStickerToNewUser = await updateDoc(doc(db, 'userStickers', user.uid), {
-				[quantityFieldNewUserAdd]: userStickers[quantityFieldNewUserAdd] + 1,
+				[quantityFieldNewUserAdd]: oldQuantity + 1,
 			});
 
 			// Dar puntos al usuario que creo el intercambio
 			// eslint-disable-next-line no-unused-vars
 			const giveStickerToOriginalUser = await updateDoc(doc(db, 'userStickers', trade.userCreated), {
-				[quantityFieldOriginalUser]: userStickers[quantityFieldOriginalUser] + 1,
+				[quantityFieldOriginalUser]: oldQuantityOriginalUserData + 1,
 			});
 
 			// Dar por terminado el intercambio
