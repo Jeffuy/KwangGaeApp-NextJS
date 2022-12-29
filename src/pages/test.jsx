@@ -1,14 +1,14 @@
-//import React, { useContext } from 'react';
-//import { AuthContext } from '@context/AuthContext.js';
-//import { setStickers, giveStickers } from '@scripts/data/addStickers.js';
-//import { db } from '../firebase/firebase.js';
+// import React, { useContext } from 'react';
+// import { AuthContext } from '@context/AuthContext.js';
+// import { setStickers, giveStickers } from '@scripts/data/addStickers.js';
+// import { db } from '../firebase/firebase.js';
 // import { doc, setDoc, collection, getDocs, getDoc, updateDoc } from 'firebase/firestore';
 // import { createContext, useState } from 'react';
 
 // import { useDocumentData } from 'react-firebase-hooks/firestore';
 // import { stickers } from '@scripts/data/addStickers.js';
 const Test = () => {
-//	const { value } = useContext(AuthContext);
+	// const { value } = useContext(AuthContext);
 	// const totalStickers = stickers;
 
 	// const readCollection = async () => {
