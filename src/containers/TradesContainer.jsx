@@ -1,5 +1,5 @@
 import React from 'react';
-import TradesMain from '@components/Trades/TradesMain';
+import TradesMain from '@components/trades/TradesMain';
 
 // import { setStickers } from '@scripts/data/addStickers';
 
