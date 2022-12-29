@@ -131,7 +131,7 @@ export const ExchangeContextProvider = ({ children }) => {
 			// eslint-disable-next-line no-unused-vars
 			const endTrade = await setDoc(
 				doc(db, 'stickerTradesFinished', trade.uid),
-				{ trade, ended: true, endedDate: new Date(), acceptedBy: user.uid, acceptedByDisplayName: userData.displayName, acceptedByPhoto: userData.photoSmall },
+				{ trade, ended: true, endedDate: new Date(), acceptedBy: user.uid, acceptedByDisplayName: userData.displayName, acceptedByPhoto: userData.photoSmall, givenSticker: stickerToGive },
 				{ merge: true }
 			);
 
