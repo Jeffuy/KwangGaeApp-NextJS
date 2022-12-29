@@ -78,7 +78,7 @@ const TradesMain = ({ cardList, user, loading }) => {
 									<p>{trade.createdAt.toDate().toLocaleTimeString('es-UY')}</p>
 								</div>
 								<div className="trade-list-item-image">
-									<div>
+									<div className={cardList[trade.stickerOffered - 1].isGolden ? 'border-golden' : ''}>
 										<Image alt={cardList[trade.stickerOffered - 1].url} layout="fill" src={cardList[trade.stickerOffered - 1].url} />
 									</div>
 								</div>
@@ -86,16 +86,34 @@ const TradesMain = ({ cardList, user, loading }) => {
 									<form onSubmit={e => handleSubmit(e, trade)}>
 										<div>
 											<label className={userStickers[`quantity${trade.stickersAsked[0]}`] > 1 ? '' : 'trade-item-unavailable'}>
-												<Image alt={cardList[trade.stickersAsked[0] - 1].url} height={30} src={cardList[trade.stickersAsked[0] - 1].url} width={30} />
+												<Image
+													alt={cardList[trade.stickersAsked[0] - 1].url}
+													className={cardList[trade.stickersAsked[2] - 1].isGolden ? 'border-golden' : ''}
+													height={30}
+													src={cardList[trade.stickersAsked[0] - 1].url}
+													width={30}
+												/>
 												<input disabled={userStickers[`quantity${trade.stickersAsked[0]}`] < 2} name="sticker" type="radio" value={`${trade.stickersAsked[0]}`} />
 											</label>
 
 											<label className={userStickers[`quantity${trade.stickersAsked[1]}`] > 1 ? '' : 'trade-item-unavailable'}>
-												<Image alt={cardList[trade.stickersAsked[1] - 1].url} height={30} src={cardList[trade.stickersAsked[1] - 1].url} width={30} />
+												<Image
+													alt={cardList[trade.stickersAsked[1] - 1].url}
+													className={cardList[trade.stickersAsked[0] - 1].isGolden ? 'border-golden' : ''}
+													height={30}
+													src={cardList[trade.stickersAsked[1] - 1].url}
+													width={30}
+												/>
 												<input disabled={userStickers[`quantity${trade.stickersAsked[1]}`] < 2} name="sticker" type="radio" value={`${trade.stickersAsked[1]}`} />
 											</label>
-											<label className={userStickers[`quantity${trade.stickersAsked[2]}`] > 1 ? '' : 'trade-item-unavailable'}>
-												<Image alt={cardList[trade.stickersAsked[2] - 1].url} height={30} src={cardList[trade.stickersAsked[2] - 1].url} width={30} />
+											<label className={`${userStickers[`quantity${trade.stickersAsked[2]}`] > 1 ? '' : 'trade-item-unavailable'} `}>
+												<Image
+													alt={cardList[trade.stickersAsked[2] - 1].url}
+													className={cardList[trade.stickersAsked[1] - 1].isGolden ? 'border-golden' : ''}
+													height={30}
+													src={cardList[trade.stickersAsked[2] - 1].url}
+													width={30}
+												/>
 												<input disabled={userStickers[`quantity${trade.stickersAsked[2]}`] < 2} name="sticker" type="radio" value={`${trade.stickersAsked[2]}`} />
 											</label>
 										</div>
