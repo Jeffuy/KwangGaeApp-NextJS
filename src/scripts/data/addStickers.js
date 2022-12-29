@@ -66,6 +66,7 @@ export const stickers = [
 	{ vertical: false, isGolden: false, number: 62, isLegendary: false, url: 'https://i.imgur.com/YeU4nb4.jpg' },
 	{ vertical: false, isGolden: true, number: 63, isLegendary: false, url: 'https://i.imgur.com/9Zj4riu.png' },
 	{ vertical: false, isGolden: true, number: 64, isLegendary: false, url: 'https://i.imgur.com/QhMZJNb.png' },
+	{ vertical: false, isGolden: false, number: 65, isLegendary: false, url: 'https://i.imgur.com/RTALn2r.jpg' },
 ];
 
 export async function setStickers() {

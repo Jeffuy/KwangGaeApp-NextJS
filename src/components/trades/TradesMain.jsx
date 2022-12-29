@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { doc } from '@firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { ExchangeContext } from '@context/ExchangeContext';
-// import { setStickers } from '@scripts/data/addStickers';
+//import { setStickers } from '@scripts/data/addStickers';
 import { db } from '../../firebase/firebase.js';
 import Image from 'next/image';
 import Link from 'next/link';

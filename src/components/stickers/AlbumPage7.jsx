@@ -57,9 +57,9 @@ const AlbumPage7 = ({ user, loading, cardList }) => {
 			<div className={` ${expand != 0 ? 'album-page-expand' : 'album-page'}`}>
 				{cardList?.map(sticker => (
 					<React.Fragment key={sticker.number}>
-						{sticker.number <= 64 && sticker.number >= 55 ? (
+						{sticker.number <= 65 && sticker.number >= 55 ? (
 							<>
-								{(sticker.number === 57 || sticker.number === 63 || sticker.number === 64) && <div className={` ${expand != 0 ? '' : 'album-break'}`} />}
+								{(sticker.number === 57 || sticker.number === 63 || sticker.number === 64 || sticker.number === 65) && <div className={` ${expand != 0 ? '' : 'album-break'}`} />}
 								<div className={`sticker${sticker.number}`}>
 									<div
 										className={`${userStickers?.['pasted' + sticker.number] ? 'sticker-pasted' : ''}  ${sticker.vertical ? 'album-sticker-vertical' : 'album-sticker'} ${
