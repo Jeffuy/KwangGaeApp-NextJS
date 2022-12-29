@@ -105,7 +105,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 									</select>
 								</div>
 								<div className="exchange-img-mini">
-									<Image alt={cardList[firstOption].number} height={50} src={cardList[firstOption - 1].url} width={50} />
+									<Image alt={cardList[firstOption - 1].number} height={50} src={cardList[firstOption - 1].url} width={50} />
 								</div>
 							</div>
 							<div className="exchange-choice">
@@ -122,7 +122,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 									</select>
 								</div>
 								<div className="exchange-img-mini">
-									<Image alt={cardList[secondOption].number} height={50} src={cardList[secondOption - 1].url} width={50} />
+									<Image alt={cardList[secondOption - 1].number} height={50} src={cardList[secondOption - 1].url} width={50} />
 								</div>
 							</div>
 							<div className="exchange-choice">
@@ -139,7 +139,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 									</select>
 								</div>
 								<div className="exchange-img-mini">
-									<Image alt={cardList[thirdOption].number} height={50} src={cardList[thirdOption - 1].url} width={50} />
+									<Image alt={cardList[thirdOption - 1].number} height={50} src={cardList[thirdOption - 1].url} width={50} />
 								</div>
 							</div>
 						</div>
