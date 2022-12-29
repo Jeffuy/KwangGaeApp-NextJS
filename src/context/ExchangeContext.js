@@ -102,7 +102,7 @@ export const ExchangeContextProvider = ({ children }) => {
 		let quantityFieldOriginalUser = 'quantity' + stickerToGive;
 		let quantityFieldNewUserSubstract = 'quantity' + stickerToGive;
 		let quantityFieldNewUserAdd = 'quantity' + trade.stickerOffered;
-		if (stickerToGive > 0 && userData.availablePoints >= 5) {
+		if (stickerToGive > 0 && userData.availablePoints >= 5 && userStickers[quantityFieldNewUserSubstract] > 1) {
 			// Sacar puntos al nuevo usuario
 			// eslint-disable-next-line no-unused-vars
 			const substractUserPoints = await updateDoc(doc(db, 'users', user.uid), {
@@ -110,11 +110,24 @@ export const ExchangeContextProvider = ({ children }) => {
 			});
 
 			// encontrar cantidad actual de stickers del usuario nuevo
-			const oldQuantity = userStickers.quantityFieldNewUserAdd || 0;
+			let oldQuantity = userStickers['quantity' + trade.stickerOffered];
+			console.log('oldQuantity', oldQuantity);
+			if (oldQuantity === undefined) {
+				// eslint-disable-next-line no-unused-vars
+				oldQuantity = 0;
+				console.log('oldQuantity IF', oldQuantity);
+			}
 
 			// encontrar cantidad actual de stickers del usuario que creo el intercambio
 			let oldQuantityOriginalUser = await getDoc(doc(db, 'userStickers', trade.userCreated));
-			let oldQuantityOriginalUserData = oldQuantityOriginalUser.data().quantityFieldOriginalUser || 0;
+
+			let oldQuantityOriginalUserData = oldQuantityOriginalUser.data()['quantity' + stickerToGive];
+			if (oldQuantityOriginalUserData === undefined) {
+				oldQuantityOriginalUserData = 0;
+
+				console.log('oldQuantityOriginalUserData IF', oldQuantityOriginalUserData);
+			}
+			console.log('oldQuantityOriginalUserData', oldQuantityOriginalUserData);
 
 			// Sacar sticker al nuevo usuario
 			// eslint-disable-next-line no-unused-vars
