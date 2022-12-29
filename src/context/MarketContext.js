@@ -155,10 +155,16 @@ export const MarketContextProvider = ({ children }) => {
 
 	const claimPoints = async () => {
 		setClicked(true);
-		await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 5, lastClaim: new Date() });
-		setClaimText('¡Has ganado 5 puntos!');
-		setTimeLeft('Vuelve en 6 horas por más');
-		setClicked(false);
+		if (new Date() - lastClaim > 21600000 && new Date() > lastClaim) {
+			await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 5, lastClaim: new Date() });
+			setClaimText('¡Has ganado 5 puntos!');
+			setTimeLeft('Vuelve en 6 horas por más');
+			setClicked(false);
+		} else {
+			setClaimText('¡No hagas trampa!');
+			setClicked(false);
+			console.log(new Date() - lastClaim);
+		}
 	};
 
 	useEffect(() => {
