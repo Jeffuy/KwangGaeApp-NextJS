@@ -23,18 +23,20 @@ export const MarketContextProvider = ({ children }) => {
 	const [claimText, setClaimText] = useState('¡Reclama 5 puntos cada 6 horas!');
 
 	async function percentageOfStickersOwned() {
-		let totalStickersQuantity = totalStickers.length;
-		let stickersOwned = 0;
-		if (userStickers) {
-			for (let i = 1; i <= 100; i++) {
-				if (userStickers?.['quantity' + i] > 0) {
-					stickersOwned++;
+		if (user?.uid != 'ouqD9z5Fy7OoYD4pz8FZoBR5YNv1') {
+			let totalStickersQuantity = totalStickers.length;
+			let stickersOwned = 0;
+			if (userStickers) {
+				for (let i = 1; i <= 100; i++) {
+					if (userStickers?.['quantity' + i] > 0) {
+						stickersOwned++;
+					}
 				}
 			}
+			let total = ((stickersOwned / totalStickersQuantity) * 100).toFixed(0);
+			await updateDoc(doc(db, 'users', user.uid), { completedPercentage: total });
+			setPercentage(total);
 		}
-		let total = ((stickersOwned / totalStickersQuantity) * 100).toFixed(0);
-		await updateDoc(doc(db, 'users', user.uid), { completedPercentage: total });
-		setPercentage(total);
 	}
 
 	async function getStickersToGive() {
