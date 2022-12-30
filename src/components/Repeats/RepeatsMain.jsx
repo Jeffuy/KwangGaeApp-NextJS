@@ -99,7 +99,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 										</option>
 										{[...Array(cardList.length).keys()].map(i => (
 											<option key={i} value={i + 1}>
-												{i + 1}
+												{i + 1} {cardList[i].isGolden ? '🌟' : ''} {userStickers['quantity' + (i + 1)] ? '' : ' -- Te falta --'}
 											</option>
 										))}
 									</select>
@@ -116,7 +116,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 										</option>
 										{[...Array(cardList.length).keys()].map(i => (
 											<option key={i} value={i + 1}>
-												{i + 1}
+												{i + 1} {cardList[i].isGolden ? '🌟' : ''} {userStickers['quantity' + (i + 1)] ? '' : ' -- Te falta --'}
 											</option>
 										))}
 									</select>
@@ -133,7 +133,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 										</option>
 										{[...Array(cardList.length).keys()].map(i => (
 											<option key={i} value={i + 1}>
-												{i + 1}
+												{i + 1} {cardList[i].isGolden ? '🌟' : ''} {userStickers['quantity' + (i + 1)] ? '' : ' -- Te falta --'}
 											</option>
 										))}
 									</select>
