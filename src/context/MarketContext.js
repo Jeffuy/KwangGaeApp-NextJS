@@ -33,9 +33,9 @@ export const MarketContextProvider = ({ children }) => {
 					}
 				}
 			}
-			let total = ((stickersOwned / totalStickersQuantity) * 100).toFixed(0);
+			let total = parseInt(((stickersOwned / totalStickersQuantity) * 100).toFixed(0));
 			if (total <= 9) {
-				total = '0' + total;
+				total = 0 + total;
 			}
 			await updateDoc(doc(db, 'users', user.uid), { completedPercentage: total });
 			setPercentage(total);
