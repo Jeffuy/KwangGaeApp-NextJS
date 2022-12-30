@@ -34,6 +34,9 @@ export const MarketContextProvider = ({ children }) => {
 				}
 			}
 			let total = ((stickersOwned / totalStickersQuantity) * 100).toFixed(0);
+			if (total <= 9) {
+				total = '0' + total;
+			}
 			await updateDoc(doc(db, 'users', user.uid), { completedPercentage: total });
 			setPercentage(total);
 		}
@@ -155,7 +158,7 @@ export const MarketContextProvider = ({ children }) => {
 
 	const claimPoints = async () => {
 		setClicked(true);
-		if (new Date() - lastClaim > 21600000 && new Date() > lastClaim) {
+		if ((new Date() - lastClaim > 21600000 && new Date() > lastClaim) || lastClaim === 'first') {
 			await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 5, lastClaim: new Date() });
 			setClaimText('¡Has ganado 5 puntos!');
 			setTimeLeft('Vuelve en 6 horas por más');
