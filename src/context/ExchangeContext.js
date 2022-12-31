@@ -49,6 +49,7 @@ export const ExchangeContextProvider = ({ children }) => {
 			await setDoc(doc(db, 'stickerTrades', trade.createdAt.toString()), trade, { merge: true });
 			await updateDoc(doc(db, 'users', user.uid), {
 				availablePoints: userData.availablePoints - 5,
+				usedPoints: userData.usedPoints + 5,
 			});
 			await updateDoc(doc(db, 'userStickers', user.uid), {
 				[quantityField]: userStickers[quantityField] - 1,
@@ -78,7 +79,7 @@ export const ExchangeContextProvider = ({ children }) => {
 		if (user.uid === trade.userCreated) {
 			console.log(uid);
 			// eslint-disable-next-line no-unused-vars
-			const setCancel = await setDoc(doc(db, 'stickerTradesFinished', uid), { trade, cancelled: true, cancelledDate: new Date() }, { merge: true });
+			const setCancel = await setDoc(doc(db, 'stickerTradesFinished', new Date().toString()), { trade, cancelled: true, cancelledDate: new Date() }, { merge: true });
 			console.log('cancelled');
 			// eslint-disable-next-line no-unused-vars
 			const deleteTrade = await deleteDoc(doc(db, 'stickerTrades', uid));
@@ -89,6 +90,7 @@ export const ExchangeContextProvider = ({ children }) => {
 			// eslint-disable-next-line no-unused-vars
 			const updateUserPoints = await updateDoc(doc(db, 'users', user.uid), {
 				availablePoints: userData.availablePoints + 5,
+				usedPoints: userData.usedPoints - 5,
 			});
 			console.log('points added');
 		}
@@ -107,6 +109,7 @@ export const ExchangeContextProvider = ({ children }) => {
 			// eslint-disable-next-line no-unused-vars
 			const substractUserPoints = await updateDoc(doc(db, 'users', user.uid), {
 				availablePoints: userData.availablePoints - 5,
+				usedPoints: userData.usedPoints + 5,
 			});
 
 			// encontrar cantidad actual de stickers del usuario nuevo
@@ -150,7 +153,7 @@ export const ExchangeContextProvider = ({ children }) => {
 			// Dar por terminado el intercambio
 			// eslint-disable-next-line no-unused-vars
 			const endTrade = await setDoc(
-				doc(db, 'stickerTradesFinished', trade.uid),
+				doc(db, 'stickerTradesFinished', new Date().toString()),
 				{ trade, ended: true, endedDate: new Date(), acceptedBy: user.uid, acceptedByDisplayName: userData.displayName, acceptedByPhoto: userData.photoSmall, givenSticker: stickerToGive },
 				{ merge: true }
 			);
