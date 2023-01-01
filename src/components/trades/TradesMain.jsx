@@ -128,7 +128,7 @@ const TradesMain = ({ cardList, user, loading }) => {
 										</div>
 										<div className="trades-accept-button">
 											{!clicked && (
-												<>{user.uid === trade.userCreated ? <button onClick={() => cancelTrade(trade.uid)}>cancelar</button> : <button type="submit">Acceptar</button>}</>
+												<>{user.uid === trade.userCreated ? <button onClick={() => cancelTrade(trade.uid)}>Cancelar</button> : <button type="submit">Aceptar</button>}</>
 											)}
 										</div>
 									</form>

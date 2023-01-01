@@ -139,6 +139,24 @@
 	margin: 15px;
 }
 
+.market-quiz-event {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: #f44336; /* rojo navideño */
+	background-color: #eee; /* fondo claro */
+	padding: 10px;
+	border-radius: 5px;
+	width: max-content;
+	margin: 0 auto;
+	font-family: "Josefin Sans", sans-serif;
+	font-size: 30px;
+	border: red 2px dashed;
+	margin-top: 20px;
+}
+
+
 .market-ranking-card {
 	min-height: 475px;
 	width: 80%;
@@ -345,5 +363,20 @@
 	
 	.market-special-event ul li i {
 		margin: 5px;
+	}
+
+	.market-quiz-event {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		color: #f44336; /* rojo navideño */
+		background-color: #eee; /* fondo claro */
+		padding: 10px;
+		border-radius: 5px;
+		width: max-content;
+		font-family: "Josefin Sans", sans-serif;
+		font-size: 15px;
+		border: red 2px dashed;
 	}
 }

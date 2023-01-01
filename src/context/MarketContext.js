@@ -21,6 +21,7 @@ export const MarketContextProvider = ({ children }) => {
 	const [timeLeft, setTimeLeft] = useState(0);
 	const [lastClaim, setLastClaim] = useState(0);
 	const [claimText, setClaimText] = useState('¡Reclama 6 puntos cada 6 horas!');
+	const [messageQuiz, setMessageQuiz] = useState('¡Logueate para reclamar los puntos!');
 
 	async function percentageOfStickersOwned() {
 		if (user?.uid != 'ouqD9z5Fy7OoYD4pz8FZoBR5YNv1') {
@@ -125,6 +126,20 @@ export const MarketContextProvider = ({ children }) => {
 		}
 	};
 
+	const firstQuiz = async () => {
+		setClicked(true);
+		console.log('clicked');
+		if (user && userData && !userData.firstQuiz) {
+			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 100, firstQuiz: true }, { merge: true });
+			setMessageQuiz('Has ganado 100 puntos');
+		} else if (!user || !userData) {
+			setMessageQuiz('Logueate para ganar los puntos');
+		} else if (userData.firstQuiz) {
+			setMessageQuiz('Ya has reclamado los puntos para este quiz');
+		}
+		setClicked(false);
+	};
+
 	const timeLeftToClaim = () => {
 		if (lastClaim === 'first') {
 			setTimeLeft('Reclama tus puntos');
@@ -220,6 +235,8 @@ export const MarketContextProvider = ({ children }) => {
 				timeLeft,
 				claimPoints,
 				claimText,
+				messageQuiz,
+				firstQuiz,
 			}}
 		>
 			{children}

@@ -80,6 +80,18 @@ const MarketMain = ({ cardList }) => {
 				</ul>
 			</span>
 
+			<div className="market-quiz-event">
+				<h2> Nuevo desafío!</h2>
+				<p>Valor: 100 puntos</p>
+				<b>Nota: Es sumamente díficil. Mejor para hacer de a 2</b>
+				<p>
+					Para resolverlo entra aquí:{' '}
+					<a href="https://2solve.me/quiz/a08002d1/kwang-gae-puzzle-1" rel="noreferrer" target="_blank">
+						Desafío #1
+					</a>
+				</p>
+			</div>
+
 			<div className="market-grid">
 				<div className="market-image-container">
 					<Image alt="album" layout="fill" src="https://i.imgur.com/d1qiA9x.png" />
