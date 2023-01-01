@@ -379,4 +379,7 @@
 		font-size: 15px;
 		border: red 2px dashed;
 	}
+	.market-quiz-event b {
+		font-size: 12px;
+	}
 }
