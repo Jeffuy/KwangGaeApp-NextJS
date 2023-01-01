@@ -114,6 +114,31 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
+.market-special-event {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: #f44336; /* rojo navideño */
+	background-color: #eee; /* fondo claro */
+	padding: 10px;
+	border-radius: 5px;
+	width: max-content;
+	margin: 0 auto;
+	font-family: "Josefin Sans", sans-serif;
+	font-size: 30px;
+	border: red 2px dashed;
+}
+
+.market-special-event ul {
+	list-style: none;
+	padding: 0;
+}
+
+.market-special-event ul li i {
+	margin: 15px;
+}
+
 .market-ranking-card {
 	min-height: 475px;
 	width: 80%;
@@ -295,5 +320,30 @@
 		color: var(--color-secondary);
 		font-size: 12px;
 		max-width: 90%;
+	}
+
+	.market-special-event {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		color: #f44336; /* rojo navideño */
+		background-color: #eee; /* fondo claro */
+		padding: 10px;
+		border-radius: 5px;
+		width: max-content;
+		margin: 0 auto;
+		font-family: "Josefin Sans", sans-serif;
+		font-size: 15px;
+		border: red 2px dashed;
+	}
+	
+	.market-special-event ul {
+		list-style: none;
+		padding: 0;
+	}
+	
+	.market-special-event ul li i {
+		margin: 5px;
 	}
 }

@@ -20,7 +20,7 @@ export const MarketContextProvider = ({ children }) => {
 	const [percentage, setPercentage] = useState(0);
 	const [timeLeft, setTimeLeft] = useState(0);
 	const [lastClaim, setLastClaim] = useState(0);
-	const [claimText, setClaimText] = useState('¡Reclama 5 puntos cada 6 horas!');
+	const [claimText, setClaimText] = useState('¡Reclama 6 puntos cada 6 horas!');
 
 	async function percentageOfStickersOwned() {
 		if (user?.uid != 'ouqD9z5Fy7OoYD4pz8FZoBR5YNv1') {
@@ -119,11 +119,11 @@ export const MarketContextProvider = ({ children }) => {
 			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 50, firstTime: true }, { merge: true });
 		}
 	};
-	// const giveChristmas = async () => {
-	// 	if (user && userData) {
-	// 		setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 70, christmasBonus: true }, { merge: true });
-	// 	}
-	// };
+	const giveChristmas = async () => {
+		if (user && userData) {
+			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 75, newYear2023Bonus: true }, { merge: true });
+		}
+	};
 
 	const timeLeftToClaim = () => {
 		if (lastClaim === 'first') {
@@ -159,8 +159,8 @@ export const MarketContextProvider = ({ children }) => {
 	const claimPoints = async () => {
 		setClicked(true);
 		if ((new Date() - lastClaim > 21600000 && new Date() > lastClaim) || lastClaim === 'first') {
-			await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 5, lastClaim: new Date() });
-			setClaimText('¡Has ganado 5 puntos!');
+			await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 6, lastClaim: new Date() });
+			setClaimText('¡Has ganado 6 puntos!');
 			setTimeLeft('Vuelve en 6 horas por más');
 			setClicked(false);
 		} else {
@@ -216,7 +216,7 @@ export const MarketContextProvider = ({ children }) => {
 				giveFirst100Points,
 				percentage,
 				totalStickers,
-				// giveChristmas,
+				giveChristmas,
 				timeLeft,
 				claimPoints,
 				claimText,

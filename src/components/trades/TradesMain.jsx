@@ -61,7 +61,7 @@ const TradesMain = ({ cardList, user, loading }) => {
 		<section className="trades-main-container">
 			<h1>Intercambios</h1>
 			<div className="exchange-confirm">
-				<p>Recuerda que aceptar el intercambio costará 5 puntos y perderás la figurita que hayas seleccionado</p>
+				<p>Recuerda que aceptar el intercambio costará 3 puntos y perderás la figurita que hayas seleccionado</p>
 			</div>
 			{trades?.length > 0 ? (
 				<div className="trades-list-container">

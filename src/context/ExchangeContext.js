@@ -36,7 +36,7 @@ export const ExchangeContextProvider = ({ children }) => {
 		setClicked(true);
 		let quantityField = 'quantity' + sticker;
 		console.log(quantityField);
-		if (userStickers[quantityField] > 1 && userData.availablePoints >= 5) {
+		if (userStickers[quantityField] > 1 && userData.availablePoints >= 3) {
 			const trade = {
 				stickerOffered: sticker,
 				userCreated: userData.uid,
@@ -48,8 +48,8 @@ export const ExchangeContextProvider = ({ children }) => {
 			};
 			await setDoc(doc(db, 'stickerTrades', trade.createdAt.toString()), trade, { merge: true });
 			await updateDoc(doc(db, 'users', user.uid), {
-				availablePoints: userData.availablePoints - 5,
-				usedPoints: userData.usedPoints + 5,
+				availablePoints: userData.availablePoints - 3,
+				usedPoints: userData.usedPoints + 3,
 			});
 			await updateDoc(doc(db, 'userStickers', user.uid), {
 				[quantityField]: userStickers[quantityField] - 1,
@@ -89,8 +89,8 @@ export const ExchangeContextProvider = ({ children }) => {
 			console.log('sticker added');
 			// eslint-disable-next-line no-unused-vars
 			const updateUserPoints = await updateDoc(doc(db, 'users', user.uid), {
-				availablePoints: userData.availablePoints + 5,
-				usedPoints: userData.usedPoints - 5,
+				availablePoints: userData.availablePoints + 3,
+				usedPoints: userData.usedPoints - 3,
 			});
 			console.log('points added');
 		}
@@ -104,12 +104,12 @@ export const ExchangeContextProvider = ({ children }) => {
 		let quantityFieldOriginalUser = 'quantity' + stickerToGive;
 		let quantityFieldNewUserSubstract = 'quantity' + stickerToGive;
 		let quantityFieldNewUserAdd = 'quantity' + trade.stickerOffered;
-		if (stickerToGive > 0 && userData.availablePoints >= 5 && userStickers[quantityFieldNewUserSubstract] > 1) {
+		if (stickerToGive > 0 && userData.availablePoints >= 3 && userStickers[quantityFieldNewUserSubstract] > 1) {
 			// Sacar puntos al nuevo usuario
 			// eslint-disable-next-line no-unused-vars
 			const substractUserPoints = await updateDoc(doc(db, 'users', user.uid), {
-				availablePoints: userData.availablePoints - 5,
-				usedPoints: userData.usedPoints + 5,
+				availablePoints: userData.availablePoints - 3,
+				usedPoints: userData.usedPoints + 3,
 			});
 
 			// encontrar cantidad actual de stickers del usuario nuevo
