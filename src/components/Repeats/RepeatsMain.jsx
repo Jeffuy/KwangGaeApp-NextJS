@@ -145,7 +145,7 @@ const RepeatsMain = ({ cardList, user, loading }) => {
 						</div>
 					</div>
 					<div className="exchange-confirm">
-						<p>Recuerda que crear el intercambio costará 3 puntos y perderás la figurita que hayas seleccionado</p>
+						<p>Recuerda que crear el intercambio costará 5 puntos y perderás la figurita que hayas seleccionado</p>
 						{message == '' && !clicked && <button onClick={() => createTrade(selected, [firstOption, secondOption, thirdOption])}>Crear intercambio</button>}
 						{message != '' && (
 							<>

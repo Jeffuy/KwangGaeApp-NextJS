@@ -20,7 +20,7 @@ export const MarketContextProvider = ({ children }) => {
 	const [percentage, setPercentage] = useState(0);
 	const [timeLeft, setTimeLeft] = useState(0);
 	const [lastClaim, setLastClaim] = useState(0);
-	const [claimText, setClaimText] = useState('¡Reclama 6 puntos cada 6 horas!');
+	const [claimText, setClaimText] = useState('¡Reclama 4 puntos cada 6 horas!');
 	const [messageQuiz, setMessageQuiz] = useState('¡Logueate para reclamar los puntos!');
 
 	async function percentageOfStickersOwned() {
@@ -130,7 +130,7 @@ export const MarketContextProvider = ({ children }) => {
 		setClicked(true);
 		console.log('clicked');
 		if (user && userData && !userData.firstQuiz) {
-			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 100, firstQuiz: true }, { merge: true });
+			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 100, firstQuiz: true, points: userData?.points + 100 }, { merge: true });
 			setMessageQuiz('Has ganado 100 puntos');
 		} else if (!user || !userData) {
 			setMessageQuiz('Logueate para ganar los puntos');
@@ -174,8 +174,8 @@ export const MarketContextProvider = ({ children }) => {
 	const claimPoints = async () => {
 		setClicked(true);
 		if ((new Date() - lastClaim > 21600000 && new Date() > lastClaim) || lastClaim === 'first') {
-			await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 6, lastClaim: new Date() });
-			setClaimText('¡Has ganado 6 puntos!');
+			await updateDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 4, lastClaim: new Date() });
+			setClaimText('¡Has ganado 4 puntos!');
 			setTimeLeft('Vuelve en 6 horas por más');
 			setClicked(false);
 		} else {

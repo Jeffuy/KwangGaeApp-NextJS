@@ -8,7 +8,7 @@ import NewPack from './NewPack.jsx';
 
 const MarketMain = ({ cardList }) => {
 	const { user, loading, userData, userDataLoading } = useContext(AuthContext);
-	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage, timeLeft, claimPoints, claimText, giveChristmas } = useContext(MarketContext);
+	const { newPack, clicked, giveStickerToUser, getStickersToGive, giveFirst100Points, percentage, timeLeft, claimPoints, claimText } = useContext(MarketContext);
 
 	const [showRanking, setShowRanking] = useState(false);
 
@@ -18,10 +18,6 @@ const MarketMain = ({ cardList }) => {
 		if (!userData?.firstTime) {
 			giveFirst100Points();
 			setMessage('Has recibido 50 puntos de regalo para comprar tus primeros sobres!');
-		}
-		if (!userData?.newYear2023Bonus) {
-			giveChristmas();
-			setMessage('Has recibido 75 puntos de regalo por año nuevo');
 		}
 	}, [userData]);
 
@@ -63,7 +59,7 @@ const MarketMain = ({ cardList }) => {
 		<section className="market-section">
 			<h1>Comprar un sobre de figuritas</h1>
 			{message != '' && <p className="fifty-points-award">{message}</p>}
-			<span className="market-special-event">
+			{/* <span className="market-special-event">
 				Evento especial de fin de año!
 				<ul>
 					<li>
@@ -78,7 +74,7 @@ const MarketMain = ({ cardList }) => {
 						75 puntos gratis
 					</li>
 				</ul>
-			</span>
+			</span> */}
 
 			<div className="market-quiz-event">
 				<h2> Nuevo desafío!</h2>
