@@ -156,6 +156,23 @@
 	margin-top: 20px;
 }
 
+.market-quiz-event2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: #976662; /* rojo navideño */
+	background-color: rgb(146, 227, 64); /* fondo claro */
+	padding: 10px;
+	border-radius: 5px;
+	width: max-content;
+	margin: 0 auto;
+	font-family: "Josefin Sans", sans-serif;
+	font-size: 30px;
+	border: #976662 2px dashed;
+	margin-top: 20px;
+}
+
 
 .market-ranking-card {
 	min-height: 475px;
@@ -380,6 +397,24 @@
 		border: red 2px dashed;
 	}
 	.market-quiz-event b {
+		font-size: 12px;
+	}
+
+	.market-quiz-event2 {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		color: #976662; /* rojo navideño */
+		background-color: rgb(146, 227, 64); /* fondo claro */
+		padding: 10px;
+		border-radius: 5px;
+		width: max-content;
+		font-family: "Josefin Sans", sans-serif;
+		font-size: 15px;
+		border: #976662 2px dashed;
+	}
+	.market-quiz-event2 {
 		font-size: 12px;
 	}
 }

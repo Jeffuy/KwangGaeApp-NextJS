@@ -88,6 +88,18 @@ const MarketMain = ({ cardList }) => {
 				</p>
 			</div>
 
+			<div className="market-quiz-event2">
+				<h2> Nuevo desafío!</h2>
+				<p>Valor: 50 puntos</p>
+				<b>Nota: Es más fácil que el anterior</b>
+				<p>
+					Para resolverlo entra aquí:{' '}
+					<a href="https://2solve.me/quiz/4050c321/segundo-desafío-por-50-puntos-para-comprar-figuritas" rel="noreferrer" target="_blank">
+						Desafío #2
+					</a>
+				</p>
+			</div>
+
 			<div className="market-grid">
 				<div className="market-image-container">
 					<Image alt="album" layout="fill" src="https://i.imgur.com/d1qiA9x.png" />
