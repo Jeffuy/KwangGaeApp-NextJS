@@ -47,9 +47,9 @@ export const MarketContextProvider = ({ children }) => {
 		const getNewPack = [];
 		const readyPack = [];
 		if (user && userData.availablePoints >= 10) {
-			const stickerRef = await getDocs(collection(db, 'stickers'));
+			const stickerRef = totalStickers;
 			stickerRef.forEach(doc => {
-				getNewPack.push(doc.data());
+				getNewPack.push(doc);
 			});
 
 			for (let i = 0; i < 3; i++) {
