@@ -49,7 +49,8 @@ const Test = () => {
 		// links to login, dasbhboard and register
 		<div>
 			<h1>Test</h1>
-			{/* <button onClick={() => readCollection()}>Set stickers</button> */}
+			{/* <button onClick={() => readCollection()}>Calcular Porcentajes</button>
+			<button onClick={() => setStickers()}>Agregar nuevos Stickers</button> */}
 		</div>
 	);
 };

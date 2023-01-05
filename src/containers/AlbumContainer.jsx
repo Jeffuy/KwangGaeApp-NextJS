@@ -9,6 +9,11 @@ import AlbumPage7 from '@components/stickers/AlbumPage7';
 import AlbumPage8 from '@components/stickers/AlbumPage8';
 import AlbumPage9 from '@components/stickers/AlbumPage9';
 import AlbumPage10 from '@components/stickers/AlbumPage10';
+import AlbumPage11 from '@components/stickers/AlbumPage11';
+import AlbumPage12 from '@components/stickers/AlbumPage12';
+import AlbumPage13 from '@components/stickers/AlbumPage13';
+import AlbumPage14 from '@components/stickers/AlbumPage14';
+import AlbumPage15 from '@components/stickers/AlbumPage15';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 //import { Navigation, Pagination } from 'swiper';
@@ -58,6 +63,21 @@ const AlbumContainer = ({ user, loading, cardList }) => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<AlbumPage10 cardList={cardList} loading={loading} user={user} />
+				</SwiperSlide>
+				<SwiperSlide>
+					<AlbumPage11 cardList={cardList} loading={loading} user={user} />
+				</SwiperSlide>
+				<SwiperSlide>
+					<AlbumPage12 cardList={cardList} loading={loading} user={user} />
+				</SwiperSlide>
+				<SwiperSlide>
+					<AlbumPage13 cardList={cardList} loading={loading} user={user} />
+				</SwiperSlide>
+				<SwiperSlide>
+					<AlbumPage14 cardList={cardList} loading={loading} user={user} />
+				</SwiperSlide>
+				<SwiperSlide>
+					<AlbumPage15 cardList={cardList} loading={loading} user={user} />
 				</SwiperSlide>
 			</Swiper>
 			<div className="album-repeats-button">

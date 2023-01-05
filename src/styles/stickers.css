@@ -340,74 +340,154 @@
 	border-left: none;
 }
 
+.sticker92 .album-sticker {
+	width: 400px;
+	height: 400px;
+	border-right: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin: 0px;
+}
+
+.sticker92 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: 0px;
+	border-left: none;
+	border-bottom: none;
+}
+
+.sticker93 .album-sticker {
+	width: 400px;
+	height: 400px;
+	border-left: none !important;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin: -0px;
+}
+
+.sticker114 .album-sticker-vertical {
+	width: 350px;
+	margin: -2.5px;
+	border-bottom: 0px;
+}
+
+.sticker114 .album-sticker-vertical .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	border-top: none;
+}
+
+.sticker115 .album-sticker-vertical {
+	width: 350px;
+	margin: -2.5px;
+	border-top: 0px;
+}
+
+.sticker122 .album-sticker {
+	width: 400px;
+	height: 400px;
+	border-right: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin: 0px;
+}
+
+.sticker122 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: 0px;
+	border-left: none;
+	border-bottom: none;
+}
+
+.sticker133 .album-sticker {
+	width: 400px;
+	height: 400px;
+	border-left: none !important;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin: -0px;
+}
+
+
+
 
 
 @media (max-width: 768px) {
 	.sticker33 .album-sticker {
-		width: 300px;
-		height: 200px;
+		width: 200px;
+		height: 100px;
 		margin: -2.5px;
 		border-bottom: none;
 	}
 
 	.sticker34 .album-sticker {
-		width: 300px;
-		height: 200px;
+		width: 200px;
+		height: 100px;
 		margin: -2.5px;
 		border-top: none;
 	}
 
 	.sticker35 .album-sticker {
-		height: 250px;
+		height: 200px;
 	}
 
 	.sticker36 .album-sticker {
-		height: 250px;
+		height: 200px;
 	}
 
 	.sticker41 .album-sticker {
-		width: 250px;
+		width: 200px;
+		height: 100Px;
 	}
 
 	.sticker42 .album-sticker {
-		width: 250px;
+		width: 200px;
+		height: 100px;
 	}
 
 	.sticker45 .album-border-golden {
 		width: 175px;
+		height: 100px;
 		margin-bottom: -1px;
 	}
 
 	.sticker46 .album-border-golden {
 		width: 175px;
+		height: 100px;
 		margin-bottom: -1px;
 	}
 
 	.sticker47 .album-border-golden {
 		width: 175px;
+		height: 100px;
 		margin-top: -3.2px;
 	}
 
 	.sticker48 .album-border-golden {
 		width: 175px;
+		height: 100px;
 		margin-top: -3.2px;
 	}
 
 	.sticker50 .album-sticker {
 		width: 175px;
-		height: 250px;		
+		height: 150px;		
 		margin: -0.2px;
 	}
 
 	.sticker51 .album-sticker {
 		width: 175px;
-		height: 250px;
+		height: 150px;
 		margin: 0px;
 	}
 
 	.sticker54 .album-border-golden {
-		width: 225px;
-		height: 225px;
+		width: 200px;
+		height: 200px;
 	}
 
 	.sticker55 .album-sticker {
@@ -426,7 +506,8 @@
 	}
 
 	.sticker63 .album-border-golden {
-		width: 250px;
+		width: 175px;
+		height: 100px;
 		margin: -2.5px;
 		border-bottom: none;
 	}
@@ -438,7 +519,8 @@
 	}
 	
 	.sticker64 .album-border-golden {
-		width: 250px;
+		width: 175px;
+		height: 100px;
 		margin: -2.5px;
 		border-top: none;
 	}
@@ -481,6 +563,46 @@
 	.sticker91 .album-sticker {
 		width: 175px;
 		margin-top: -4px;
+	}
+
+	.sticker92 .album-sticker {
+		width: 175px;
+		height: 175px;
+		margin: 0px;
+	}
+
+	.sticker93 .album-sticker {
+		width: 175px;
+		height: 175px;
+		border-left: none !important;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		margin: -0.2px;
+	}
+
+	.sticker114 .album-sticker-vertical {
+		width: 200px;
+		height: 100Px;
+	}
+
+	.sticker115 .album-sticker-vertical {
+		width: 200px;
+		height: 100px;
+	}
+
+	.sticker122 .album-sticker {
+		width: 175px;
+		height: 175px;
+		margin: 0px;
+	}
+
+	.sticker123 .album-sticker {
+		width: 175px;
+		height: 175px;
+		border-left: none !important;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		margin: -0.2px;
 	}
 
 }

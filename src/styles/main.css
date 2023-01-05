@@ -29,8 +29,9 @@ body {
 }
 
 .swiper-container {
-	width: 100%;
+	width: 100%;	
 	height: min-content;
+	
 }
 
 .swiper-container-new-pack {
