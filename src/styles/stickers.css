@@ -403,7 +403,7 @@
 	border-bottom: none;
 }
 
-.sticker133 .album-sticker {
+.sticker123 .album-sticker {
 	width: 400px;
 	height: 400px;
 	border-left: none !important;
@@ -412,7 +412,170 @@
 	margin: -0px;
 }
 
+.sticker140 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	border-bottom: none;
+	border-right: none;
+}
 
+.sticker140 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker141 .album-sticker {
+	width: 350px;
+	margin: -0px;
+	margin-left: -1px;
+	border-bottom: none;
+	border-left: none;
+}
+
+.sticker141 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top: none;
+}
+
+.sticker142 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	margin-top: -3.6px;
+	border-top: none;
+	border-right: none;
+}
+
+.sticker142 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker143 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	margin-left: -1px;
+	margin-top: -3.6px;
+	border-top: none;
+	border-left: none;
+}
+
+.sticker144 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	border-bottom: none;
+	border-right: none;
+}
+
+.sticker144 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker145 .album-sticker {
+	width: 350px;
+	margin: -0px;
+	margin-left: -1px;
+	border-bottom: none;
+	border-left: none;
+}
+
+.sticker145 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top: none;
+}
+
+.sticker146 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	margin-top: -4.0px;
+	border-top: none;
+	border-right: none;
+}
+
+.sticker146 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker147 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	margin-left: -1px;
+	margin-top: -4.0px;
+	border-top: none;
+	border-left: none;
+}
+
+.sticker148 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	border-bottom: none;
+	border-right: none;
+}
+
+.sticker148 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker149 .album-sticker {
+	width: 350px;
+	margin: -0px;
+	margin-left: -1px;
+	border-bottom: none;
+	border-left: none;
+}
+
+.sticker149 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top: none;
+}
+
+.sticker150 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	margin-top: -4.0px;
+	border-top: none;
+	border-right: none;
+}
+
+.sticker150 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: -1px;
+	border-top: none;
+}
+
+.sticker151 .album-sticker {
+	width: 350px;
+	margin: 0px;
+	margin-left: -1px;
+	margin-top: -4.0px;
+	border-top: none;
+	border-left: none;
+}
 
 
 
@@ -603,6 +766,78 @@
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		margin: -0.2px;
+	}
+
+	.sticker140 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-bottom: -1px;
+	}
+
+	.sticker141 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-bottom: -1px;
+	}
+
+	.sticker142 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-top: -3.2px;
+	}
+
+	.sticker143 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-top: -3.2px;
+	}
+
+	.sticker144 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-bottom: -1px;
+	}
+
+	.sticker145 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-bottom: -1px;
+	}
+
+	.sticker146 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-top: -4px;
+	}
+
+	.sticker147 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-top: -4px;
+	}
+
+	.sticker148 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-bottom: -1px;
+	}
+
+	.sticker149 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-bottom: -1px;
+	}
+
+	.sticker150 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-top: -4.0px;
+	}
+
+	.sticker151 .album-sticker {
+		width: 175px;
+		height: 100px;
+		margin-top: -4.0px;
 	}
 
 }
