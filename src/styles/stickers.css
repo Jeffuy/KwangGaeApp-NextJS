@@ -577,6 +577,24 @@
 	border-left: none;
 }
 
+.sticker152 .album-border-golden {
+	width: 350px;
+	margin: -2.5px;
+	border-bottom: none;
+}
+
+.sticker152 .album-sticker .album-sticker-number-clicked {
+	position: absolute;
+	top: 0;
+	border-top: none;
+}
+
+.sticker153 .album-border-golden {
+	width: 350px;
+	margin: -2.5px;
+	border-top: none;
+}
+
 
 
 @media (max-width: 768px) {
@@ -838,6 +856,20 @@
 		width: 175px;
 		height: 100px;
 		margin-top: -4.0px;
+	}
+
+	.sticker152 .album-border-golden {
+		width: 200px;
+		height: 100px;
+		margin: -2.5px;
+		border-bottom: none;
+	}
+
+	.sticker153 .album-border-golden {
+		width: 200px;
+		height: 100px;
+		margin: -2.5px;
+		border-top: none;
 	}
 
 }
