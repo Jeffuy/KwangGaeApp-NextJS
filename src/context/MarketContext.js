@@ -148,7 +148,21 @@ export const MarketContextProvider = ({ children }) => {
 			setMessageQuiz('Has ganado 50 puntos');
 		} else if (!user || !userData) {
 			setMessageQuiz('Logueate para ganar los puntos');
-		} else if (userData.firstQuiz) {
+		} else if (userData.secondQuiz) {
+			setMessageQuiz('Ya has reclamado los puntos para este quiz');
+		}
+		setClicked(false);
+	};
+
+	const thirdQuiz = async () => {
+		setClicked(true);
+		console.log('clicked');
+		if (user && userData && !userData.thirdQuiz) {
+			setDoc(doc(db, 'users', user.uid), { availablePoints: userData?.availablePoints + 100, thirdQuiz: true, points: userData?.points + 100 }, { merge: true });
+			setMessageQuiz('Has ganado 100 puntos');
+		} else if (!user || !userData) {
+			setMessageQuiz('Logueate para ganar los puntos');
+		} else if (userData.thirdQuiz) {
 			setMessageQuiz('Ya has reclamado los puntos para este quiz');
 		}
 		setClicked(false);
@@ -252,6 +266,7 @@ export const MarketContextProvider = ({ children }) => {
 				messageQuiz,
 				firstQuiz,
 				secondQuiz,
+				thirdQuiz,
 			}}
 		>
 			{children}
