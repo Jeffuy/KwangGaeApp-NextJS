@@ -49,6 +49,7 @@ const Test = () => {
 		// links to login, dasbhboard and register
 		<div>
 			<h1>Test</h1>
+
 			{/* <button onClick={() => setStickers()}>Agregar nuevos Stickers</button>
 			<button onClick={() => readCollection()}>Calcular Porcentajes</button> */}
 		</div>

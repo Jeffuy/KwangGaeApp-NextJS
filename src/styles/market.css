@@ -148,12 +148,13 @@
 	background-color: #eee; /* fondo claro */
 	padding: 10px;
 	border-radius: 5px;
-	width: max-content;
+	width: 40%;
 	margin: 0 auto;
 	font-family: "Josefin Sans", sans-serif;
 	font-size: 30px;
 	border: red 2px dashed;
 	margin-top: 20px;
+	text-align: center;
 }
 
 .market-quiz-event2 {
@@ -335,6 +336,12 @@
 	margin: 0 !important;
 }
 
+.market-quiz-event-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 @media screen and (max-width: 768px) {
 	.album-percentage {
 		width: 80%;
@@ -381,7 +388,11 @@
 	.market-special-event ul li i {
 		margin: 5px;
 	}
-
+	.market-quiz-event-container {
+		width: 98%;
+		justify-content: center;
+		margin: 0 auto;
+	}
 	.market-quiz-event {
 		display: flex;
 		justify-content: center;
@@ -391,10 +402,11 @@
 		background-color: #eee; /* fondo claro */
 		padding: 10px;
 		border-radius: 5px;
-		width: max-content;
+		width: 40%;
 		font-family: "Josefin Sans", sans-serif;
 		font-size: 15px;
 		border: red 2px dashed;
+		margin-top: 10px;
 	}
 	.market-quiz-event b {
 		font-size: 12px;

@@ -75,29 +75,52 @@ const MarketMain = ({ cardList }) => {
 					</li>
 				</ul>
 			</span> */}
+			<div className="market-quiz-event-container">
+				<div className="market-quiz-event">
+					<h2> Primer desafío </h2>
+					<p>Valor: 100 puntos</p>
+					<b>Nota: Es sumamente díficil. Mejor para hacer de a 2</b>
+					<p>
+						Para resolverlo entra aquí:{' '}
+						<a href="https://2solve.me/quiz/a08002d1/kwang-gae-puzzle-1" rel="noreferrer" target="_blank">
+							Desafío #1
+						</a>
+					</p>
+				</div>
 
-			<div className="market-quiz-event">
-				<h2> Nuevo desafío!</h2>
-				<p>Valor: 100 puntos</p>
-				<b>Nota: Es sumamente díficil. Mejor para hacer de a 2</b>
-				<p>
-					Para resolverlo entra aquí:{' '}
-					<a href="https://2solve.me/quiz/a08002d1/kwang-gae-puzzle-1" rel="noreferrer" target="_blank">
-						Desafío #1
-					</a>
-				</p>
-			</div>
-
-			<div className="market-quiz-event2">
-				<h2> Nuevo desafío!</h2>
-				<p>Valor: 50 puntos</p>
-				<b>Nota: Es más fácil que el anterior</b>
-				<p>
-					Para resolverlo entra aquí:{' '}
-					<a href="https://2solve.me/quiz/4050c321/segundo-desafío-por-50-puntos-para-comprar-figuritas" rel="noreferrer" target="_blank">
-						Desafío #2
-					</a>
-				</p>
+				<div className="market-quiz-event">
+					<h2> Desafío fácil </h2>
+					<p>Valor: 50 puntos</p>
+					<b>Nota: Es más fácil que el anterior</b>
+					<p>
+						Para resolverlo entra aquí:{' '}
+						<a href="https://2solve.me/quiz/4050c321/segundo-desafío-por-50-puntos-para-comprar-figuritas" rel="noreferrer" target="_blank">
+							Desafío #2
+						</a>
+					</p>
+				</div>
+				<div className="market-quiz-event">
+					<h2> Laberinto </h2>
+					<p>Valor: 100 puntos</p>
+					<b>Nota: Te vas a perder</b>
+					<p>
+						Para resolverlo entra aquí:{' '}
+						<a href="https://2solve.me/quiz/7080b322/laberinto-1" rel="noreferrer" target="_blank">
+							Desafío #3
+						</a>
+					</p>
+				</div>
+				<div className="market-quiz-event">
+					<h2> Desafío de juegos! </h2>
+					<p>Valor: 100 puntos</p>
+					<b>Nota: Muchos juegos.</b>
+					<p>
+						Para resolverlo entra aquí:{' '}
+						<a href="https://2solve.me/quiz/40a05456/desaf%C3%ADo-4-por-100-puntos" rel="noreferrer" target="_blank">
+							Desafío #4
+						</a>
+					</p>
+				</div>
 			</div>
 
 			<div className="market-grid">
