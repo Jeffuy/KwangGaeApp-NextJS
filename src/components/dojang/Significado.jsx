@@ -1,5 +1,5 @@
 
-import Image from 'next/image';
+
 import { NextSeo } from 'next-seo';
 
 const Significado = () => {
