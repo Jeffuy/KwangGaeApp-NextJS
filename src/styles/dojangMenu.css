@@ -22,7 +22,6 @@
 }
 
 .dojang-menu li:hover {
-	
 	width: 150%;
 }
 
@@ -33,6 +32,14 @@
 
 .dojang-last {
 	border-right: none !important;
+}
+
+.temporal-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 120px);
 }
 
 @media screen and (max-width: 600px) {
@@ -48,4 +55,3 @@
 		line-height: 30px;
 	}
 }
-
