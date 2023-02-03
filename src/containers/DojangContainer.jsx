@@ -19,7 +19,7 @@ const DojangContainer = () => {
 			{selected == 'historia' && <Historia />}
 			{selected == 'principios' && <Principios />}
 			{selected == 'significado' && <Significado />}
-			</>
+		</>
 	);
 };
 
