@@ -27,7 +27,7 @@ const SelectedQuestions = () => {
 				value: 'Playing cards',
 			});
 
-			let data = { text };
+			let data = { text: emailContent };
 			fetch('/api/mails', {
 				method: 'POST',
 				headers: {
@@ -107,6 +107,7 @@ const SelectedQuestions = () => {
 						</div>
 					</div>
 				)}
+				{text.length == 0 && <p className="quiz-result-help">{text}</p>}
 			</div>
 		);
 	} else {
