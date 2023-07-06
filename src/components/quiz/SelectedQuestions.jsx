@@ -9,7 +9,7 @@ import Image from 'next/future/image';
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
 	const [sent, setSent] = useState(false);
-	//const [text, setText] = useState('');
+	const [text, setText] = useState('');
 	const [help, setHelp] = useState('');
 	const [name, setName] = useState(user?.displayName || '');
 	const { user } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const SelectedQuestions = () => {
 		e.preventDefault();
 		if (name.length > 0) {
 			const emailContent = `Nombre: ${name}. Puntaje: ${score} sobre ${questions.length}. Cinturón: ${grado}`;
-			//setText(emailContent);
+			setText(emailContent);
 			setSent(true);
 			gtag.event({
 				action: 'quiz_sent',
@@ -27,7 +27,7 @@ const SelectedQuestions = () => {
 				value: 'Playing cards',
 			});
 
-			let data = { emailContent };
+			let data = { text };
 			fetch('/api/mails', {
 				method: 'POST',
 				headers: {
@@ -38,7 +38,7 @@ const SelectedQuestions = () => {
 			});
 
 			setHelp('Puntaje enviado');
-			//setText('');
+			setText('');
 		} else {
 			setHelp('Debes escribir un nombre');
 		}
