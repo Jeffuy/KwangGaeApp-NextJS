@@ -37,7 +37,7 @@ class MyDocument extends Document {
 					<link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
 
 					{/* GOOGLE FONTS */}
-
+					<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 					<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 					{/* ANIMATE CSS */}
 					<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />

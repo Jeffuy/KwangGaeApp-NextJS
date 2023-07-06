@@ -9,15 +9,16 @@ import Image from 'next/future/image';
 const SelectedQuestions = () => {
 	// PRUEBA MAIL
 	const [sent, setSent] = useState(false);
-	const [text, setText] = useState('');
+	//const [text, setText] = useState('');
 	const [help, setHelp] = useState('');
-
+	const [name, setName] = useState(user?.displayName || '');
 	const { user } = useContext(AuthContext);
 
 	const handleSend = async e => {
 		e.preventDefault();
-
-		if (text.length > 0) {
+		if (name.length > 0) {
+			const emailContent = `Nombre: ${name}. Puntaje: ${score} sobre ${questions.length}. Cinturón: ${grado}`;
+			//setText(emailContent);
 			setSent(true);
 			gtag.event({
 				action: 'quiz_sent',
@@ -26,7 +27,7 @@ const SelectedQuestions = () => {
 				value: 'Playing cards',
 			});
 
-			let data = { text };
+			let data = { emailContent };
 			fetch('/api/mails', {
 				method: 'POST',
 				headers: {
@@ -37,16 +38,17 @@ const SelectedQuestions = () => {
 			});
 
 			setHelp('Puntaje enviado');
-			setText('');
+			//setText('');
 		} else {
 			setHelp('Debes escribir un nombre');
 		}
 	};
 
+
 	const handleBack = () => {
 		back();
 		setSent(false);
-		setText('');
+		//setText('');
 		setHelp('');
 	};
 
@@ -70,9 +72,10 @@ const SelectedQuestions = () => {
 								<input
 									placeholder="Escribe tu nombre"
 									type="text"
-									value={user?.displayName || ''}
-									onChange={e => setText(`Nombre: ${e.target.value}. Puntaje: ${score} sobre ${questions.length}. Cinturón: ${grado}`)}
+									value={name}
+									onChange={e => setName(e.target.value)}
 								/>
+
 
 								{!sent && <button onClick={e => handleSend(e)}>Enviar</button>}
 								{help != '' && <p className="quiz-result-help">{help}</p>}

@@ -1,10 +1,9 @@
-@import 'var.css';
+/* @import 'var.css';
 
 .fight-container {
 	display: flex;
 	flex-direction: column;
 	min-height: max-content;
-	/* height: calc(100vh - 94px); */
 	overflow: hidden;
 	justify-content: center;
 }
@@ -149,4 +148,229 @@
 	border-radius: 3%;
 	background-color: var(--color-secondary);
 	color: var(--color-primary);
+} */
+@import 'var.css';
+
+.fight-container {
+	display: flex;
+	flex-direction: column;
+	min-height: max-content;
+	overflow: hidden;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.fight-status__container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 1rem;
+	padding: 0;
+}
+
+.fight-status__container h3 {
+	color: var(--color-secondary);
+	font-size: 1.4rem;
+	margin: 0;
+}
+
+.fight-results__container {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
+	width: 80%;
+	height: max-content;
+	justify-content: space-around;
+	margin-top: 1rem;
+}
+
+.fight-results__container-result {
+	width: 50%;
+	height: max-content;
+	text-align: center;
+	font-size: 1.4rem;
+}
+
+.fight-results__container-result p {
+	margin: 0;
+}
+
+.winner {
+	font-size: 0.9rem;
+	margin-top: 0;
+}
+
+.red {
+	background-color: rgb(243, 71, 71);
+}
+
+.blue {
+	background-color: rgb(76, 76, 232);
+}
+
+.fight-buttons__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+	align-self: center;
+	margin-bottom: 1rem;
+}
+
+.fight-buttons__column {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.fight-buttons-points {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	gap: 1rem;
+}
+
+.fight-buttons-others {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+}
+
+.fight-buttons-points button {
+	border-radius: 3%;
+	width: 110%;
+	height: 80px;
+	border: 1px solid var(--color-secondary);
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
+	font-size: 1rem;
+	font-weight: bold;
+	transition: 0.3s ease;
+}
+
+.fight-buttons-points button.red {
+	background-color: rgb(243, 71, 71);
+}
+
+.fight-buttons-points button.blue {
+	background-color: rgb(76, 76, 232);
+}
+
+.fight-buttons-points button:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fight-buttons-others button {
+	border-radius: 3%;
+	width: 30%;
+	height: 50px;
+	padding: 0;
+	margin-top: 10px;
+	border: 1px solid var(--color-secondary);
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
+	font-size: 0.8rem;
+	font-weight: bold;
+	transition: 0.3s ease;
+}
+
+.fight-buttons-others button.red {
+	background-color: rgb(243, 71, 71);
+}
+
+.fight-buttons-others button.blue {
+	background-color: rgb(76, 76, 232);
+}
+
+.fight-buttons-others button:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fight-timer {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.fight-timer span {
+	font-size: 1.8rem;
+}
+
+.fight-buttons-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 20px;
+}
+
+.fight-buttons-container button {
+	min-width: 50px;
+	height: max-content;
+	padding: 10px;
+	border-radius: 3%;
+	background-color: var(--color-primary);
+	border: 1px solid var(--color-secondary);
+	transition: 0.3s ease;
+}
+
+.fight-buttons-container button:hover {
+	transform: scale(1.05);
+}
+
+.fight-mode-container {
+	margin: 0 auto;
+	margin-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.fight-mode-container button {
+	font-size: 0.8rem;
+	min-width: 60px;
+	height: max-content;
+	padding: 8px;
+	border-radius: 3%;
+	background-color: var(--color-secondary);
+	color: var(--color-primary);
+	transition: 0.3s ease;
+}
+
+.fight-mode-container button:hover {
+	transform: scale(1.05);
+}
+
+.float-enter {
+	opacity: 0;
+}
+
+.float-enter-active {
+	opacity: 1;
+	transition: opacity 10ms ease-in;
+}
+
+.float-exit {
+	opacity: 1;
+}
+
+.float-exit-active {
+	opacity: 0;
+	transition: opacity 1000ms ease-in;
+}
+
+
+/* Responsive styles */
+
+@media screen and (max-width: 768px) {
+	.fight-buttons-others button {
+		font-size: 9px;
+	}
 }

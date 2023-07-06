@@ -43,7 +43,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-
 }
 
 .home__description-container--title {
@@ -53,6 +52,7 @@
 
 .home__description-container--title h3 {
 	font-size: 40px;
+	text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -83,7 +83,6 @@
 	}
 
 	.home__description-container--description p {
-		padding-top: 10%;
 		text-align: center;
 	}
 
