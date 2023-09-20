@@ -46,6 +46,7 @@ function PatternSelectorProvider(props) {
 		const lista = grado();
 		const listaSoloGrado = soloGrado();
 		const cantidad = document.querySelector('input[name="cantidad"]:checked').value;
+		let mensajeFinal = '';
 
 		//let eleccion;
 		let random = 0;
@@ -59,20 +60,23 @@ function PatternSelectorProvider(props) {
 		}
 
 		if (cantidad == 2) {
-			setFormas(`Las formas elegidas son ${lista[random]}`);
+			mensajeFinal = `Las formas elegidas son ${lista[random]}`;
 		} else if (cantidad == 3) {
-			setFormas(`Las formas elegidas son ${lista[random]} y ${lista[random2]}`);
+			mensajeFinal = `Las formas elegidas son ${lista[random]} y ${lista[random2]}`;
 		} else if (cantidad == 0) {
 			random = Math.floor(Math.random() * listaSoloGrado.length);
-			setFormas(`Las formas elegidas son ${listaSoloGrado[random]}`);
+			mensajeFinal = `Las formas elegidas son ${listaSoloGrado[random]}`;
 		} else if (cantidad == 1) {
 			random = Math.floor(Math.random() * listaSoloGrado.length);
 			while (listaSoloGrado[random] == lista[random2]) {
 				random = Math.floor(Math.random() * listaSoloGrado.length);
 				random2 = Math.floor(Math.random() * lista.length);
 			}
-			setFormas(`Las formas elegidas son ${listaSoloGrado[random]} y ${lista[random2]}`);
+			mensajeFinal = `Las formas elegidas son ${listaSoloGrado[random]} y ${lista[random2]}`;
 		}
+
+		setFormas(mensajeFinal);
+		return mensajeFinal;
 	}
 
 	return (
