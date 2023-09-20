@@ -40,7 +40,7 @@
 
 .pattern-selector__card--options label {
 	color:rgb(255, 174, 74);
-	padding-inline: 5%;
+	/* padding-inline: 5%; */
 }
 
 .pattern-selector__button-container {
