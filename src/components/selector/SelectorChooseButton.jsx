@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { PatternSelectorContext } from '@context/PatternSelectorContext';
 // import { Toaster, toast } from 'sonner';
 
-const SelectorChooseButton = () => {
+const SelectorChooseButton = ( {setRuletaDeFormas, ruletaDeFormas} ) => {
 	const { elegirFormas } = useContext(PatternSelectorContext);
 
 	// const handleElegirFormas = () => {
@@ -11,8 +11,11 @@ const SelectorChooseButton = () => {
 
 	return (
 		<div className="pattern-selector__button-container">
-			<button className="" type="button" onClick={elegirFormas}>
+			{!ruletaDeFormas && <button className="" type="button" onClick={elegirFormas}>
 				Elige las formas
+			</button>}
+			<button className="" type="button" onClick={()=> setRuletaDeFormas(!ruletaDeFormas)}>
+				{!ruletaDeFormas ? 'NUEVO - Ruleta de Formas (beta)' : 'Desactivar Ruleta de Formas'}
 			</button>
 			{/* <Toaster /> */}
 		</div>

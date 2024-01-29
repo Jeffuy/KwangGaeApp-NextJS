@@ -48,18 +48,25 @@
 .pattern-selector__button-container {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
+	width: 50%;
 	height: max-content;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	margin-top: 3%;
 	padding-top: 10px;
+	margin: 0 auto;
 }
 
 .pattern-selector__button-container button {
 	background-color: rgb(255, 174, 74);
 	color: var(--color-primary);
-	border: none
+	border: none;
+	margin: 0 auto;
+}
+
+.pattern-selector__button-container button:nth-child(2) {
+	background-color: rgb(220, 126, 126);
+	font-size: 0.8em;
 }
 
 .pattern-selector__result-container {
@@ -107,6 +114,23 @@
 		font-size: 1.2em;
 	}
 	.pattern-selector__card--title {
+	}
+
+	.pattern-selector__button-container {
+		display: flex;
+		flex-direction: row;
+		width: 90%;
+		height: max-content;
+		align-items: stretch;
+		justify-content: center;
+		margin-top: 3%;
+		padding-top: 10px;
+		margin: 0 auto;
+	}
+
+	.pattern-selector__button-container button {
+		width: 40%;
+		margin: 0 auto;
 	}
 }
 

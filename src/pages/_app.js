@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-cards';
 import 'swiper/css/grid';
+import 'styles/paternRoulette.css';
 
 import Head from 'next/head';
 
