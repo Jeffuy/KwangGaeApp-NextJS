@@ -25,7 +25,7 @@ const PatternRoulette = () => {
 
 	const spinWheel = () => {
 		setWinningIndex(null);
-		const spins = Math.floor(Math.random() * 10 + 10);
+		const spins = Math.floor(Math.random() * 10 + 4);
 		const degrees = spins * 360;
 		const extraDegrees = Math.floor(Math.random() * 360);
 		const total = degrees + extraDegrees;
@@ -38,7 +38,7 @@ const PatternRoulette = () => {
 			const options = ['Chon-ji', 'Dan-Gun', 'Do-San', 'Won-Hyo', 'Yul-Gok', 'Joon-Gun', 'Toi-Gye', 'Hwa-Rang', 'Choong-Moo', 'Kwang-Gae', 'Po-Eun', 'Ge-Baek', 'Eui-Am', 'Choong-Jang', 'Juche', 'Sam-Il', 'Yoo-Sin', 'Choi-Yong', 'Yon-Gae', 'Ul-Ji', 'Moon-Moo'];
 			setWinningText(`La forma elegida es ${options[adjustedWinningSegment]}!`);
 			setWinningIndex(adjustedWinningSegment);
-		}, 3000);
+		}, 2100);
 	};
 
 	return (

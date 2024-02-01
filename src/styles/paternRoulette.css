@@ -74,25 +74,25 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #333;
+	background: #000000;
 	border-radius: 50%;
 	overflow: hidden;
 	box-shadow: 0 0 0 5px #333, 0 0 0 15px #fff, 0 0 0 18px #111;
 	rotate: 28deg;
 	-o-transform: rotate(30deg);
-	transition: transform 3s ease-in-out;
+	transition: transform 3s ease-out;
 }
 
 .rouletteContainer .rouletteBackgroundBlack {
-	background: black;
+	background: #007aff;
 }
 
 .rouletteContainer .rouletteBackgroundGray {
-	background: #555;
+	background: #f4a631;
 }
 
 .rouletteContainer .rouletteBackgroundWhite {
-	background: #fff;
+	background: #92f040;
 }
 
 
@@ -133,7 +133,7 @@
 	left: 25%;
 	transform: rotate(-90deg);
 	z-index: 1;
-	
+
 }
 
 /* Ya que estás usando layout='fixed', puedes definir el tamaño aquí y omitirlo en el componente Image */
@@ -157,6 +157,7 @@
 	color: gold;
 	font-size: 1.05em;
 	transition: all 3s ease-in-out;
+	text-shadow: 1px 1px 1px black;
 }
 
 .rouletteContainer .wheel .highlight .rouletteBelt {
